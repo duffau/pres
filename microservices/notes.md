@@ -26,6 +26,8 @@
 ### Flexibility
 > *"Microservices buy you options.”* - James Lewis, Director Thoughtworks
 > The resulting flexibility on a number of axes — organizational, technical, scale, robustness.
+
+![](graphics/cost-of-n-microservices.svg)
 ### Alignment of Architecture and Organization
 
 ## The Monolith
