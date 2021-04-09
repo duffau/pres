@@ -40,7 +40,9 @@ date: 09-04-2021
 ### Service oriented architecture (SOA)
 
 ![SOA Metamodel - The Linthicum Group, 2007](graphics/SOA_Metamodel.svg){ height=10em }
+
 ---
+
 ### Service oriented architecture (SOA)
 - Not well defined
 - Conflicting defintions
