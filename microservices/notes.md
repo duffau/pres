@@ -48,6 +48,8 @@ What is a *Monolith*?
 
 - IBM z15 mainframe runs 1.2m transactions per second
 - Mainframe application are written in COBOL
+- 70 percent of Fortune 500 companies use IBM z mainframes
+- Mainframes handle 90 percent of all credit card transactions.
 
 
 - Shopify case: Single Ruby on Rails single process monolith until 2016
