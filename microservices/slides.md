@@ -250,7 +250,7 @@ date: 09-04-2021
 ---
 
 ### Latency
-- Mre serialization adn de-srialization adds latency
+- More serialization and de-serialization adds latency
 - Flaky networks add latency
 
 ---
@@ -269,7 +269,9 @@ date: 09-04-2021
 
 The overall goal is always to not let development of new features be slowed down by code complexity.
 
-But one needs to defer the step to a microservice when the needs of the system have become clear. 
+It's better to wait to build a microservice system until the needs of the system have become clear. 
 
-These needs are learned well in a monolith. 
+Also learning the boundaries of the business domain is important when defining the service boundaries.
+
+Building and maintaining a monolith is a good way to learn these lessons. 
 :::
