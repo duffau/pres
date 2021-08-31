@@ -27,7 +27,7 @@ def plot_timeline(timeline, title, filename, color="red"):
     ]
 
     # Create figure and plot a stem plot with the date
-    fig, ax = plt.subplots(figsize=(8.8, 4), constrained_layout=False)
+    fig, ax = plt.subplots(figsize=(6, 4), constrained_layout=False)
     # ax.set(title=title)
 
     ax.vlines(dates, 0, levels, color=f"tab:{color}")  # The vertical stems.
