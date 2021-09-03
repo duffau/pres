@@ -399,19 +399,38 @@ $$\sum_{i=1}^N L\left(y_i, \sum_{m=1}^M \beta_m b(x_i, \gamma_m)\right)$$
 - The numerical optimum is $$\mathbf{f}_M = \sum_{m=1}^M \mathbf{h}_m$$
 
 ## Gradient boosting
-- In gradient descent each step $\mathbf{h}_m$ is $$-\rho \mathbf{g}_m$$ 
-- In Newton-Raphson each step $\mathbf{h}_m$ is $$-\rho H_m^{-1} \mathbf{g}_m$$ 
+- In _gradient descent_ each step $\mathbf{h}_m$ is $$-\rho \mathbf{g}_m$$ 
 - ... where $g_{im}$ is $$\left[\frac{\partial L(y_i, f(x_i))}{\partial  f(x_i)}\right]_{f(x)=f_{m-1}(x)}$$
+- The numerical optimization is then 
+$$
+\begin{align*}
+  \mathbf{f}_m &= \mathbf{f}_{m-1} + \mathbf{h}_m\\
+  &= \mathbf{f}_{m-1} -\rho \mathbf{g}_m 
+\end{align*}
+$$
 
-## Gardient boosting
+## Gradient boosting
 
+- Let's add _line search_, $$\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m$$ 
+  where $\rho_m = \underset{\rho}{\text{argmin}}\quad L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m )$
+- This fits the pattern of _forward stagewise learning_ $$f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)$$
+- where $\rho_m$ is analogous to $\beta_m$
+- and $-\mathbf{g}_m$ is analogous to $b(x; \gamma_m)$ 
 - We can derive the gradient considering $f(x)$ a variable
-- ... and easily compute it using the value from the previous iteration f_{m-1}(x_i)
-- ... we cannot compute the gradient outside the dataset 🤔
+- ... and easily compute $\mathbf{g}_m(f(x))$ using the value from the previous iteration $f_{m-1}(x)$
+- ... we cannot compute $\mathbf{g}_m$ outside the dataset 🤔
+
+## Gradient boosting
+
+- The idea of [@friedman2001greedy]: 
+  - Fit a _learner_ to $-\mathbf{g}_m$ $\rightarrow \hat{b}_m(x; \gamma_m)$ 
+  - Forward stagewise step: $$f_m(x) = f_{m-1}(x) + \rho_m \hat{b}_m(x; \gamma_m)$$
+
 ## XGBoost
 
 - Explicit regularization in loss function
-- Newton boosting
+- Newton boosting:
+  - $\mathbf{h}_m$ is $$-\rho_m \mathbf{H}_m^{-1}\mathbf{g}_m$$
 - Custom split point identification: "Weighted Quantile Sketch"
 - Computationally optimized
 
