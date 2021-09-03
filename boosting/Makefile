@@ -10,7 +10,7 @@ slides.html:
 		-V revealjs-url=https://unpkg.com/reveal.js@^4/ \
 		-V theme=black \
 		-V transition="linear" \
-		-V slideNumber=true \
+		-V slideNumber="'c/t'" \
 		--css black-root.css \
 		--incremental \
 		--bibliography bibliography.bib \
