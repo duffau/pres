@@ -369,10 +369,51 @@ Sound promising...
 
 ## Gradient boosting
 
+- Consider the loss function,
+$$\sum_{i=1}^N L\left(y_i, \sum_{m=1}^M \beta_m b(x_i, \gamma_m)\right)$$ 
+- ... to be optimized over $\{\beta_m, \gamma_m\}_{m=1}^M$
+- ... which might me intractable
+
+## Gradient boosting
+- We try to solve it in a Forward stagewise mamner
+- For $1$ to $M$:
+  - Optimize $$\sum_{i=1}^N L\left(y_i, f_{m-1}(x_i) + \beta_m b(x_i, \gamma_m)\right)$$ 
+- where $f_m(x) = f_{m-1}(x) + \beta_m b(x_i, \gamma_m)$.
+- If the basis functions are trees
+- ... the stagewise minimization ca be difficult 
+
+## Gradient boosting
+
+- Consider the expected loss function $$\phi(f) = E[L(y,f(\boldsymbol{x}))]$$ 
+- we seek $f$ that minimizes $\phi$
+- Thats a difficult variational analysis problem
+- Let's circumvent the problem...
+- ... consider a dataset of $N$ observations instead $$\mathbf{f} = \{f(x_1), \ldots, f(x_N)\}$$
 
 
+## Gradient boosting
 
+- Lets minimize the empirical loss $$L(f) = \sum_{i=1}^N L(y_i, f(x_i))$$ wrt. $f(x_i)$ numerically.
+- All numerical optimization is a series of $M$ steps towards optimum 
+- Let each step be a vector $\mathbf{h}_m\in\mathbb{R}^N$
+- The numerical optimum is $$\mathbf{f}_M = \sum_{m=1}^M \mathbf{h}_m$$
+
+## Gradient boosting
+- In gradient descent each step $\mathbf{h}_m$ is $$-\rho \mathbf{g}_m$$ 
+- In Newton-Raphson each step $\mathbf{h}_m$ is $$-\rho H_m^{-1} \mathbf{g}_m$$ 
+- ... where $g_{im}$ is $$\left[\frac{\partial L(y_i, f(x_i))}{\partial  f(x_i)}\right]_{f(x)=f_{m-1}(x)}$$
+
+## Gardient boosting
+
+- We can derive the gradient considering $f(x)$ a variable
+- ... and easily compute it using the value from the previous iteration f_{m-1}(x_i)
+- ... we cannot compute the gradient outside the dataset 🤔
 ## XGBoost
+
+- Explicit regularization in loss function
+- Newton boosting
+- Custom split point identification: "Weighted Quantile Sketch"
+- Computationally optimized
 
 ## References {.allowframebreaks}
 ::: {#refs}
