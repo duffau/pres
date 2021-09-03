@@ -9,7 +9,9 @@ slides.html:
 		--highlight-style zenburn \
 		-V revealjs-url=https://unpkg.com/reveal.js@^4/ \
 		-V theme=black \
-		-V  transition="linear" \
+		-V transition="linear" \
+		-V slideNumber=true \
+		--css black-root.css \
 		--incremental \
 		--bibliography bibliography.bib \
 		--citeproc 
