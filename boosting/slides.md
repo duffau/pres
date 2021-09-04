@@ -300,6 +300,20 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 ## Adaboost
 
+- 10D nested spheres with noisy data
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+![Clean data](experiment/gen_data.svg)
+:::
+::: {.column width="50%"}
+![Noisy data](experiment/gen_noisy_data.svg)
+:::
+::::::::::::::
+
+
+## Adaboost
+
 - Adaboost has trouble on noisy data
 
 . . .
