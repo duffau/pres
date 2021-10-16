@@ -21,7 +21,7 @@ jobs:
           sudo dpkg -i ./tmp/$deb_file
           sudo rm -r ./tmp
           printok "$APP installed"
-          cd boosting && make slides.html ARGS=--self-contained 
+          cd boosting && make slides.html ARGS=--self-contained && git add -f slides.html && git commit -m "build boosting slides"   
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
