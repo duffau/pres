@@ -1,8 +1,6 @@
 .PHONY:slides.html
 
-slides.html:
-	pandoc \
-		-t revealjs \
+override ARGS += -t revealjs \
 	  	-s slides.md \
 		-o slides.html \
 		--mathjax \
@@ -15,3 +13,6 @@ slides.html:
 		--incremental \
 		--bibliography bibliography.bib \
 		--citeproc 
+
+slides.html:
+	pandoc $(ARGS)
