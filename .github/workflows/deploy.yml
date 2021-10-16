@@ -21,7 +21,7 @@ jobs:
           sudo dpkg -i ./tmp/$deb_file
           sudo rm -r ./tmp
           printok "$APP installed"
-          cd boosting && make slides.html ARGS=--self-contained 
+          cd boosting && make slides.html
           mv .slides.html slides.html  
 
       - name: Deploy 🚀
