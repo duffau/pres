@@ -1,3 +1,3 @@
 while inotifywait slides.md; do
-    make slides.html
+    cd .. && make slides.html
 done

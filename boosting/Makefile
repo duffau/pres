@@ -1,8 +1,8 @@
-.PHONY:slides.html
+.PHONY: .slides.html
 
 override ARGS += -t revealjs \
 	  	-s slides.md \
-		-o slides.html \
+		-o .slides.html \
 		--mathjax \
 		--highlight-style zenburn \
 		-V revealjs-url=https://unpkg.com/reveal.js@^4/ \
