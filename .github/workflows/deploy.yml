@@ -9,7 +9,7 @@ jobs:
 
       - name: Install and Build
         run: |
-          source .workflows/utils.sh
+          source .github/workflows/utils.sh
           APP="pandoc"
           GITHUB_URL="https://github.com/jgm/pandoc"
           printblue "\nInstalling $APP"
