@@ -1,5 +1,3 @@
-# Talks
-
 - [Boosting](https://duffau.github.io/talks/boosting/slides.html) 
 - [Git Internals](https://duffau.github.io/talks/git-internals/slides.html)
 - [Microservices](https://duffau.github.io/talks/microservices/slides.html)
