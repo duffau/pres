@@ -27,9 +27,18 @@ echo "ref: refs/heads/master" > .git/HEAD
 # start snippet git-status
 git status
 # end snippet git-status
+<< OUT
+# start snippet git-status-out
+On branch master
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+# end snippet git-status-out
+OUT
 
-# Making som file
+# start snippet make-first-file
+# Making a file
 echo "Some content" > first_file.txt
+# end snippet make-first-file
 
 # The git datamodel basic
 # -----------------------
