@@ -21,7 +21,7 @@ jobs:
           sudo dpkg -i ./tmp/$deb_file
           sudo rm -r ./tmp
           printok "$APP installed"
-          # for fp in $(find . -name install-deps.sh); do $fp; done
+          for fp in $(find . -name install-deps.sh); do $fp; done
 
       - name: Build slides 
         run: |
