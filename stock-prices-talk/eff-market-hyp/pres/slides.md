@@ -6,25 +6,25 @@ date: 05-03-2021
 
 Stock prices
 ------------
-![](../analysis/plots/^GSPC_prices_1year.svg)
+![](./analysis/plots/^GSPC_prices_1year.svg)
 
 ---
 
 Stock prices
 ------------
-![](../analysis/plots/TSLA_prices_1year.svg)
+![](./analysis/plots/TSLA_prices_1year.svg)
 
 ---
 
 Stock prices
 ------------
-![](../analysis/plots/GME_prices_1year.svg)
+![](./analysis/plots/GME_prices_1year.svg)
 
 ---
 
 Stock prices
 ------------
-![](../analysis/plots/HPE_prices_1year.svg)
+![](./analysis/plots/HPE_prices_1year.svg)
 
 ---
 
@@ -64,13 +64,13 @@ The Random Walk Hypothesis
 
 The Random Walk Hypothesis
 --------------------------
-![](../analysis/plots/rw.svg)
+![](./analysis/plots/rw.svg)
 
 ---
 
 The Random Walk Hypothesis
 --------------------------
-![](../analysis/plots/rw1.svg)
+![](./analysis/plots/rw1.svg)
 
 ---
 
@@ -104,7 +104,7 @@ Survey of securities
 - Stocks
 - Currencies
 
-[Results](file:///home/duffau/coding-projects/stock-prices-talk/eff-market-hyp/analysis/dickey_fuller_survey/tables/adf_results.html)
+[Results](./analysis/dickey_fuller_survey/tables/adf_results.html)
 
 
 ---
@@ -119,24 +119,33 @@ $$r_t = \frac{P_t - P_{t-1}}{P_{t-1}}$$
 
 Autocorrelation
 ----------------
-![Returns](../analysis/plots/returns.svg)
+![Returns](./analysis/plots/returns.svg)
+
+---
+
+Autocorrelation
+---------------
+
+> "**Large changes** tend to be followed by **large changes**, of either sign, and **small changes** tend to be followed by **small changes**."
+> 
+> Benoit Mandelbrot (1963) 
+ 
+---
+
+Autocorrelation
+----------------
+$$\text{acf}_k(P_t) = \text{corr}(P_t, P_{t-k})$$
 
 ---
 
 Autocorrelation
 ----------------
-$$acf_k(P_t) = corr(P_t, P_{t-k})$$
+
+![ACF of returns](./analysis/plots/acf_returns.svg)
 
 ---
 
 Autocorrelation
 ----------------
 
-![ACF of returns](../analysis/plots/acf_returns.svg)
-
----
-
-Autocorrelation
-----------------
-
-![ACF of returns squared](../analysis/plots/acf_returns_sq.svg)
+![ACF of returns squared](./analysis/plots/acf_returns_sq.svg)
