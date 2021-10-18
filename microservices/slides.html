@@ -35,8 +35,8 @@
 
 <h2 id="microservices-at-a-glance">Microservices At a Glance</h2>
 <ul>
-<li>Microservices are an architecture choice</li>
-<li>A type of service-oriented architecture (SOA)</li>
+<li class="fragment">Microservices are an architecture choice</li>
+<li class="fragment">A type of service-oriented architecture (SOA)</li>
 </ul>
 </section>
 <section class="slide level1">
@@ -57,16 +57,16 @@
 
 <h3 id="service-oriented-architecture-soa">Service oriented architecture (SOA)</h3>
 <ul>
-<li>Concept came out of proprietary <em>remote procedure call</em> (RPC) technologies of the 80’s and 90’s (COBRA, DCOM)</li>
-<li>These old binary RPC technologies didn’t work over the “internet”</li>
+<li class="fragment">Concept came out of proprietary <em>remote procedure call</em> (RPC) technologies of the 80’s and 90’s (COBRA, DCOM)</li>
+<li class="fragment">These old binary RPC technologies didn’t work over the “internet”</li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h3 id="service-oriented-architecture-soa-1">Service oriented architecture (SOA)</h3>
 <ul>
-<li>In 2000 the XML-based <em>Simple Object Access Protocol</em> (SOAP) came about</li>
-<li>In 2003, Roy Schulte of Gartner Group, coined the term “Service Oriented Architecture”</li>
+<li class="fragment">In 2000 the XML-based <em>Simple Object Access Protocol</em> (SOAP) came about</li>
+<li class="fragment">In 2003, Roy Schulte of Gartner Group, coined the term “Service Oriented Architecture”</li>
 </ul>
 </section>
 <section class="slide level1">
@@ -80,25 +80,25 @@
 
 <h3 id="service-oriented-architecture-soa-3">Service oriented architecture (SOA)</h3>
 <ul>
-<li>Not well defined</li>
-<li>Conflicting defintions</li>
-<li>Pushed by software vendors to sell middleware</li>
+<li class="fragment">Not well defined</li>
+<li class="fragment">Conflicting defintions</li>
+<li class="fragment">Pushed by software vendors to sell middleware</li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h3 id="service-oriented-architecture-soa-4">Service oriented architecture (SOA)</h3>
 <ul>
-<li>SOA is to Microservices …</li>
-<li>… what Agile is to Scrum</li>
+<li class="fragment">SOA is to Microservices …</li>
+<li class="fragment">… what Agile is to Scrum</li>
 </ul>
 </section>
 <section id="the-monolith" class="slide level1">
 <h1>The Monolith</h1>
 <ul>
-<li>The opposite of a microservice architecture</li>
-<li>What is a <em>Monolith</em>?</li>
-<li>Sam Newman : <em>One unit of deployment</em></li>
+<li class="fragment">The opposite of a microservice architecture</li>
+<li class="fragment">What is a <em>Monolith</em>?</li>
+<li class="fragment">Sam Newman : <em>One unit of deployment</em></li>
 </ul>
 </section>
 <section class="slide level1">
@@ -112,19 +112,19 @@
 
 <h2 id="the-mainframe-app-1">The mainframe app</h2>
 <ul>
-<li>IBM z15 mainframe runs 1.2m transactions per second</li>
-<li>70 percent of Fortune 500 companies use IBM z mainframes</li>
-<li>Mainframes handle 90 percent of all credit card transactions.</li>
+<li class="fragment">IBM z15 mainframe runs 1.2m transactions per second</li>
+<li class="fragment">70 percent of Fortune 500 companies use IBM z mainframes</li>
+<li class="fragment">Mainframes handle 90 percent of all credit card transactions.</li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h2 id="the-mainframe-app-2">The mainframe app</h2>
 <ul>
-<li>Mainframe application are written in COBOL (Common Business-Oriented Language)</li>
-<li>COBOL is a domain specific language</li>
-<li>Built-in decimal number system</li>
-<li>Built for fast “row operations”</li>
+<li class="fragment">Mainframe application are written in COBOL (Common Business-Oriented Language)</li>
+<li class="fragment">COBOL is a domain specific language</li>
+<li class="fragment">Built-in decimal number system</li>
+<li class="fragment">Built for fast “row operations”</li>
 </ul>
 </section>
 <section class="slide level1">
@@ -132,10 +132,10 @@
 <h2 id="shopify">Shopify</h2>
 <p><img data-src="graphics/shopify_logo_whitebg.svg" style="height:5em" /></p>
 <ul>
-<li>A Ruby on Rails single process monolith until 2016</li>
-<li>377,500 merchants at the end of 2016</li>
-<li>Handling transaction of $42 million a day</li>
-<li>Opted for a <em>Modular Monolith</em></li>
+<li class="fragment">A Ruby on Rails single process monolith until 2016</li>
+<li class="fragment">377,500 merchants at the end of 2016</li>
+<li class="fragment">Handling transaction of $42 million a day</li>
+<li class="fragment">Opted for a <em>Modular Monolith</em></li>
 </ul>
 </section>
 <section class="slide level1">
@@ -162,33 +162,33 @@
 
 <h3 id="the-distributed-monolith">The Distributed Monolith</h3>
 <ul>
-<li>Multiple services</li>
-<li>Tightly coupled</li>
-<li>May have a shared database</li>
-<li>Disadvantages of distributed systems</li>
-<li>Disadvantages of monolithic systems</li>
-<li>Worst of both worlds</li>
+<li class="fragment">Multiple services</li>
+<li class="fragment">Tightly coupled</li>
+<li class="fragment">May have a shared database</li>
+<li class="fragment">Disadvantages of distributed systems</li>
+<li class="fragment">Disadvantages of monolithic systems</li>
+<li class="fragment">Worst of both worlds</li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h2 id="the-good-monolith---advantages">The good monolith - Advantages</h2>
 <ul>
-<li>Simpler deployment topology
+<li class="fragment">Simpler deployment topology
 <ul>
-<li><em>Single main file on one server</em></li>
+<li class="fragment"><em>Single main file on one server</em></li>
 </ul></li>
-<li>Simpler developer workflows
+<li class="fragment">Simpler developer workflows
 <ul>
-<li><em>No need to mock external services</em></li>
+<li class="fragment"><em>No need to mock external services</em></li>
 </ul></li>
-<li>Simplified end-to-end testing
+<li class="fragment">Simplified end-to-end testing
 <ul>
-<li><em>The end-to-end flow is defined in code in one place</em></li>
+<li class="fragment"><em>The end-to-end flow is defined in code in one place</em></li>
 </ul></li>
-<li>Code re-use within the monolith
+<li class="fragment">Code re-use within the monolith
 <ul>
-<li><em>Easy to keep the code DRY - Just import</em></li>
+<li class="fragment"><em>Easy to keep the code DRY - Just import</em></li>
 </ul></li>
 </ul>
 </section>
@@ -196,14 +196,14 @@
 
 <h2 id="the-good-monolith---advantages-1">The good monolith - Advantages</h2>
 <ul>
-<li>Easier to monitor
+<li class="fragment">Easier to monitor
 <ul>
-<li><em>Just look at logs from one app</em></li>
-<li><em>Just look at CPU and memory usage of one server</em></li>
+<li class="fragment"><em>Just look at logs from one app</em></li>
+<li class="fragment"><em>Just look at CPU and memory usage of one server</em></li>
 </ul></li>
-<li>Easier to troubleshoot
+<li class="fragment">Easier to troubleshoot
 <ul>
-<li><em>Easier to recreate failing scenario</em></li>
+<li class="fragment"><em>Easier to recreate failing scenario</em></li>
 </ul></li>
 </ul>
 </section>
@@ -211,12 +211,12 @@
 
 <h2 id="advantages-of-microservices">Advantages of Microservices</h2>
 <ul>
-<li>Technology Heterogeneity</li>
-<li>Robustness</li>
-<li>Scaling</li>
-<li>Ease of Deployment</li>
-<li>Organizational Alignment</li>
-<li>Composability</li>
+<li class="fragment">Technology Heterogeneity</li>
+<li class="fragment">Robustness</li>
+<li class="fragment">Scaling</li>
+<li class="fragment">Ease of Deployment</li>
+<li class="fragment">Organizational Alignment</li>
+<li class="fragment">Composability</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -233,9 +233,9 @@
 
 <h2 id="concepts-of-microservices">Concepts of Microservices</h2>
 <ul>
-<li>Independently Deployability</li>
-<li>Modelled Around a Business Domain</li>
-<li>Owning Their Own State</li>
+<li class="fragment">Independently Deployability</li>
+<li class="fragment">Modelled Around a Business Domain</li>
+<li class="fragment">Owning Their Own State</li>
 </ul>
 </section>
 <section class="slide level1">
@@ -287,31 +287,31 @@
 
 <h2 id="microservice-pain-points">Microservice pain points</h2>
 <ul>
-<li>Data Consistency</li>
-<li>Developer Experience</li>
-<li>Technology Overload</li>
-<li>Reporting</li>
-<li>Monitoring and Troubleshooting</li>
-<li>Security</li>
-<li>Testing</li>
-<li>Latency</li>
+<li class="fragment">Data Consistency</li>
+<li class="fragment">Developer Experience</li>
+<li class="fragment">Technology Overload</li>
+<li class="fragment">Reporting</li>
+<li class="fragment">Monitoring and Troubleshooting</li>
+<li class="fragment">Security</li>
+<li class="fragment">Testing</li>
+<li class="fragment">Latency</li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h3 id="data-consistency">Data Consistency</h3>
 <ul>
-<li>Data in a SQL database - consistency is handle by the DBMS</li>
-<li>Distributed transactions: 😏</li>
-<li>Sagas: 🤷‍♂️</li>
+<li class="fragment">Data in a SQL database - consistency is handle by the DBMS</li>
+<li class="fragment">Distributed transactions: 😏</li>
+<li class="fragment">Sagas: 🤷‍♂️</li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h3 id="developer-experience">Developer Experience</h3>
 <ul>
-<li>Impossible or difficult to run all services on one laptop</li>
-<li>Difficult to reason about the system</li>
+<li class="fragment">Impossible or difficult to run all services on one laptop</li>
+<li class="fragment">Difficult to reason about the system</li>
 </ul>
 </section>
 <section class="slide level1">
@@ -328,9 +328,9 @@
 
 <h3 id="reporting">Reporting</h3>
 <ul>
-<li>In a monolith a report is only a SQL query away</li>
-<li>With distributed state it’s much more difficult</li>
-<li>Enter the world of <em>data lakes</em></li>
+<li class="fragment">In a monolith a report is only a SQL query away</li>
+<li class="fragment">With distributed state it’s much more difficult</li>
+<li class="fragment">Enter the world of <em>data lakes</em></li>
 </ul>
 </section>
 <section class="slide level1">
@@ -344,24 +344,24 @@
 
 <h3 id="security">Security</h3>
 <ul>
-<li>More network communication opens the attack surface</li>
-<li>Vulnerable for man-in-the-middle attacks</li>
+<li class="fragment">More network communication opens the attack surface</li>
+<li class="fragment">Vulnerable for man-in-the-middle attacks</li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h3 id="testing">Testing</h3>
 <ul>
-<li>End-to-end test are near impossible</li>
-<li>Integration tests need mock services</li>
+<li class="fragment">End-to-end test are near impossible</li>
+<li class="fragment">Integration tests need mock services</li>
 </ul>
 </section>
 <section class="slide level1">
 
 <h3 id="latency">Latency</h3>
 <ul>
-<li>More serialization and de-serialization adds latency</li>
-<li>Flaky networks add latency</li>
+<li class="fragment">More serialization and de-serialization adds latency</li>
+<li class="fragment">Flaky networks add latency</li>
 </ul>
 </section>
 <section class="slide level1">
