@@ -7,7 +7,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Install and Build
+      - name: Install deps
         run: |
           source .github/workflows/utils.sh
           APP="pandoc"
@@ -21,8 +21,13 @@ jobs:
           sudo dpkg -i ./tmp/$deb_file
           sudo rm -r ./tmp
           printok "$APP installed"
-          cd boosting && make slides.html
-          mv .slides.html slides.html  
+          for fp in $(find . -name install-deps.sh); do $fp; done
+
+      - name: Build slides 
+        run: |
+          make slides.html
+          for fp in $(find . -name .slides.html); do mv ${fp} ${fp%.slides.html}slides.html ; done
+
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
