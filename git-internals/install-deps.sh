@@ -7,6 +7,6 @@ cd pandoc-include-code-master
 cabal configure
 cabal install
 cd .. && rm -rf ./pandoc-include-code-master
-export PATH=$PATH:~/.cabal/bin/pandoc-include-code
+export PATH=$PATH:~/.cabal/bin
 rm -rf dist
  
