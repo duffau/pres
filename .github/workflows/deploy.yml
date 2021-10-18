@@ -39,7 +39,7 @@ jobs:
       - name: Build slides 
         run: |
           make slides.html
-          for fp in $(find . -name .slides.html); do mv ${fp} ${fp%.slides.html}slides.html ; done
+          for fp in $(find . -name .slides.html); do mv ${fp} ${fp%.slides.html}index.html ; done
 
 
       - name: Deploy 🚀
