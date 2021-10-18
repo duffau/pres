@@ -1,9 +1,12 @@
 sudo apt-get install -y cabal-install
 cabal update
-git clone git@github.com:owickstrom/pandoc-include-code.git
-cd pandoc-include-code
+wget https://github.com/owickstrom/pandoc-include-code/archive/refs/heads/master.zip
+unzip master.zip
+rm -f master.zip
+cd pandoc-include-code-master
 cabal configure
 cabal install
-cd .. && rm -rf ./pandoc-include-code
-ln -s ~/.cabal/bin/pandoc-include-code ~/.local/bin/pandoc-include-code
+cd .. && rm -rf ./pandoc-include-code-master
+export PATH=$PATH:~/.cabal/bin/pandoc-include-code
+rm -rf dist
  
