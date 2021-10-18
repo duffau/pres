@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Christian Duffau-Rasmussen">
+  <title>What are Microservices?</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/black.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">What are Microservices?</h1>
+  <p class="author">Christian Duffau-Rasmussen</p>
+  <p class="date">09-04-2021</p>
+</section>
+
+<section class="slide level1">
+
+<h2 id="microservices-at-a-glance">Microservices At a Glance</h2>
+<ul>
+<li>Microservices are an architecture choice</li>
+<li>A type of service-oriented architecture (SOA)</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="microservices-in-one-sentence">Microservices in one sentence</h2>
+<blockquote>
+<p><em>Microservices</em> are <strong>independently releasable services</strong>, each modelled around a <strong>business domain</strong>, usually communicating over a network.</p>
+</blockquote>
+</section>
+<section class="slide level1">
+
+<h2 id="example-microservice">Example Microservice</h2>
+<figure>
+<img data-src="graphics/fig-1-1%20-%20A%20Microservice.png" style="height:10em" alt="A microservice exposing its functionality over a REST API and a queue" /><figcaption aria-hidden="true">A microservice exposing its functionality over a REST API and a queue</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<h3 id="service-oriented-architecture-soa">Service oriented architecture (SOA)</h3>
+<ul>
+<li>Concept came out of proprietary <em>remote procedure call</em> (RPC) technologies of the 80’s and 90’s (COBRA, DCOM)</li>
+<li>These old binary RPC technologies didn’t work over the “internet”</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="service-oriented-architecture-soa-1">Service oriented architecture (SOA)</h3>
+<ul>
+<li>In 2000 the XML-based <em>Simple Object Access Protocol</em> (SOAP) came about</li>
+<li>In 2003, Roy Schulte of Gartner Group, coined the term “Service Oriented Architecture”</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="service-oriented-architecture-soa-2">Service oriented architecture (SOA)</h3>
+<figure>
+<img data-src="graphics/SOA_Metamodel.svg" style="height:10em" alt="SOA Metamodel - The Linthicum Group, 2007" /><figcaption aria-hidden="true">SOA Metamodel - The Linthicum Group, 2007</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<h3 id="service-oriented-architecture-soa-3">Service oriented architecture (SOA)</h3>
+<ul>
+<li>Not well defined</li>
+<li>Conflicting defintions</li>
+<li>Pushed by software vendors to sell middleware</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="service-oriented-architecture-soa-4">Service oriented architecture (SOA)</h3>
+<ul>
+<li>SOA is to Microservices …</li>
+<li>… what Agile is to Scrum</li>
+</ul>
+</section>
+<section id="the-monolith" class="slide level1">
+<h1>The Monolith</h1>
+<ul>
+<li>The opposite of a microservice architecture</li>
+<li>What is a <em>Monolith</em>?</li>
+<li>Sam Newman : <em>One unit of deployment</em></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="the-mainframe-app">The mainframe app</h2>
+<figure>
+<img data-src="graphics/z15-mainframe.png" style="height:10em" alt="IBM Z15 Mainframe 2017" /><figcaption aria-hidden="true">IBM Z15 Mainframe 2017</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<h2 id="the-mainframe-app-1">The mainframe app</h2>
+<ul>
+<li>IBM z15 mainframe runs 1.2m transactions per second</li>
+<li>70 percent of Fortune 500 companies use IBM z mainframes</li>
+<li>Mainframes handle 90 percent of all credit card transactions.</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="the-mainframe-app-2">The mainframe app</h2>
+<ul>
+<li>Mainframe application are written in COBOL (Common Business-Oriented Language)</li>
+<li>COBOL is a domain specific language</li>
+<li>Built-in decimal number system</li>
+<li>Built for fast “row operations”</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="shopify">Shopify</h2>
+<p><img data-src="graphics/shopify_logo_whitebg.svg" style="height:5em" /></p>
+<ul>
+<li>A Ruby on Rails single process monolith until 2016</li>
+<li>377,500 merchants at the end of 2016</li>
+<li>Handling transaction of $42 million a day</li>
+<li>Opted for a <em>Modular Monolith</em></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="the-monoliths">The monoliths</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Single process monolith</th>
+<th>Modular Monolith</th>
+<th>Distributed Monolith</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="graphics/fig-1-7%20-%20Single%20process%20monolith.png" /></td>
+<td><img data-src="graphics/fig-1-9%20-%20Modular%20monolith.png" /></td>
+<td><img data-src="graphics/uncle-bob-code-smell.jpg" /></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level1">
+
+<h3 id="the-distributed-monolith">The Distributed Monolith</h3>
+<ul>
+<li>Multiple services</li>
+<li>Tightly coupled</li>
+<li>May have a shared database</li>
+<li>Disadvantages of distributed systems</li>
+<li>Disadvantages of monolithic systems</li>
+<li>Worst of both worlds</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="the-good-monolith---advantages">The good monolith - Advantages</h2>
+<ul>
+<li>Simpler deployment topology
+<ul>
+<li><em>Single main file on one server</em></li>
+</ul></li>
+<li>Simpler developer workflows
+<ul>
+<li><em>No need to mock external services</em></li>
+</ul></li>
+<li>Simplified end-to-end testing
+<ul>
+<li><em>The end-to-end flow is defined in code in one place</em></li>
+</ul></li>
+<li>Code re-use within the monolith
+<ul>
+<li><em>Easy to keep the code DRY - Just import</em></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="the-good-monolith---advantages-1">The good monolith - Advantages</h2>
+<ul>
+<li>Easier to monitor
+<ul>
+<li><em>Just look at logs from one app</em></li>
+<li><em>Just look at CPU and memory usage of one server</em></li>
+</ul></li>
+<li>Easier to troubleshoot
+<ul>
+<li><em>Easier to recreate failing scenario</em></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="advantages-of-microservices">Advantages of Microservices</h2>
+<ul>
+<li>Technology Heterogeneity</li>
+<li>Robustness</li>
+<li>Scaling</li>
+<li>Ease of Deployment</li>
+<li>Organizational Alignment</li>
+<li>Composability</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Each service can be written in whatever language</li>
+<li>If a single service fails the app as a whole doesn’t need to fail</li>
+<li>Open up for horizontal scaling of parts of the system</li>
+<li>Small isolated units of deployment</li>
+<li>One team=One service</li>
+<li>New opportunities can arise from composing services</li>
+</ul>
+</aside>
+</section>
+<section class="slide level1">
+
+<h2 id="concepts-of-microservices">Concepts of Microservices</h2>
+<ul>
+<li>Independently Deployability</li>
+<li>Modelled Around a Business Domain</li>
+<li>Owning Their Own State</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="independently-deployability">Independently Deployability</h3>
+<blockquote>
+<p>If you take only one thing from this book, […] it should be this: ensure that you embrace the concept of <em>independent deployability</em> of your microservices.</p>
+</blockquote>
+<aside class="notes">
+<ul>
+<li>Independent deployability enforces “loosely coupled” systems</li>
+<li>Enforces stable contracts between services</li>
+</ul>
+</aside>
+</section>
+<section class="slide level1">
+
+<h3 id="modelled-around-a-business-domain">Modelled Around a Business Domain</h3>
+<blockquote>
+<p>Arguably, with microservices we have made a decision to prioritize high cohesion of business functionality over high cohesion of technical functionality.</p>
+</blockquote>
+</section>
+<section class="slide level1">
+
+<h3 id="modelled-around-a-business-domain-1">Modelled Around a Business Domain</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Three tiers</th>
+<th>Microservice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="graphics/fig-1-5%20-%20Scope%20of%20chaneg%20in%20three%20tier%20arch.png" /></td>
+<td><img data-src="graphics/fig-1-3%20-%20Distributed%20state.png" /></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level1">
+
+<h3 id="owning-their-own-state">Owning Their Own State</h3>
+<blockquote>
+<p>One of the things I see people having the hardest time with is the idea that microservices should not share databases.</p>
+</blockquote>
+</section>
+<section class="slide level1">
+
+<h2 id="microservice-pain-points">Microservice pain points</h2>
+<ul>
+<li>Data Consistency</li>
+<li>Developer Experience</li>
+<li>Technology Overload</li>
+<li>Reporting</li>
+<li>Monitoring and Troubleshooting</li>
+<li>Security</li>
+<li>Testing</li>
+<li>Latency</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="data-consistency">Data Consistency</h3>
+<ul>
+<li>Data in a SQL database - consistency is handle by the DBMS</li>
+<li>Distributed transactions: 😏</li>
+<li>Sagas: 🤷‍♂️</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="developer-experience">Developer Experience</h3>
+<ul>
+<li>Impossible or difficult to run all services on one laptop</li>
+<li>Difficult to reason about the system</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="technology-overload">Technology Overload</h3>
+<blockquote>
+<p>There is a danger, though, that this wealth of new toys can lead to a form of technology fetishism - Sam Newman</p>
+</blockquote>
+<blockquote>
+<p>Microservices <strong>buy</strong> you options. - James Lewis, Director ThoughtWorks</p>
+</blockquote>
+</section>
+<section class="slide level1">
+
+<h3 id="reporting">Reporting</h3>
+<ul>
+<li>In a monolith a report is only a SQL query away</li>
+<li>With distributed state it’s much more difficult</li>
+<li>Enter the world of <em>data lakes</em></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="monitoring-and-troubleshooting">Monitoring and Troubleshooting</h3>
+<blockquote>
+<p>At a bare minimum, I strongly advocate for the implementation of a log aggregation system as a prerequisite for adopting a microservice architecture - Sam Newman</p>
+</blockquote>
+</section>
+<section class="slide level1">
+
+<h3 id="security">Security</h3>
+<ul>
+<li>More network communication opens the attack surface</li>
+<li>Vulnerable for man-in-the-middle attacks</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="testing">Testing</h3>
+<ul>
+<li>End-to-end test are near impossible</li>
+<li>Integration tests need mock services</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="latency">Latency</h3>
+<ul>
+<li>More serialization and de-serialization adds latency</li>
+<li>Flaky networks add latency</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="design-stamina">Design Stamina</h2>
+<blockquote>
+<p>I do see a temptation for startups to go microservice first. The reasoning goes, “If we’re really successful, we’ll need to scale!” - Sam Newman</p>
+</blockquote>
+</section>
+<section class="slide level1">
+
+<h2 id="design-stamina-1">Design Stamina</h2>
+<figure>
+<img data-src="graphics/design-stamina-hypothesis.svg" style="height:8em" alt="design-stamina-hypothesis - Martin Fowler" /><figcaption aria-hidden="true">design-stamina-hypothesis - Martin Fowler</figcaption>
+</figure>
+<aside class="notes">
+<p>The overall goal is always to not let development of new features be slowed down by code complexity.</p>
+<p>It’s better to wait to build a microservice system until the needs of the system have become clear.</p>
+<p>Also learning the boundaries of the business domain is important when defining the service boundaries.</p>
+<p>Building and maintaining a monolith is a good way to learn these lessons.</p>
+</aside>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: false,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'linear',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
