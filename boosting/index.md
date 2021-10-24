@@ -1,0 +1,3 @@
+- [Gradient Boosting](https://duffau.github.io/talks/boosting/) 
+  - [Ante version](https://duffau.github.io/talks/boosting/ante/)
+  - [PyData Cph version](https://duffau.github.io/talks/boosting/pydata-cph/)

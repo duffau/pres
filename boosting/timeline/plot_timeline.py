@@ -2,14 +2,12 @@ import locale
 from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib.dates as mdates
-import matplotlib.scale as mscale
 
 
 locale.setlocale(locale.LC_ALL, locale="da_DK")
 
 
-def plot_timeline(timeline, title, filename, color="red"):
+def plot_timeline(timeline, filename, n_levels=6, figsize=(6, 4.5), color="red"):
     timeline = [
         (datetime.strptime(timestamp, "%Y-%m"), desc)
         for timestamp, desc in timeline
@@ -21,21 +19,18 @@ def plot_timeline(timeline, title, filename, color="red"):
 
     dates, descs = zip(*timeline)
 
-    # Choose some nice levels
-    levels = np.tile([-9, 9, -5, 5, -1, 1], int(np.ceil(len(dates) / 6)))[
+    levels = [lev for i in reversed(range(1, n_levels//2+1)) for lev in (i, -i)]
+    levels = np.tile(levels, int(np.ceil(len(dates) / n_levels)))[
         : len(dates)
     ]
 
-    # Create figure and plot a stem plot with the date
-    fig, ax = plt.subplots(figsize=(6, 4), constrained_layout=False)
-    # ax.set(title=title)
+    fig, ax = plt.subplots(figsize=figsize, constrained_layout=False)
 
     ax.vlines(dates, 0, levels, color=f"tab:{color}")  # The vertical stems.
     ax.plot(
         dates, np.zeros_like(dates), "-o", color="w", markerfacecolor="w"
-    )  # Baseline and markers on it.
+    ) 
 
-    # annotate lines
     for d, l, r in zip(dates, levels, descs):
         ax.annotate(
             r,
@@ -46,10 +41,7 @@ def plot_timeline(timeline, title, filename, color="red"):
             verticalalignment="bottom" if l > 0 else "top",
         )
 
-    # ax.xaxis.set_major_locator(mdates.DayLocator())
-    # ax.xaxis.set_major_formatter(mdates.DateFormatter("%A %d/%m"))
     plt.setp(ax.get_xticklabels(), rotation=0, ha="left")
-    # remove y axis and spines
     ax.yaxis.set_visible(False)
     ax.spines[["left", "top", "right"]].set_visible(False)
 
@@ -66,10 +58,10 @@ timeline = [
     ("1990-06", "Shaphire\nRecursice algorithm solving the 'hypothesis boosting problem'"),
     ("1990-07", "Freund\nBoost By Majority: A practical boosting algorithm"),
     ("1995-06", "Schapire & Freund\nAdaboost"),
+    ("2000-04", "Friedman, Hastie & Tibshirani\nAdaBoost as a logistic regression"),
     ("2001-10", "Friedman\nGradient boosting"),
     ("2014-06", "Chen\nXGBoost\nHiggs Kaggle competition"),
 ]
 
 plt.style.use('dark_background')
-# with plt.xkcd():
-plot_timeline(timeline, "Timeline of Boosting research", "boosting_timeline.svg", color="blue")
+plot_timeline(timeline, "boosting_timeline.svg", color="blue")
