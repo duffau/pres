@@ -11,7 +11,7 @@ slides.html:
 		-V theme=black \
 		-V transition="linear" \
 		-V slideNumber="'c/t'" \
-		--css black-root.css \
+		--css ../black-root.css \
 		--incremental \
-		--bibliography bibliography.bib \
+		--bibliography ../bibliography.bib \
 		--citeproc
