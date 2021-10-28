@@ -1,8 +1,30 @@
 ---
-title: "Gradient Boosting: How does it work?"
+title: "Gradient Boosting:<br>How does it work?"
 author: Christian Duffau-Rasmussen
-date: 09-11-2021
+date: 9. November 2021
 ---
+
+## 
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+[![](../static/ante_logo_neg.svg){height=20%}](https://ante.dk)
+
+:::
+::: {.column width="50%"}
+- Data Scientist and Co-founder
+
+- Legal tech start-up
+
+- NLP-powered search engine
+
+- Extract meta data from plain text
+
+- Index structured data in a search engine 
+:::
+::::::::::::::
+
 
 ## Boosting - What is it ?
 
@@ -24,11 +46,11 @@ date: 09-11-2021
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](timeline/boosting_timeline.svg){width=1200px}
+![](../timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](static/leslie-valiant.jpg){height=130px}
+![](../static/leslie-valiant.jpg){height=130px}
 
 [@valiant1984theory]
 
@@ -65,12 +87,12 @@ date: 09-11-2021
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](timeline/boosting_timeline.svg){width=1200px}
+![](../timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![Leslie Valiant](static/leslie-valiant.jpg){height=130px}
-![Michael Kearns](static/michael-kearns.jpg){height=130px}
+![Leslie Valiant](../static/leslie-valiant.jpg){height=130px}
+![Michael Kearns](../static/michael-kearns.jpg){height=130px}
 
 [@kearns1989crytographic]
 
@@ -110,11 +132,11 @@ date: 09-11-2021
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](timeline/boosting_timeline.svg){width=1200px}
+![](../timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](static/robert-schapire.jpg){height=130px}
+![](../static/robert-schapire.jpg){height=130px}
 
 [@schapire1990strength]
 
@@ -129,11 +151,11 @@ date: 09-11-2021
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](timeline/boosting_timeline.svg){width=1200px}
+![](../timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](static/yoav-freund.png){height=130px}
+![](../static/yoav-freund.png){height=130px}
 
 [@freund1990majority]
 
@@ -148,12 +170,12 @@ date: 09-11-2021
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](timeline/boosting_timeline.svg){width=1200px}
+![](../timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](static/yoav-freund.png){height=130px}
-![](static/robert-schapire.jpg){height=130px}
+![](../static/yoav-freund.png){height=130px}
+![](../static/robert-schapire.jpg){height=130px}
 
 [@schapire1995decision]
 
@@ -164,16 +186,33 @@ date: 09-11-2021
 :::
 ::::::::::::::
 
+## A brief history
+
+:::::::::::::: {.columns}
+::: {.column width="66%"}
+![](../timeline/boosting_timeline.svg){width=1200px}
+:::
+
+::: {.column width="33%"}
+![](../static/jerome-h-friedman.jpeg){height=130px}
+![](../static/robert-tibshirani-trevor-hastie.jpg){height=130px}
+
+[@friedman2000special]
+
+- Shows AdaBoost is *Stagewise Additive Logistic regression*
+
+:::
+::::::::::::::
 
 ## A brief history
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](timeline/boosting_timeline.svg){width=1200px}
+![](../timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](static/jerome-h-friedman.jpeg){height=130px}
+![](../static/jerome-h-friedman.jpeg){height=130px}
 
 [@friedman2001greedy]
 [@mason1999boosting]
@@ -188,11 +227,11 @@ date: 09-11-2021
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](timeline/boosting_timeline.svg){width=1200px}
+![](../timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](static/tianqi-chen.jpg){height=130px}
+![](../static/tianqi-chen.jpg){height=130px}
 
 [@chen2015higgs]
 
@@ -219,11 +258,11 @@ $$Y = \begin{cases}
 -1 & \text{else}
 \end{cases}\quad X_i\sim N(0,1)$$
 
-![Simulated 10-D nested spheres](experiment/gen_data.svg){height=400px}
+![Simulated 10-D nested spheres](simulation/gen_data.svg){height=400px}
 
 ## Simulation example
 
-![](experiment/ensemble_test_errors.svg)
+![](simulation/ensemble_test_errors.svg)
 
 
 ## Bias/variance trade-off
@@ -240,12 +279,12 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 ## Variance and bias reduction
 
-![Classifying 10-D nested spheres](experiment/consecutive_predictions_corr.svg)
+![Classifying 10-D nested spheres](simulation/consecutive_predictions_corr.svg)
 
 
 ## Boosting
 
-![](static/Ensemble_Boosting.svg)
+![](../static/Ensemble_Boosting.svg)
 
 ::: notes
 
@@ -296,7 +335,7 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 . . .
 
-![Exponential loss and cross-entropy](plots/loss_functions.svg){height=300px}
+![Exponential loss and cross-entropy](../plots/loss_functions.svg){height=300px}
 
 ## Adaboost
 
@@ -304,10 +343,10 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-![Clean data](experiment/gen_data.svg)
+![Clean data](simulation/gen_data.svg)
 :::
 ::: {.column width="50%"}
-![Noisy data](experiment/gen_noisy_data.svg)
+![Noisy data](simulation/gen_noisy_data.svg)
 :::
 ::::::::::::::
 
@@ -320,10 +359,10 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-![Test error clean data](experiment/ensemble_test_errors.svg)
+![Test error clean data](simulation/ensemble_test_errors.svg)
 :::
 ::: {.column width="50%"}
-![Test error noisy data](experiment/ensemble_test_errors_noisy.svg)
+![Test error noisy data](simulation/ensemble_test_errors_noisy.svg)
 :::
 ::::::::::::::
 
@@ -453,12 +492,12 @@ $$
 ::: {.column width="50%"}
 [Elements of Statistical Learning](https://web.stanford.edu/~hastie/ElemStatLearn/) 
 
-![](./static/esl-cover.jpg){height=400px}
+![](./../static/esl-cover.jpg){height=400px}
 :::
 ::: {.column width="50%"}
 [Trevor Hastie - Gradient Boosting Talk (2014)](https://youtu.be/wPqtzj5VZus)
 
-![](./static/trevor-hastie-gradient-boosting-thumbnail.jpg)
+![](./../static/trevor-hastie-gradient-boosting-thumbnail.jpg)
 :::
 ::::::::::::::
 

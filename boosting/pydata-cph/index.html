@@ -48,11 +48,27 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Gradient Boosting: How does it work?</h1>
+  <h1 class="title">Gradient Boosting:<br>How does it work?</h1>
   <p class="author">Christian Duffau-Rasmussen</p>
-  <p class="date">09-11-2021</p>
+  <p class="date">9. November 2021</p>
 </section>
 
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><a href="https://ante.dk"><img data-src="../static/ante_logo_neg.svg" style="height:20.0%" /></a></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Data Scientist and Co-founder</p></li>
+<li class="fragment"><p>Legal tech start-up</p></li>
+<li class="fragment"><p>NLP-powered search engine</p></li>
+<li class="fragment"><p>Extract meta data from plain text</p></li>
+<li class="fragment"><p>Index structured data in a search engine</p></li>
+</ul>
+</div>
+</div>
+</section>
 <section id="boosting---what-is-it" class="slide level2">
 <h2>Boosting - What is it ?</h2>
 <blockquote>
@@ -71,9 +87,9 @@
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
-<p><img data-src="timeline/boosting_timeline.svg" width="1200" /></p>
+<p><img data-src="../timeline/boosting_timeline.svg" width="1200" /></p>
 </div><div class="column" style="width:33%;">
-<p><img data-src="static/leslie-valiant.jpg" height="130" /></p>
+<p><img data-src="../static/leslie-valiant.jpg" height="130" /></p>
 <p><span class="citation" data-cites="valiant1984theory">(Valiant 1984)</span></p>
 <ul>
 <li class="fragment">Probably Approximately Correct Learner (PAC)<br />
@@ -113,9 +129,9 @@
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
-<p><img data-src="timeline/boosting_timeline.svg" width="1200" /></p>
+<p><img data-src="../timeline/boosting_timeline.svg" width="1200" /></p>
 </div><div class="column" style="width:33%;">
-<p><img data-src="static/leslie-valiant.jpg" height="130" alt="Leslie Valiant" /> <img data-src="static/michael-kearns.jpg" height="130" alt="Michael Kearns" /></p>
+<p><img data-src="../static/leslie-valiant.jpg" height="130" alt="Leslie Valiant" /> <img data-src="../static/michael-kearns.jpg" height="130" alt="Michael Kearns" /></p>
 <p><span class="citation" data-cites="kearns1989crytographic">(Kearns and Valiant 1989)</span></p>
 <ul>
 <li class="fragment">Introduce <em>weak learner</em><br />
@@ -161,9 +177,9 @@
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
-<p><img data-src="timeline/boosting_timeline.svg" width="1200" /></p>
+<p><img data-src="../timeline/boosting_timeline.svg" width="1200" /></p>
 </div><div class="column" style="width:33%;">
-<p><img data-src="static/robert-schapire.jpg" height="130" /></p>
+<p><img data-src="../static/robert-schapire.jpg" height="130" /></p>
 <p><span class="citation" data-cites="schapire1990strength">(R. E. Schapire 1990)</span></p>
 <ul>
 <li class="fragment">Cracks the <em>Hypothesis boosting problem</em></li>
@@ -177,9 +193,9 @@
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
-<p><img data-src="timeline/boosting_timeline.svg" width="1200" /></p>
+<p><img data-src="../timeline/boosting_timeline.svg" width="1200" /></p>
 </div><div class="column" style="width:33%;">
-<p><img data-src="static/yoav-freund.png" height="130" /></p>
+<p><img data-src="../static/yoav-freund.png" height="130" /></p>
 <p><span class="citation" data-cites="freund1990majority">(Freund 1990)</span></p>
 <ul>
 <li class="fragment">Implements a much more efficient <em>boosting</em> algorithm</li>
@@ -193,9 +209,9 @@
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
-<p><img data-src="timeline/boosting_timeline.svg" width="1200" /></p>
+<p><img data-src="../timeline/boosting_timeline.svg" width="1200" /></p>
 </div><div class="column" style="width:33%;">
-<p><img data-src="static/yoav-freund.png" height="130" /> <img data-src="static/robert-schapire.jpg" height="130" /></p>
+<p><img data-src="../static/yoav-freund.png" height="130" /> <img data-src="../static/robert-schapire.jpg" height="130" /></p>
 <p><span class="citation" data-cites="schapire1995decision">(R. Schapire and Freund 1995)</span></p>
 <ul>
 <li class="fragment">Introduces AdaBoost</li>
@@ -210,13 +226,12 @@
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
-<p><img data-src="timeline/boosting_timeline.svg" width="1200" /></p>
+<p><img data-src="../timeline/boosting_timeline.svg" width="1200" /></p>
 </div><div class="column" style="width:33%;">
-<p><img data-src="static/jerome-h-friedman.jpeg" height="130" /></p>
-<p><span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span> <span class="citation" data-cites="mason1999boosting">(Mason et al. 1999)</span></p>
+<p><img data-src="../static/jerome-h-friedman.jpeg" height="130" /> <img data-src="../static/robert-tibshirani-trevor-hastie.jpg" height="130" /></p>
+<p><span class="citation" data-cites="friedman2000special">(J. Friedman, Hastie, and Tibshirani 2000)</span></p>
 <ul>
-<li class="fragment">Generalizes the <em>boosting</em> concept</li>
-<li class="fragment">Describes <em>boosting</em> as gradient descent in function space</li>
+<li class="fragment">Shows AdaBoost is <em>Stagewise Additive Logistic regression</em></li>
 </ul>
 </div>
 </div>
@@ -225,9 +240,24 @@
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
-<p><img data-src="timeline/boosting_timeline.svg" width="1200" /></p>
+<p><img data-src="../timeline/boosting_timeline.svg" width="1200" /></p>
 </div><div class="column" style="width:33%;">
-<p><img data-src="static/tianqi-chen.jpg" height="130" /></p>
+<p><img data-src="../static/jerome-h-friedman.jpeg" height="130" /></p>
+<p><span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span> <span class="citation" data-cites="mason1999boosting">(Mason et al. 1999)</span></p>
+<ul>
+<li class="fragment">Generalizes the <em>boosting</em> concept</li>
+<li class="fragment">Describes <em>boosting</em> as gradient descent in function space</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="a-brief-history-7" class="slide level2">
+<h2>A brief history</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<p><img data-src="../timeline/boosting_timeline.svg" width="1200" /></p>
+</div><div class="column" style="width:33%;">
+<p><img data-src="../static/tianqi-chen.jpg" height="130" /></p>
 <p><span class="citation" data-cites="chen2015higgs">(Chen and He 2015)</span></p>
 <ul>
 <li class="fragment">Wins Kaggle contest on Higgs Boson using XGBoost</li>
@@ -254,12 +284,12 @@
 -1 &amp; \text{else}
 \end{cases}\quad X_i\sim N(0,1)\]</span></p>
 <figure>
-<img data-src="experiment/gen_data.svg" height="400" alt="Simulated 10-D nested spheres" /><figcaption aria-hidden="true">Simulated 10-D nested spheres</figcaption>
+<img data-src="simulation/gen_data.svg" height="400" alt="Simulated 10-D nested spheres" /><figcaption aria-hidden="true">Simulated 10-D nested spheres</figcaption>
 </figure>
 </section>
 <section id="simulation-example-1" class="slide level2">
 <h2>Simulation example</h2>
-<p><img data-src="experiment/ensemble_test_errors.svg" /></p>
+<p><img data-src="simulation/ensemble_test_errors.svg" /></p>
 </section>
 <section id="biasvariance-trade-off" class="slide level2">
 <h2>Bias/variance trade-off</h2>
@@ -275,12 +305,12 @@
 <section id="variance-and-bias-reduction" class="slide level2">
 <h2>Variance and bias reduction</h2>
 <figure>
-<img data-src="experiment/consecutive_predictions_corr.svg" alt="Classifying 10-D nested spheres" /><figcaption aria-hidden="true">Classifying 10-D nested spheres</figcaption>
+<img data-src="simulation/consecutive_predictions_corr.svg" alt="Classifying 10-D nested spheres" /><figcaption aria-hidden="true">Classifying 10-D nested spheres</figcaption>
 </figure>
 </section>
 <section id="boosting" class="slide level2">
 <h2>Boosting</h2>
-<p><img data-src="static/Ensemble_Boosting.svg" /></p>
+<p><img data-src="../static/Ensemble_Boosting.svg" /></p>
 <aside class="notes">
 <ul>
 <li>A collection of <em>weak learners</em> (e.g. classifier) are trained sequentially.</li>
@@ -340,7 +370,7 @@
 </ul>
 <div class="fragment">
 <figure>
-<img data-src="plots/loss_functions.svg" height="300" alt="Exponential loss and cross-entropy" /><figcaption aria-hidden="true">Exponential loss and cross-entropy</figcaption>
+<img data-src="../plots/loss_functions.svg" height="300" alt="Exponential loss and cross-entropy" /><figcaption aria-hidden="true">Exponential loss and cross-entropy</figcaption>
 </figure>
 </div>
 </section>
@@ -352,11 +382,11 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <figure>
-<img data-src="experiment/gen_data.svg" alt="Clean data" /><figcaption aria-hidden="true">Clean data</figcaption>
+<img data-src="simulation/gen_data.svg" alt="Clean data" /><figcaption aria-hidden="true">Clean data</figcaption>
 </figure>
 </div><div class="column" style="width:50%;">
 <figure>
-<img data-src="experiment/gen_noisy_data.svg" alt="Noisy data" /><figcaption aria-hidden="true">Noisy data</figcaption>
+<img data-src="simulation/gen_noisy_data.svg" alt="Noisy data" /><figcaption aria-hidden="true">Noisy data</figcaption>
 </figure>
 </div>
 </div>
@@ -370,11 +400,11 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <figure>
-<img data-src="experiment/ensemble_test_errors.svg" alt="Test error clean data" /><figcaption aria-hidden="true">Test error clean data</figcaption>
+<img data-src="simulation/ensemble_test_errors.svg" alt="Test error clean data" /><figcaption aria-hidden="true">Test error clean data</figcaption>
 </figure>
 </div><div class="column" style="width:50%;">
 <figure>
-<img data-src="experiment/ensemble_test_errors_noisy.svg" alt="Test error noisy data" /><figcaption aria-hidden="true">Test error noisy data</figcaption>
+<img data-src="simulation/ensemble_test_errors_noisy.svg" alt="Test error noisy data" /><figcaption aria-hidden="true">Test error noisy data</figcaption>
 </figure>
 </div>
 </div>
@@ -528,10 +558,10 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Elements of Statistical Learning</a></p>
-<p><img data-src="./static/esl-cover.jpg" height="400" /></p>
+<p><img data-src="./../static/esl-cover.jpg" height="400" /></p>
 </div><div class="column" style="width:50%;">
 <p><a href="https://youtu.be/wPqtzj5VZus">Trevor Hastie - Gradient Boosting Talk (2014)</a></p>
-<p><img data-src="./static/trevor-hastie-gradient-boosting-thumbnail.jpg" /></p>
+<p><img data-src="./../static/trevor-hastie-gradient-boosting-thumbnail.jpg" /></p>
 </div>
 </div>
 </section>
@@ -546,6 +576,9 @@ Freund, Yoav. 1990. <span>“Boosting a Weak Learning Algorithm by Majority.”<
 </div>
 <div id="ref-friedman2001greedy" class="csl-entry" role="doc-biblioentry">
 Friedman, Jerome H. 2001. <span>“Greedy Function Approximation: A Gradient Boosting Machine.”</span> <em>Annals of Statistics</em>, 1189–1232.
+</div>
+<div id="ref-friedman2000special" class="csl-entry" role="doc-biblioentry">
+Friedman, Jerome, Trevor Hastie, and Robert Tibshirani. 2000. <span>“Special Invited Paper. Additive Logistic Regression: A Statistical View of Boosting.”</span> <em>Annals of Statistics</em>, 337–74.
 </div>
 <div id="ref-friedman2009elements" class="csl-entry" role="doc-biblioentry">
 Friedman, Jerome, Trevor Hastie, Robert Tibshirani, et al. 2009. <em>The Elements of Statistical Learning</em>. 2nd ed. New York, NY: Springer.
