@@ -1,5 +1,7 @@
-.PHONY: .slides.html
+.PHONY: .slides.html sim
 
+sim:
+	./simulation/run.sh
 
 slides.html:
 	pandoc -t revealjs \
