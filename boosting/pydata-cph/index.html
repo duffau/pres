@@ -266,6 +266,32 @@
 </div>
 </div>
 </section>
+<section id="descision-trees" class="slide level2">
+<h2>Descision trees</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<figure>
+<img data-src="../static/partitions-and-trees.png" style="width:80.0%" alt="Top left: General partition, Top right: recursive binary splits" /><figcaption aria-hidden="true">Top left: General partition, Top right: recursive binary splits</figcaption>
+</figure>
+</div><div class="column" style="width:33%;">
+<ul>
+<li class="fragment">Partitions feature space into rectangles</li>
+<li class="fragment">Finding Optimal trees is (most likely) NP-hard</li>
+<li class="fragment">Heuristics are used when fitting (CART, ID3, C4.5, etc.)</li>
+<li class="fragment">Trees are simple and fast to predict</li>
+<li class="fragment">Trees model interaction of variables</li>
+<li class="fragment">Trees overfit training data</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Scikit Learn uses an optimized version of CART</li>
+<li>Heuristics are used to approximate a optimal solution</li>
+<li>Most fitting procedures uses some kind of recursive binary splitting</li>
+</ul>
+</aside>
+</section>
 <section id="ensemble-methods" class="slide level2">
 <h2>Ensemble methods</h2>
 <ul>
@@ -275,6 +301,28 @@
 </ul>
 <div class="fragment">
 <p><span class="math display">\[\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tree}\]</span></p>
+<aside class="notes">
+<ul>
+<li>Ensemble methods overcome overfitting by combining trees (typically)</li>
+<li>Shallow Trees are weak learners, so don’t overfit</li>
+<li>Shallow Trees still model interactions</li>
+</ul>
+</aside>
+</div>
+</section>
+<section id="ensembles-of-descision-trees" class="slide level2">
+<h2>Ensembles of Descision trees</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<p><img data-src="../plots/tree-depth.svg" style="width:90.0%" /></p>
+</div><div class="column" style="width:33%;">
+<ul>
+<li class="fragment"><p>1 layer: <span class="math inline">\(f(X_i)\)</span></p></li>
+<li class="fragment"><p>2 layers: <span class="math inline">\(f(X_i, X_j)\)</span></p></li>
+<li class="fragment"><p>3 layers: <span class="math inline">\(f(X_i, X_j, X_l)\)</span></p></li>
+<li class="fragment"><p>4 layers: <span class="math inline">\(f(X_i, X_j, X_l, X_k)\)</span></p></li>
+</ul>
+</div>
 </div>
 </section>
 <section id="simulation-example" class="slide level2">
@@ -448,6 +496,8 @@
 </ol>
 </div>
 </blockquote>
+</div>
+<div class="fragment">
 <p>🤷‍♂️</p>
 </div>
 </section>
@@ -467,7 +517,7 @@
 <p>GB builds an additive model in a forward stage-wise fashion; it allows for the optimization of arbitrary differentiable loss functions.</p>
 </blockquote>
 <div class="fragment">
-<p>Sound promising…</p>
+<p>Sounds promising…</p>
 </div>
 <div class="fragment">
 <blockquote>

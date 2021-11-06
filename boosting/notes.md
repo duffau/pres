@@ -2,7 +2,7 @@ Tree growing algorithms:
 - CART (Classification and Regression Trees)
 - ID3 (Iterative Dichotomiser 3)
 - C4.5 
-- C5.0
+- C5.0 (Proprietary)
 
 > Trees require pN log N operations for an initial sort for each predictor, and typically another pN log N operations for the split computations. If the splits occurred near the edges of the predictor ranges, this number could increase to N 2 p.
 

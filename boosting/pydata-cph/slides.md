@@ -241,6 +241,30 @@ date: 9. November 2021
 :::
 ::::::::::::::
 
+## Descision trees
+
+:::::::::::::: {.columns}
+::: {.column width="66%"}
+![Top left: General partition, Top right: recursive binary splits](../static/partitions-and-trees.png){width=80%}
+:::
+
+::: {.column width="33%"}
+- Partitions feature space into rectangles
+- Finding Optimal trees is (most likely) NP-hard
+- Heuristics are used when fitting (CART, ID3, C4.5, etc.)
+- Trees are simple and fast to predict
+- Trees model interaction of variables
+- Trees overfit training data
+:::
+::::::::::::::
+
+
+::: notes
+- Scikit Learn uses an optimized version of CART
+- Heuristics are used to approximate a optimal solution
+- Most fitting procedures uses some kind of recursive binary splitting
+:::
+
 ## Ensemble methods
 
 - Bagging: Grow trees using _random subsets of data (with replacement)_
@@ -250,6 +274,30 @@ date: 9. November 2021
 . . . 
 
 $$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tree}$$
+
+::: notes
+- Ensemble methods overcome overfitting by combining trees (typically)
+- Shallow Trees are weak learners, so don't overfit 
+- Shallow Trees still model interactions 
+:::
+
+## Ensembles of Descision trees
+
+:::::::::::::: {.columns}
+::: {.column width="66%"}
+![](../plots/tree-depth.svg){width=90%}
+:::
+
+::: {.column width="33%"}
+- 1 layer: $f(X_i)$ 
+
+- 2 layers: $f(X_i, X_j)$
+
+- 3 layers: $f(X_i, X_j, X_l)$ 
+
+- 4 layers: $f(X_i, X_j, X_l, X_k)$ 
+:::
+::::::::::::::
 
 ## Simulation example
 
@@ -294,7 +342,6 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 - Poorly predicted examples get higher weight 
 - Well predicted examples get lower weight
 :::
-
 
 ## Forward Stagewise Additive Learning
 
@@ -399,6 +446,8 @@ Binomial loss function:
 > 3. Output $$G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)$$
 > :::
 
+. . .
+
 🤷‍♂️
 
 ## Gradient boosting 
@@ -417,7 +466,7 @@ _Scikit-learn documentation_:
 
 . . .
 
-Sound promising...
+Sounds promising...
 
 . . .
 
