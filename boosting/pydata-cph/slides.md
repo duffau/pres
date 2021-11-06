@@ -258,11 +258,11 @@ $$Y = \begin{cases}
 -1 & \text{else}
 \end{cases}\quad X_i\sim N(0,1)$$
 
-![Simulated 10-D nested spheres](simulation/gen_data.svg){height=400px}
+![Simulated 10-D nested spheres](simulation/plots/gen_data.png){height=400px}
 
 ## Simulation example
 
-![](simulation/ensemble_test_errors.svg)
+![](simulation/plots/ensemble_test_errors.svg)
 
 
 ## Bias/variance trade-off
@@ -279,7 +279,7 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 ## Variance and bias reduction
 
-![Classifying 10-D nested spheres](simulation/consecutive_predictions_corr.svg)
+![Classifying 10-D nested spheres](simulation/plots/consecutive_predictions_corr.svg)
 
 
 ## Boosting
@@ -316,7 +316,7 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
    1. Fit classifier $G_m(x)$ to training data using $w_i$'s
    2. Compute $$\text{err} = \frac{\sum_{i=1}^N w_i I(y_i \neq G_m(x_i))}{\sum_{i=1}^N w_i}$$
    3. Compute $\alpha_m = \log((1-\text{err})/\text{err})$ 
-   4. Set $w_i \leftarrow \exp(\alpha_m I(y_i \neq G_m(x_i)))$
+   4. Set $w_i \leftarrow w_i \exp(\alpha_m I(y_i \neq G_m(x_i)))$
 3. Output $$G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)$$
 
 
@@ -337,16 +337,25 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 ![Exponential loss and cross-entropy](../plots/loss_functions.svg){height=300px}
 
+:::notes
+Binomial loss function:
+
+- $y^\ast = (y+1)/2$
+- $p(x) = 1/(1 + exp(-2f(x)))$
+- $l(y, p(x)) = y^\ast \log(p(x)) + (1-y^\ast) \log(1-p(x)) \Rightarrow$
+- $l(y, f(x)) = log(1 + exp(-2yf(x)))$
+:::
+
 ## Adaboost
 
 - 10D nested spheres with noisy data
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-![Clean data](simulation/gen_data.svg)
+![Clean data](simulation/plots/gen_data.png)
 :::
 ::: {.column width="50%"}
-![Noisy data](simulation/gen_noisy_data.svg)
+![Noisy data](simulation/plots/gen_noisy_data.png)
 :::
 ::::::::::::::
 
@@ -359,10 +368,10 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-![Test error clean data](simulation/ensemble_test_errors.svg)
+![Test error clean data](simulation/plots/ensemble_test_errors.svg)
 :::
 ::: {.column width="50%"}
-![Test error noisy data](simulation/ensemble_test_errors_noisy.svg)
+![Test error noisy data](simulation/plots/ensemble_test_errors_noisy.svg)
 :::
 ::::::::::::::
 
@@ -380,15 +389,15 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 . . .
 
-::: nonincremental
-1. Initialize weights $w_i=1/N$
-2. For $m=1$ to $M$:
-  1. Fit classifier $G_m(x)$ to training data using $w_i$'s
-  2. Compute $\text{err} = \frac{\sum_{i=1}^N w_i I(y_i \neq G_m(x_i))}{\sum_{i=1}^N w_i}$
-  3. Compute $\alpha_m = \log((1-\text{err})/\text{err})$ 
-  4. Set $w_i \leftarrow \exp(\alpha_m I(y_i \neq G_m(x_i)))$
-3. Output $$G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)$$
-:::
+> ::: nonincremental
+> 1. Initialize weights $w_i=1/N$
+> 2. For $m=1$ to $M$:
+>    1. Fit classifier $G_m(x)$ to training data using $w_i$'s
+>    2. Compute $\text{err} = \frac{\sum_{i=1}^N w_i I(y_i \neq G_m(x_i))}{\sum_{i=1}^N w_i}$
+>    3. Compute $\alpha_m = \log((1-\text{err})/\text{err})$ 
+>    4. Set $w_i \leftarrow w_i \exp(\alpha_m I(y_i \neq G_m(x_i)))$
+> 3. Output $$G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)$$
+> :::
 
 🤷‍♂️
 
