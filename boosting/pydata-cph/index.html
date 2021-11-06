@@ -105,20 +105,29 @@
 <li>Defines a mathematical framework for analyzing what classes of problems are learnable in polynomial time.</li>
 <li>Introduces the Probably Approximately Correct Learner (PAC-learner).</li>
 <li>Foundation of the field of computational learning theory.</li>
+<li>The PAC leaner is to
+<ul>
+<li>computational learning theory what</li>
+</ul></li>
+<li>The Turing machine is to
+<ul>
+<li>computational complexity theory</li>
+</ul></li>
 </ul>
 </aside>
 </section>
 <section id="side-note-pac-learning" class="slide level2">
 <h2>Side note: PAC learning</h2>
 <ul>
-<li class="fragment">A <em>concept</em> is Probably Approximately Learnable
+<li class="fragment"><p>Boolean <em>concept</em> : <span class="math inline">\((0,1,1,0,\cdots, 1) \mapsto 0 \text{ or } 1\)</span></p></li>
+<li class="fragment"><p>A <em>concept</em> is Probably Approximately Learnable</p>
 <ul>
-<li class="fragment"><em>if</em> in polynomial time an <em>algorithm</em> can deduce a <em>hypothesis</em></li>
-<li class="fragment">with an error-rate <span class="math inline">\(&lt;\varepsilon\)</span> with probability at least <span class="math inline">\(1-\delta\)</span></li>
-<li class="fragment"><span class="math inline">\(s\)</span> is the size of the <em>concept</em> in bits, encoded appropriately</li>
-<li class="fragment"><em>for all</em> <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(\delta \leq 1\)</span></li>
+<li class="fragment"><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em> (aka. a function)</li>
+<li class="fragment">in time bounded by a polynomial of the size of <em>concept</em> in bits</li>
+<li class="fragment">with <span class="math inline">\(P(\text{error-rate} &lt;\varepsilon) &gt; \delta\)</span></li>
+<li class="fragment"><em>for all</em> <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
 </ul></li>
-<li class="fragment">The <em>learning protocol</em> is:
+<li class="fragment"><p>The <em>learning protocol</em> is:</p>
 <ul>
 <li class="fragment">learn from examples asking an ORACLE</li>
 <li class="fragment">the ORACLE returns a random example in <em>unit</em> time (O(1))</li>
@@ -166,10 +175,10 @@
 <li class="fragment"><p><em>strongly learnable</em> == PAC learnable</p></li>
 <li class="fragment"><p>A <em>concept</em> is <em>weakly</em> Learnable</p>
 <ul>
-<li class="fragment"><em>if</em> in polynomial time an <em>algorithm</em> can deduce a <em>hypothesis</em></li>
-<li class="fragment">with an error-rate <span class="math inline">\(&lt;\frac{1}{2} - 1/p(s)\)</span> with probability at least <span class="math inline">\(1-\delta\)</span></li>
+<li class="fragment"><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em></li>
+<li class="fragment">in time bounded by a polynomial of the size of <em>concept</em> in bits (<span class="math inline">\(s\)</span>)</li>
+<li class="fragment">with <span class="math inline">\(P(\text{error-rate} &lt; \frac{1}{2} - 1/p(s)) &gt; \delta\)</span></li>
 <li class="fragment"><em>for all</em> <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
-<li class="fragment">where <span class="math inline">\(s\)</span> is the size of the <em>concept</em> in bits, encoded appropriately</li>
 </ul></li>
 </ul>
 </section>
@@ -304,8 +313,6 @@
 <aside class="notes">
 <ul>
 <li>Ensemble methods overcome overfitting by combining trees (typically)</li>
-<li>Shallow Trees are weak learners, so don’t overfit</li>
-<li>Shallow Trees still model interactions</li>
 </ul>
 </aside>
 </div>
@@ -324,6 +331,16 @@
 </ul>
 </div>
 </div>
+<aside class="notes">
+<ul>
+<li>Ensemble methods most often use trees</li>
+<li>But why?</li>
+<li>Shallow Trees are weak learners, so don’t overfit</li>
+<li>Shallow Trees still model interactions</li>
+<li>Linear model cannot model interactions</li>
+<li>Automatic feature selection</li>
+</ul>
+</aside>
 </section>
 <section id="simulation-example" class="slide level2">
 <h2>Simulation example</h2>

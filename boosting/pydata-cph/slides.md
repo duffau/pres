@@ -67,16 +67,22 @@ date: 9. November 2021
 - Defines a mathematical framework for analyzing what classes of problems are learnable in polynomial time. 
 - Introduces the Probably Approximately Correct Learner (PAC-learner). 
 - Foundation of the field of computational learning theory.
+- The PAC leaner is to
+  - computational learning theory what
+- The Turing machine is to
+  - computational complexity theory 
 
 :::
 
 ## Side note: PAC learning
 
+- Boolean _concept_ : $(0,1,1,0,\cdots, 1) \mapsto 0 \text{ or } 1$
+
 - A _concept_ is Probably Approximately Learnable
-  -  _if_ in polynomial time an _algorithm_ can deduce a _hypothesis_
-  - with an error-rate $<\varepsilon$ with probability at least $1-\delta$
-  - $s$ is the size of the _concept_ in bits, encoded appropriately
-  - _for all_ $\varepsilon>0$ and $\delta \leq 1$
+  -  _if_ an _algorithm_ can deduce a _hypothesis_ (aka. a function)
+  - in time bounded by a polynomial of the size of _concept_ in bits
+  - with $P(\text{error-rate} <\varepsilon) > \delta$
+  - _for all_ $\varepsilon>0$ and $0 < \delta \leq 1$
 
 - The _learning protocol_ is:
   -  learn from examples asking an ORACLE
@@ -123,10 +129,10 @@ date: 9. November 2021
 - _strongly learnable_ == PAC learnable
 
 - A _concept_ is _weakly_ Learnable
-  -  _if_ in polynomial time an _algorithm_ can deduce a _hypothesis_
-  - with an error-rate $<\frac{1}{2} - 1/p(s)$ with probability at least $1-\delta$
+  -  _if_ an _algorithm_ can deduce a _hypothesis_
+  - in time bounded by a polynomial of the size of _concept_ in bits ($s$)
+  - with $P(\text{error-rate} < \frac{1}{2} - 1/p(s)) > \delta$
   - _for all_ $0 < \delta \leq 1$
-  - where $s$ is the size of the _concept_ in bits, encoded appropriately
 
 ## A brief history
 
@@ -277,8 +283,6 @@ $$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tr
 
 ::: notes
 - Ensemble methods overcome overfitting by combining trees (typically)
-- Shallow Trees are weak learners, so don't overfit 
-- Shallow Trees still model interactions 
 :::
 
 ## Ensembles of Descision trees
@@ -298,6 +302,16 @@ $$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tr
 - 4 layers: $f(X_i, X_j, X_l, X_k)$ 
 :::
 ::::::::::::::
+
+::: notes
+- Ensemble methods most often use trees
+- But why?
+- Shallow Trees are weak learners, so don't overfit 
+- Shallow Trees still model interactions
+- Linear model cannot model interactions
+- Automatic feature selection
+:::
+
 
 ## Simulation example
 
