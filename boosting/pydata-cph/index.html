@@ -284,12 +284,12 @@
 -1 &amp; \text{else}
 \end{cases}\quad X_i\sim N(0,1)\]</span></p>
 <figure>
-<img data-src="simulation/gen_data.svg" height="400" alt="Simulated 10-D nested spheres" /><figcaption aria-hidden="true">Simulated 10-D nested spheres</figcaption>
+<img data-src="simulation/plots/gen_data.png" height="400" alt="Simulated 10-D nested spheres" /><figcaption aria-hidden="true">Simulated 10-D nested spheres</figcaption>
 </figure>
 </section>
 <section id="simulation-example-1" class="slide level2">
 <h2>Simulation example</h2>
-<p><img data-src="simulation/ensemble_test_errors.svg" /></p>
+<p><img data-src="simulation/plots/ensemble_test_errors.svg" /></p>
 </section>
 <section id="biasvariance-trade-off" class="slide level2">
 <h2>Bias/variance trade-off</h2>
@@ -305,7 +305,7 @@
 <section id="variance-and-bias-reduction" class="slide level2">
 <h2>Variance and bias reduction</h2>
 <figure>
-<img data-src="simulation/consecutive_predictions_corr.svg" alt="Classifying 10-D nested spheres" /><figcaption aria-hidden="true">Classifying 10-D nested spheres</figcaption>
+<img data-src="simulation/plots/consecutive_predictions_corr.svg" alt="Classifying 10-D nested spheres" /><figcaption aria-hidden="true">Classifying 10-D nested spheres</figcaption>
 </figure>
 </section>
 <section id="boosting" class="slide level2">
@@ -347,7 +347,7 @@
 <li class="fragment">Fit classifier <span class="math inline">\(G_m(x)\)</span> to training data using <span class="math inline">\(w_i\)</span>’s</li>
 <li class="fragment">Compute <span class="math display">\[\text{err} = \frac{\sum_{i=1}^N w_i I(y_i \neq G_m(x_i))}{\sum_{i=1}^N w_i}\]</span></li>
 <li class="fragment">Compute <span class="math inline">\(\alpha_m = \log((1-\text{err})/\text{err})\)</span></li>
-<li class="fragment">Set <span class="math inline">\(w_i \leftarrow \exp(\alpha_m I(y_i \neq G_m(x_i)))\)</span></li>
+<li class="fragment">Set <span class="math inline">\(w_i \leftarrow w_i \exp(\alpha_m I(y_i \neq G_m(x_i)))\)</span></li>
 </ol></li>
 <li class="fragment">Output <span class="math display">\[G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)\]</span></li>
 </ol>
@@ -372,6 +372,15 @@
 <figure>
 <img data-src="../plots/loss_functions.svg" height="300" alt="Exponential loss and cross-entropy" /><figcaption aria-hidden="true">Exponential loss and cross-entropy</figcaption>
 </figure>
+<aside class="notes">
+<p>Binomial loss function:</p>
+<ul>
+<li><span class="math inline">\(y^\ast = (y+1)/2\)</span></li>
+<li><span class="math inline">\(p(x) = 1/(1 + exp(-2f(x)))\)</span></li>
+<li><span class="math inline">\(l(y, p(x)) = y^\ast \log(p(x)) + (1-y^\ast) \log(1-p(x)) \Rightarrow\)</span></li>
+<li><span class="math inline">\(l(y, f(x)) = log(1 + exp(-2yf(x)))\)</span></li>
+</ul>
+</aside>
 </div>
 </section>
 <section id="adaboost-3" class="slide level2">
@@ -382,11 +391,11 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <figure>
-<img data-src="simulation/gen_data.svg" alt="Clean data" /><figcaption aria-hidden="true">Clean data</figcaption>
+<img data-src="simulation/plots/gen_data.png" alt="Clean data" /><figcaption aria-hidden="true">Clean data</figcaption>
 </figure>
 </div><div class="column" style="width:50%;">
 <figure>
-<img data-src="simulation/gen_noisy_data.svg" alt="Noisy data" /><figcaption aria-hidden="true">Noisy data</figcaption>
+<img data-src="simulation/plots/gen_noisy_data.png" alt="Noisy data" /><figcaption aria-hidden="true">Noisy data</figcaption>
 </figure>
 </div>
 </div>
@@ -400,11 +409,11 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <figure>
-<img data-src="simulation/ensemble_test_errors.svg" alt="Test error clean data" /><figcaption aria-hidden="true">Test error clean data</figcaption>
+<img data-src="simulation/plots/ensemble_test_errors.svg" alt="Test error clean data" /><figcaption aria-hidden="true">Test error clean data</figcaption>
 </figure>
 </div><div class="column" style="width:50%;">
 <figure>
-<img data-src="simulation/ensemble_test_errors_noisy.svg" alt="Test error noisy data" /><figcaption aria-hidden="true">Test error noisy data</figcaption>
+<img data-src="simulation/plots/ensemble_test_errors_noisy.svg" alt="Test error noisy data" /><figcaption aria-hidden="true">Test error noisy data</figcaption>
 </figure>
 </div>
 </div>
@@ -424,17 +433,21 @@
 <li class="fragment">Can we easily plug in a more robust loss function?</li>
 </ul>
 <div class="fragment">
+<blockquote>
 <div>
 <ol type="1">
 <li>Initialize weights <span class="math inline">\(w_i=1/N\)</span></li>
-<li>For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:</li>
+<li>For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
+<ol type="1">
 <li>Fit classifier <span class="math inline">\(G_m(x)\)</span> to training data using <span class="math inline">\(w_i\)</span>’s</li>
 <li>Compute <span class="math inline">\(\text{err} = \frac{\sum_{i=1}^N w_i I(y_i \neq G_m(x_i))}{\sum_{i=1}^N w_i}\)</span></li>
 <li>Compute <span class="math inline">\(\alpha_m = \log((1-\text{err})/\text{err})\)</span></li>
-<li>Set <span class="math inline">\(w_i \leftarrow \exp(\alpha_m I(y_i \neq G_m(x_i)))\)</span></li>
+<li>Set <span class="math inline">\(w_i \leftarrow w_i \exp(\alpha_m I(y_i \neq G_m(x_i)))\)</span></li>
+</ol></li>
 <li>Output <span class="math display">\[G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)\]</span></li>
 </ol>
 </div>
+</blockquote>
 <p>🤷‍♂️</p>
 </div>
 </section>
