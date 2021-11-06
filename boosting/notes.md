@@ -1,7 +1,7 @@
 Tree growing algorithms:
-- CART
-- ID3
-- C4.5
+- CART (Classification and Regression Trees)
+- ID3 (Iterative Dichotomiser 3)
+- C4.5 
 - C5.0
 
 > Trees require pN log N operations for an initial sort for each predictor, and typically another pN log N operations for the split computations. If the splits occurred near the edges of the predictor ranges, this number could increase to N 2 p.
@@ -22,3 +22,7 @@ d = 3: At most 3 variable interaction
 # Scikit Learn
 
 -  AdaBoost implements
+
+> scikit-learn uses an optimised version of the CART algorithm; however, scikit-learn implementation does not support categorical variables for now.
+
+> The problem of learning an optimal decision tree is known to be NP-complete under several aspects of optimality and even for simple concepts. Consequently, practical decision-tree learning algorithms are based on heuristic algorithms such as the greedy algorithm where locally optimal decisions are made at each node. Such algorithms cannot guarantee to return the globally optimal decision tree. This can be mitigated by training multiple trees in an ensemble learner, where the features and samples are randomly sampled with replacement.
