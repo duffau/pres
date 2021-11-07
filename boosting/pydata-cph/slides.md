@@ -43,7 +43,6 @@ date: 9. November 2021
 
 ## A brief history
 
-
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
 ![](../timeline/boosting_timeline.svg){width=1200px}
@@ -71,7 +70,6 @@ date: 9. November 2021
   - computational learning theory what
 - The Turing machine is to
   - computational complexity theory 
-
 :::
 
 ## Side note: PAC learning
@@ -119,7 +117,7 @@ date: 9. November 2021
 
 - Kearns and Valiant state as an open problem:
   - Can weak learners be "boosted" into strong learners?
-  - I.e. can an algorithm transform weak leaners in to strong ones
+  - I.e. can an algorithm transform weak learners in to strong ones
   - The notion at the the time was "probably not" 
 
 :::
@@ -247,7 +245,7 @@ date: 9. November 2021
 :::
 ::::::::::::::
 
-## Descision trees
+## Decision trees
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
@@ -257,16 +255,14 @@ date: 9. November 2021
 ::: {.column width="33%"}
 - Partitions feature space into rectangles
 - Finding Optimal trees is (most likely) NP-hard
-- Heuristics are used when fitting (CART, ID3, C4.5, etc.)
-- Trees are simple and fast to predict
-- Trees model interaction of variables
-- Trees overfit training data
+- Binary splitting and heuristics are used when fitting (CART, ID3, C4.5, etc.)
+- Trees are fast when predicting
 :::
 ::::::::::::::
 
 
 ::: notes
-- Scikit Learn uses an optimized version of CART
+- Scikit-learn uses an optimized version of CART
 - Heuristics are used to approximate a optimal solution
 - Most fitting procedures uses some kind of recursive binary splitting
 :::
@@ -285,7 +281,7 @@ $$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tr
 - Ensemble methods overcome overfitting by combining trees (typically)
 :::
 
-## Ensembles of Descision trees
+## Why Ensembles of Decision trees?
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
@@ -293,13 +289,15 @@ $$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tr
 :::
 
 ::: {.column width="33%"}
-- 1 layer: $f(X_i)$ 
-
-- 2 layers: $f(X_i, X_j)$
-
-- 3 layers: $f(X_i, X_j, X_l)$ 
-
-- 4 layers: $f(X_i, X_j, X_l, X_k)$ 
+- Nonlinearity
+- Feature interaction:
+  - 1 layer: $f(X_i)$ 
+  - 2 layers: $f(X_i, X_j)$
+  - 3 layers: $f(X_i, X_j, X_k)$ 
+- Automatic feature selection
+- Single Trees overfit 
+- Combining many small trees ...
+- .. you get *flexible* yet *robust* models 
 :::
 ::::::::::::::
 
