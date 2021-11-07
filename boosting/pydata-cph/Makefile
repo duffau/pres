@@ -9,6 +9,7 @@ slides.html:
 		-o .slides.html \
 		--mathjax \
 		--highlight-style zenburn \
+		--slide-level 3 \
 		-V revealjs-url=https://unpkg.com/reveal.js@^4/ \
 		-V theme=black \
 		-V transition="linear" \
