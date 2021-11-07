@@ -4,7 +4,7 @@ author: Christian Duffau-Rasmussen
 date: 9. November 2021
 ---
 
-## 
+### 
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
@@ -43,7 +43,6 @@ date: 9. November 2021
 
 ## A brief history
 
-
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
 ![](../timeline/boosting_timeline.svg){width=1200px}
@@ -56,7 +55,7 @@ date: 9. November 2021
 
 - Probably Approximately Correct Learner (PAC)  
 - A formal theory of learnability 
-- Proof of some broad classes of non-trivial boolean functions are learnable
+- Proves broad classes of non-trivial boolean functions are learnable
 
 :::
 ::::::::::::::
@@ -71,17 +70,16 @@ date: 9. November 2021
   - computational learning theory what
 - The Turing machine is to
   - computational complexity theory 
-
 :::
 
-## Side note: PAC learning
+### Side note: PAC learning
 
 - Boolean _concept_ : $(0,1,1,0,\cdots, 1) \mapsto 0 \text{ or } 1$
 
 - A _concept_ is Probably Approximately Learnable
   -  _if_ an _algorithm_ can deduce a _hypothesis_ (aka. a function)
   - in time bounded by a polynomial of the size of _concept_ in bits
-  - with $P(\text{error-rate} <\varepsilon) > \delta$
+  - with $$P\left(\text{error-rate} <\varepsilon\right) > \delta$$
   - _for all_ $\varepsilon>0$ and $0 < \delta \leq 1$
 
 - The _learning protocol_ is:
@@ -115,23 +113,23 @@ date: 9. November 2021
   - Boolean formulae
   - Deterministic finite automata 
   - Constant-depth threshold circuits 
-- are learnable cryptography is toast.
+- are learnable then cryptography is toast.
 
 - Kearns and Valiant state as an open problem:
   - Can weak learners be "boosted" into strong learners?
-  - I.e. can an algorithm transform weak leaners in to strong ones
-  - The notion at the the time was "probably not" 
+  - I.e. can an algorithm transform weak learners in to strong ones
+  - The notion at the time was "probably not" 
 
 :::
 
-## Side note: _weak_ and _strong_ learners
+### Side note: _weak_ and _strong_ learners
 
 - _strongly learnable_ == PAC learnable
 
 - A _concept_ is _weakly_ Learnable
   -  _if_ an _algorithm_ can deduce a _hypothesis_
   - in time bounded by a polynomial of the size of _concept_ in bits ($s$)
-  - with $P(\text{error-rate} < \frac{1}{2} - 1/p(s)) > \delta$
+  - with $$P\left(\text{error-rate} < \frac{1}{2} - 1/p(s)\right) > \delta$$
   - _for all_ $0 < \delta \leq 1$
 
 ## A brief history
@@ -188,6 +186,7 @@ date: 9. November 2021
 - Introduces AdaBoost
 - First practical boosting algorithm  
 - Has been very effective
+- Winners of Gödel prize in 2003
 
 :::
 ::::::::::::::
@@ -247,7 +246,7 @@ date: 9. November 2021
 :::
 ::::::::::::::
 
-## Descision trees
+## Decision trees
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
@@ -257,16 +256,14 @@ date: 9. November 2021
 ::: {.column width="33%"}
 - Partitions feature space into rectangles
 - Finding Optimal trees is (most likely) NP-hard
-- Heuristics are used when fitting (CART, ID3, C4.5, etc.)
-- Trees are simple and fast to predict
-- Trees model interaction of variables
-- Trees overfit training data
+- Binary splitting and heuristics are used when fitting (CART, ID3, C4.5, etc.)
+- Trees are fast when predicting
 :::
 ::::::::::::::
 
 
 ::: notes
-- Scikit Learn uses an optimized version of CART
+- Scikit-learn uses an optimized version of CART
 - Heuristics are used to approximate a optimal solution
 - Most fitting procedures uses some kind of recursive binary splitting
 :::
@@ -285,7 +282,7 @@ $$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tr
 - Ensemble methods overcome overfitting by combining trees (typically)
 :::
 
-## Ensembles of Descision trees
+## Why Ensembles of Decision trees?
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
@@ -293,13 +290,15 @@ $$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tr
 :::
 
 ::: {.column width="33%"}
-- 1 layer: $f(X_i)$ 
-
-- 2 layers: $f(X_i, X_j)$
-
-- 3 layers: $f(X_i, X_j, X_l)$ 
-
-- 4 layers: $f(X_i, X_j, X_l, X_k)$ 
+- Nonlinearity
+- Feature interaction:
+  - 1 layer: $f(X_i)$ 
+  - 2 layers: $f(X_i, X_j)$
+  - 3 layers: $f(X_i, X_j, X_k)$ 
+- Automatic feature selection
+- Single Trees overfit 
+- Combining many small trees ...
+- .. you get *flexible* yet *robust* models 
 :::
 ::::::::::::::
 
@@ -343,6 +342,13 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 ![Classifying 10-D nested spheres](simulation/plots/consecutive_predictions_corr.svg)
 
+::: notes
+- Bagging: Training data subsets correlates. Mellow positive correlation between all models.
+- Random forest: 
+  - Either correlation of 1: Set of features with equal importance
+  - Correlation of zero: Features which are uncorrelated
+- Adaboost: Zero or negative correlation. Out of thin air.
+:::
 
 ## Boosting
 
@@ -385,9 +391,31 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 - Not originally motivated in _Forward Stagewise Additive Learning_
 - One can show that Adaboost is a stagewise additive model with loss $$L(y, f (x)) = \exp(−y f(x))$$ where $y\in \{-1, 1\}$ and $f(x) \in \mathbb{R}$.
-- Usually for classification we use cross-entropy $$L(y, f(x)) = y^\prime \log p(x) + (1-y^\prime) \log(1- p(x)) $$ where $y^\prime = (y+1)/2\in \{0,1\}$ and $p(x)$ is the softmax function.
+- Usually for classification we use cross-entropy 
+\begin{align}
+L(y, f(x)) &= y^\prime \log p(x) + (1-y^\prime) \log(1- p(x)) \\ 
+&= \log(1 + e^{-2yf(x)})
+\end{align} 
+where $y^\prime = (y+1)/2\in \{0,1\}$ and $p(x)$ is the softmax function.
 - In theory the two loss functions are equivalent
 - On average they produce the same _model_ $f$
+
+### Cross-entropy derivation
+
+\begin{align}
+P(y=1|x) &= p(x) = \frac{e^{f(x)}}{e^{-f(x)}+e^{f(x)}} = \frac{1}{1+e^{-2f(x)}} \\
+P(y=-1|x) &= 1-p(x) = \frac{e^{-f(x)}}{e^{-f(x)}+e^{f(x)}} = \frac{1}{1+e^{2f(x)}}
+\end{align}
+
+\begin{align}
+L(y, f(x)) &= \log p(x) =  \log \frac{1}{1+e^{-2f(x)}} \quad\text{if}\,y=1 \\
+L(y, f(x)) &= \log(1- p(x)) = \log \frac{1}{1+e^{2f(x)}} \quad\text{if}\,y=-1  \\ 
+\end{align}
+hence the _negative log-likelihood_ is the _cross-entropy_
+\begin{align}
+L(y, f(x)) &= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
+-L(y, f(x)) &= \log \left(1+e^{-2yf(x)}\right)
+\end{align}
 
 ## Adaboost
 
@@ -406,6 +434,7 @@ Binomial loss function:
 - $l(y, p(x)) = y^\ast \log(p(x)) + (1-y^\ast) \log(1-p(x)) \Rightarrow$
 - $l(y, f(x)) = log(1 + exp(-2yf(x)))$
 :::
+'
 
 ## Adaboost
 

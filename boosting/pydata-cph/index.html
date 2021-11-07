@@ -53,8 +53,8 @@
   <p class="date">9. November 2021</p>
 </section>
 
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="section" class="slide level3">
+<h3></h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><a href="https://ante.dk"><img data-src="../static/ante_logo_neg.svg" style="height:20.0%" /></a></p>
@@ -69,7 +69,7 @@
 </div>
 </div>
 </section>
-<section id="boosting---what-is-it" class="slide level2">
+<section id="boosting---what-is-it" class="title-slide slide level2">
 <h2>Boosting - What is it ?</h2>
 <blockquote>
 <p>A procedure to combine many <strong>weak</strong> learners to produce a powerful <strong>committee</strong>.</p>
@@ -83,7 +83,9 @@
 </ul>
 </aside>
 </section>
-<section id="a-brief-history" class="slide level2">
+
+<section>
+<section id="a-brief-history" class="title-slide slide level2">
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -95,7 +97,7 @@
 <li class="fragment">Probably Approximately Correct Learner (PAC)<br />
 </li>
 <li class="fragment">A formal theory of learnability</li>
-<li class="fragment">Proof of some broad classes of non-trivial boolean functions are learnable</li>
+<li class="fragment">Proves broad classes of non-trivial boolean functions are learnable</li>
 </ul>
 </div>
 </div>
@@ -116,15 +118,15 @@
 </ul>
 </aside>
 </section>
-<section id="side-note-pac-learning" class="slide level2">
-<h2>Side note: PAC learning</h2>
+<section id="side-note-pac-learning" class="slide level3">
+<h3>Side note: PAC learning</h3>
 <ul>
 <li class="fragment"><p>Boolean <em>concept</em> : <span class="math inline">\((0,1,1,0,\cdots, 1) \mapsto 0 \text{ or } 1\)</span></p></li>
 <li class="fragment"><p>A <em>concept</em> is Probably Approximately Learnable</p>
 <ul>
 <li class="fragment"><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em> (aka. a function)</li>
 <li class="fragment">in time bounded by a polynomial of the size of <em>concept</em> in bits</li>
-<li class="fragment">with <span class="math inline">\(P(\text{error-rate} &lt;\varepsilon) &gt; \delta\)</span></li>
+<li class="fragment">with <span class="math display">\[P\left(\text{error-rate} &lt;\varepsilon\right) &gt; \delta\]</span></li>
 <li class="fragment"><em>for all</em> <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
 </ul></li>
 <li class="fragment"><p>The <em>learning protocol</em> is:</p>
@@ -133,8 +135,9 @@
 <li class="fragment">the ORACLE returns a random example in <em>unit</em> time (O(1))</li>
 </ul></li>
 </ul>
-</section>
-<section id="a-brief-history-1" class="slide level2">
+</section></section>
+<section>
+<section id="a-brief-history-1" class="title-slide slide level2">
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -159,30 +162,30 @@
 <li>Deterministic finite automata</li>
 <li>Constant-depth threshold circuits</li>
 </ul></li>
-<li><p>are learnable cryptography is toast.</p></li>
+<li><p>are learnable then cryptography is toast.</p></li>
 <li><p>Kearns and Valiant state as an open problem:</p>
 <ul>
 <li>Can weak learners be “boosted” into strong learners?</li>
-<li>I.e. can an algorithm transform weak leaners in to strong ones</li>
-<li>The notion at the the time was “probably not”</li>
+<li>I.e. can an algorithm transform weak learners in to strong ones</li>
+<li>The notion at the time was “probably not”</li>
 </ul></li>
 </ul>
 </aside>
 </section>
-<section id="side-note-weak-and-strong-learners" class="slide level2">
-<h2>Side note: <em>weak</em> and <em>strong</em> learners</h2>
+<section id="side-note-weak-and-strong-learners" class="slide level3">
+<h3>Side note: <em>weak</em> and <em>strong</em> learners</h3>
 <ul>
 <li class="fragment"><p><em>strongly learnable</em> == PAC learnable</p></li>
 <li class="fragment"><p>A <em>concept</em> is <em>weakly</em> Learnable</p>
 <ul>
 <li class="fragment"><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em></li>
 <li class="fragment">in time bounded by a polynomial of the size of <em>concept</em> in bits (<span class="math inline">\(s\)</span>)</li>
-<li class="fragment">with <span class="math inline">\(P(\text{error-rate} &lt; \frac{1}{2} - 1/p(s)) &gt; \delta\)</span></li>
+<li class="fragment">with <span class="math display">\[P\left(\text{error-rate} &lt; \frac{1}{2} - 1/p(s)\right) &gt; \delta\]</span></li>
 <li class="fragment"><em>for all</em> <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
 </ul></li>
 </ul>
-</section>
-<section id="a-brief-history-2" class="slide level2">
+</section></section>
+<section id="a-brief-history-2" class="title-slide slide level2">
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -198,7 +201,8 @@
 </div>
 </div>
 </section>
-<section id="a-brief-history-3" class="slide level2">
+
+<section id="a-brief-history-3" class="title-slide slide level2">
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -214,7 +218,8 @@
 </div>
 </div>
 </section>
-<section id="a-brief-history-4" class="slide level2">
+
+<section id="a-brief-history-4" class="title-slide slide level2">
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -227,11 +232,13 @@
 <li class="fragment">First practical boosting algorithm<br />
 </li>
 <li class="fragment">Has been very effective</li>
+<li class="fragment">Winners of Gödel prize in 2003</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="a-brief-history-5" class="slide level2">
+
+<section id="a-brief-history-5" class="title-slide slide level2">
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -245,7 +252,8 @@
 </div>
 </div>
 </section>
-<section id="a-brief-history-6" class="slide level2">
+
+<section id="a-brief-history-6" class="title-slide slide level2">
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -260,7 +268,8 @@
 </div>
 </div>
 </section>
-<section id="a-brief-history-7" class="slide level2">
+
+<section id="a-brief-history-7" class="title-slide slide level2">
 <h2>A brief history</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -275,8 +284,9 @@
 </div>
 </div>
 </section>
-<section id="descision-trees" class="slide level2">
-<h2>Descision trees</h2>
+
+<section id="decision-trees" class="title-slide slide level2">
+<h2>Decision trees</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
 <figure>
@@ -286,22 +296,21 @@
 <ul>
 <li class="fragment">Partitions feature space into rectangles</li>
 <li class="fragment">Finding Optimal trees is (most likely) NP-hard</li>
-<li class="fragment">Heuristics are used when fitting (CART, ID3, C4.5, etc.)</li>
-<li class="fragment">Trees are simple and fast to predict</li>
-<li class="fragment">Trees model interaction of variables</li>
-<li class="fragment">Trees overfit training data</li>
+<li class="fragment">Binary splitting and heuristics are used when fitting (CART, ID3, C4.5, etc.)</li>
+<li class="fragment">Trees are fast when predicting</li>
 </ul>
 </div>
 </div>
 <aside class="notes">
 <ul>
-<li>Scikit Learn uses an optimized version of CART</li>
+<li>Scikit-learn uses an optimized version of CART</li>
 <li>Heuristics are used to approximate a optimal solution</li>
 <li>Most fitting procedures uses some kind of recursive binary splitting</li>
 </ul>
 </aside>
 </section>
-<section id="ensemble-methods" class="slide level2">
+
+<section id="ensemble-methods" class="title-slide slide level2">
 <h2>Ensemble methods</h2>
 <ul>
 <li class="fragment">Bagging: Grow trees using <em>random subsets of data (with replacement)</em></li>
@@ -317,17 +326,25 @@
 </aside>
 </div>
 </section>
-<section id="ensembles-of-descision-trees" class="slide level2">
-<h2>Ensembles of Descision trees</h2>
+
+<section id="why-ensembles-of-decision-trees" class="title-slide slide level2">
+<h2>Why Ensembles of Decision trees?</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
 <p><img data-src="../plots/tree-depth.svg" style="width:90.0%" /></p>
 </div><div class="column" style="width:33%;">
 <ul>
-<li class="fragment"><p>1 layer: <span class="math inline">\(f(X_i)\)</span></p></li>
-<li class="fragment"><p>2 layers: <span class="math inline">\(f(X_i, X_j)\)</span></p></li>
-<li class="fragment"><p>3 layers: <span class="math inline">\(f(X_i, X_j, X_l)\)</span></p></li>
-<li class="fragment"><p>4 layers: <span class="math inline">\(f(X_i, X_j, X_l, X_k)\)</span></p></li>
+<li class="fragment">Nonlinearity</li>
+<li class="fragment">Feature interaction:
+<ul>
+<li class="fragment">1 layer: <span class="math inline">\(f(X_i)\)</span></li>
+<li class="fragment">2 layers: <span class="math inline">\(f(X_i, X_j)\)</span></li>
+<li class="fragment">3 layers: <span class="math inline">\(f(X_i, X_j, X_k)\)</span></li>
+</ul></li>
+<li class="fragment">Automatic feature selection</li>
+<li class="fragment">Single Trees overfit</li>
+<li class="fragment">Combining many small trees …</li>
+<li class="fragment">.. you get <em>flexible</em> yet <em>robust</em> models</li>
 </ul>
 </div>
 </div>
@@ -342,7 +359,8 @@
 </ul>
 </aside>
 </section>
-<section id="simulation-example" class="slide level2">
+
+<section id="simulation-example" class="title-slide slide level2">
 <h2>Simulation example</h2>
 <p><span class="math display">\[Y = \begin{cases}
 1 &amp; \text{if}\quad X_1^2 + \ldots + X_{10}^2 &gt; 9.34 \\
@@ -352,28 +370,44 @@
 <img data-src="simulation/plots/gen_data.png" height="400" alt="Simulated 10-D nested spheres" /><figcaption aria-hidden="true">Simulated 10-D nested spheres</figcaption>
 </figure>
 </section>
-<section id="simulation-example-1" class="slide level2">
+
+<section id="simulation-example-1" class="title-slide slide level2">
 <h2>Simulation example</h2>
 <p><img data-src="simulation/plots/ensemble_test_errors.svg" /></p>
 </section>
-<section id="biasvariance-trade-off" class="slide level2">
+
+<section id="biasvariance-trade-off" class="title-slide slide level2">
 <h2>Bias/variance trade-off</h2>
 <p><span class="math display">\[\text{MSE} = \text{Bias}(\hat{f})^2 + \text{Var}(\hat{f}) + \text{Irreducible noise}\]</span></p>
 </section>
-<section id="variance-of-averages" class="slide level2">
+
+<section id="variance-of-averages" class="title-slide slide level2">
 <h2>Variance of averages</h2>
 <p><span class="math display">\[\text{Var}\left(\frac{1}{n}\sum_i^n X_i\right) = \frac{1}{n}\sum_i^n \text{Var}\left(X_i\right) + \frac{1}{n}\sum_{i\neq j} \text{Cov}(X_i, X_j)\]</span></p>
 <div class="fragment">
 <p><span class="math display">\[\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( Trees)}}{n}\]</span></p>
 </div>
 </section>
-<section id="variance-and-bias-reduction" class="slide level2">
+
+<section id="variance-and-bias-reduction" class="title-slide slide level2">
 <h2>Variance and bias reduction</h2>
 <figure>
 <img data-src="simulation/plots/consecutive_predictions_corr.svg" alt="Classifying 10-D nested spheres" /><figcaption aria-hidden="true">Classifying 10-D nested spheres</figcaption>
 </figure>
+<aside class="notes">
+<ul>
+<li>Bagging: Training data subsets correlates. Mellow positive correlation between all models.</li>
+<li>Random forest:
+<ul>
+<li>Either correlation of 1: Set of features with equal importance</li>
+<li>Correlation of zero: Features which are uncorrelated</li>
+</ul></li>
+<li>Adaboost: Zero or negative correlation. Out of thin air.</li>
+</ul>
+</aside>
 </section>
-<section id="boosting" class="slide level2">
+
+<section id="boosting" class="title-slide slide level2">
 <h2>Boosting</h2>
 <p><img data-src="../static/Ensemble_Boosting.svg" /></p>
 <aside class="notes">
@@ -386,7 +420,8 @@
 </ul>
 </aside>
 </section>
-<section id="forward-stagewise-additive-learning" class="slide level2">
+
+<section id="forward-stagewise-additive-learning" class="title-slide slide level2">
 <h2>Forward Stagewise Additive Learning</h2>
 <ol type="1">
 <li class="fragment">Initialize <span class="math inline">\(f_0(x) = 0\)</span></li>
@@ -403,7 +438,8 @@
 </ul>
 </aside>
 </section>
-<section id="adaboost" class="slide level2">
+
+<section id="adaboost" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ol type="1">
 <li class="fragment">Initialize weights <span class="math inline">\(w_i=1/N\)</span></li>
@@ -417,17 +453,36 @@
 <li class="fragment">Output <span class="math display">\[G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)\]</span></li>
 </ol>
 </section>
-<section id="adaboost-1" class="slide level2">
+
+<section>
+<section id="adaboost-1" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">Not originally motivated in <em>Forward Stagewise Additive Learning</em></li>
 <li class="fragment">One can show that Adaboost is a stagewise additive model with loss <span class="math display">\[L(y, f (x)) = \exp(−y f(x))\]</span> where <span class="math inline">\(y\in \{-1, 1\}\)</span> and <span class="math inline">\(f(x) \in \mathbb{R}\)</span>.</li>
-<li class="fragment">Usually for classification we use cross-entropy <span class="math display">\[L(y, f(x)) = y^\prime \log p(x) + (1-y^\prime) \log(1- p(x)) \]</span> where <span class="math inline">\(y^\prime = (y+1)/2\in \{0,1\}\)</span> and <span class="math inline">\(p(x)\)</span> is the softmax function.</li>
+<li class="fragment">Usually for classification we use cross-entropy <span class="math display">\[\begin{align}
+L(y, f(x)) &amp;= y^\prime \log p(x) + (1-y^\prime) \log(1- p(x)) \\ 
+&amp;= \log(1 + e^{-2yf(x)})
+\end{align}\]</span> where <span class="math inline">\(y^\prime = (y+1)/2\in \{0,1\}\)</span> and <span class="math inline">\(p(x)\)</span> is the softmax function.</li>
 <li class="fragment">In theory the two loss functions are equivalent</li>
 <li class="fragment">On average they produce the same <em>model</em> <span class="math inline">\(f\)</span></li>
 </ul>
 </section>
-<section id="adaboost-2" class="slide level2">
+<section id="cross-entropy-derivation" class="slide level3">
+<h3>Cross-entropy derivation</h3>
+<p><span class="math display">\[\begin{align}
+P(y=1|x) &amp;= p(x) = \frac{e^{f(x)}}{e^{-f(x)}+e^{f(x)}} = \frac{1}{1+e^{-2f(x)}} \\
+P(y=-1|x) &amp;= 1-p(x) = \frac{e^{-f(x)}}{e^{-f(x)}+e^{f(x)}} = \frac{1}{1+e^{2f(x)}}
+\end{align}\]</span></p>
+<p><span class="math display">\[\begin{align}
+L(y, f(x)) &amp;= \log p(x) =  \log \frac{1}{1+e^{-2f(x)}} \quad\text{if}\,y=1 \\
+L(y, f(x)) &amp;= \log(1- p(x)) = \log \frac{1}{1+e^{2f(x)}} \quad\text{if}\,y=-1  \\ 
+\end{align}\]</span> hence the <em>negative log-likelihood</em> is the <em>cross-entropy</em> <span class="math display">\[\begin{align}
+L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
+-L(y, f(x)) &amp;= \log \left(1+e^{-2yf(x)}\right)
+\end{align}\]</span></p>
+</section></section>
+<section id="adaboost-2" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">For finite samples the exponential loss has drawbacks</li>
@@ -446,9 +501,11 @@
 <li><span class="math inline">\(l(y, f(x)) = log(1 + exp(-2yf(x)))\)</span></li>
 </ul>
 </aside>
+<p>’</p>
 </div>
 </section>
-<section id="adaboost-3" class="slide level2">
+
+<section id="adaboost-3" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">10D nested spheres with noisy data</li>
@@ -465,7 +522,8 @@
 </div>
 </div>
 </section>
-<section id="adaboost-4" class="slide level2">
+
+<section id="adaboost-4" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">Adaboost has trouble on noisy data</li>
@@ -491,7 +549,8 @@
 </aside>
 </div>
 </section>
-<section id="adaboost-5" class="slide level2">
+
+<section id="adaboost-5" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">How to fix Adaboost?</li>
@@ -518,7 +577,8 @@
 <p>🤷‍♂️</p>
 </div>
 </section>
-<section id="gradient-boosting" class="slide level2">
+
+<section id="gradient-boosting" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">Introduced by <span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span> as a new view of boosting</li>
@@ -527,7 +587,8 @@
 <li class="fragment">Applies to any differentiable loss function</li>
 </ul>
 </section>
-<section id="side-note-gradient-boosting-in-scikit-learn" class="slide level2">
+
+<section id="side-note-gradient-boosting-in-scikit-learn" class="title-slide slide level2">
 <h2>Side note: Gradient boosting in SciKit Learn</h2>
 <p><em>Scikit-learn documentation</em>:</p>
 <blockquote>
@@ -546,7 +607,8 @@
 <p>🤦‍♂️</p>
 </div>
 </section>
-<section id="gradient-boosting-1" class="slide level2">
+
+<section id="gradient-boosting-1" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">Consider the loss function, <span class="math display">\[\sum_{i=1}^N L\left(y_i, \sum_{m=1}^M \beta_m b(x_i, \gamma_m)\right)\]</span></li>
@@ -554,7 +616,8 @@
 <li class="fragment">… which might me intractable</li>
 </ul>
 </section>
-<section id="gradient-boosting-2" class="slide level2">
+
+<section id="gradient-boosting-2" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">We try to solve it in a Forward stagewise mamner</li>
@@ -567,7 +630,8 @@
 <li class="fragment">… the stagewise minimization ca be difficult</li>
 </ul>
 </section>
-<section id="gradient-boosting-3" class="slide level2">
+
+<section id="gradient-boosting-3" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">Consider the expected loss function <span class="math display">\[\phi(f) = E[L(y,f(\boldsymbol{x}))]\]</span></li>
@@ -577,7 +641,8 @@
 <li class="fragment">… consider a dataset of <span class="math inline">\(N\)</span> observations instead <span class="math display">\[\mathbf{f} = \{f(x_1), \ldots, f(x_N)\}\]</span></li>
 </ul>
 </section>
-<section id="gradient-boosting-4" class="slide level2">
+
+<section id="gradient-boosting-4" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">Lets minimize the empirical loss <span class="math display">\[L(f) = \sum_{i=1}^N L(y_i, f(x_i))\]</span> wrt. <span class="math inline">\(f(x_i)\)</span> numerically.</li>
@@ -586,7 +651,8 @@
 <li class="fragment">The numerical optimum is <span class="math display">\[\mathbf{f}_M = \sum_{m=1}^M \mathbf{h}_m\]</span></li>
 </ul>
 </section>
-<section id="gradient-boosting-5" class="slide level2">
+
+<section id="gradient-boosting-5" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">In <em>gradient descent</em> each step <span class="math inline">\(\mathbf{h}_m\)</span> is <span class="math display">\[-\rho \mathbf{g}_m\]</span></li>
@@ -599,7 +665,8 @@
 \]</span></li>
 </ul>
 </section>
-<section id="gradient-boosting-6" class="slide level2">
+
+<section id="gradient-boosting-6" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">Let’s add <em>line search</em>, <span class="math display">\[\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m\]</span> where <span class="math inline">\(\rho_m = \underset{\rho}{\text{argmin}}\quad L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m )\)</span></li>
@@ -611,7 +678,8 @@
 <li class="fragment">… we cannot compute <span class="math inline">\(\mathbf{g}_m\)</span> outside the dataset 🤔</li>
 </ul>
 </section>
-<section id="gradient-boosting-7" class="slide level2">
+
+<section id="gradient-boosting-7" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">The idea of <span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span>:
@@ -621,7 +689,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="xgboost" class="slide level2">
+
+<section id="xgboost" class="title-slide slide level2">
 <h2>XGBoost</h2>
 <ul>
 <li class="fragment">Explicit regularization in loss function</li>
@@ -633,7 +702,8 @@
 <li class="fragment">Computationally optimized</li>
 </ul>
 </section>
-<section id="learn-more" class="slide level2">
+
+<section id="learn-more" class="title-slide slide level2">
 <h2>Learn more</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -645,7 +715,8 @@
 </div>
 </div>
 </section>
-<section id="references" class="slide level2 allowframebreaks">
+
+<section id="references" class="title-slide slide level2 allowframebreaks">
 <h2 class="allowframebreaks">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-chen2015higgs" class="csl-entry" role="doc-biblioentry">
