@@ -5,11 +5,13 @@ from utils import gen_spherical_data
 
 N = 10000
 K = 10
+SEED = 123
 
 X, y = gen_spherical_data(
     n=N, 
     k=K,
-    noise_pct_thershold=0.75
+    noise_pct_thershold=0.75,
+    seed=SEED
 )
 
 print("Saving X and y data...")
