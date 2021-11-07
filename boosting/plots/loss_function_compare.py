@@ -7,7 +7,7 @@ def exponential_loss(yf):
 
 
 def binomial_deviance(yf):
-    return np.log(1 + np.exp(-2*yf)) 
+    return np.log(1 + np.exp(-2*yf)) + (1 - np.log(2))
 
 
 yf = np.arange(-2, 2, step=0.01)
