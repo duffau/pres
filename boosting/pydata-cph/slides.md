@@ -326,6 +326,13 @@ $$Y = \begin{cases}
 ![](simulation/plots/ensemble_test_errors.svg)
 
 
+::: notes
+- Adaboost out performs
+:::
+## Simulation example
+
+![](simulation/plots/adaboost_errors.svg)
+
 ## Bias/variance trade-off
 
 $$\text{MSE} = \text{Bias}(\hat{f})^2 + \text{Var}(\hat{f}) + \text{Irreducible noise}$$

@@ -58,7 +58,7 @@ for suffix in suffixes:
     test_errors["random_forest"] = incremental_test_error(clf, X_test, y_test)
 
     print("Fitting AdaBoost ...")
-    clf = AdaBoostClassifier(n_estimators=MAX_ESTIMATORS)
+    clf = AdaBoostClassifier(n_estimators=MAX_ESTIMATORS, algorithm="SAMME.R", learning_rate=1.0)
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
     test_errors["adaboost"] = incremental_test_error(clf, X_test, y_test)
