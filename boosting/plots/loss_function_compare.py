@@ -17,5 +17,6 @@ plt.plot(yf, binomial_deviance(yf), color="tab:red", label="cross-entropy devian
 plt.ylabel("Loss")
 plt.xlabel("$yf$")
 plt.legend()
+plt.tight_layout()
 plt.savefig("loss_functions.svg")
 plt.close()
