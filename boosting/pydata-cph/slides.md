@@ -185,11 +185,18 @@ date: 9. November 2021
 
 - Introduces AdaBoost
 - First practical boosting algorithm  
-- Has been very effective
 - Winners of Gödel prize in 2003
 
 :::
 ::::::::::::::
+
+::: notes
+- Motivate AdaBoost by an Hedging example
+- Choose the allocation of money to gamblers placing bets on your behalf
+- Minimize difference to best performing gambler in a online scheme
+- Translate the hedging algo to a training setup
+- Derive bounds on errors of the Adaboost outputted hypothesis
+:::
 
 ## A brief history
 
@@ -326,6 +333,18 @@ $$Y = \begin{cases}
 ![](simulation/plots/ensemble_test_errors.svg)
 
 
+::: notes
+- Adaboost outperforms the other ensemble methods with stumps vs full trees
+:::
+## Simulation example
+
+![](simulation/plots/adaboost_errors.svg)
+
+::: notes
+- Adaboost test error decreases after training error has hit _zero_
+- Adaboost learns something more general than just the training data "by heart"
+:::
+
 ## Bias/variance trade-off
 
 $$\text{MSE} = \text{Bias}(\hat{f})^2 + \text{Var}(\hat{f}) + \text{Irreducible noise}$$
@@ -363,19 +382,6 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 - Well predicted examples get lower weight
 :::
 
-## Forward Stagewise Additive Learning
-
-1. Initialize $f_0(x) = 0$
-2. For $m=1$ to $M$:
-   a. Compute $$(\beta_m, \gamma_m) = \underset{\beta, \gamma}{\text{argmin}} \sum_{i=1}^N L(y_i, f_{m-1}(x_i)+ \beta b(x_i;\gamma))$$
-   b. Set $f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)$
-
-::: notes
-
-- Boosting is a special case of _Forward Stagewise Additive Learning_
-- It's an approximation technique for general additive models
-
-:::
 ## Adaboost
 
 1. Initialize weights $w_i=1/N$
@@ -390,15 +396,13 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 ## Adaboost
 
 - Not originally motivated in _Forward Stagewise Additive Learning_
-- One can show that Adaboost is a stagewise additive model with loss $$L(y, f (x)) = \exp(−y f(x))$$ where $y\in \{-1, 1\}$ and $f(x) \in \mathbb{R}$.
+- [@friedman2000special] show that Adaboost is a stagewise additive model with loss $$L(y, f (x)) = \exp(−y f(x))$$ where $y\in \{-1, 1\}$ and $f(x) \in \mathbb{R}$.
 - Usually for classification we use cross-entropy 
 \begin{align}
 L(y, f(x)) &= y^\prime \log p(x) + (1-y^\prime) \log(1- p(x)) \\ 
 &= \log(1 + e^{-2yf(x)})
 \end{align} 
 where $y^\prime = (y+1)/2\in \{0,1\}$ and $p(x)$ is the softmax function.
-- In theory the two loss functions are equivalent
-- On average they produce the same _model_ $f$
 
 ### Cross-entropy derivation
 
@@ -419,22 +423,14 @@ L(y, f(x)) &= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 
 ## Adaboost
 
+- In theory the two loss functions are equivalent
+- On average they produce the same _model_ $f$
 - For finite samples the exponential loss has drawbacks
 - To much weight is given to errors
 
 . . .
 
-![Exponential loss and cross-entropy](../plots/loss_functions.svg){height=300px}
-
-:::notes
-Binomial loss function:
-
-- $y^\ast = (y+1)/2$
-- $p(x) = 1/(1 + exp(-2f(x)))$
-- $l(y, p(x)) = y^\ast \log(p(x)) + (1-y^\ast) \log(1-p(x)) \Rightarrow$
-- $l(y, f(x)) = log(1 + exp(-2yf(x)))$
-:::
-'
+![Exponential loss and cross-entropy](../plots/loss_functions.svg){width=50%}
 
 ## Adaboost
 
@@ -472,9 +468,8 @@ Binomial loss function:
 - The exponential loss eight these error much heavier
 :::
 
-## Adaboost
+## Can we fix Adaboost ?
 
-- How to fix Adaboost?
 - Can we easily plug in a more robust loss function? 
 
 . . .
@@ -492,6 +487,28 @@ Binomial loss function:
 . . .
 
 🤷‍♂️
+
+## Forward Stagewise Additive Learning
+
+
+```python
+def estimator(X):
+  pass
+```
+### Forward Stagewise Additive Learning
+
+1. Initialize $f_0(x) = 0$
+2. For $m=1$ to $M$:
+   a. Compute $$(\beta_m, \gamma_m) = \underset{\beta, \gamma}{\text{argmin}} \sum_{i=1}^N L(y_i, f_{m-1}(x_i)+ \beta b(x_i;\gamma))$$
+   b. Set $f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)$
+
+::: notes
+
+- Boosting is a special case of _Forward Stagewise Additive Learning_
+- It's an approximation technique for general additive models
+
+:::
+
 
 ## Gradient boosting 
 
@@ -541,7 +558,7 @@ $$\sum_{i=1}^N L\left(y_i, \sum_{m=1}^M \beta_m b(x_i, \gamma_m)\right)$$
 - Consider the expected loss function $$\phi(f) = E[L(y,f(\boldsymbol{x}))]$$ 
 - we seek $f$ that minimizes $\phi$
 - Thats a difficult variational analysis problem
-- Let's circumvent the problem...
+- Let's circumvent the problem... 😎
 - ... consider a dataset of $N$ observations instead $$\mathbf{f} = \{f(x_1), \ldots, f(x_N)\}$$
 
 

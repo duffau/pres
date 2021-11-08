@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 
+EPS = 10**-5
+
 class AdaBoost:
     
     def __init__(self, n_estimators=100, learning_rate=1):
@@ -40,6 +42,11 @@ class AdaBoost:
             alpha_m = compute_alpha(error_m)*self.learning_rate
             self.alphas_.append(alpha_m)
 
+    def staged_decision_function(self, X):
+        y_pred_m = np.zeros(X.shape[0])
+        for m in range(self.M):
+            y_pred_m += self.estimators_[m].predict(X) * self.alphas_[m]
+            yield y_pred_m
 
     def predict(self, X, M_max=None):
         '''
@@ -79,7 +86,7 @@ def compute_alpha(error):
     alpha in chapter 10.1 of The Elements of Statistical Learning. Arguments:
     error: error rate from weak classifier m
     '''
-    return np.log(1 - error) - np.log(error)
+    return np.log(1 - error + EPS) - np.log(error + EPS)
 
 def update_weights(w, alpha, y, y_pred):
     ''' 

@@ -1,13 +1,6 @@
 .PHONY: .slides.html sim
 
-sim:
-	cd ./simulation; ./run.sh
-
-slides.html:
-	pandoc -t revealjs \
-	  	-s slides.md \
-		-o .slides.html \
-		--mathjax \
+reveal_flags = --mathjax \
 		--highlight-style zenburn \
 		--slide-level 3 \
 		-V revealjs-url=https://unpkg.com/reveal.js@^4/ \
@@ -15,6 +8,22 @@ slides.html:
 		-V transition="linear" \
 		-V slideNumber="'c/t'" \
 		--css ../black-root.css \
-		--incremental \
 		--bibliography ../bibliography.bib \
 		--citeproc
+
+sim:
+	cd ./simulation; ./run.sh
+
+slides.html:
+	pandoc -t revealjs \
+	  	-s slides.md \
+		-o .slides.html \
+		$(reveal_flags) \
+		--incremental
+
+
+dev-slides.html:
+	pandoc -t revealjs \
+	  	-s slides.md \
+		-o .slides.html \
+		$(reveal_flags)

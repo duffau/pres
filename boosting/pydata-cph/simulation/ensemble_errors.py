@@ -8,6 +8,11 @@ from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, Bagging
 
 SEED = 123
 MAX_ESTIMATORS = 200
+SINGLE_TREE = "Single tree"
+BAGGING = "Bagging with full trees"
+RANDOM_FOREST = "Random forest with full trees"
+ADABOOST = "AdaBoost with stumps"
+
 
 def error_rate(y, y_pred):
     return (y != y_pred).sum()/len(y)
@@ -38,30 +43,30 @@ for suffix in suffixes:
         return test_errors
 
     test_errors = {}
-    test_errors["single_tree"] = []
+    test_errors[SINGLE_TREE] = []
     print("Fitting single tree ...")
     for max_depth in range(1, MAX_ESTIMATORS):
         clf = DecisionTreeClassifier(max_depth=max_depth)
         clf.fit(X_train, y_train)
         y_pred = clf.predict(X_test)
-        test_errors["single_tree"].append(error_rate(y_test, y_pred))
+        test_errors[SINGLE_TREE].append(error_rate(y_test, y_pred))
 
 
     print("Fitting Bagging classifier ...")
     clf = BaggingClassifier(n_estimators=MAX_ESTIMATORS, bootstrap=True, n_jobs=-1)
     clf.fit(X_train, y_train)
-    test_errors["bagging"] = incremental_test_error(clf, X_test, y_test)
+    test_errors[BAGGING] = incremental_test_error(clf, X_test, y_test)
 
     print("Fitting Random forest ...")
     clf = RandomForestClassifier(n_estimators=MAX_ESTIMATORS, n_jobs=-1)
     clf.fit(X_train, y_train)
-    test_errors["random_forest"] = incremental_test_error(clf, X_test, y_test)
+    test_errors[RANDOM_FOREST] = incremental_test_error(clf, X_test, y_test)
 
     print("Fitting AdaBoost ...")
-    clf = AdaBoostClassifier(n_estimators=MAX_ESTIMATORS)
+    clf = AdaBoostClassifier(n_estimators=MAX_ESTIMATORS, algorithm="SAMME.R", learning_rate=1.0)
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
-    test_errors["adaboost"] = incremental_test_error(clf, X_test, y_test)
+    test_errors[ADABOOST] = incremental_test_error(clf, X_test, y_test)
 
     plot_filename = f"plots/{join_underscore('ensemble_test_errors', suffix) + '.svg'}"
     print(f"Plotting '{plot_filename}' ...")
