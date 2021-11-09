@@ -31,7 +31,7 @@ date: 9. November 2021
 
 > A procedure to combine many __weak__ learners to produce a powerful __committee__. 
 >
-> [@friedman2009elements, sec. 10.1]
+> Elements of Statistical Learning [@friedman2009elements, sec. 10.1]
 
 ::: notes
 
@@ -56,13 +56,15 @@ date: 9. November 2021
 - Probably Approximately Correct Learner (PAC)  
 - A formal theory of learnability 
 - Proves broad classes of non-trivial boolean functions are learnable
+- Turing Award in 2010
 
 :::
 ::::::::::::::
 
 ::: notes
 
-- Valiant (1984) - A theory of the learnable
+- Leslie Valiant - Harvard
+- Leslie Valiant (1984) - A theory of the learnable
 - Defines a mathematical framework for analyzing what classes of problems are learnable in polynomial time. 
 - Introduces the Probably Approximately Correct Learner (PAC-learner). 
 - Foundation of the field of computational learning theory.
@@ -108,6 +110,7 @@ date: 9. November 2021
 ::::::::::::::
 
 ::: notes
+- Michael Kearns & Leslie Valiant (ph.d. student and supervisor) - Harvard University
 - The 1989 Crypto paper show that
 - If either: 
   - Boolean formulae
@@ -151,6 +154,11 @@ date: 9. November 2021
 :::
 ::::::::::::::
 
+::: notes
+- Robert E Schapire - MIT,later professor at Princeton - 27 years at the time
+- Ph.d. thesis
+:::
+
 ## A brief history
 
 :::::::::::::: {.columns}
@@ -163,6 +171,8 @@ date: 9. November 2021
 
 [@freund1990majority]
 
+- Youav Freund - Israeli - p.hd. - UC Santa Cruz - 29 years at the time
+- Ph.d. thesis
 - Implements a much more efficient _boosting_ algorithm
 - Trains learners on weighted subsets of the data 
 - Uses majority voting to predict
@@ -183,6 +193,8 @@ date: 9. November 2021
 
 [@schapire1995decision]
 
+- Youav Freund - Israeli - Post Doc at UC San Diego - 34 years at the time
+- Robert E Schapire - Post doc at Princeton - 32 years at the time
 - Introduces AdaBoost
 - First practical boosting algorithm  
 - Winners of Gödel prize in 2003
@@ -215,6 +227,13 @@ date: 9. November 2021
 
 :::
 ::::::::::::::
+
+::: notes
+- Jerome Harold Friedman - American - Professor of Statistics at Stanford University - 61 years at the time
+- Trevor Hastie - South Africa - Professor in Statistics at Stanford University - 47 years at the time
+- Robert Tibshirani - Canadian - Professor in Statistics at Stanford University - 44 years at the time
+
+:::
 
 ## A brief history
 
@@ -253,6 +272,11 @@ date: 9. November 2021
 :::
 ::::::::::::::
 
+::: notes
+
+- Tianqi Chen - Shanghai China - Ph. d. at Univeristy of Washington
+:::
+
 ## Decision trees
 
 :::::::::::::: {.columns}
@@ -262,8 +286,8 @@ date: 9. November 2021
 
 ::: {.column width="33%"}
 - Partitions feature space into rectangles
-- Finding Optimal trees is (most likely) NP-hard
-- Binary splitting and heuristics are used when fitting (CART, ID3, C4.5, etc.)
+- Finding Optimal trees is NP-complete
+- Greedy algorithms and heuristics are used when fitting (CART, ID3, C4.5, etc.)
 - Trees are fast when predicting
 :::
 ::::::::::::::
@@ -382,7 +406,19 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 - Well predicted examples get lower weight
 :::
 
-## Adaboost
+## Adaboost algorithm
+
+```python
+def fit(X, y, weak_leaner, iters=100):
+  weights = np.ones(len(y)) * 1/len(y)
+  for i in range(iters):
+      weak_leaner[i].fit(X, y, sample_weight=w)
+      y_pred = weak_leaner[i].predict(X)
+      errors = (y_pred != y)
+      error_rate = sum(weights * errors)/sum(w)
+      alphas[i] = log((1 - error_rate)/error_rate)
+      weights = weights * errors * exp(alpha)
+```
 
 1. Initialize weights $w_i=1/N$
 2. For $m=1$ to $M$:

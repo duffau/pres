@@ -135,7 +135,7 @@
 <h2>Boosting - What is it ?</h2>
 <blockquote>
 <p>A procedure to combine many <strong>weak</strong> learners to produce a powerful <strong>committee</strong>.</p>
-<p><span class="citation" data-cites="friedman2009elements">(J. Friedman et al. 2009, sec. 10.1)</span></p>
+<p>Elements of Statistical Learning <span class="citation" data-cites="friedman2009elements">(J. Friedman et al. 2009, sec. 10.1)</span></p>
 </blockquote>
 <aside class="notes">
 <ul>
@@ -160,12 +160,14 @@
 </li>
 <li class="fragment">A formal theory of learnability</li>
 <li class="fragment">Proves broad classes of non-trivial boolean functions are learnable</li>
+<li class="fragment">Turing Award in 2010</li>
 </ul>
 </div>
 </div>
 <aside class="notes">
 <ul>
-<li>Valiant (1984) - A theory of the learnable</li>
+<li>Leslie Valiant - Harvard</li>
+<li>Leslie Valiant (1984) - A theory of the learnable</li>
 <li>Defines a mathematical framework for analyzing what classes of problems are learnable in polynomial time.</li>
 <li>Introduces the Probably Approximately Correct Learner (PAC-learner).</li>
 <li>Foundation of the field of computational learning theory.</li>
@@ -217,6 +219,7 @@
 </div>
 <aside class="notes">
 <ul>
+<li><p>Michael Kearns &amp; Leslie Valiant (ph.d. student and supervisor) - Harvard University</p></li>
 <li><p>The 1989 Crypto paper show that</p></li>
 <li><p>If either:</p>
 <ul>
@@ -262,6 +265,12 @@
 </ul>
 </div>
 </div>
+<aside class="notes">
+<ul>
+<li>Robert E Schapire - MIT,later professor at Princeton - 27 years at the time</li>
+<li>Ph.d. thesis</li>
+</ul>
+</aside>
 </section>
 
 <section id="a-brief-history-3" class="title-slide slide level2">
@@ -273,6 +282,8 @@
 <p><img data-src="../static/yoav-freund.png" height="130" /></p>
 <p><span class="citation" data-cites="freund1990majority">(Freund 1990)</span></p>
 <ul>
+<li class="fragment">Youav Freund - Israeli - p.hd. - UC Santa Cruz - 29 years at the time</li>
+<li class="fragment">Ph.d. thesis</li>
 <li class="fragment">Implements a much more efficient <em>boosting</em> algorithm</li>
 <li class="fragment">Trains learners on weighted subsets of the data</li>
 <li class="fragment">Uses majority voting to predict</li>
@@ -290,6 +301,8 @@
 <p><img data-src="../static/yoav-freund.png" height="130" /> <img data-src="../static/robert-schapire.jpg" height="130" /></p>
 <p><span class="citation" data-cites="schapire1995decision">(R. Schapire and Freund 1995)</span></p>
 <ul>
+<li class="fragment">Youav Freund - Israeli - Post Doc at UC San Diego - 34 years at the time</li>
+<li class="fragment">Robert E Schapire - Post doc at Princeton - 32 years at the time</li>
 <li class="fragment">Introduces AdaBoost</li>
 <li class="fragment">First practical boosting algorithm<br />
 </li>
@@ -321,6 +334,13 @@
 </ul>
 </div>
 </div>
+<aside class="notes">
+<ul>
+<li>Jerome Harold Friedman - American - Professor of Statistics at Stanford University - 61 years at the time</li>
+<li>Trevor Hastie - South Africa - Professor in Statistics at Stanford University - 47 years at the time</li>
+<li>Robert Tibshirani - Canadian - Professor in Statistics at Stanford University - 44 years at the time</li>
+</ul>
+</aside>
 </section>
 
 <section id="a-brief-history-6" class="title-slide slide level2">
@@ -353,6 +373,11 @@
 </ul>
 </div>
 </div>
+<aside class="notes">
+<ul>
+<li>Tianqi Chen - Shanghai China - Ph. d. at Univeristy of Washington</li>
+</ul>
+</aside>
 </section>
 
 <section id="decision-trees" class="title-slide slide level2">
@@ -365,8 +390,8 @@
 </div><div class="column" style="width:33%;">
 <ul>
 <li class="fragment">Partitions feature space into rectangles</li>
-<li class="fragment">Finding Optimal trees is (most likely) NP-hard</li>
-<li class="fragment">Binary splitting and heuristics are used when fitting (CART, ID3, C4.5, etc.)</li>
+<li class="fragment">Finding Optimal trees is NP-complete</li>
+<li class="fragment">Greedy algorithms and heuristics are used when fitting (CART, ID3, C4.5, etc.)</li>
 <li class="fragment">Trees are fast when predicting</li>
 </ul>
 </div>
@@ -507,8 +532,17 @@
 </aside>
 </section>
 
-<section id="adaboost" class="title-slide slide level2">
-<h2>Adaboost</h2>
+<section id="adaboost-algorithm" class="title-slide slide level2">
+<h2>Adaboost algorithm</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit(X, y, weak_leaner, iters<span class="op">=</span><span class="dv">100</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  weights <span class="op">=</span> np.ones(<span class="bu">len</span>(y)) <span class="op">*</span> <span class="dv">1</span><span class="op">/</span><span class="bu">len</span>(y)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iters):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      weak_leaner[i].fit(X, y, sample_weight<span class="op">=</span>w)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      y_pred <span class="op">=</span> weak_leaner[i].predict(X)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      errors <span class="op">=</span> (y_pred <span class="op">!=</span> y)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      error_rate <span class="op">=</span> <span class="bu">sum</span>(weights <span class="op">*</span> errors)<span class="op">/</span><span class="bu">sum</span>(w)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      alphas[i] <span class="op">=</span> log((<span class="dv">1</span> <span class="op">-</span> error_rate)<span class="op">/</span>error_rate)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      weights <span class="op">=</span> weights <span class="op">*</span> errors <span class="op">*</span> exp(alpha)</span></code></pre></div>
 <ol type="1">
 <li class="fragment">Initialize weights <span class="math inline">\(w_i=1/N\)</span></li>
 <li class="fragment">For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
@@ -523,7 +557,7 @@
 </section>
 
 <section>
-<section id="adaboost-1" class="title-slide slide level2">
+<section id="adaboost" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">Not originally motivated in <em>Forward Stagewise Additive Learning</em></li>
@@ -548,7 +582,7 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 -L(y, f(x)) &amp;= \log \left(1+e^{-2yf(x)}\right)
 \end{align}\]</span></p>
 </section></section>
-<section id="adaboost-2" class="title-slide slide level2">
+<section id="adaboost-1" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">In theory the two loss functions are equivalent</li>
@@ -563,7 +597,7 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 </div>
 </section>
 
-<section id="adaboost-3" class="title-slide slide level2">
+<section id="adaboost-2" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">10D nested spheres with noisy data</li>
@@ -581,7 +615,7 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 </div>
 </section>
 
-<section id="adaboost-4" class="title-slide slide level2">
+<section id="adaboost-3" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
 <li class="fragment">Adaboost has trouble on noisy data</li>
@@ -638,8 +672,8 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 <section>
 <section id="forward-stagewise-additive-learning" class="title-slide slide level2">
 <h2>Forward Stagewise Additive Learning</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimator(X):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">pass</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimator(X):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">pass</span></span></code></pre></div>
 </section>
 <section id="forward-stagewise-additive-learning-1" class="slide level3">
 <h3>Forward Stagewise Additive Learning</h3>
