@@ -37,7 +37,7 @@ date: 9. November 2021
 
 - An ensemble method in Machine Learning
 - A way of combining so-called weak learner
-- into a powerful comittee i.e. by some means og aggregation or averaging
+- into a powerful committee i.e. by some means og aggregation or averaging
 
 :::
 
@@ -55,7 +55,7 @@ date: 9. November 2021
 
 - Probably Approximately Correct Learner (PAC)  
 - A formal theory of learnability 
-- Proves broad classes of non-trivial boolean functions are learnable
+- Proves classes of boolean functions are learnable
 - Turing Award in 2010
 
 :::
@@ -80,8 +80,8 @@ date: 9. November 2021
 
 - A _concept_ is Probably Approximately Learnable
   -  _if_ an _algorithm_ can deduce a _hypothesis_ (aka. a function)
-  - in time bounded by a polynomial of the size of _concept_ in bits
-  - with $$P\left(\text{error-rate} <\varepsilon\right) > \delta$$
+  - with $$P\left(\text{error-rate} <\varepsilon\right) > 1-\delta$$
+  - in time bounded by a polynomial of $1/\varepsilon$ and $1/\delta$
   - _for all_ $\varepsilon>0$ and $0 < \delta \leq 1$
 
 - The _learning protocol_ is:
@@ -131,8 +131,8 @@ date: 9. November 2021
 
 - A _concept_ is _weakly_ Learnable
   -  _if_ an _algorithm_ can deduce a _hypothesis_
-  - in time bounded by a polynomial of the size of _concept_ in bits ($s$)
-  - with $$P\left(\text{error-rate} < \frac{1}{2} - 1/p(s)\right) > \delta$$
+  - with $$P\left(\text{error-rate} < \frac{1}{2} - 1/p(s)\right) > 1-\delta$$
+  - in time bounded by a polynomial of $1/\varepsilon$ and $1/\delta$
   - _for all_ $0 < \delta \leq 1$
 
 ## A brief history
@@ -171,14 +171,17 @@ date: 9. November 2021
 
 [@freund1990majority]
 
-- Youav Freund - Israeli - p.hd. - UC Santa Cruz - 29 years at the time
-- Ph.d. thesis
 - Implements a much more efficient _boosting_ algorithm
 - Trains learners on weighted subsets of the data 
 - Uses majority voting to predict
 
 :::
 ::::::::::::::
+
+::: notes
+- Youav Freund - Israeli - p.hd. - UC Santa Cruz - 29 years at the time
+- Ph.d. thesis from UC Santa Cruz
+:::
 
 ## A brief history
 
@@ -193,8 +196,6 @@ date: 9. November 2021
 
 [@schapire1995decision]
 
-- Youav Freund - Israeli - Post Doc at UC San Diego - 34 years at the time
-- Robert E Schapire - Post doc at Princeton - 32 years at the time
 - Introduces AdaBoost
 - First practical boosting algorithm  
 - Winners of Gödel prize in 2003
@@ -203,6 +204,8 @@ date: 9. November 2021
 ::::::::::::::
 
 ::: notes
+- Youav Freund - Israeli - Post Doc at UC San Diego - 34 years at the time
+- Robert E Schapire - Post doc at Princeton - 32 years at the time
 - Motivate AdaBoost by an Hedging example
 - Choose the allocation of money to gamblers placing bets on your behalf
 - Minimize difference to best performing gambler in a online scheme
@@ -274,7 +277,7 @@ date: 9. November 2021
 
 ::: notes
 
-- Tianqi Chen - Shanghai China - Ph. d. at Univeristy of Washington
+- Tianqi Chen - Shanghai China - Ph.d. from University of Washington
 :::
 
 ## Decision trees
@@ -297,20 +300,6 @@ date: 9. November 2021
 - Scikit-learn uses an optimized version of CART
 - Heuristics are used to approximate a optimal solution
 - Most fitting procedures uses some kind of recursive binary splitting
-:::
-
-## Ensemble methods
-
-- Bagging: Grow trees using _random subsets of data (with replacement)_
-- Random forest: Grow trees using _random subset of features_
-- Boosting: Grow trees on _re-weighted dataset_
-
-. . . 
-
-$$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tree}$$
-
-::: notes
-- Ensemble methods overcome overfitting by combining trees (typically)
 :::
 
 ## Why Ensembles of Decision trees?
@@ -342,6 +331,19 @@ $$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tr
 - Automatic feature selection
 :::
 
+## Ensemble methods
+
+- Bagging: Grow trees using _random subsets of data (with replacement)_
+- Random forest: Grow trees using _random subset of features_
+- Boosting: Grow trees on _re-weighted dataset_
+
+. . . 
+
+$$\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tree}$$
+
+::: notes
+- Ensemble methods overcome overfitting by combining trees (typically)
+:::
 
 ## Simulation example
 
