@@ -141,7 +141,7 @@
 <ul>
 <li>An ensemble method in Machine Learning</li>
 <li>A way of combining so-called weak learner</li>
-<li>into a powerful comittee i.e. by some means og aggregation or averaging</li>
+<li>into a powerful committee i.e. by some means og aggregation or averaging</li>
 </ul>
 </aside>
 </section>
@@ -159,7 +159,7 @@
 <li class="fragment">Probably Approximately Correct Learner (PAC)<br />
 </li>
 <li class="fragment">A formal theory of learnability</li>
-<li class="fragment">Proves broad classes of non-trivial boolean functions are learnable</li>
+<li class="fragment">Proves classes of boolean functions are learnable</li>
 <li class="fragment">Turing Award in 2010</li>
 </ul>
 </div>
@@ -189,8 +189,8 @@
 <li class="fragment"><p>A <em>concept</em> is Probably Approximately Learnable</p>
 <ul>
 <li class="fragment"><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em> (aka. a function)</li>
-<li class="fragment">in time bounded by a polynomial of the size of <em>concept</em> in bits</li>
-<li class="fragment">with <span class="math display">\[P\left(\text{error-rate} &lt;\varepsilon\right) &gt; \delta\]</span></li>
+<li class="fragment">with <span class="math display">\[P\left(\text{error-rate} &lt;\varepsilon\right) &gt; 1-\delta\]</span></li>
+<li class="fragment">in time bounded by a polynomial of <span class="math inline">\(1/\varepsilon\)</span> and <span class="math inline">\(1/\delta\)</span></li>
 <li class="fragment"><em>for all</em> <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
 </ul></li>
 <li class="fragment"><p>The <em>learning protocol</em> is:</p>
@@ -244,8 +244,8 @@
 <li class="fragment"><p>A <em>concept</em> is <em>weakly</em> Learnable</p>
 <ul>
 <li class="fragment"><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em></li>
-<li class="fragment">in time bounded by a polynomial of the size of <em>concept</em> in bits (<span class="math inline">\(s\)</span>)</li>
-<li class="fragment">with <span class="math display">\[P\left(\text{error-rate} &lt; \frac{1}{2} - 1/p(s)\right) &gt; \delta\]</span></li>
+<li class="fragment">with <span class="math display">\[P\left(\text{error-rate} &lt; \frac{1}{2} - 1/p(s)\right) &gt; 1-\delta\]</span></li>
+<li class="fragment">in time bounded by a polynomial of <span class="math inline">\(1/\varepsilon\)</span> and <span class="math inline">\(1/\delta\)</span></li>
 <li class="fragment"><em>for all</em> <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
 </ul></li>
 </ul>
@@ -282,14 +282,18 @@
 <p><img data-src="../static/yoav-freund.png" height="130" /></p>
 <p><span class="citation" data-cites="freund1990majority">(Freund 1990)</span></p>
 <ul>
-<li class="fragment">Youav Freund - Israeli - p.hd. - UC Santa Cruz - 29 years at the time</li>
-<li class="fragment">Ph.d. thesis</li>
 <li class="fragment">Implements a much more efficient <em>boosting</em> algorithm</li>
 <li class="fragment">Trains learners on weighted subsets of the data</li>
 <li class="fragment">Uses majority voting to predict</li>
 </ul>
 </div>
 </div>
+<aside class="notes">
+<ul>
+<li>Youav Freund - Israeli - p.hd. - UC Santa Cruz - 29 years at the time</li>
+<li>Ph.d. thesis from UC Santa Cruz</li>
+</ul>
+</aside>
 </section>
 
 <section id="a-brief-history-4" class="title-slide slide level2">
@@ -301,8 +305,6 @@
 <p><img data-src="../static/yoav-freund.png" height="130" /> <img data-src="../static/robert-schapire.jpg" height="130" /></p>
 <p><span class="citation" data-cites="schapire1995decision">(R. Schapire and Freund 1995)</span></p>
 <ul>
-<li class="fragment">Youav Freund - Israeli - Post Doc at UC San Diego - 34 years at the time</li>
-<li class="fragment">Robert E Schapire - Post doc at Princeton - 32 years at the time</li>
 <li class="fragment">Introduces AdaBoost</li>
 <li class="fragment">First practical boosting algorithm<br />
 </li>
@@ -312,6 +314,8 @@
 </div>
 <aside class="notes">
 <ul>
+<li>Youav Freund - Israeli - Post Doc at UC San Diego - 34 years at the time</li>
+<li>Robert E Schapire - Post doc at Princeton - 32 years at the time</li>
 <li>Motivate AdaBoost by an Hedging example</li>
 <li>Choose the allocation of money to gamblers placing bets on your behalf</li>
 <li>Minimize difference to best performing gambler in a online scheme</li>
@@ -375,7 +379,7 @@
 </div>
 <aside class="notes">
 <ul>
-<li>Tianqi Chen - Shanghai China - Ph. d. at Univeristy of Washington</li>
+<li>Tianqi Chen - Shanghai China - Ph.d. from University of Washington</li>
 </ul>
 </aside>
 </section>
@@ -403,23 +407,6 @@
 <li>Most fitting procedures uses some kind of recursive binary splitting</li>
 </ul>
 </aside>
-</section>
-
-<section id="ensemble-methods" class="title-slide slide level2">
-<h2>Ensemble methods</h2>
-<ul>
-<li class="fragment">Bagging: Grow trees using <em>random subsets of data (with replacement)</em></li>
-<li class="fragment">Random forest: Grow trees using <em>random subset of features</em></li>
-<li class="fragment">Boosting: Grow trees on <em>re-weighted dataset</em></li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tree}\]</span></p>
-<aside class="notes">
-<ul>
-<li>Ensemble methods overcome overfitting by combining trees (typically)</li>
-</ul>
-</aside>
-</div>
 </section>
 
 <section id="why-ensembles-of-decision-trees" class="title-slide slide level2">
@@ -453,6 +440,23 @@
 <li>Automatic feature selection</li>
 </ul>
 </aside>
+</section>
+
+<section id="ensemble-methods" class="title-slide slide level2">
+<h2>Ensemble methods</h2>
+<ul>
+<li class="fragment">Bagging: Grow trees using <em>random subsets of data (with replacement)</em></li>
+<li class="fragment">Random forest: Grow trees using <em>random subset of features</em></li>
+<li class="fragment">Boosting: Grow trees on <em>re-weighted dataset</em></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tree}\]</span></p>
+<aside class="notes">
+<ul>
+<li>Ensemble methods overcome overfitting by combining trees (typically)</li>
+</ul>
+</aside>
+</div>
 </section>
 
 <section id="simulation-example" class="title-slide slide level2">
