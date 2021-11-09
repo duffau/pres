@@ -410,18 +410,6 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 ## Adaboost algorithm
 
-```python
-def fit(X, y, weak_leaner, iters=100):
-  weights = np.ones(len(y)) * 1/len(y)
-  for i in range(iters):
-      weak_leaner[i].fit(X, y, sample_weight=w)
-      y_pred = weak_leaner[i].predict(X)
-      errors = (y_pred != y)
-      error_rate = sum(weights * errors)/sum(w)
-      alphas[i] = log((1 - error_rate)/error_rate)
-      weights = weights * errors * exp(alpha)
-```
-
 1. Initialize weights $w_i=1/N$
 2. For $m=1$ to $M$:
    1. Fit classifier $G_m(x)$ to training data using $w_i$'s
@@ -430,17 +418,19 @@ def fit(X, y, weak_leaner, iters=100):
    4. Set $w_i \leftarrow w_i \exp(\alpha_m I(y_i \neq G_m(x_i)))$
 3. Output $$G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)$$
 
-
-## Adaboost
+## Adaboost loss
 
 - Not originally motivated in _Forward Stagewise Additive Learning_
-- [@friedman2000special] show that Adaboost is a stagewise additive model with loss $$L(y, f (x)) = \exp(−y f(x))$$ where $y\in \{-1, 1\}$ and $f(x) \in \mathbb{R}$.
+- [@friedman2000special] show that Adaboost is a stagewise additive model with loss 
+$$
+L(y, f (x)) = \exp(−y f(x))
+$$
+where $y\in \{-1, 1\}$ and $f(x) = \sum_{m=1}^M \alpha_m G_m(x)$ is the predicted score.
 - Usually for classification we use cross-entropy 
-\begin{align}
-L(y, f(x)) &= y^\prime \log p(x) + (1-y^\prime) \log(1- p(x)) \\ 
-&= \log(1 + e^{-2yf(x)})
-\end{align} 
-where $y^\prime = (y+1)/2\in \{0,1\}$ and $p(x)$ is the softmax function.
+$$
+L(y, f(x)) = y^\prime \log p(x) + (1-y^\prime) \log(1 - p(x)) 
+$$ 
+where $y^\prime \in \{0,1\}$ and $p(x)$ is the softmax function.
 
 ### Cross-entropy derivation
 
@@ -472,7 +462,9 @@ L(y, f(x)) &= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 
 ## Adaboost
 
+::: nonincremental
 - 10D nested spheres with noisy data
+:::
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
@@ -526,14 +518,17 @@ L(y, f(x)) &= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 
 🤷‍♂️
 
+## Break
+
+::: nonincremental
+5 minutes 🍕🍺
+:::
+
 ## Forward Stagewise Additive Learning
 
-
-```python
-def estimator(X):
-  pass
-```
-### Forward Stagewise Additive Learning
+$$
+f(x) = \sum_{m=1}^M \beta_m \cdot b(x; \gamma_m)
+$$
 
 1. Initialize $f_0(x) = 0$
 2. For $m=1$ to $M$:
@@ -541,12 +536,9 @@ def estimator(X):
    b. Set $f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)$
 
 ::: notes
-
 - Boosting is a special case of _Forward Stagewise Additive Learning_
 - It's an approximation technique for general additive models
-
 :::
-
 
 ## Gradient boosting 
 
