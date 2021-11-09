@@ -60,11 +60,11 @@
 <p><a href="https://ante.dk"><img data-src="../static/ante_logo_neg.svg" style="height:20.0%" /></a></p>
 </div><div class="column" style="width:50%;">
 <ul>
-<li class="fragment"><p>Data Scientist and Co-founder</p></li>
-<li class="fragment"><p>Legal tech start-up</p></li>
-<li class="fragment"><p>NLP-powered search engine</p></li>
-<li class="fragment"><p>Extract meta data from plain text</p></li>
-<li class="fragment"><p>Index structured data in a search engine</p></li>
+<li><p>Data Scientist and Co-founder</p></li>
+<li><p>Legal tech start-up</p></li>
+<li><p>NLP-powered search engine</p></li>
+<li><p>Extract meta data from plain text</p></li>
+<li><p>Index structured data in a search engine</p></li>
 </ul>
 </div>
 </div>
@@ -94,11 +94,11 @@
 <p><img data-src="../static/leslie-valiant.jpg" height="130" /></p>
 <p><span class="citation" data-cites="valiant1984theory">(Valiant 1984)</span></p>
 <ul>
-<li class="fragment">Probably Approximately Correct Learner (PAC)<br />
+<li>Probably Approximately Correct Learner (PAC)<br />
 </li>
-<li class="fragment">A formal theory of learnability</li>
-<li class="fragment">Proves classes of boolean functions are learnable</li>
-<li class="fragment">Turing Award in 2010</li>
+<li>A formal theory of learnability</li>
+<li>Proves classes of boolean functions are learnable</li>
+<li>Turing Award in 2010</li>
 </ul>
 </div>
 </div>
@@ -123,18 +123,18 @@
 <section id="side-note-pac-learning" class="slide level3">
 <h3>Side note: PAC learning</h3>
 <ul>
-<li class="fragment"><p>Boolean <em>concept</em> : <span class="math inline">\((0,1,1,0,\cdots, 1) \mapsto 0 \text{ or } 1\)</span></p></li>
-<li class="fragment"><p>A <em>concept</em> is Probably Approximately Learnable</p>
+<li><p>Boolean <em>concept</em> : <span class="math inline">\((0,1,1,0,\cdots, 1) \mapsto 0 \text{ or } 1\)</span></p></li>
+<li><p>A <em>concept</em> is Probably Approximately Learnable</p>
 <ul>
-<li class="fragment"><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em> (aka. a function)</li>
-<li class="fragment">with <span class="math display">\[P\left(\text{error-rate} &lt;\varepsilon\right) &gt; 1-\delta\]</span></li>
-<li class="fragment">in time bounded by a polynomial of <span class="math inline">\(1/\varepsilon\)</span> and <span class="math inline">\(1/\delta\)</span></li>
-<li class="fragment"><em>for all</em> <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
+<li><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em> (aka. a function)</li>
+<li>with <span class="math display">\[P\left(\text{error-rate} &lt;\varepsilon\right) &gt; 1-\delta\]</span></li>
+<li>in time bounded by a polynomial of <span class="math inline">\(1/\varepsilon\)</span> and <span class="math inline">\(1/\delta\)</span></li>
+<li><em>for all</em> <span class="math inline">\(\varepsilon&gt;0\)</span> and <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
 </ul></li>
-<li class="fragment"><p>The <em>learning protocol</em> is:</p>
+<li><p>The <em>learning protocol</em> is:</p>
 <ul>
-<li class="fragment">learn from examples asking an ORACLE</li>
-<li class="fragment">the ORACLE returns a random example in <em>unit</em> time (O(1))</li>
+<li>learn from examples asking an ORACLE</li>
+<li>the ORACLE returns a random example in <em>unit</em> time (O(1))</li>
 </ul></li>
 </ul>
 </section></section>
@@ -148,10 +148,10 @@
 <p><img data-src="../static/leslie-valiant.jpg" height="130" alt="Leslie Valiant" /> <img data-src="../static/michael-kearns.jpg" height="130" alt="Michael Kearns" /></p>
 <p><span class="citation" data-cites="kearns1989crytographic">(Kearns and Valiant 1989)</span></p>
 <ul>
-<li class="fragment">Introduce <em>weak learner</em><br />
+<li>Introduce <em>weak learner</em><br />
 </li>
-<li class="fragment">Performs only slightly better than chance</li>
-<li class="fragment"><em>Hypothesis boosting problem</em>: weak &lt;=&gt; strong ?</li>
+<li>Performs only slightly better than chance</li>
+<li><em>Hypothesis boosting problem</em>: weak &lt;=&gt; strong ?</li>
 </ul>
 </div>
 </div>
@@ -178,13 +178,13 @@
 <section id="side-note-weak-and-strong-learners" class="slide level3">
 <h3>Side note: <em>weak</em> and <em>strong</em> learners</h3>
 <ul>
-<li class="fragment"><p><em>strongly learnable</em> == PAC learnable</p></li>
-<li class="fragment"><p>A <em>concept</em> is <em>weakly</em> Learnable</p>
+<li><p><em>strongly learnable</em> == PAC learnable</p></li>
+<li><p>A <em>concept</em> is <em>weakly</em> Learnable</p>
 <ul>
-<li class="fragment"><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em></li>
-<li class="fragment">with <span class="math display">\[P\left(\text{error-rate} &lt; \frac{1}{2} - 1/p(s)\right) &gt; 1-\delta\]</span></li>
-<li class="fragment">in time bounded by a polynomial of <span class="math inline">\(1/\varepsilon\)</span> and <span class="math inline">\(1/\delta\)</span></li>
-<li class="fragment"><em>for all</em> <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
+<li><em>if</em> an <em>algorithm</em> can deduce a <em>hypothesis</em></li>
+<li>with <span class="math display">\[P\left(\text{error-rate} &lt; \frac{1}{2} - 1/p(s)\right) &gt; 1-\delta\]</span></li>
+<li>in time bounded by a polynomial of <span class="math inline">\(1/\varepsilon\)</span> and <span class="math inline">\(1/\delta\)</span></li>
+<li><em>for all</em> <span class="math inline">\(0 &lt; \delta \leq 1\)</span></li>
 </ul></li>
 </ul>
 </section></section>
@@ -197,9 +197,9 @@
 <p><img data-src="../static/robert-schapire.jpg" height="130" /></p>
 <p><span class="citation" data-cites="schapire1990strength">(R. E. Schapire 1990)</span></p>
 <ul>
-<li class="fragment">Cracks the <em>Hypothesis boosting problem</em></li>
-<li class="fragment">Shows <em>weak learner</em> &lt;=&gt; <em>strong learner</em></li>
-<li class="fragment">An algorithm constructing a strong learner from weak ones 🤯</li>
+<li>Cracks the <em>Hypothesis boosting problem</em></li>
+<li>Shows <em>weak learner</em> &lt;=&gt; <em>strong learner</em></li>
+<li>An algorithm constructing a strong learner from weak ones 🤯</li>
 </ul>
 </div>
 </div>
@@ -220,9 +220,9 @@
 <p><img data-src="../static/yoav-freund.png" height="130" /></p>
 <p><span class="citation" data-cites="freund1990majority">(Freund 1990)</span></p>
 <ul>
-<li class="fragment">Implements a much more efficient <em>boosting</em> algorithm</li>
-<li class="fragment">Trains learners on weighted subsets of the data</li>
-<li class="fragment">Uses majority voting to predict</li>
+<li>Implements a much more efficient <em>boosting</em> algorithm</li>
+<li>Trains learners on weighted subsets of the data</li>
+<li>Uses majority voting to predict</li>
 </ul>
 </div>
 </div>
@@ -243,10 +243,10 @@
 <p><img data-src="../static/yoav-freund.png" height="130" /> <img data-src="../static/robert-schapire.jpg" height="130" /></p>
 <p><span class="citation" data-cites="schapire1995decision">(R. Schapire and Freund 1995)</span></p>
 <ul>
-<li class="fragment">Introduces AdaBoost</li>
-<li class="fragment">First practical boosting algorithm<br />
+<li>Introduces AdaBoost</li>
+<li>First practical boosting algorithm<br />
 </li>
-<li class="fragment">Winners of Gödel prize in 2003</li>
+<li>Winners of Gödel prize in 2003</li>
 </ul>
 </div>
 </div>
@@ -272,7 +272,7 @@
 <p><img data-src="../static/jerome-h-friedman.jpeg" height="130" /> <img data-src="../static/robert-tibshirani-trevor-hastie.jpg" height="130" /></p>
 <p><span class="citation" data-cites="friedman2000special">(J. Friedman, Hastie, and Tibshirani 2000)</span></p>
 <ul>
-<li class="fragment">Shows AdaBoost is <em>Stagewise Additive Logistic regression</em></li>
+<li>Shows AdaBoost is <em>Stagewise Additive Logistic regression</em></li>
 </ul>
 </div>
 </div>
@@ -294,8 +294,8 @@
 <p><img data-src="../static/jerome-h-friedman.jpeg" height="130" /></p>
 <p><span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span> <span class="citation" data-cites="mason1999boosting">(Mason et al. 1999)</span></p>
 <ul>
-<li class="fragment">Generalizes the <em>boosting</em> concept</li>
-<li class="fragment">Describes <em>boosting</em> as gradient descent in function space</li>
+<li>Generalizes the <em>boosting</em> concept</li>
+<li>Describes <em>boosting</em> as gradient descent in function space</li>
 </ul>
 </div>
 </div>
@@ -310,8 +310,8 @@
 <p><img data-src="../static/tianqi-chen.jpg" height="130" /></p>
 <p><span class="citation" data-cites="chen2015higgs">(Chen and He 2015)</span></p>
 <ul>
-<li class="fragment">Wins Kaggle contest on Higgs Boson using XGBoost</li>
-<li class="fragment">XGBoost quickly becomes the most winning algorithm</li>
+<li>Wins Kaggle contest on Higgs Boson using XGBoost</li>
+<li>XGBoost quickly becomes the most winning algorithm</li>
 </ul>
 </div>
 </div>
@@ -331,10 +331,10 @@
 </figure>
 </div><div class="column" style="width:33%;">
 <ul>
-<li class="fragment">Partitions feature space into rectangles</li>
-<li class="fragment">Finding Optimal trees is NP-complete</li>
-<li class="fragment">Greedy algorithms and heuristics are used when fitting (CART, ID3, C4.5, etc.)</li>
-<li class="fragment">Trees are fast when predicting</li>
+<li>Partitions feature space into rectangles</li>
+<li>Finding Optimal trees is NP-complete</li>
+<li>Greedy algorithms and heuristics are used when fitting (CART, ID3, C4.5, etc.)</li>
+<li>Trees are fast when predicting</li>
 </ul>
 </div>
 </div>
@@ -354,17 +354,17 @@
 <p><img data-src="../plots/tree-depth.svg" style="width:90.0%" /></p>
 </div><div class="column" style="width:33%;">
 <ul>
-<li class="fragment">Nonlinearity</li>
-<li class="fragment">Feature interaction:
+<li>Nonlinearity</li>
+<li>Feature interaction:
 <ul>
-<li class="fragment">1 layer: <span class="math inline">\(f(X_i)\)</span></li>
-<li class="fragment">2 layers: <span class="math inline">\(f(X_i, X_j)\)</span></li>
-<li class="fragment">3 layers: <span class="math inline">\(f(X_i, X_j, X_k)\)</span></li>
+<li>1 layer: <span class="math inline">\(f(X_i)\)</span></li>
+<li>2 layers: <span class="math inline">\(f(X_i, X_j)\)</span></li>
+<li>3 layers: <span class="math inline">\(f(X_i, X_j, X_k)\)</span></li>
 </ul></li>
-<li class="fragment">Automatic feature selection</li>
-<li class="fragment">Single Trees overfit</li>
-<li class="fragment">Combining many small trees …</li>
-<li class="fragment">.. you get <em>flexible</em> yet <em>robust</em> models</li>
+<li>Automatic feature selection</li>
+<li>Single Trees overfit</li>
+<li>Combining many small trees …</li>
+<li>.. you get <em>flexible</em> yet <em>robust</em> models</li>
 </ul>
 </div>
 </div>
@@ -383,9 +383,9 @@
 <section id="ensemble-methods" class="title-slide slide level2">
 <h2>Ensemble methods</h2>
 <ul>
-<li class="fragment">Bagging: Grow trees using <em>random subsets of data (with replacement)</em></li>
-<li class="fragment">Random forest: Grow trees using <em>random subset of features</em></li>
-<li class="fragment">Boosting: Grow trees on <em>re-weighted dataset</em></li>
+<li>Bagging: Grow trees using <em>random subsets of data (with replacement)</em></li>
+<li>Random forest: Grow trees using <em>random subset of features</em></li>
+<li>Boosting: Grow trees on <em>re-weighted dataset</em></li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[\text{Boosting} \succ \text{Random forest} \succ \text{Bagging} \succ \text{Tree}\]</span></p>
@@ -477,15 +477,15 @@
 <section id="adaboost-algorithm" class="title-slide slide level2">
 <h2>Adaboost algorithm</h2>
 <ol type="1">
-<li class="fragment">Initialize weights <span class="math inline">\(w_i=1/N\)</span></li>
-<li class="fragment">For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
+<li>Initialize weights <span class="math inline">\(w_i=1/N\)</span></li>
+<li>For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
 <ol type="1">
-<li class="fragment">Fit classifier <span class="math inline">\(G_m(x)\)</span> to training data using <span class="math inline">\(w_i\)</span>’s</li>
-<li class="fragment">Compute <span class="math display">\[\text{err} = \frac{\sum_{i=1}^N w_i I(y_i \neq G_m(x_i))}{\sum_{i=1}^N w_i}\]</span></li>
-<li class="fragment">Compute <span class="math inline">\(\alpha_m = \log((1-\text{err})/\text{err})\)</span></li>
-<li class="fragment">Set <span class="math inline">\(w_i \leftarrow w_i \exp(\alpha_m I(y_i \neq G_m(x_i)))\)</span></li>
+<li>Fit classifier <span class="math inline">\(G_m(x)\)</span> to training data using <span class="math inline">\(w_i\)</span>’s</li>
+<li>Compute <span class="math display">\[\text{err} = \frac{\sum_{i=1}^N w_i I(y_i \neq G_m(x_i))}{\sum_{i=1}^N w_i}\]</span></li>
+<li>Compute <span class="math inline">\(\alpha_m = \log((1-\text{err})/\text{err})\)</span></li>
+<li>Set <span class="math inline">\(w_i \leftarrow w_i \exp(\alpha_m I(y_i \neq G_m(x_i)))\)</span></li>
 </ol></li>
-<li class="fragment">Output <span class="math display">\[G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)\]</span></li>
+<li>Output <span class="math display">\[G(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m G_m(x)\right)\]</span></li>
 </ol>
 </section>
 
@@ -493,11 +493,11 @@
 <section id="adaboost-loss" class="title-slide slide level2">
 <h2>Adaboost loss</h2>
 <ul>
-<li class="fragment">Not originally motivated in <em>Forward Stagewise Additive Learning</em></li>
-<li class="fragment"><span class="citation" data-cites="friedman2000special">(J. Friedman, Hastie, and Tibshirani 2000)</span> show that Adaboost is a stagewise additive model with loss <span class="math display">\[
+<li>Not originally motivated in <em>Forward Stagewise Additive Learning</em></li>
+<li><span class="citation" data-cites="friedman2000special">(J. Friedman, Hastie, and Tibshirani 2000)</span> show that Adaboost is a stagewise additive model with loss <span class="math display">\[
 L(y, f (x)) = \exp(−y f(x))
 \]</span> where <span class="math inline">\(y\in \{-1, 1\}\)</span> and <span class="math inline">\(f(x) = \sum_{m=1}^M \alpha_m G_m(x)\)</span> is the predicted score.</li>
-<li class="fragment">Usually for classification we use cross-entropy <span class="math display">\[
+<li>Usually for classification we use cross-entropy <span class="math display">\[
 L(y, f(x)) = y^\prime \log p(x) + (1-y^\prime) \log(1 - p(x)) 
 \]</span> where <span class="math inline">\(y^\prime \in \{0,1\}\)</span> and <span class="math inline">\(p(x)\)</span> is the softmax function.</li>
 </ul>
@@ -519,10 +519,10 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 <section id="adaboost" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
-<li class="fragment">In theory the two loss functions are equivalent</li>
-<li class="fragment">On average they produce the same <em>model</em> <span class="math inline">\(f\)</span></li>
-<li class="fragment">For finite samples the exponential loss has drawbacks</li>
-<li class="fragment">To much weight is given to errors</li>
+<li>In theory the two loss functions are equivalent</li>
+<li>On average they produce the same <em>model</em> <span class="math inline">\(f\)</span></li>
+<li>For finite samples the exponential loss has drawbacks</li>
+<li>To much weight is given to errors</li>
 </ul>
 <div class="fragment">
 <figure>
@@ -554,7 +554,7 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 <section id="adaboost-2" class="title-slide slide level2">
 <h2>Adaboost</h2>
 <ul>
-<li class="fragment">Adaboost has trouble on noisy data</li>
+<li>Adaboost has trouble on noisy data</li>
 </ul>
 <div class="fragment">
 <div class="columns">
@@ -581,7 +581,7 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 <section id="can-we-fix-adaboost" class="title-slide slide level2">
 <h2>Can we fix Adaboost ?</h2>
 <ul>
-<li class="fragment">Can we easily plug in a more robust loss function?</li>
+<li>Can we easily plug in a more robust loss function?</li>
 </ul>
 <div class="fragment">
 <blockquote>
@@ -615,10 +615,10 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 <section id="gradient-boosting" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li class="fragment">Introduced by <span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span> as a new view of boosting</li>
-<li class="fragment">Makes it possible to <em>derive</em> a boosting procedure</li>
-<li class="fragment">Solves each forward stagewise step as <em>gradient descent</em> in a function space</li>
-<li class="fragment">Applies to any differentiable loss function</li>
+<li>Introduced by <span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span> as a new view of boosting</li>
+<li>Makes it possible to <em>derive</em> a boosting procedure</li>
+<li>Solves each forward stagewise step as <em>gradient descent</em> in a function space</li>
+<li>Applies to any differentiable loss function</li>
 </ul>
 <aside class="notes">
 <p>Jerome Friedman (2001) - Greedy function approximation a gradient boosting machine</p>
@@ -628,22 +628,22 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 <section id="generalized-additive-model" class="title-slide slide level2">
 <h2>Generalized additive model</h2>
 <ul>
-<li class="fragment"><p>Generalized additive model <span class="math display">\[\begin{align}
+<li><p>Generalized additive model <span class="math display">\[\begin{align}
 f(x) &amp;= f_1(x) + \cdots + f_M(x) \\
 &amp;= \beta_1 b(x; \gamma_1) + \cdots + \beta_M b(x; \gamma_M)
 \end{align}\]</span></p></li>
-<li class="fragment"><p>If <span class="math inline">\(b(x)\)</span> is a tree global optimum is not possible</p></li>
+<li><p>If <span class="math inline">\(b(x)\)</span> is a tree global optimum is not possible</p></li>
 </ul>
 </section>
 
 <section id="forward-stagewise-additive-modelling" class="title-slide slide level2">
 <h2>Forward Stagewise Additive Modelling</h2>
 <ol type="1">
-<li class="fragment">Initialize <span class="math inline">\(f_0(x) = 0\)</span></li>
-<li class="fragment">For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
+<li>Initialize <span class="math inline">\(f_0(x) = 0\)</span></li>
+<li>For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
 <ul>
-<li class="fragment">Fit <span class="math inline">\((\beta_m, \gamma_m)\)</span> using loss <span class="math display">\[L(y, f_{m-1}(x) + \beta b(x;\gamma))\]</span> with <span class="math inline">\(f_{m-1}\)</span> constant.</li>
-<li class="fragment">Set <span class="math inline">\(f_m(x) = f_{m-1}(x) + \beta_m b(x_i, \gamma_m)\)</span>.</li>
+<li>Fit <span class="math inline">\((\beta_m, \gamma_m)\)</span> using loss <span class="math display">\[L(y, f_{m-1}(x) + \beta b(x;\gamma))\]</span> with <span class="math inline">\(f_{m-1}\)</span> constant.</li>
+<li>Set <span class="math inline">\(f_m(x) = f_{m-1}(x) + \beta_m b(x_i, \gamma_m)\)</span>.</li>
 </ul></li>
 </ol>
 <aside class="notes">
@@ -658,10 +658,10 @@ f(x) &amp;= f_1(x) + \cdots + f_M(x) \\
 <h2>Forward Stagewise Additive Modelling</h2>
 <p><span class="math display">\[L(y, f_{m-1}(x) + \beta b(x;\gamma))\]</span></p>
 <ul>
-<li class="fragment">If the basis functions are trees …</li>
-<li class="fragment">… even stagewise minimization is difficult</li>
-<li class="fragment">Solution exist only for specific loss functions</li>
-<li class="fragment">E.g. exponential loss -&gt; AdaBoost</li>
+<li>If the basis functions are trees …</li>
+<li>… even stagewise minimization is difficult</li>
+<li>Solution exist only for specific loss functions</li>
+<li>E.g. exponential loss -&gt; AdaBoost</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -683,31 +683,31 @@ f(x) &amp;= f_1(x) + \cdots + f_M(x) \\
 <section id="gradient-boosting-1" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li class="fragment">Let’s try to solve a more general problem instead 😅</li>
-<li class="fragment">Consider the expected loss function <span class="math display">\[\phi(f) = E[L(y,f(\boldsymbol{x}))]\]</span></li>
-<li class="fragment">we seek <span class="math inline">\(f\)</span> that minimizes <span class="math inline">\(\phi\)</span></li>
-<li class="fragment">Thats a difficult variational analysis problem</li>
-<li class="fragment">Let’s circumvent the problem… 😎</li>
-<li class="fragment">… consider a dataset of <span class="math inline">\(N\)</span> observations instead <span class="math display">\[\mathbf{f} = \{f(x_1), \ldots, f(x_N)\}\]</span></li>
+<li>Let’s try to solve a more general problem instead 😅</li>
+<li>Consider the expected loss function <span class="math display">\[\phi(f) = E[L(y,f(\boldsymbol{x}))]\]</span></li>
+<li>we seek <span class="math inline">\(f\)</span> that minimizes <span class="math inline">\(\phi\)</span></li>
+<li>Thats a difficult variational analysis problem</li>
+<li>Let’s circumvent the problem… 😎</li>
+<li>… consider a dataset of <span class="math inline">\(N\)</span> observations instead <span class="math display">\[\mathbf{f} = \{f(x_1), \ldots, f(x_N)\}\]</span></li>
 </ul>
 </section>
 
 <section id="gradient-boosting-2" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li class="fragment">Lets minimize the empirical loss <span class="math display">\[L(f) = \sum_{i=1}^N L(y_i, f(x_i))\]</span> wrt. <span class="math inline">\(f(x_i)\)</span> numerically.</li>
-<li class="fragment">All numerical optimization is a series of <span class="math inline">\(M\)</span> steps towards optimum</li>
-<li class="fragment">Let each step be a vector <span class="math inline">\(\mathbf{h}_m\in\mathbb{R}^N\)</span></li>
-<li class="fragment">The numerical optimum is <span class="math display">\[\mathbf{f}_M = \sum_{m=1}^M \mathbf{h}_m\]</span></li>
+<li>Lets minimize the empirical loss <span class="math display">\[L(f) = \sum_{i=1}^N L(y_i, f(x_i))\]</span> wrt. <span class="math inline">\(f(x_i)\)</span> numerically.</li>
+<li>All numerical optimization is a series of <span class="math inline">\(M\)</span> steps towards optimum</li>
+<li>Let each step be a vector <span class="math inline">\(\mathbf{h}_m\in\mathbb{R}^N\)</span></li>
+<li>The numerical optimum is <span class="math display">\[\mathbf{f}_M = \sum_{m=1}^M \mathbf{h}_m\]</span></li>
 </ul>
 </section>
 
 <section id="gradient-boosting-3" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li class="fragment">In <em>gradient descent</em> each step <span class="math inline">\(\mathbf{h}_m\)</span> is <span class="math display">\[-\rho \mathbf{g}_m\]</span></li>
-<li class="fragment">… where <span class="math inline">\(g_{im}\)</span> is <span class="math display">\[\left[\frac{\partial L(y_i, f(x_i))}{\partial  f(x_i)}\right]_{f(x)=f_{m-1}(x)}\]</span></li>
-<li class="fragment">The numerical optimization is then <span class="math display">\[
+<li>In <em>gradient descent</em> each step <span class="math inline">\(\mathbf{h}_m\)</span> is <span class="math display">\[-\rho \mathbf{g}_m\]</span></li>
+<li>… where <span class="math inline">\(g_{im}\)</span> is <span class="math display">\[\left[\frac{\partial L(y_i, f(x_i))}{\partial  f(x_i)}\right]_{f(x)=f_{m-1}(x)}\]</span></li>
+<li>The numerical optimization is then <span class="math display">\[
 \begin{align*}
 \mathbf{f}_m &amp;= \mathbf{f}_{m-1} + \mathbf{h}_m\\
 &amp;= \mathbf{f}_{m-1} -\rho \mathbf{g}_m 
@@ -719,14 +719,14 @@ f(x) &amp;= f_1(x) + \cdots + f_M(x) \\
 <section id="gradient-boosting-4" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li class="fragment">Let’s add <em>line search</em>, <span class="math display">\[\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m\]</span> where <span class="math inline">\(\rho_m\)</span> minimizes <span class="math inline">\(L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m)\)</span> in each step.</li>
-<li class="fragment">This fits the pattern of <em>forward stagewise learning</em> <span class="math display">\[f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)\]</span></li>
-<li class="fragment">where <span class="math inline">\(\rho_m\)</span> is analogous to <span class="math inline">\(\beta_m\)</span></li>
-<li class="fragment">and <span class="math inline">\(-\mathbf{g}_m\)</span> is analogous to <span class="math inline">\(b(x; \gamma_m)\)</span></li>
-<li class="fragment">We can derive the gradient considering <span class="math inline">\(f(x)\)</span> a variable</li>
-<li class="fragment">… and easily compute <span class="math inline">\(\mathbf{g}_m(f(x))\)</span> using <span class="math inline">\(f_{m-1}(x)\)</span></li>
-<li class="fragment">… and set the initial <span class="math inline">\(f_0(x)\)</span> to a constant</li>
-<li class="fragment">… but we cannot compute <span class="math inline">\(\mathbf{g}_m\)</span> outside the dataset 🤔</li>
+<li>Let’s add <em>line search</em>, <span class="math display">\[\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m\]</span> where <span class="math inline">\(\rho_m\)</span> minimizes <span class="math inline">\(L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m)\)</span> in each step.</li>
+<li>This fits the pattern of <em>forward stagewise learning</em> <span class="math display">\[f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)\]</span></li>
+<li>where <span class="math inline">\(\rho_m\)</span> is analogous to <span class="math inline">\(\beta_m\)</span></li>
+<li>and <span class="math inline">\(-\mathbf{g}_m\)</span> is analogous to <span class="math inline">\(b(x; \gamma_m)\)</span></li>
+<li>We can derive the gradient considering <span class="math inline">\(f(x)\)</span> a variable</li>
+<li>… and easily compute <span class="math inline">\(\mathbf{g}_m(f(x))\)</span> using <span class="math inline">\(f_{m-1}(x)\)</span></li>
+<li>… and set the initial <span class="math inline">\(f_0(x)\)</span> to a constant</li>
+<li>… but we cannot compute <span class="math inline">\(\mathbf{g}_m\)</span> outside the dataset 🤔</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -738,10 +738,10 @@ f(x) &amp;= f_1(x) + \cdots + f_M(x) \\
 <section id="gradient-boosting-5" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li class="fragment">The idea of <span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span>:
+<li>The idea of <span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span>:
 <ul>
-<li class="fragment">Fit a <em>learner</em> to <span class="math inline">\(-\mathbf{g}_m\)</span> <span class="math inline">\(\rightarrow \hat{b}_m(x; \gamma_m)\)</span></li>
-<li class="fragment">Forward stagewise step: <span class="math display">\[f_m(x) = f_{m-1}(x) + \rho_m \hat{b}_m(x; \gamma_m)\]</span></li>
+<li>Fit a <em>learner</em> to <span class="math inline">\(-\mathbf{g}_m\)</span> <span class="math inline">\(\rightarrow \hat{b}_m(x; \gamma_m)\)</span></li>
+<li>Forward stagewise step: <span class="math display">\[f_m(x) = f_{m-1}(x) + \rho_m \hat{b}_m(x; \gamma_m)\]</span></li>
 </ul></li>
 </ul>
 </section>
@@ -749,31 +749,31 @@ f(x) &amp;= f_1(x) + \cdots + f_M(x) \\
 <section id="gradient-boosting-algorithm" class="title-slide slide level2">
 <h2>Gradient boosting algorithm</h2>
 <ol type="1">
-<li class="fragment">Initialize <span class="math inline">\(f_0(x) = \gamma_0\)</span> where <span class="math inline">\(\gamma_0\)</span> minimizes <span class="math inline">\(\sum_{i=1}^N L(y_i, \gamma)\)</span></li>
-<li class="fragment">For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
+<li>Initialize <span class="math inline">\(f_0(x) = \gamma_0\)</span> where <span class="math inline">\(\gamma_0\)</span> minimizes <span class="math inline">\(\sum_{i=1}^N L(y_i, \gamma)\)</span></li>
+<li>For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
 <ul>
-<li class="fragment">Compute the (negative) gradient <span class="math inline">\(\mathbf{r}_m = -\mathbf{g}(f_{m-1}(x))\)</span></li>
-<li class="fragment">Fit a regression tree <span class="math inline">\(T_m\)</span> to <span class="math inline">\(\mathbf{r}_m\)</span></li>
-<li class="fragment">For each region <span class="math inline">\(R_j\)</span> of tree <span class="math inline">\(T_m\)</span>
+<li>Compute the (negative) gradient <span class="math inline">\(\mathbf{r}_m = -\mathbf{g}(f_{m-1}(x))\)</span></li>
+<li>Fit a regression tree <span class="math inline">\(T_m\)</span> to <span class="math inline">\(\mathbf{r}_m\)</span></li>
+<li>For each region <span class="math inline">\(R_j\)</span> of tree <span class="math inline">\(T_m\)</span>
 <ul>
-<li class="fragment">Find optimal <span class="math inline">\(\gamma_{jm}\)</span> wrt. <span class="math inline">\(\sum L(y_i, f_{m-1}(x_i) + \gamma)\)</span></li>
+<li>Find optimal <span class="math inline">\(\gamma_{jm}\)</span> wrt. <span class="math inline">\(\sum L(y_i, f_{m-1}(x_i) + \gamma)\)</span></li>
 </ul></li>
-<li class="fragment">Set <span class="math inline">\(f_m(x) = f_{m-1}(x) + T_m(x)\)</span></li>
+<li>Set <span class="math inline">\(f_m(x) = f_{m-1}(x) + T_m(x)\)</span></li>
 </ul></li>
-<li class="fragment">Output <span class="math inline">\(f_M(x)\)</span></li>
+<li>Output <span class="math inline">\(f_M(x)\)</span></li>
 </ol>
 </section>
 
 <section id="xgboost" class="title-slide slide level2">
 <h2>XGBoost</h2>
 <ul>
-<li class="fragment">Explicit regularization in loss function</li>
-<li class="fragment">Newton boosting:
+<li>Explicit regularization in loss function</li>
+<li>Newton boosting:
 <ul>
-<li class="fragment"><span class="math inline">\(\mathbf{h}_m\)</span> is <span class="math display">\[-\rho_m \mathbf{H}_m^{-1}\mathbf{g}_m\]</span></li>
+<li><span class="math inline">\(\mathbf{h}_m\)</span> is <span class="math display">\[-\rho_m \mathbf{H}_m^{-1}\mathbf{g}_m\]</span></li>
 </ul></li>
-<li class="fragment">Custom split point identification: “Weighted Quantile Sketch”</li>
-<li class="fragment">Computationally optimized</li>
+<li>Custom split point identification: “Weighted Quantile Sketch”</li>
+<li>Computationally optimized</li>
 </ul>
 </section>
 

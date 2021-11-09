@@ -18,13 +18,4 @@ slides.html:
 	pandoc -t revealjs \
 	  	-s slides.md \
 		-o .slides.html \
-		$(reveal_flags) \
-		--incremental
-
-
-dev-slides.html:
-	pandoc -t revealjs \
-	  	-s slides.md \
-		-o .slides.html \
-		$(reveal_flags) \
-		--incremental
+		$(reveal_flags)
