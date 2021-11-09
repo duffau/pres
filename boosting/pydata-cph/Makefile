@@ -26,4 +26,5 @@ dev-slides.html:
 	pandoc -t revealjs \
 	  	-s slides.md \
 		-o .slides.html \
-		$(reveal_flags)
+		$(reveal_flags) \
+		--incremental

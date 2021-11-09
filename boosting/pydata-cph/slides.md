@@ -523,23 +523,6 @@ L(y, f(x)) &= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 ::: nonincremental
 5 minutes 🍕🍺
 :::
-
-## Forward Stagewise Additive Learning
-
-$$
-f(x) = \sum_{m=1}^M \beta_m \cdot b(x; \gamma_m)
-$$
-
-1. Initialize $f_0(x) = 0$
-2. For $m=1$ to $M$:
-   a. Compute $$(\beta_m, \gamma_m) = \underset{\beta, \gamma}{\text{argmin}} \sum_{i=1}^N L(y_i, f_{m-1}(x_i)+ \beta b(x_i;\gamma))$$
-   b. Set $f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)$
-
-::: notes
-- Boosting is a special case of _Forward Stagewise Additive Learning_
-- It's an approximation technique for general additive models
-:::
-
 ## Gradient boosting 
 
 - Introduced by [@friedman2001greedy] as a new view of boosting
@@ -547,50 +530,61 @@ $$
 - Solves each forward stagewise step as _gradient descent_ in a function space
 - Applies to any differentiable loss function
 
+:::notes
+Jerome Friedman (2001) - Greedy function approximation a gradient boosting machine
+:::
 
-## Side note: Gradient boosting in SciKit Learn
+## Generalized additive model
 
-_Scikit-learn documentation_:
 
-> GB builds an additive model in a forward stage-wise fashion; it allows for the optimization of arbitrary differentiable loss functions.
+- Generalized additive model
+\begin{align}
+f(x) &= f_1(x) + \cdots + f_M(x) \\
+&= \beta_1 b(x; \gamma_1) + \cdots + \beta_M b(x; \gamma_M)
+\end{align}
 
-. . .
+- If $b(x)$ is a tree global optimum is not possible
 
-Sounds promising...
+## Forward Stagewise Additive Modelling
 
-. . .
+1. Initialize $f_0(x) = 0$
+2. For $m=1$ to $M$:
+   - Fit $(\beta_m, \gamma_m)$ using loss $$L(y, f_{m-1}(x) + \beta b(x;\gamma))$$ with $f_{m-1}$ constant.
+   - Set $f_m(x) = f_{m-1}(x) + \beta_m b(x_i, \gamma_m)$.
 
-> `loss: {‘deviance’, ‘exponential’}`
->
-> For loss ‘exponential’ gradient boosting recovers the AdaBoost algorithm.
+::: notes
+- It's an approximation technique for general additive models
+:::
+## Forward Stagewise Additive Modelling
 
-. . .
+$$L(y, f_{m-1}(x) + \beta b(x;\gamma))$$
 
-🤦‍♂️
+- If the basis functions are trees ...
+- ... even stagewise minimization is difficult
+- Solution exist only for specific loss functions
+- E.g. exponential loss -> AdaBoost
+
+::: notes
+- Remember fitting trees is
+  - both finding constants  $\gamma_j$ given a region $R_j$
+  - and finding optimal regions $R_j$ is difficult when conditioning
+:::
+
+
+### Forward Stagewise Additive Modelling
+
+![Fitting a tree conditioned on another](../static/superimposed-trees.svg){width=60%}
+
+🤯
 
 ## Gradient boosting
 
-- Consider the loss function,
-$$\sum_{i=1}^N L\left(y_i, \sum_{m=1}^M \beta_m b(x_i, \gamma_m)\right)$$ 
-- ... to be optimized over $\{\beta_m, \gamma_m\}_{m=1}^M$
-- ... which might me intractable
-
-## Gradient boosting
-- We try to solve it in a Forward stagewise mamner
-- For $1$ to $M$:
-  - Optimize $$\sum_{i=1}^N L\left(y_i, f_{m-1}(x_i) + \beta_m b(x_i, \gamma_m)\right)$$ 
-- where $f_m(x) = f_{m-1}(x) + \beta_m b(x_i, \gamma_m)$.
-- If the basis functions are trees
-- ... the stagewise minimization ca be difficult 
-
-## Gradient boosting
-
+- Let's try to solve a more general problem instead 😅
 - Consider the expected loss function $$\phi(f) = E[L(y,f(\boldsymbol{x}))]$$ 
 - we seek $f$ that minimizes $\phi$
 - Thats a difficult variational analysis problem
 - Let's circumvent the problem... 😎
 - ... consider a dataset of $N$ observations instead $$\mathbf{f} = \{f(x_1), \ldots, f(x_N)\}$$
-
 
 ## Gradient boosting
 
@@ -613,19 +607,35 @@ $$
 ## Gradient boosting
 
 - Let's add _line search_, $$\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m$$ 
-  where $\rho_m = \underset{\rho}{\text{argmin}}\quad L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m )$
+  where $\rho_m$ minimizes $L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m)$ in each step.
 - This fits the pattern of _forward stagewise learning_ $$f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)$$
 - where $\rho_m$ is analogous to $\beta_m$
 - and $-\mathbf{g}_m$ is analogous to $b(x; \gamma_m)$ 
 - We can derive the gradient considering $f(x)$ a variable
-- ... and easily compute $\mathbf{g}_m(f(x))$ using the value from the previous iteration $f_{m-1}(x)$
-- ... we cannot compute $\mathbf{g}_m$ outside the dataset 🤔
+- ... and easily compute $\mathbf{g}_m(f(x))$ using $f_{m-1}(x)$
+- ... and set the initial $f_0(x)$ to a constant
+- ... but we cannot compute $\mathbf{g}_m$ outside the dataset 🤔
 
+
+:::notes
+-  $f_0(x)$ is set to a constant minimizing the loss
+:::
 ## Gradient boosting
 
 - The idea of [@friedman2001greedy]: 
   - Fit a _learner_ to $-\mathbf{g}_m$ $\rightarrow \hat{b}_m(x; \gamma_m)$ 
   - Forward stagewise step: $$f_m(x) = f_{m-1}(x) + \rho_m \hat{b}_m(x; \gamma_m)$$
+
+## Gradient boosting algorithm
+
+1. Initialize $f_0(x) = \gamma_0$ where $\gamma_0$ minimizes $\sum_{i=1}^N L(y_i, \gamma)$
+2. For $m=1$ to $M$:
+    - Compute the (negative) gradient $\mathbf{r}_m = -\mathbf{g}(f_{m-1}(x))$ 
+    - Fit a regression tree $T_m$ to $\mathbf{r}_m$ 
+    - For each region $R_j$ of tree $T_m$
+      - Find optimal $\gamma_{jm}$ wrt. $\sum L(y_i, f_{m-1}(x_i) + \gamma)$
+    - Set $f_m(x) = f_{m-1}(x) + T_m(x)$
+3. Output $f_M(x)$
 
 ## XGBoost
 

@@ -612,27 +612,6 @@ L(y, f(x)) &amp;= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 </div>
 </section>
 
-<section id="forward-stagewise-additive-learning" class="title-slide slide level2">
-<h2>Forward Stagewise Additive Learning</h2>
-<p><span class="math display">\[
-f(x) = \sum_{m=1}^M \beta_m \cdot b(x; \gamma_m)
-\]</span></p>
-<ol type="1">
-<li class="fragment">Initialize <span class="math inline">\(f_0(x) = 0\)</span></li>
-<li class="fragment">For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
-<ol type="a">
-<li class="fragment">Compute <span class="math display">\[(\beta_m, \gamma_m) = \underset{\beta, \gamma}{\text{argmin}} \sum_{i=1}^N L(y_i, f_{m-1}(x_i)+ \beta b(x_i;\gamma))\]</span></li>
-<li class="fragment">Set <span class="math inline">\(f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)\)</span></li>
-</ol></li>
-</ol>
-<aside class="notes">
-<ul>
-<li>Boosting is a special case of <em>Forward Stagewise Additive Learning</em></li>
-<li>It’s an approximation technique for general additive models</li>
-</ul>
-</aside>
-</section>
-
 <section id="gradient-boosting" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
@@ -641,54 +620,70 @@ f(x) = \sum_{m=1}^M \beta_m \cdot b(x; \gamma_m)
 <li class="fragment">Solves each forward stagewise step as <em>gradient descent</em> in a function space</li>
 <li class="fragment">Applies to any differentiable loss function</li>
 </ul>
+<aside class="notes">
+<p>Jerome Friedman (2001) - Greedy function approximation a gradient boosting machine</p>
+</aside>
 </section>
 
-<section id="side-note-gradient-boosting-in-scikit-learn" class="title-slide slide level2">
-<h2>Side note: Gradient boosting in SciKit Learn</h2>
-<p><em>Scikit-learn documentation</em>:</p>
-<blockquote>
-<p>GB builds an additive model in a forward stage-wise fashion; it allows for the optimization of arbitrary differentiable loss functions.</p>
-</blockquote>
-<div class="fragment">
-<p>Sounds promising…</p>
-</div>
-<div class="fragment">
-<blockquote>
-<p><code>loss: {‘deviance’, ‘exponential’}</code></p>
-<p>For loss ‘exponential’ gradient boosting recovers the AdaBoost algorithm.</p>
-</blockquote>
-</div>
-<div class="fragment">
-<p>🤦‍♂️</p>
-</div>
+<section id="generalized-additive-model" class="title-slide slide level2">
+<h2>Generalized additive model</h2>
+<ul>
+<li class="fragment"><p>Generalized additive model <span class="math display">\[\begin{align}
+f(x) &amp;= f_1(x) + \cdots + f_M(x) \\
+&amp;= \beta_1 b(x; \gamma_1) + \cdots + \beta_M b(x; \gamma_M)
+\end{align}\]</span></p></li>
+<li class="fragment"><p>If <span class="math inline">\(b(x)\)</span> is a tree global optimum is not possible</p></li>
+</ul>
 </section>
 
+<section id="forward-stagewise-additive-modelling" class="title-slide slide level2">
+<h2>Forward Stagewise Additive Modelling</h2>
+<ol type="1">
+<li class="fragment">Initialize <span class="math inline">\(f_0(x) = 0\)</span></li>
+<li class="fragment">For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
+<ul>
+<li class="fragment">Fit <span class="math inline">\((\beta_m, \gamma_m)\)</span> using loss <span class="math display">\[L(y, f_{m-1}(x) + \beta b(x;\gamma))\]</span> with <span class="math inline">\(f_{m-1}\)</span> constant.</li>
+<li class="fragment">Set <span class="math inline">\(f_m(x) = f_{m-1}(x) + \beta_m b(x_i, \gamma_m)\)</span>.</li>
+</ul></li>
+</ol>
+<aside class="notes">
+<ul>
+<li>It’s an approximation technique for general additive models</li>
+</ul>
+</aside>
+</section>
+
+<section>
+<section id="forward-stagewise-additive-modelling-1" class="title-slide slide level2">
+<h2>Forward Stagewise Additive Modelling</h2>
+<p><span class="math display">\[L(y, f_{m-1}(x) + \beta b(x;\gamma))\]</span></p>
+<ul>
+<li class="fragment">If the basis functions are trees …</li>
+<li class="fragment">… even stagewise minimization is difficult</li>
+<li class="fragment">Solution exist only for specific loss functions</li>
+<li class="fragment">E.g. exponential loss -&gt; AdaBoost</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Remember fitting trees is
+<ul>
+<li>both finding constants <span class="math inline">\(\gamma_j\)</span> given a region <span class="math inline">\(R_j\)</span></li>
+<li>and finding optimal regions <span class="math inline">\(R_j\)</span> is difficult when conditioning</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="forward-stagewise-additive-modelling-2" class="slide level3">
+<h3>Forward Stagewise Additive Modelling</h3>
+<figure>
+<img data-src="../static/superimposed-trees.svg" style="width:60.0%" alt="Fitting a tree conditioned on another" /><figcaption aria-hidden="true">Fitting a tree conditioned on another</figcaption>
+</figure>
+<p>🤯</p>
+</section></section>
 <section id="gradient-boosting-1" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li class="fragment">Consider the loss function, <span class="math display">\[\sum_{i=1}^N L\left(y_i, \sum_{m=1}^M \beta_m b(x_i, \gamma_m)\right)\]</span></li>
-<li class="fragment">… to be optimized over <span class="math inline">\(\{\beta_m, \gamma_m\}_{m=1}^M\)</span></li>
-<li class="fragment">… which might me intractable</li>
-</ul>
-</section>
-
-<section id="gradient-boosting-2" class="title-slide slide level2">
-<h2>Gradient boosting</h2>
-<ul>
-<li class="fragment">We try to solve it in a Forward stagewise mamner</li>
-<li class="fragment">For <span class="math inline">\(1\)</span> to <span class="math inline">\(M\)</span>:
-<ul>
-<li class="fragment">Optimize <span class="math display">\[\sum_{i=1}^N L\left(y_i, f_{m-1}(x_i) + \beta_m b(x_i, \gamma_m)\right)\]</span></li>
-</ul></li>
-<li class="fragment">where <span class="math inline">\(f_m(x) = f_{m-1}(x) + \beta_m b(x_i, \gamma_m)\)</span>.</li>
-<li class="fragment">If the basis functions are trees</li>
-<li class="fragment">… the stagewise minimization ca be difficult</li>
-</ul>
-</section>
-
-<section id="gradient-boosting-3" class="title-slide slide level2">
-<h2>Gradient boosting</h2>
-<ul>
+<li class="fragment">Let’s try to solve a more general problem instead 😅</li>
 <li class="fragment">Consider the expected loss function <span class="math display">\[\phi(f) = E[L(y,f(\boldsymbol{x}))]\]</span></li>
 <li class="fragment">we seek <span class="math inline">\(f\)</span> that minimizes <span class="math inline">\(\phi\)</span></li>
 <li class="fragment">Thats a difficult variational analysis problem</li>
@@ -697,7 +692,7 @@ f(x) = \sum_{m=1}^M \beta_m \cdot b(x; \gamma_m)
 </ul>
 </section>
 
-<section id="gradient-boosting-4" class="title-slide slide level2">
+<section id="gradient-boosting-2" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">Lets minimize the empirical loss <span class="math display">\[L(f) = \sum_{i=1}^N L(y_i, f(x_i))\]</span> wrt. <span class="math inline">\(f(x_i)\)</span> numerically.</li>
@@ -707,7 +702,7 @@ f(x) = \sum_{m=1}^M \beta_m \cdot b(x; \gamma_m)
 </ul>
 </section>
 
-<section id="gradient-boosting-5" class="title-slide slide level2">
+<section id="gradient-boosting-3" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">In <em>gradient descent</em> each step <span class="math inline">\(\mathbf{h}_m\)</span> is <span class="math display">\[-\rho \mathbf{g}_m\]</span></li>
@@ -721,20 +716,26 @@ f(x) = \sum_{m=1}^M \beta_m \cdot b(x; \gamma_m)
 </ul>
 </section>
 
-<section id="gradient-boosting-6" class="title-slide slide level2">
+<section id="gradient-boosting-4" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li class="fragment">Let’s add <em>line search</em>, <span class="math display">\[\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m\]</span> where <span class="math inline">\(\rho_m = \underset{\rho}{\text{argmin}}\quad L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m )\)</span></li>
+<li class="fragment">Let’s add <em>line search</em>, <span class="math display">\[\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m\]</span> where <span class="math inline">\(\rho_m\)</span> minimizes <span class="math inline">\(L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m)\)</span> in each step.</li>
 <li class="fragment">This fits the pattern of <em>forward stagewise learning</em> <span class="math display">\[f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)\]</span></li>
 <li class="fragment">where <span class="math inline">\(\rho_m\)</span> is analogous to <span class="math inline">\(\beta_m\)</span></li>
 <li class="fragment">and <span class="math inline">\(-\mathbf{g}_m\)</span> is analogous to <span class="math inline">\(b(x; \gamma_m)\)</span></li>
 <li class="fragment">We can derive the gradient considering <span class="math inline">\(f(x)\)</span> a variable</li>
-<li class="fragment">… and easily compute <span class="math inline">\(\mathbf{g}_m(f(x))\)</span> using the value from the previous iteration <span class="math inline">\(f_{m-1}(x)\)</span></li>
-<li class="fragment">… we cannot compute <span class="math inline">\(\mathbf{g}_m\)</span> outside the dataset 🤔</li>
+<li class="fragment">… and easily compute <span class="math inline">\(\mathbf{g}_m(f(x))\)</span> using <span class="math inline">\(f_{m-1}(x)\)</span></li>
+<li class="fragment">… and set the initial <span class="math inline">\(f_0(x)\)</span> to a constant</li>
+<li class="fragment">… but we cannot compute <span class="math inline">\(\mathbf{g}_m\)</span> outside the dataset 🤔</li>
 </ul>
+<aside class="notes">
+<ul>
+<li><span class="math inline">\(f_0(x)\)</span> is set to a constant minimizing the loss</li>
+</ul>
+</aside>
 </section>
 
-<section id="gradient-boosting-7" class="title-slide slide level2">
+<section id="gradient-boosting-5" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
 <li class="fragment">The idea of <span class="citation" data-cites="friedman2001greedy">(J. H. Friedman 2001)</span>:
@@ -743,6 +744,24 @@ f(x) = \sum_{m=1}^M \beta_m \cdot b(x; \gamma_m)
 <li class="fragment">Forward stagewise step: <span class="math display">\[f_m(x) = f_{m-1}(x) + \rho_m \hat{b}_m(x; \gamma_m)\]</span></li>
 </ul></li>
 </ul>
+</section>
+
+<section id="gradient-boosting-algorithm" class="title-slide slide level2">
+<h2>Gradient boosting algorithm</h2>
+<ol type="1">
+<li class="fragment">Initialize <span class="math inline">\(f_0(x) = \gamma_0\)</span> where <span class="math inline">\(\gamma_0\)</span> minimizes <span class="math inline">\(\sum_{i=1}^N L(y_i, \gamma)\)</span></li>
+<li class="fragment">For <span class="math inline">\(m=1\)</span> to <span class="math inline">\(M\)</span>:
+<ul>
+<li class="fragment">Compute the (negative) gradient <span class="math inline">\(\mathbf{r}_m = -\mathbf{g}(f_{m-1}(x))\)</span></li>
+<li class="fragment">Fit a regression tree <span class="math inline">\(T_m\)</span> to <span class="math inline">\(\mathbf{r}_m\)</span></li>
+<li class="fragment">For each region <span class="math inline">\(R_j\)</span> of tree <span class="math inline">\(T_m\)</span>
+<ul>
+<li class="fragment">Find optimal <span class="math inline">\(\gamma_{jm}\)</span> wrt. <span class="math inline">\(\sum L(y_i, f_{m-1}(x_i) + \gamma)\)</span></li>
+</ul></li>
+<li class="fragment">Set <span class="math inline">\(f_m(x) = f_{m-1}(x) + T_m(x)\)</span></li>
+</ul></li>
+<li class="fragment">Output <span class="math inline">\(f_M(x)\)</span></li>
+</ol>
 </section>
 
 <section id="xgboost" class="title-slide slide level2">
