@@ -6,7 +6,7 @@ from utils import gen_spherical_data
 N = 10000
 K = 10
 SEED = 123
-NOISE_PCT = 0.75
+NOISE_PCT = 0.5
 
 X, y = gen_spherical_data(
     n=N, 
