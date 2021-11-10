@@ -42,6 +42,7 @@
   </style>
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/black.css" id="theme">
   <link rel="stylesheet" href="../black-root.css"/>
+  <meta property="og:image" content="../static/Ensemble_Boosting.svg" />
 </head>
 <body>
   <div class="reveal">
@@ -719,7 +720,7 @@ f(x) &amp;= f_1(x) + \cdots + f_M(x) \\
 <section id="gradient-boosting-4" class="title-slide slide level2">
 <h2>Gradient boosting</h2>
 <ul>
-<li>Let’s add <em>line search</em>, <span class="math display">\[\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m\]</span> where <span class="math inline">\(\rho_m\)</span> minimizes <span class="math inline">\(L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m)\)</span> in each step.</li>
+<li>Let’s add <em>line search</em>, <span class="math display">\[\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m\]</span> where <span class="math inline">\(\rho_m\)</span> minimizes <span class="math inline">\(L(y, \mathbf{f}_{m-1}-\rho \mathbf{g}_m)\)</span> in each step.</li>
 <li>This fits the pattern of <em>forward stagewise learning</em> <span class="math display">\[f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)\]</span></li>
 <li>where <span class="math inline">\(\rho_m\)</span> is analogous to <span class="math inline">\(\beta_m\)</span></li>
 <li>and <span class="math inline">\(-\mathbf{g}_m\)</span> is analogous to <span class="math inline">\(b(x; \gamma_m)\)</span></li>

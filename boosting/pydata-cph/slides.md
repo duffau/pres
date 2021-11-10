@@ -2,6 +2,8 @@
 title: "Gradient Boosting:<br>How does it work?"
 author: Christian Duffau-Rasmussen
 date: 9. November 2021
+header-includes:
+    <meta property="og:image" content="../static/Ensemble_Boosting.svg" />
 ---
 
 ### 
@@ -607,7 +609,7 @@ $$
 ## Gradient boosting
 
 - Let's add _line search_, $$\mathbf{f}_m = \mathbf{f}_{m-1} - \rho_m \mathbf{g}_m$$ 
-  where $\rho_m$ minimizes $L(\mathbf{f}_{m-1}-\rho \mathbf{g}_m)$ in each step.
+  where $\rho_m$ minimizes $L(y, \mathbf{f}_{m-1}-\rho \mathbf{g}_m)$ in each step.
 - This fits the pattern of _forward stagewise learning_ $$f_m(x) = f_{m-1}(x) + \beta_m b(x; \gamma_m)$$
 - where $\rho_m$ is analogous to $\beta_m$
 - and $-\mathbf{g}_m$ is analogous to $b(x; \gamma_m)$ 
