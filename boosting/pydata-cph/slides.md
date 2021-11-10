@@ -2,8 +2,10 @@
 title: "Gradient Boosting:<br>How does it work?"
 author: Christian Duffau-Rasmussen
 date: 9. November 2021
-header-includes:
+header-includes: |
     <meta property="og:image" content="../static/Ensemble_Boosting_some_preview.png" />
+    <meta property="og:title" content="Gradient Boosting: How does it work?" />
+    <meta property="og:description" content="The popular algorithms like XGBoost, CatBoost and LightGBM are incredibly powerful on tabular data. They are all applications of the gradient boosting method. In this talk we follow the evolution of boosting from the formal learning theory of the eighties and explore the groundbreaking idea that lead to gradient boosting." />
 ---
 
 ### 
