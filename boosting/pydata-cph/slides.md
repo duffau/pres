@@ -3,7 +3,7 @@ title: "Gradient Boosting:<br>How does it work?"
 author: Christian Duffau-Rasmussen
 date: 9. November 2021
 header-includes:
-    <meta property="og:image" content="../static/Ensemble_Boosting.svg" />
+    <meta property="og:image" content="../static/Ensemble_Boosting_some_preview.png" />
 ---
 
 ### 
