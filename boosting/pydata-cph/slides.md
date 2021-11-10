@@ -2,10 +2,20 @@
 title: "Gradient Boosting:<br>How does it work?"
 author: Christian Duffau-Rasmussen
 date: 9. November 2021
+description: "Boosting algorithms like XGBoost are incredibly powerful on tabular data. In this talk we explore the groundbreaking idea that lead to gradient boosting."
 header-includes: |
-    <meta property="og:image" content="../static/Ensemble_Boosting_some_preview.png" />
-    <meta property="og:title" content="Gradient Boosting: How does it work?" />
-    <meta property="og:description" content="The popular algorithms like XGBoost, CatBoost and LightGBM are incredibly powerful on tabular data. They are all applications of the gradient boosting method. In this talk we follow the evolution of boosting from the formal learning theory of the eighties and explore the groundbreaking idea that lead to gradient boosting." />
+  <meta property="og:url" content="https://duffau.github.io/talks/boosting/pydata-cph/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://duffau.github.io/talks/boosting/static/Ensemble_Boosting.svg" />
+  <meta property="og:title" content="Gradient Boosting: How does it work?" />
+  <meta property="og:description" content="Boosting algorithms like XGBoost are incredibly powerful on tabular data. In this talk we explore the groundbreaking idea that lead to gradient boosting." />
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="duffau.github.io">
+  <meta property="twitter:url" content="https://duffau.github.io/talks/boosting/pydata-cph/">
+  <meta name="twitter:title" content="Gradient Boosting: How does it work?">
+  <meta name="twitter:description" content="Boosting algorithms like XGBoost are incredibly powerful on tabular data. In this talk we explore the groundbreaking idea that lead to gradient boosting.">
+  <meta name="twitter:image" content="https://duffau.github.io/talks/boosting/static/Ensemble_Boosting.svg">
 ---
 
 ### 
