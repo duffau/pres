@@ -55,17 +55,25 @@
 </section>
 <section class="slide level1">
 
-<h2 id="the-efficient-market-hypothesis">The Efficient Market Hypothesis</h2>
-<p>A market in which prices always “<em>fully reflect</em>” available information is called “<em>efficient</em>”.</p>
+<h2 id="the-efficient-market-hypothesis">The Efficient Market
+Hypothesis</h2>
+<p>A market in which prices always “<em>fully reflect</em>” available
+information is called “<em>efficient</em>”.</p>
 </section>
 <section class="slide level1">
 
-<h2 id="the-efficient-market-hypothesis-1">The Efficient Market Hypothesis</h2>
-<p><span class="math display">\[E\left[P_{t+1}|\Phi_t\right] = P_t + E\left[r_{t+1}|\Phi_t\right]P_t \]</span></p>
+<h2 id="the-efficient-market-hypothesis-1">The Efficient Market
+Hypothesis</h2>
+<p><span class="math display">\[E\left[P_{t+1}|\Phi_t\right] = P_t +
+E\left[r_{t+1}|\Phi_t\right]P_t \]</span></p>
 <ul>
-<li><span class="math inline">\(P_t\)</span>: Price at time <span class="math inline">\(t\)</span></li>
-<li><span class="math inline">\(r_t\)</span>: Return from <span class="math inline">\(t-1\)</span> to <span class="math inline">\(t\)</span></li>
-<li><span class="math inline">\(\Phi_t\)</span>: The available information at time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(P_t\)</span>: Price at time <span
+class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(r_t\)</span>: Return from <span
+class="math inline">\(t-1\)</span> to <span
+class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(\Phi_t\)</span>: The available
+information at time <span class="math inline">\(t\)</span></li>
 </ul>
 </section>
 <section class="slide level1">
@@ -73,7 +81,8 @@
 <h2 id="the-random-walk-hypothesis">The Random Walk Hypothesis</h2>
 <p><span class="math display">\[P_{t} = M + P_{t-1} + r_t \]</span></p>
 <ul>
-<li><span class="math inline">\(r_t\)</span> : Is “white noise” (i.i.d., mean <em>zero</em>)</li>
+<li><span class="math inline">\(r_t\)</span> : Is “white noise” (i.i.d.,
+mean <em>zero</em>)</li>
 <li><span class="math inline">\(M\)</span>: Is the risk free return</li>
 </ul>
 </section>
@@ -105,7 +114,8 @@
 <section class="slide level1">
 
 <h2 id="dickey-fuller-test">Dickey-Fuller test</h2>
-<p><span class="math display">\[ P_{t} = M + a P_{t-1} + r_t \]</span></p>
+<p><span class="math display">\[ P_{t} = M + a P_{t-1} + r_t
+\]</span></p>
 <p>Test if <span class="math inline">\(a = 1\)</span></p>
 </section>
 <section class="slide level1">
@@ -119,45 +129,54 @@
 <li>Stocks</li>
 <li>Currencies</li>
 </ul>
-<p><a href="./analysis/dickey_fuller_survey/tables/adf_results.html">Results</a></p>
+<p><a
+href="./analysis/dickey_fuller_survey/tables/adf_results.html">Results</a></p>
 </section>
 <section class="slide level1">
 
 <h2 id="returns">Returns</h2>
-<p>Day-to-day returns are defined as, <span class="math display">\[r_t = \frac{P_t - P_{t-1}}{P_{t-1}}\]</span></p>
+<p>Day-to-day returns are defined as, <span class="math display">\[r_t =
+\frac{P_t - P_{t-1}}{P_{t-1}}\]</span></p>
 </section>
 <section class="slide level1">
 
 <h2 id="autocorrelation">Autocorrelation</h2>
 <figure>
-<img data-src="./analysis/plots/returns.svg" alt="Returns" /><figcaption aria-hidden="true">Returns</figcaption>
+<img data-src="./analysis/plots/returns.svg" alt="Returns" />
+<figcaption aria-hidden="true">Returns</figcaption>
 </figure>
 </section>
 <section class="slide level1">
 
 <h2 id="autocorrelation-1">Autocorrelation</h2>
 <blockquote>
-<p>“<strong>Large changes</strong> tend to be followed by <strong>large changes</strong>, of either sign, and <strong>small changes</strong> tend to be followed by <strong>small changes</strong>.”</p>
+<p>“<strong>Large changes</strong> tend to be followed by <strong>large
+changes</strong>, of either sign, and <strong>small changes</strong>
+tend to be followed by <strong>small changes</strong>.”</p>
 <p>Benoit Mandelbrot (1963)</p>
 </blockquote>
 </section>
 <section class="slide level1">
 
 <h2 id="autocorrelation-2">Autocorrelation</h2>
-<p><span class="math display">\[\text{acf}_k(P_t) = \text{corr}(P_t, P_{t-k})\]</span></p>
+<p><span class="math display">\[\text{acf}_k(P_t) = \text{corr}(P_t,
+P_{t-k})\]</span></p>
 </section>
 <section class="slide level1">
 
 <h2 id="autocorrelation-3">Autocorrelation</h2>
 <figure>
-<img data-src="./analysis/plots/acf_returns.svg" alt="ACF of returns" /><figcaption aria-hidden="true">ACF of returns</figcaption>
+<img data-src="./analysis/plots/acf_returns.svg" alt="ACF of returns" />
+<figcaption aria-hidden="true">ACF of returns</figcaption>
 </figure>
 </section>
 <section class="slide level1">
 
 <h2 id="autocorrelation-4">Autocorrelation</h2>
 <figure>
-<img data-src="./analysis/plots/acf_returns_sq.svg" alt="ACF of returns squared" /><figcaption aria-hidden="true">ACF of returns squared</figcaption>
+<img data-src="./analysis/plots/acf_returns_sq.svg"
+alt="ACF of returns squared" />
+<figcaption aria-hidden="true">ACF of returns squared</figcaption>
 </figure>
 </section>
     </div>
