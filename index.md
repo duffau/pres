@@ -1,8 +1,6 @@
 - [Gradient Boosting](https://duffau.github.io/talks/boosting/) 
   - [Ante version](https://duffau.github.io/talks/boosting/ante/)
   - [PyData Cph version](https://duffau.github.io/talks/boosting/pydata-cph/)
-- [Gradient Boosting - PyData Copenhagen](https://duffau.github.io/talks/boosting-pydata-cph/) 
-- [Gradient Boosting](https://duffau.github.io/talks/boosting/) 
 - [Git Internals](https://duffau.github.io/talks/git-internals/)
 - [Microservices](https://duffau.github.io/talks/microservices/)
 - [Stock prices](https://duffau.github.io/talks/stock-prices-talk/) 
