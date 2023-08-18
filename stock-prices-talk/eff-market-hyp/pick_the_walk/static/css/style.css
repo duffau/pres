@@ -1,0 +1,73 @@
+.showborder {
+    border: 1px solid black;
+  }
+
+  .center {
+    text-align: center;
+    font-family: "Droid Sans Mono", "Courier New", monospace;
+    margin: auto;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  #plots {
+    margin: auto;
+    width: 1300px;
+    min-height: 600px;
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+
+  .plot {
+    display: inline-block;
+    width: 640px;
+    min-height: 480px;
+    padding: 0;
+    margin: auto;
+    border: 0;
+  }
+
+
+  .submit-wrapper {
+    margin: auto;
+    display: block;
+  }
+
+  .submit-count {
+    display: inline-block;
+    width: 640px;
+  }
+
+  .controls {
+    display: block;
+    margin: auto;
+    height: 64px;
+    width: 800px;
+    /* background-color: yellow; */
+  }
+
+  .button {
+    background-color: #163E93;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .input {
+    padding: 15px 32px;
+    margin-left: 25px;
+  }
+

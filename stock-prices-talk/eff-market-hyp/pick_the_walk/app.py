@@ -6,8 +6,8 @@ import pandas as pd
 
 from flask import Flask, send_file, render_template, request, redirect, url_for
 
-# import matplotlib
-# matplotlib.use('agg')
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
 
@@ -19,7 +19,7 @@ import stats as sts
 
 app = Flask(__name__)
 
-plt.xkcd()
+# plt.xkcd()
 RANDOM_WALK_PLOT_URL = "/randomwalk.png"
 STOCK_PRICE_PLOT_URL = "/stockprice.png"
 CORRECT_COUNTS = []
@@ -36,6 +36,8 @@ try:
     NO_CLUES = not bool(sys.argv[1])
 except IndexError:
     NO_CLUES = True
+
+print(f"No clues: {NO_CLUES}")
 
 try:
     PORT = int(sys.argv[2])
@@ -56,7 +58,9 @@ def frontpage():
     random.shuffle(plot_urls)
     LEFT_PLOT, RIGHT_PLOT = plot_urls
     print(f"LEFT: {LEFT_PLOT}, RIGHT: {RIGHT_PLOT}")
-    return render_template('index.html', left_plot=LEFT_PLOT, right_plot=RIGHT_PLOT)
+    round_nr = len(CORRECT_COUNTS) + 1
+    print(f"round_nr: {round_nr}")
+    return render_template('index.html', left_plot=LEFT_PLOT, right_plot=RIGHT_PLOT, round_nr=round_nr)
 
 @app.route('/', methods=["POST"])
 def register_counts():
@@ -139,4 +143,4 @@ def nocache(response):
     response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
     return response
 
-app.run(port=PORT)
+app.run(port=PORT, threaded=False, debug=True)

@@ -3,4 +3,5 @@ matplotlib
 statsmodels
 seaborn
 jinja2
+scipy
 -e ./apis

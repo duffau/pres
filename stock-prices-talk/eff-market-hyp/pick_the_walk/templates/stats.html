@@ -1,0 +1,21 @@
+<!doctype html>
+
+<head>
+    <title>Pick The Walk!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</style>
+</head>
+
+<body>
+    <div class="plots center">
+        <h1>Experiment results</h1>
+        <img src={{ plot }} />
+        <p>{{ message }}</p>
+    </div>
+    <div class="controls center">
+        <a href="{{ url_for('clear_counts') }}"><button class="button">Restart</button></a>
+    </div>
+    
+</body>
+
+</html>
