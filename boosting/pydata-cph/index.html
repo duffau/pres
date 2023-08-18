@@ -16,15 +16,24 @@
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
     }
-    .hanging div.csl-entry {
+    .hanging-indent div.csl-entry {
       margin-left:2em;
       text-indent:-2em;
     }
@@ -38,8 +47,7 @@
     }
     div.csl-indent {
       margin-left: 2em;
-    }
-  </style>
+    }  </style>
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/black.css" id="theme">
   <link rel="stylesheet" href="../black-root.css"/>
   <meta property="og:url" content="https://duffau.github.io/talks/boosting/pydata-cph/">
@@ -982,63 +990,54 @@ data-src="./../static/trevor-hastie-gradient-boosting-thumbnail.jpg" /></p>
 class="title-slide slide level2 allowframebreaks">
 <h2 class="allowframebreaks">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent"
-role="doc-bibliography">
-<div id="ref-chen2015higgs" class="csl-entry" role="doc-biblioentry">
+role="list">
+<div id="ref-chen2015higgs" class="csl-entry" role="listitem">
 Chen, Tianqi, and Tong He. 2015. <span>“Higgs Boson Discovery with
 Boosted Trees.”</span> In <em>NIPS 2014 Workshop on High-Energy Physics
 and Machine Learning</em>, 69–80. PMLR.
 </div>
-<div id="ref-freund1990majority" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-freund1990majority" class="csl-entry" role="listitem">
 Freund, Yoav. 1990. <span>“Boosting a Weak Learning Algorithm by
 Majority.”</span> In <em>Proceedings of the Third Annual Workshop on
 Computational Learning Theory, 1990</em>.
 </div>
-<div id="ref-friedman2001greedy" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-friedman2001greedy" class="csl-entry" role="listitem">
 Friedman, Jerome H. 2001. <span>“Greedy Function Approximation: A
 Gradient Boosting Machine.”</span> <em>Annals of Statistics</em>,
 1189–1232.
 </div>
-<div id="ref-friedman2000special" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-friedman2000special" class="csl-entry" role="listitem">
 Friedman, Jerome, Trevor Hastie, and Robert Tibshirani. 2000.
 <span>“Special Invited Paper. Additive Logistic Regression: A
 Statistical View of Boosting.”</span> <em>Annals of Statistics</em>,
 337–74.
 </div>
-<div id="ref-friedman2009elements" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-friedman2009elements" class="csl-entry" role="listitem">
 Friedman, Jerome, Trevor Hastie, Robert Tibshirani, et al. 2009. <em>The
 Elements of Statistical Learning</em>. 2nd ed. New York, NY: Springer.
 </div>
-<div id="ref-kearns1989crytographic" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-kearns1989crytographic" class="csl-entry" role="listitem">
 Kearns, M, and LG Valiant. 1989. <span>“Crytographic Limitations on
 Learning Boolean Formulae and Finite Automata.”</span> In
 <em>Proceedings of the Twenty-First Annual ACM Symposium on Theory of
 Computing</em>, 433–44.
 </div>
-<div id="ref-mason1999boosting" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-mason1999boosting" class="csl-entry" role="listitem">
 Mason, Llew, Jonathan Baxter, Peter Bartlett, and Marcus Frean. 1999.
 <span>“Boosting Algorithms as Gradient Descent in Function
 Space.”</span> In <em>Proc. NIPS</em>, 12:512–18.
 </div>
-<div id="ref-schapire1995decision" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-schapire1995decision" class="csl-entry" role="listitem">
 Schapire, R, and Y Freund. 1995. <span>“A Decision-Theoretic
 Generalization of on-Line Learning and an Application to
 Boosting.”</span> In <em>Second European Conference on Computational
 Learning Theory</em>, 23–37.
 </div>
-<div id="ref-schapire1990strength" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-schapire1990strength" class="csl-entry" role="listitem">
 Schapire, Robert E. 1990. <span>“The Strength of Weak
 Learnability.”</span> <em>Machine Learning</em> 5 (2): 197–227.
 </div>
-<div id="ref-valiant1984theory" class="csl-entry"
-role="doc-biblioentry">
+<div id="ref-valiant1984theory" class="csl-entry" role="listitem">
 Valiant, Leslie G. 1984. <span>“A Theory of the Learnable.”</span>
 <em>Communications of the ACM</em> 27 (11): 1134–42.
 </div>
