@@ -28,7 +28,7 @@ LEFT_PLOT = None
 RIGHT_PLOT = None
 
 
-ticker = "^DJI"
+ticker = "^GSPC"
 VAR = "Adj Close"
 INTERVAL_LENGTH = 100
 DF_PRICES = pd.read_pickle(f"{ticker}_prices.pickle")
@@ -118,6 +118,7 @@ def plot_stats():
     fig.set_size_inches(6.4, 3.0)
     null_hypothesis_success_rate, mean_success_rate, std_error, p_value, df, message = sts.calc_stats(CORRECT_COUNTS, WRONG_COUNTS) 
     sts.plot_stats(ax, null_hypothesis_success_rate, mean_success_rate, std_error, p_value, df, message)
+    fig.tight_layout()
     return nocache(fig_response(fig))
 
 
@@ -125,7 +126,14 @@ def plot_stats():
 def stats():
     print("CORRECT_COUNTS:", CORRECT_COUNTS)
     print("WRONG_COUNTS:", WRONG_COUNTS)
-    return render_template("stats.html", plot="/norm.png")
+    correct_counts = sum(CORRECT_COUNTS)
+    wrong_counts = sum(WRONG_COUNTS)
+    total_counts = correct_counts + wrong_counts
+    _, mean_success_rate, _, p_value, _, _ = sts.calc_stats(CORRECT_COUNTS, WRONG_COUNTS)
+    if mean_success_rate is None:
+        mean_success_rate = 0
+        p_value = 0
+    return render_template("stats.html", plot="/norm.png", correct_counts=correct_counts, total_counts=total_counts, success_rate=mean_success_rate*100, p_value=p_value*100)
 
 
 def fig_response(fig):

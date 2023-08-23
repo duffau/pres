@@ -9,6 +9,8 @@
 <body>
     <div class="plots center">
         <h1>Experiment results</h1>
+        <h2>Succes rate = {{ correct_counts }}/{{ total_counts }} = {{ "%.0f"|format(success_rate) }}%</h2>
+        <p>p-value = {{ "%.0f"|format(p_value) }}%</p>
         <img src={{ plot }} />
         <p>{{ message }}</p>
     </div>
