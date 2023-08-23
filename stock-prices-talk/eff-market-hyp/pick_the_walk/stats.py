@@ -38,6 +38,8 @@ def plot_stats(ax, null_hypothesis_success_rate, mean_success_rate, std_error, p
         y = sps.t.pdf(x, loc=null_hypothesis_success_rate, scale=std_error, df=df)
         y_max = max(y)
         ax.plot(x, y, 'black', lw=2)
+        ax.set_xlabel("Success rate")
+        ax.set_ylabel("Probability density with random guesses")
         left_conf = null_hypothesis_success_rate - abs(null_hypothesis_success_rate - mean_success_rate)
         right_conf = null_hypothesis_success_rate + abs(null_hypothesis_success_rate - mean_success_rate)
         ax.fill_between(x, y, where=x<left_conf, alpha=0.5, color=PLOT_COL)
