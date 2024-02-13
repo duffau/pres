@@ -2,7 +2,7 @@
 
 slides.html:
 	pandoc \
-		--filter pandoc-include-code \
+		--filter pandoc-codeblock-include \
 		-t revealjs \
 		-s presentation/slides.md \
 		-o .slides.html \
