@@ -19,11 +19,9 @@ reveal_flags = --mathjax \
 		--citeproc
 
 slides.html:
-	pandoc -t revealjs \
+	pandoc\
+		-t revealjs \
 	  	-s $(SRC) \
 		-o $(DST) \
+		--template static/pandoc-template.revealjs \
 		$(reveal_flags)
-	# @echo "Replacing reveal.js plugins section in $(DST)"
-	# @sed '/<!-- reveal.js plugins -->/q' $(DST) > tmp && \
-	# cat $(PLUGIN_CONFIG) >> tmp && \
-	# mv tmp $(DST)
