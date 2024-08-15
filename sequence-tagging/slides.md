@@ -63,12 +63,25 @@ header-includes: |
 </div>
 
 
+### Theory
+<div class="mermaid">
+  <pre>
+    %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
+    flowchart TD
+        x1((Word 1))---y1[ ]-->x2((Label))
+        x3((Word 2))---y2[ ]-->x4((Label))
+        x5((Word 3))---y3[ ]-->x6((Label))
+  </pre>
+</div>
+
+
 ### Big-O reminder
 
 <div class="callout callout-blue">
   <h4 >Definition </h4>
   $f(n) = O(n)$
-  $\text{if} \quad f(n) \leq C\cdot n \qquad \text{for all} \quad n>n_0$
+  $\\[10pt]$
+  $\text{if} \quad f(n) \leq C\cdot n \qquad \text{for all} \quad n>n_0.$
 </div>
 
 
