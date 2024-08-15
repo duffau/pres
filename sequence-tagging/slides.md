@@ -5,8 +5,8 @@ title-slide-attributes:
     data-background-image: ./static/crf.svg
     data-background-size: 80%
     data-background-opacity: 0.2
-date: TBD
-description: "Conditional Random Field models, which where big in the early 2000's, are light weight and fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed."
+date: 2024-09-05
+gitdescription: "Conditional Random Field models, which where big in the early 2000's, are light weight and fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed."
 header-includes: |
   <meta property="og:url" content="https://duffau.github.io/talks/sequence-tagging/">
   <meta property="og:type" content="website">
