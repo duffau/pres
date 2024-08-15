@@ -1,3 +1,4 @@
+- [CRF's - A Blast From The Past](https://duffau.github.io/talks/sequence-tagging/)
 - [Gradient Boosting](https://duffau.github.io/talks/boosting/) 
   - [Ante version](https://duffau.github.io/talks/boosting/ante/)
   - [PyData Cph version](https://duffau.github.io/talks/boosting/pydata-cph/)
