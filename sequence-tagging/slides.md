@@ -67,8 +67,8 @@ header-includes: |
 
 <div class="callout callout-blue">
   <h4 >Definition </h4>
-  $f(n) = O(n)$ if
-  $f(n) \leq C\cdot n \qquad \text{for all} \quad n>n_0$
+  $f(n) = O(n)$
+  $\text{if} \quad f(n) \leq C\cdot n \qquad \text{for all} \quad n>n_0$
 </div>
 
 
