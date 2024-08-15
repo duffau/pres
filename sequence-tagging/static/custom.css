@@ -1,0 +1,19 @@
+#title-slide .title {
+    font-size: 3em;
+}
+
+.reveal .slides .columns {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.reveal .slides .column {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.reveal .slides .column ul {
+    margin: auto;
+}

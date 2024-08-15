@@ -1,0 +1,26 @@
+.callout {
+  width: 80%;
+  padding: 20px;
+  margin: 20px auto;
+  border: 1px solid #eee; /* Light grey border */
+  border-left: 5px solid; /* Thick left border  */
+  border-radius: 3px;
+  box-sizing: border-box; 
+}
+
+.callout-blue {
+  border-left: 5px solid #5bc0de; /* Blue thick left border for 'info' style */
+} 
+
+
+.callout h4 {
+  margin-top: 0;
+  color: inherit;
+  text-align: left;
+  font-style: italic;
+}
+
+
+.reveal img {
+    margin: 0 0;
+  }
