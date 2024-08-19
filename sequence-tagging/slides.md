@@ -59,6 +59,9 @@ header-includes: |
 	- Neural net and LSTM revolution
 	- Transformers
 - Conditional Random Field model - Quick overview
+
+### Introduction and CRF theory
+
   - Discriminative vs Generative models
 	- Examples:
 	- Simple discriminative (logistic regression)
@@ -69,20 +72,25 @@ header-includes: |
 	- CRF as extension to MRF
 	- Maybe HMM as special case of CRF
 - Practical use of Python CRF suite with regex indicator variables in code
-- **LLM Accuracy comparison**
+
+### LLM Accuracy comparison
+
   - Intro to sequence performance metrics
 - Show performance on
 	- Syntatic task (CoNLL-2003 NER task)
 	- Semantic task
 	- Pragmatic task
 	- (Hopefully): CRF and LLM are comparable on syntax heavy tasks and have a big difference in semantic/long dependency tasks
-- **LLM Speed Comparison**
+### LLM Speed Comparison
 - Recap of Big-O notation
 - Inference in CRF
 	- Naive implementation leads to exponential running time
 	- Formulate as Dynamic Programming problem
 	- Use memoization
 	- Voila: Viterbi algorithm runs in linear time
+
+### LLM Speed Comparison
+
 - Transformers
 	  - Quadratic
 		- Walkthrough of “canonical” transformer from Stanford lecture - Self-attention leads to quadratic inference
@@ -90,7 +98,10 @@ header-includes: |
 - T(n) i.e. actual running time 
 - Speed comparison on comparable implementations
 	  - Maybe C++ vs Python comparison - Maybe Python only comparison
-- **Conclusion**: Quadratic transformers are MUCH slower, Sub-quadratic transformers are also MUCH slower. The constant in front of n actually matters!
+
+### Conclusion
+
+Quadratic transformers are MUCH slower, Sub-quadratic transformers are also MUCH slower. The constant in front of n actually matters!
 
 
 
