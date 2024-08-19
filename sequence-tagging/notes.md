@@ -25,12 +25,12 @@
 
 ### LLM Accuracy comparison
 
-  - Intro to sequence performance metrics
+- Intro to sequence performance metrics
 - Show performance on
-	- Syntatic task (CoNLL-2003 NER task)
-	- Semantic task
-	- Pragmatic task
-	- (Hopefully): CRF and LLM are comparable on syntax heavy tasks and have a big difference in semantic/long dependency tasks
+	- Syntatic driven task (CoNLL-2003 NER task)
+	- Semantic driven task
+	- [Pragmatics](https://en.wikipedia.org/wiki/Pragmatics) driven task
+	- (Hopefully): CRF and LLM are comparable on syntax heavy tasks and have a big difference in performance on semantic and pragmatic information driven tasks
 
 ### LLM Speed Comparison
 
@@ -44,12 +44,12 @@
 ### LLM Speed Comparison
 
 - Transformers
-	  - Quadratic
-		- Walkthrough of “canonical” transformer from Stanford lecture - Self-attention leads to quadratic inference
-	  - Sub-quadratic - Mention a couple of approaches
+	- Quadratic
+	- Walkthrough of “canonical” transformer from Stanford lecture - Self-attention leads to quadratic inference
+	- Sub-quadratic - Mention a couple of approaches
 - T(n) i.e. actual running time 
 - Speed comparison on comparable implementations
-	  - Maybe C++ vs Python comparison - Maybe Python only comparison
+	- Maybe C++ vs Python comparison - Maybe Python only comparison
 
 ### Conclusion
 
