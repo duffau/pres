@@ -55,7 +55,11 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg" />
   <meta property="og:title" content="CRF's a Blast from the Past" />
-  <meta property="og:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed." />
+  <p>&lt;meta property=“og:description” content=““Conditional Random
+  Field models, which where big in the early 2000’s, are light weight
+  fast when it comes to sequence tagging. In this talk we investigate
+  how they stack up against classical Transformers and LLMs, both in
+  terms of accuracy and speed.” /&gt;</p>
   <meta name="twitter:card" content="summary_large_image">
   <meta property="twitter:domain" content="duffau.github.io">
   <meta property="twitter:url" content="https://duffau.github.io/talks/sequence-tagging/">
@@ -78,8 +82,9 @@ Fields</p>
   <p class="date">2024-09-05</p>
 </section>
 
-<section id="section" class="slide level3">
-<h3></h3>
+<section class="slide level3">
+
+<p>###</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><a href="https://www.alipes.dk"><img
@@ -104,6 +109,75 @@ href="https://duffau.github.io/talks/sequence-tagging">duffau.github.io/talks/se
 <li>Beverages:</li>
 <li>Cocktails:</li>
 <li>Questions:</li>
+</ul>
+</section>
+<section class="slide level3">
+
+</section>
+<section>
+<section id="outline-not-presented" class="title-slide slide level2">
+<h2>Outline (Not presented)</h2>
+
+</section>
+<section id="introduction-and-crf-theory" class="slide level3">
+<h3>Introduction and CRF theory</h3>
+<ul>
+<li>Sequence tagging task and evolution
+<ul>
+<li>What is sequence tagging (NER example)</li>
+<li>Origins in NER and POS using rule-based systems (find examples)</li>
+<li>Introduction of statistical sequence tagging with HMM, MEMM and
+CRF</li>
+<li>Neural net and LSTM revolution</li>
+<li>Transformers</li>
+</ul></li>
+<li>Conditional Random Field model - Quick overview
+<ul>
+<li>Discriminative vs Generative models
+<ul>
+<li>Examples:</li>
+<li>Simple discriminative (logistic regression)</li>
+<li>Simple Generative (AR(1) model)</li>
+</ul></li>
+</ul></li>
+<li>CRF theory
+<ul>
+<li>p(x1, x2, x3) as a directed graph</li>
+<li>Markov Random Fields (MRF)</li>
+<li>CRF as extension to MRF</li>
+<li>Maybe HMM as special case of CRF</li>
+</ul></li>
+<li>Practical use of Python CRF suite with regex indicator variables in
+code</li>
+<li><strong>LLM Accuracy comparison</strong>
+<ul>
+<li>Intro to sequence performance metrics</li>
+</ul></li>
+<li>Show performance on
+<ul>
+<li>Syntatic task (CoNLL-2003 NER task)</li>
+<li>Semantic task</li>
+<li>(Hopefully): CRF and LLM are comparable on syntax heavy tasks and
+have a big difference in semantic/long dependency tasks</li>
+</ul></li>
+<li><strong>LLM Speed Comparison</strong></li>
+<li>Recap of Big-O notation</li>
+<li>Inference in CRF
+<ul>
+<li>Naive implementation leads to exponential running time</li>
+<li>Formulate as Dynamic Programming problem</li>
+<li>Use memoization</li>
+<li>Voila: Viterbi algorithm runs in linear time</li>
+</ul></li>
+<li>Transformers - Quadratic - Walkthrough of “canonical” transformer
+from Stanford lecture - Self-attention leads to quadratic inference -
+Sub-quadratic - Mention a couple of approaches</li>
+<li>T(n) i.e. actual running time</li>
+<li>Speed comparison on comparable implementations - Maybe C++ vs Python
+comparison - Maybe Python only comparison</li>
+<li><strong>Conclusion</strong>: Quadratic transformers are MUCH slower,
+Sub-quadratic transformers are also MUCH slower. The constant in front
+of n actually matters!</li>
 </ul>
 </section>
 <section id="history" class="slide level3">
@@ -142,7 +216,7 @@ class="math inline">\(\\[10pt]\)</span> <span
 class="math inline">\(\text{if} \quad f(n) \leq C\cdot n \qquad
 \text{for all} \quad n&gt;n_0.\)</span></p>
 </div>
-</section>
+</section></section>
 <section id="references"
 class="title-slide slide level2 allowframebreaks">
 <h2 class="allowframebreaks">References</h2>
