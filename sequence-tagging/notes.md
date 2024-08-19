@@ -3,7 +3,7 @@
 - Sequence tagging intro
 - Conditional Random Field model
   - Discriminative vs Generative
-    - Examples
+	- Examples
 - Transformers
   - Quadratic
   - Sub-quadratic
@@ -19,3 +19,6 @@
 ## FiNER: Financial Numeric Entity Recognition for XBRL Tagging
 - Dataset: https://huggingface.co/datasets/nlpaueb/finer-139
 - Paper: https://arxiv.org/abs/2203.06482
+- [https://arxiv.org/html/2401.10825v1][1]
+
+[1]:	https://arxiv.org/html/2401.10825v1
