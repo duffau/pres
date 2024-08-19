@@ -74,6 +74,7 @@ header-includes: |
 - Show performance on
 	- Syntatic task (CoNLL-2003 NER task)
 	- Semantic task
+	- Pragmatic task
 	- (Hopefully): CRF and LLM are comparable on syntax heavy tasks and have a big difference in semantic/long dependency tasks
 - **LLM Speed Comparison**
 - Recap of Big-O notation
