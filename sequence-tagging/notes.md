@@ -7,12 +7,13 @@
 	- Origins in NER and POS using rule-based systems (find examples)
 	- Introduction of statistical sequence tagging with HMM, MEMM and CRF
 	- Neural net and LSTM revolution
-	- Transformers
+	- First gen Transformers (BERT, RoBERTa, Electra)
+	- LLM's. (GPT-2, GPT-3, Claude, LLaMA)
 - Conditional Random Field model - Quick overview
 
 ### Introduction and CRF theory
 
-  - Discriminative vs Generative models [Bishop chap. 4.3 + 4.4][2]
+- Discriminative vs Generative models [Bishop chap. 4.3 + 4.4][2]
 	- Examples:
   	- Simple discriminative (logistic regression)
   	- Simple Generative (AR(1) model)
