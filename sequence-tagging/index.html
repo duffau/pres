@@ -131,14 +131,17 @@ CRF</li>
 <li>Neural net and LSTM revolution</li>
 <li>Transformers</li>
 </ul></li>
-<li>Conditional Random Field model - Quick overview
+<li>Conditional Random Field model - Quick overview</li>
+</ul>
+</section>
+<section id="introduction-and-crf-theory-1" class="slide level3">
+<h3>Introduction and CRF theory</h3>
 <ul>
 <li>Discriminative vs Generative models
 <ul>
 <li>Examples:</li>
 <li>Simple discriminative (logistic regression)</li>
 <li>Simple Generative (AR(1) model)</li>
-</ul></li>
 </ul></li>
 <li>CRF theory
 <ul>
@@ -149,19 +152,21 @@ CRF</li>
 </ul></li>
 <li>Practical use of Python CRF suite with regex indicator variables in
 code</li>
-<li><strong>LLM Accuracy comparison</strong>
+</ul>
+</section>
+<section id="llm-accuracy-comparison" class="slide level3">
+<h3>LLM Accuracy comparison</h3>
 <ul>
 <li>Intro to sequence performance metrics</li>
-</ul></li>
 <li>Show performance on
 <ul>
 <li>Syntatic task (CoNLL-2003 NER task)</li>
 <li>Semantic task</li>
 <li>Pragmatic task</li>
 <li>(Hopefully): CRF and LLM are comparable on syntax heavy tasks and
-have a big difference in semantic/long dependency tasks</li>
+have a big difference in semantic/long dependency tasks ### LLM Speed
+Comparison</li>
 </ul></li>
-<li><strong>LLM Speed Comparison</strong></li>
 <li>Recap of Big-O notation</li>
 <li>Inference in CRF
 <ul>
@@ -170,16 +175,23 @@ have a big difference in semantic/long dependency tasks</li>
 <li>Use memoization</li>
 <li>Voila: Viterbi algorithm runs in linear time</li>
 </ul></li>
+</ul>
+</section>
+<section id="llm-speed-comparison" class="slide level3">
+<h3>LLM Speed Comparison</h3>
+<ul>
 <li>Transformers - Quadratic - Walkthrough of “canonical” transformer
 from Stanford lecture - Self-attention leads to quadratic inference -
 Sub-quadratic - Mention a couple of approaches</li>
 <li>T(n) i.e. actual running time</li>
 <li>Speed comparison on comparable implementations - Maybe C++ vs Python
 comparison - Maybe Python only comparison</li>
-<li><strong>Conclusion</strong>: Quadratic transformers are MUCH slower,
-Sub-quadratic transformers are also MUCH slower. The constant in front
-of n actually matters!</li>
 </ul>
+</section>
+<section id="conclusion" class="slide level3">
+<h3>Conclusion</h3>
+<p>Quadratic transformers are MUCH slower, Sub-quadratic transformers
+are also MUCH slower. The constant in front of n actually matters!</p>
 </section>
 <section id="history" class="slide level3">
 <h3>History</h3>
