@@ -2,9 +2,9 @@
 title: A _Blast_ from the _Past_
 subtitle: _Fast_ Text Tagging with Conditional Random Fields
 title-slide-attributes:
-    data-background-image: ./static/crf.svg
-    data-background-size: 80%
-    data-background-opacity: 0.2
+	data-background-image: ./static/crf.svg
+	data-background-size: 80%
+	data-background-opacity: 0.2
 date: 2024-09-05
 gitdescription: "Conditional Random Field models, which where big in the early 2000's, are light weight and fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed."
 header-includes: |
@@ -12,35 +12,35 @@ header-includes: |
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg" />
   <meta property="og:title" content="CRF's a Blast from the Past" />
-  <meta property="og:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed." />
+  \<meta property="og:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed." /\>
   
   <meta name="twitter:card" content="summary_large_image">
   <meta property="twitter:domain" content="duffau.github.io">
   <meta property="twitter:url" content="https://duffau.github.io/talks/sequence-tagging/">
   <meta name="twitter:title" content="CRF's a Blast from the Past">
-  <meta name="twitter:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed.">
+  \<meta name="twitter:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed."\>
   <meta name="twitter:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg">
 ---
 
-###
+\#\#\#
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-[![](./static/alipes-logo.svg){height=20%}](https://www.alipes.dk)
+[![][image-1]{height=20%}][1]
 :::
 ::: {.column width="50%"}
 - Lorem
 - Ipsum
 - Dolor
 - Sit
-- [careers.alipes.dk](https://careers.alipes.dk/) 
+- [careers.alipes.dk][2] 
 :::
 ::::::::::::::
 
 
 ### Formalities
 
-- Slides: [duffau.github.io/talks/sequence-tagging](https://duffau.github.io/talks/sequence-tagging)
+- Slides: [duffau.github.io/talks/sequence-tagging][3]
 - Pizza: 
 - Beverages:
 - Cocktails: 
@@ -48,6 +48,50 @@ header-includes: |
 
 
 ---
+## Outline (Not presented)
+
+### Introduction and CRF theory
+
+- Sequence tagging task and evolution
+	- What is sequence tagging (NER example)
+	- Origins in NER and POS using rule-based systems (find examples)
+	- Introduction of statistical sequence tagging with HMM, MEMM and CRF
+	- Neural net and LSTM revolution
+	- Transformers
+- Conditional Random Field model - Quick overview
+  - Discriminative vs Generative models
+	- Examples:
+	- Simple discriminative (logistic regression)
+	- Simple Generative (AR(1) model)
+- CRF theory
+	- p(x1, x2, x3) as a directed graph
+	- Markov Random Fields (MRF)
+	- CRF as extension to MRF
+	- Maybe HMM as special case of CRF
+- Practical use of Python CRF suite with regex indicator variables in code
+- **LLM Accuracy comparison**
+  - Intro to sequence performance metrics
+- Show performance on
+	- Syntatic task (CoNLL-2003 NER task)
+	- Semantic task
+	- (Hopefully): CRF and LLM are comparable on syntax heavy tasks and have a big difference in semantic/long dependency tasks
+- **LLM Speed Comparison**
+- Recap of Big-O notation
+- Inference in CRF
+	- Naive implementation leads to exponential running time
+	- Formulate as Dynamic Programming problem
+	- Use memoization
+	- Voila: Viterbi algorithm runs in linear time
+- Transformers
+	  - Quadratic
+		- Walkthrough of “canonical” transformer from Stanford lecture - Self-attention leads to quadratic inference
+	  - Sub-quadratic - Mention a couple of approaches
+- T(n) i.e. actual running time 
+- Speed comparison on comparable implementations
+	  - Maybe C++ vs Python comparison - Maybe Python only comparison
+- **Conclusion**: Quadratic transformers are MUCH slower, Sub-quadratic transformers are also MUCH slower. The constant in front of n actually matters!
+
+
 
 ### History
 
@@ -88,3 +132,9 @@ header-includes: |
 ## References {.allowframebreaks}
 ::: {#refs}
 :::
+
+[1]:	https://www.alipes.dk
+[2]:	https://careers.alipes.dk/
+[3]:	https://duffau.github.io/talks/sequence-tagging
+
+[image-1]:	./static/alipes-logo.svg
