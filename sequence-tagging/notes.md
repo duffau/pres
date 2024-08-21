@@ -46,8 +46,9 @@
 
 - Transformers
 	- Quadratic
-	- Walkthrough of “canonical” transformer from [Stanford lecture notes][12] - Self-attention leads to quadratic inference
-	- Sub-quadratic - Mention a couple of approaches
+	- Walkthrough of “canonical” transformer from [Stanford lecture notes][12] 
+        - Self-attention leads to quadratic inference [Stanford CS224n 2024 - lecture  slides 18, 58][14]
+	- Sub-quadratic - Mention a couple of approaches (Local windows, global windows, random interactions [Stanford CS224n 2024 - lecture  slide 59,60][14])
 - T(n) i.e. actual running time 
 - Speed comparison on comparable implementations
 	- Maybe C++ vs Python comparison - Maybe Python only comparison
@@ -69,7 +70,9 @@
 - [Pattern recognition and machine learning - Bishop & Nasrabadi (2006)][9]
 - [Neural Networks Course - Larochelle][10]
 - [An introduction to conditional random fields - Sutton & McCallum (2012)][11]
-- [Stanford CS224n: Natural Language Processing with Deep Learning - Note 10: Self-Attention & Transformers][12]
+- [Stanford CS224n (2023): Natural Language Processing with Deep Learning - Note 10: Self-Attention & Transformers][12]
+- [Stanford CS224n (2023): Natural Language Processing with Deep Learning - Slides: Self-Attention & Transformers][13]
+- [Stanford CS224n (2024): Natural Language Processing with Deep Learning - Slides: Self-Attention & Transformers][14]
 
 [1]:	http://crowley-coutaz.fr/jlc/Courses/2020/PRML/ENSI3.PRML.S6.Encoders.pdf
 [2]:	http://crowley-coutaz.fr/jlc/Courses/2020/PRML/ENSI3.PRML.S6.Encoders.pdf
@@ -83,3 +86,5 @@
 [10]:	https://larocheh.github.io/neural_networks/content.html
 [11]:	https://www.nowpublishers.com/article/DownloadSummary/MAL-013
 [12]:   https://web.stanford.edu/class/cs224n/readings/cs224n-self-attention-transformers-2023_draft.pdf
+[13]:   https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1234/slides/cs224n-2023-lecture08-transformers.pdf
+[14]:   https://web.stanford.edu/class/cs224n/slides/cs224n-spr2024-lecture08-transformers.pdf
