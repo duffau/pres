@@ -70,6 +70,7 @@
 - [Pattern recognition and machine learning - Bishop & Nasrabadi (2006)][9]
 - [Neural Networks Course - Larochelle][10]
 - [An introduction to conditional random fields - Sutton & McCallum (2012)][11]
+- [Attention is All You Need - Vaswani et. al. (2017)][15]
 - [Stanford CS224n (2023): Natural Language Processing with Deep Learning - Note 10: Self-Attention & Transformers][12]
 - [Stanford CS224n (2023): Natural Language Processing with Deep Learning - Slides: Self-Attention & Transformers][13]
 - [Stanford CS224n (2024): Natural Language Processing with Deep Learning - Slides: Self-Attention & Transformers][14]
@@ -88,3 +89,4 @@
 [12]:   https://web.stanford.edu/class/cs224n/readings/cs224n-self-attention-transformers-2023_draft.pdf
 [13]:   https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1234/slides/cs224n-2023-lecture08-transformers.pdf
 [14]:   https://web.stanford.edu/class/cs224n/slides/cs224n-spr2024-lecture08-transformers.pdf
+[15]:   https://arxiv.org/pdf/1706.03762
