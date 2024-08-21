@@ -8,7 +8,7 @@
 	- Introduction of statistical sequence tagging with HMM, MEMM and CRF
 	- Neural net and LSTM revolution
 	- First gen Transformers (BERT, RoBERTa, Electra)
-	- LLM's. (GPT-2, GPT-3, Claude, LLaMA)
+	- LLM's. (GPT-2, GPT-3, Claude, LLaMA) [Stanford 2024 - Transformers Slide 9][14]
 - Conditional Random Field model - Quick overview
 
 ### Introduction and CRF theory
