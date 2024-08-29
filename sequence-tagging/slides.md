@@ -12,13 +12,13 @@ header-includes: |
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg" />
   <meta property="og:title" content="CRF's a Blast from the Past" />
-  \<meta property="og:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed." /\>
+  <meta property="og:description" content="Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed.">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta property="twitter:domain" content="duffau.github.io">
   <meta property="twitter:url" content="https://duffau.github.io/talks/sequence-tagging/">
   <meta name="twitter:title" content="CRF's a Blast from the Past">
-  \<meta name="twitter:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed."\>
+  <meta name="twitter:description" content="Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed.">
   <meta name="twitter:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg">
 ---
 
