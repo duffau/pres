@@ -22,60 +22,48 @@ header-includes: |
   <meta name="twitter:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg">
 ---
 
-\#\#\#
+### About Me
 
-:::::::::::::: {.columns}
-::: {.column width="50%"}
-[![][image-1]{height=20%}][1]
-:::
-::: {.column width="50%"}
-- Lorem
-- Ipsum
-- Dolor
-- Sit
-- [careers.alipes.dk][2] 
-:::
-::::::::::::::
+- Senior Machine Learning Scientist at Alipes
+  - News Trading Algorithms
+  - Applied NLP and ML
+- Co-founded a NLP-powered Legal Tech start-up
+- Background as Msc. in Economics
+- Fell into the Math and Code pot at University
 
+### Slides
 
-### Formalities
+[duffau.github.io/talks/sequence-tagging][3]
 
-- Slides: [duffau.github.io/talks/sequence-tagging][3]
-- Pizza: 
-- Beverages:
-- Cocktails: 
-- Questions:
-
+![](./static/talk-url-qr-code.svg){ width=40% }
 
 ---
 
+### Sequence Tagging
 
+```txt
+The price of the [Pizza Margherita] is [10 dollars]. 
+                  FOOD                  AMOUNT
+```
+###  
+#### Named Entity Recognition (NER) 
+```txt
+[Jim] worked at [Acme Corp.] near the old [London Bridge].
+ PER             ORG                       LOC
+```
+
+#### Part-of-Speech (POS)
+```txt
+[Jim] [worked] [at]  [Acme] [Corp.] [near] [the] [old] [London] [Bridge].
+ NOUN  VERB     PREP  NOUN   NOUN    PREP   DET   ADJ   NOUN     NOUN
+```
 
 
 ### History
 
-<div class="mermaid">
-  <pre>
-    %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
-    xychart-beta
-        title "Sequence tagging Performance"
-        x-axis [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011]
-        y-axis "F1-score" 0 --> 100
-        line [30, 35, 30, 40, 45, 50, 51, 51, 50, 54, 55, 56]
-  </pre>
-</div>
-
+### Recent benchmarks
 
 ### Theory
-<div class="mermaid">
-  <pre>
-    %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
-    flowchart TD
-        x1((Word 1))---y1[ ]-->x2((Label))
-        x3((Word 2))---y2[ ]-->x4((Label))
-        x5((Word 3))---y3[ ]-->x6((Label))
-  </pre>
-</div>
 
 
 ### Big-O reminder

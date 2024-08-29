@@ -5,18 +5,29 @@
 - Sequence tagging task and evolution
 	- What is sequence tagging (NER example)
 	- Origins in NER and POS using rule-based systems (find examples)
+	    - NER History: https://wandb.ai/madhana/Named_Entity_Recognition/reports/A-Beginner-s-Guide-to-Named-Entity-Recognition-NER---VmlldzozNjE2MzI1
+    	- B. Aldelberg. Nodose: A tool for semi-automaticallyextracting structured and semistructured data fromtext documents. In SIGMOD, 1998
+    	- Ralph Grishman and Beth Sundheim. 1996. Message Understanding Conference- 6: A Brief History.: https://aclanthology.org/C96-1079/ 
 	- Introduction of statistical sequence tagging with HMM, MEMM and CRF
 	- Neural net and LSTM revolution
 	- First gen Transformers (BERT, RoBERTa, Electra)
 	- LLM's. (GPT-2, GPT-3, Claude, LLaMA) [Stanford 2024 - Transformers Slide 9][14]
 - Conditional Random Field model - Quick overview
 
+### Historical perormance for NER and POS
+
+- https://nlpprogress.com/english/named_entity_recognition.html
+- https://nlpprogress.com/english/part-of-speech_tagging.html
+- https://rajpurkar.github.io/SQuAD-explorer/
+- https://aclweb.org/aclwiki/POS_Tagging_(State_of_the_art)
+
 ### Introduction and CRF theory
 
 - Discriminative vs Generative models [Bishop chap. 4.3 + 4.4][1]
 	- Examples:
-  	\- Simple discriminative (logistic regression)
-  	\- Simple Generative (AR(1) model)
+    	- Simple discriminative (logistic regression)
+    	- Simple Generative (AR(1) model)
+  	- On Discriminative vs. Generative Classifier: A comparison logistisc regression and naive bayes
 - CRF theory
 	- p(x1, x2, x3) as a directed graph [Bishop chap. 8.1][2]
 	- Markov Random Fields (MRF) [Bishop chap. 8.3][3]
@@ -90,3 +101,4 @@
 [13]:   https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1234/slides/cs224n-2023-lecture08-transformers.pdf
 [14]:   https://web.stanford.edu/class/cs224n/slides/cs224n-spr2024-lecture08-transformers.pdf
 [15]:   https://arxiv.org/pdf/1706.03762
+
