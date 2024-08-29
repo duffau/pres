@@ -24,3 +24,15 @@
 .reveal img {
     margin: 0 0;
   }
+
+  .watermark {
+    position: absolute;
+    left: 1vw;
+    bottom: 1vw;
+    z-index: 10;
+  }
+  
+  .watermark img {
+    width: 5vw;
+    height: 5vw;
+  }

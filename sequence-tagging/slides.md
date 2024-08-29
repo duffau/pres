@@ -20,6 +20,14 @@ header-includes: |
   <meta name="twitter:title" content="CRF's a Blast from the Past">
   <meta name="twitter:description" content="Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed.">
   <meta name="twitter:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg">
+include-before: |
+  <div class="watermark">
+    <a href="https://alipes.dk/" rel="noopener noreferrer">
+      <img
+        src="static/alipes-logo.svg"
+      />
+    </a>
+  </div>
 ---
 
 ### About Me
