@@ -12,14 +12,22 @@ header-includes: |
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg" />
   <meta property="og:title" content="CRF's a Blast from the Past" />
-  \<meta property="og:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed." /\>
+  <meta property="og:description" content="Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed.">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta property="twitter:domain" content="duffau.github.io">
   <meta property="twitter:url" content="https://duffau.github.io/talks/sequence-tagging/">
   <meta name="twitter:title" content="CRF's a Blast from the Past">
-  \<meta name="twitter:description" content=""Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed."\>
+  <meta name="twitter:description" content="Conditional Random Field models, which where big in the early 2000's, are light weight fast when it comes to sequence tagging. In this talk we investigate how they stack up against classical Transformers and LLMs, both in terms of accuracy and speed.">
   <meta name="twitter:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg">
+include-before: |
+  <div class="watermark">
+    <a href="https://alipes.dk/" rel="noopener noreferrer">
+      <img
+        src="static/alipes-logo.svg"
+      />
+    </a>
+  </div>
 ---
 
 ### About Me
@@ -28,14 +36,13 @@ header-includes: |
   - News Trading Algorithms
   - Applied NLP and ML
 - Co-founded a NLP-powered Legal Tech start-up
-- Background as Msc. in Economics
-- Fell into the Math and Code pot at University
+- Msc. in Economics from University of Copenhagen
+  - Fell into the "$Math$ and `Code`" pot at University
 
 ### Slides
 
-[duffau.github.io/talks/sequence-tagging][3]
-
 ![](./static/talk-url-qr-code.svg){ width=40% }
+[duffau.github.io/talks/sequence-tagging][3]
 
 ---
 
@@ -45,25 +52,114 @@ header-includes: |
 The price of the [Pizza Margherita] is [10 dollars]. 
                   FOOD                  AMOUNT
 ```
+
 ###  
 #### Named Entity Recognition (NER) 
 ```txt
-[Jim] worked at [Acme Corp.] near the old [London Bridge].
- PER             ORG                       LOC
+Jim   worked at    Acme Corp. near the beautiful London Bridge.
+PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS
 ```
 
 #### Part-of-Speech (POS)
 ```txt
-[Jim] [worked] [at]  [Acme] [Corp.] [near] [the] [old] [London] [Bridge].
- NOUN  VERB     PREP  NOUN   NOUN    PREP   DET   ADJ   NOUN     NOUN
+Jim   worked at    Acme Corp. near the beautiful London Bridge.
+NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS
 ```
 
+$$\begin{aligned}
+\text{Labels}:\quad \mathbf{y} &= \{y_1, y_2, \ldots, y_T\}\\
+\text{Features}:\quad \mathbf{x} &= \{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_T\}
+\end{aligned}$$
 
 ### History
 
 ### Recent benchmarks
 
+<div class="mermaid">
+  <pre>
+    %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
+    xychart-beta
+        title "CoNLL 2003 Usage in Published Papers (paperswithcode.com)"
+        x-axis [2020, 2021, 2022, 2023, 2024]
+        y-axis "F1-score" 0 --> 100
+        bar [30, 35, 30, 40, 45, 50, 51, 51, 50, 54, 55, 56]
+  </pre>
+</div>
+
+### Papers Using Datasets - NER + POS
+
+<div style="height:400px">
+<canvas data-chart="line" >
+<!--
+{
+ "data": {
+  "labels": [2020,2021,2022,2023,2024],
+  "datasets":[
+   {
+    "data":[70,92,95,107,50],
+    "label":"NER - CoNLL 2003","backgroundColor":"rgba(20,220,220,.8)"
+   },
+   {
+    "data":[86,88,43,41,18],
+    "label":"POS - Penn Treebank","backgroundColor":"rgba(220,120,120,.8)"
+   }
+  ]
+ },
+ "options": {
+        "scales": {
+            "y": {
+                "display": true,
+                "title": {
+                    "display": true,
+                    "text": "Published Papers" 
+                }
+            }
+        }
+    }
+}
+-->
+</canvas>
+</div>
+
+
+### Papers Using Datasets - Abstract tasks
+
+<div style="height:400px">
+<canvas data-chart="line" >
+<!--
+{
+ "data": {
+  "labels": [2020,2021,2022,2023,2024],
+  "datasets":[
+   {
+    "data":[114,204,216,263, 264],
+    "label":"QA - Natural Questions (google + Wiki)","backgroundColor":"rgba(20,220,220,.8)"
+   },
+   {
+    "data":[22,83,122,258,243],
+    "label":"Language Modelling - Colossal Clean Crawled Corpus","backgroundColor":"rgba(220,120,120,.8)"
+   }
+  ]
+ },
+ "options": {
+        "scales": {
+            "y": {
+                "display": true,
+                "title": {
+                    "display": true,
+                    "text": "Published Papers" 
+                }
+            }
+        }
+    }
+}
+-->
+</canvas>
+</div>
+
+
 ### Theory
+
 
 
 ### Big-O reminder

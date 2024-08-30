@@ -20,6 +20,8 @@
 - https://nlpprogress.com/english/part-of-speech_tagging.html
 - https://rajpurkar.github.io/SQuAD-explorer/
 - https://aclweb.org/aclwiki/POS_Tagging_(State_of_the_art)
+- https://arxiv.org/pdf/2311.08526
+- https://arxiv.org/html/2401.10825v1
 
 ### Introduction and CRF theory
 

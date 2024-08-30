@@ -89,6 +89,9 @@ $if(mathjax)$
   <script src="$revealjs-url$/plugin/math/math.js"></script>
 $endif$
   <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@2.3.0/plugin/mermaid/mermaid.js"></script>
+  <!-- Chart plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chart/plugin.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
 
   <script>
 
@@ -310,7 +313,19 @@ $endif$
           //   curve: 'linear',
           // },
         },
-
+        chart: {
+          defaults: {
+            color: 'lightgray', // color of labels
+            scale: {
+              beginAtZero: true,
+              ticks: { stepSize: 1 },
+              grid: { color: "lightgray" }, // color of grid lines
+            },
+          },
+          line: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"], "borderDash": [[0, 0], [0, 0]] },
+          bar: { backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]},
+          pie: { backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]] },
+        },
         // reveal.js plugins
         plugins: [
 $if(mathjax)$
@@ -319,7 +334,8 @@ $endif$
           RevealNotes,
           RevealSearch,
           RevealZoom,
-          RevealMermaid
+          RevealMermaid,
+          RevealChart
         ]
       });
     </script>
