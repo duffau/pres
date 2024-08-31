@@ -32,12 +32,17 @@ include-before: |
 
 ### About Me
 
+::: incremental
 - Senior Machine Learning Scientist at Alipes
   - News Trading Algorithms
-  - Applied NLP and ML
-- Co-founded a NLP-powered Legal Tech start-up
-- Msc. in Economics from University of Copenhagen
+  - Applied NLP and Machine Learning
+- Msc. in Economics from University of Copenhagen from 2016
   - Fell into the "$Math$ and `Code`" pot at University
+- Before joining Alipes
+  - Automated Sports Betting
+  - Co-Founded a Machine Learning Consultancy
+  - Co-founded a NLP-powered Legal Tech start-up
+:::
 
 ### Slides
 
