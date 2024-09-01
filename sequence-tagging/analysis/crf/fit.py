@@ -7,7 +7,19 @@ from sklearn_crfsuite import scorers
 from sklearn_crfsuite import metrics
 
 dataset_id = "eriktks/conll2003"
+LABELS = []
 
+# LABELS = dataset.features["ner_tags"].feature.names
+# B-DebtInstrumentInterestRateStatedPercentage 20
+# B-EffectiveIncomeTaxRateContinuingOperations 19
+# B-LineOfCreditFacilityMaximumBorrowingCapacity 17
+# B-DebtInstrumentFaceAmount 12
+# B-AllocatedShareBasedCompensationExpense 11
+# B-DebtInstrumentBasisSpreadOnVariableRate1 10
+# B-DerivativeNotionalAmount 9
+# B-OperatingLeasesRentExpenseNet 7
+# B-Depreciation 7
+# ]
 
 
 def word2features(tokens, i):
@@ -51,7 +63,7 @@ def sent2features(tokens):
     return [word2features(tokens, i) for i in range(len(tokens))]
 
 def sent2labels(label_ids):
-    return [LABELS[label_id] for  label_id in label_ids]
+    return [LABELS[label_id] for label_id in label_ids]
 
 
 train_sents = load_dataset(dataset_id, split="train")
