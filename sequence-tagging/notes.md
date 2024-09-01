@@ -16,12 +16,14 @@
 
 ### Historical perormance for NER and POS
 
+- https://www.dataversity.net/a-brief-history-of-natural-language-processing-nlp/
 - https://nlpprogress.com/english/named_entity_recognition.html
 - https://nlpprogress.com/english/part-of-speech_tagging.html
 - https://rajpurkar.github.io/SQuAD-explorer/
 - https://aclweb.org/aclwiki/POS_Tagging_(State_of_the_art)
-- https://arxiv.org/pdf/2311.08526
-- https://arxiv.org/html/2401.10825v1
+- GliNER: https://arxiv.org/pdf/2311.08526
+- Survey on recent advances in NER: https://arxiv.org/html/2401.10825v1
+- https://norvig.com/chomsky.html
 
 ### Introduction and CRF theory
 
