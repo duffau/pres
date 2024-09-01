@@ -51,6 +51,7 @@ include-before: |
 
 ---
 
+
 ### Sequence Tagging
 
 ```txt
@@ -76,95 +77,140 @@ $$\begin{aligned}
 \text{Features}:\quad \mathbf{x} &= \{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_T\}
 \end{aligned}$$
 
-### History
+## Evolution of NLP and Sequence tagging 
 
-### Recent benchmarks
+### 1954-1966 - AI Over-optimism and AI Winter
+::: incremental
+- 1954: IBM-Georgetown machine translation: Sixty Russian sentences translated into English
+- 1957: Noam Chomsky *Syntactic Structures*: 
+  - *Generative Grammar*: A system of rules that generate exactly those combinations of words that form grammatical sentences
+  - *Anti-probabilistic*: "probabilistic models give no particular insight into some of the basic problems of syntactic structure."
+:::
 
-<div class="mermaid">
-  <pre>
-    %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
-    xychart-beta
-        title "CoNLL 2003 Usage in Published Papers (paperswithcode.com)"
-        x-axis [2020, 2021, 2022, 2023, 2024]
-        y-axis "F1-score" 0 --> 100
-        bar [30, 35, 30, 40, 45, 50, 51, 51, 50, 54, 55, 56]
-  </pre>
-</div>
+### 1954-1966 - AI Over-optimism and AI Winter
+::: incremental
+- 1958: H. A. Simon and Allen Newell:"within ten years a digital computer will discover and prove an important new mathematical theorem"
+- 1960's: Slow progress in machine translation
+- 1966: ALPAC report ledas to defunding of machine translation in US
+- 1974–1980: Triggers First AI Winter
+:::
 
-### Papers Using Datasets - NER + POS
+### Late 1980's and 1990's - Rise Statistical Models
+::: incremental
+- Less dominance of Chomskyan theories of linguistics
+- More computational power
+- Availability of Annotated Datasets
+- Give Rise to Statistical NLP
+  - 1989: Hidden Markov Models (HMMs) for Speech
+  - 1993: Penn Treebank Project
+  - 1995: WordNet: A Lexical Database for English
+  - 1996: A Maximum Entropy Model for Part-Of-Speech Tagging
+  - 2001: Conditional Random Field
+:::
+
+### 2000's to 2010 - Neural Models and Word Embeddings
+
+- Neural net and LSTM revolution
+
+### 2010 to Today - Transformers
+
+- First gen Transformers (BERT, RoBERTa, Electra)
+- LLM's. (GPT-2, GPT-3, Claude, LLaMA) [Stanford 2024 - Transformers Slide 9][14]
+
+
+
+### Papers Using Datasets ^1^
 
 <div style="height:400px">
-<canvas data-chart="line" >
+<canvas data-chart="line">
 <!--
 {
  "data": {
   "labels": [2020,2021,2022,2023,2024],
   "datasets":[
-   {
-    "data":[70,92,95,107,50],
-    "label":"NER - CoNLL 2003","backgroundColor":"rgba(20,220,220,.8)"
-   },
    {
     "data":[86,88,43,41,18],
-    "label":"POS - Penn Treebank","backgroundColor":"rgba(220,120,120,.8)"
-   }
-  ]
- },
- "options": {
-        "scales": {
-            "y": {
-                "display": true,
-                "title": {
-                    "display": true,
-                    "text": "Published Papers" 
-                }
-            }
-        }
-    }
-}
--->
-</canvas>
-</div>
-
-
-### Papers Using Datasets - Abstract tasks
-
-<div style="height:400px">
-<canvas data-chart="line" >
-<!--
-{
- "data": {
-  "labels": [2020,2021,2022,2023,2024],
-  "datasets":[
-   {
-    "data":[114,204,216,263, 264],
-    "label":"QA - Natural Questions (google + Wiki)","backgroundColor":"rgba(20,220,220,.8)"
+    "label":"POS - Penn Treebank",
+    "yAxisID": "y",
+    "fill": false
    },
    {
-    "data":[22,83,122,258,243],
-    "label":"Language Modelling - Colossal Clean Crawled Corpus","backgroundColor":"rgba(220,120,120,.8)"
+    "data":[63,112,105,156, 195],
+    "label":"QA - TriviaQA (Wiki + Web)",
+    "yAxisID": "y1"
+   },
+   {
+    "data":[16,30,54,160,327],
+    "label":"NLI - HellaSwag Sentence Completion",
+    "yAxisID": "y1"
    }
   ]
  },
  "options": {
-        "scales": {
-            "y": {
-                "display": true,
-                "title": {
-                    "display": true,
-                    "text": "Published Papers" 
-                }
-            }
-        }
+  "scales": {
+   "y": {
+    "type": "linear",
+    "display": true,
+    "position": "left",
+    "title": {
+     "display": true,
+     "text": "Published Papers"
     }
+   },
+   "y1": {
+    "type": "linear",
+    "display": true,
+    "position": "right",
+    "title": {
+     "display": true,
+     "text": "Published Papers"
+    },
+    "grid": {
+     "drawOnChartArea": false
+    }
+   }
+  }
+ }
 }
 -->
 </canvas>
 </div>
+
+Abstract tasks have taken over lower level tasks
+
+::: footer
+^1^ Source: https://paperswithcode.com/datasets
+:::
+
+::: notes
+- Penn Tree Bank
+  - Penn State Tree Bank
+  - Initially released in 1992
+  - First richly annotated text corpus 
+  - 1 mio Annotated tokens (2500 stories) from Wall Street Journal Article from 1989 Wall Street Journal 
+  - 2022: Sequence Aligment Ensemble-BART encoder: 98.15 Accuracy
+    - Ensemble of BART models 
+    - Weighted voting where weights a proportional to avg. alignment score with other predictions in ensemble  
+  - 2018: BI-LSTM: 97.96 Accuracy
+- TriviaQA: Challenging than QA pairs
+  - Long context
+  - Answers not optained by span prediction in question or context
+  - 2017 University of Washington NLP
+  - Claude 5 shots: 87.5 f1 score
+  - https://paperswithcode.com/sota/question-answering-on-triviaqa
+- HellaSwag: Common sense Natural Language Inference
+  - "A woman sits at a piano," -> "She sets her fingers on the keys."
+  - Humans have 95% accuracy
+  - From Allen Institute for AI a Non-Profit research org.
+  - GPT4 10 shots: 95.3 Accuracy
+  - https://paperswithcode.com/sota/sentence-completion-on-hellaswag
+:::
+
 
 
 ### Theory
 
+### Conditional Random Field model - Quick overview
 
 
 ### Big-O reminder

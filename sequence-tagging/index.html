@@ -196,24 +196,82 @@ class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href
 \ldots, \mathbf{x}_T\}
 \end{aligned}\]</span></p>
 </section>
-<section id="history" class="slide level3">
-<h3>History</h3>
+<section>
+<section id="evolution-of-nlp-and-sequence-tagging"
+class="title-slide slide level2">
+<h2>Evolution of NLP and Sequence tagging</h2>
+
 </section>
-<section id="recent-benchmarks" class="slide level3">
-<h3>Recent benchmarks</h3>
-<div class="mermaid">
-<pre>
-    %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
-    xychart-beta
-        title "CoNLL 2003 Usage in Published Papers (paperswithcode.com)"
-        x-axis [2020, 2021, 2022, 2023, 2024]
-        y-axis "F1-score" 0 --> 100
-        bar [30, 35, 30, 40, 45, 50, 51, 51, 50, 54, 55, 56]
-  </pre>
+<section id="ai-over-optimism-and-ai-winter" class="slide level3">
+<h3>1954-1966 - AI Over-optimism and AI Winter</h3>
+<div>
+<ul>
+<li class="fragment">1954: IBM-Georgetown machine translation: Sixty
+Russian sentences translated into English</li>
+<li class="fragment">1957: Noam Chomsky <em>Syntactic Structures</em>:
+<ul>
+<li class="fragment"><em>Generative Grammar</em>: A system of rules that
+generate exactly those combinations of words that form grammatical
+sentences</li>
+<li class="fragment"><em>Anti-probabilistic</em>: “probabilistic models
+give no particular insight into some of the basic problems of syntactic
+structure.”</li>
+</ul></li>
+</ul>
 </div>
 </section>
-<section id="papers-using-datasets---ner-pos" class="slide level3">
-<h3>Papers Using Datasets - NER + POS</h3>
+<section id="ai-over-optimism-and-ai-winter-1" class="slide level3">
+<h3>1954-1966 - AI Over-optimism and AI Winter</h3>
+<div>
+<ul>
+<li class="fragment">1958: H. A. Simon and Allen Newell:“within ten
+years a digital computer will discover and prove an important new
+mathematical theorem”</li>
+<li class="fragment">1960’s: Slow progress in machine translation</li>
+<li class="fragment">1966: ALPAC report ledas to defunding of machine
+translation in US</li>
+<li class="fragment">1974–1980: Triggers First AI Winter</li>
+</ul>
+</div>
+</section>
+<section id="late-1980s-and-1990s---rise-statistical-models"
+class="slide level3">
+<h3>Late 1980’s and 1990’s - Rise Statistical Models</h3>
+<div>
+<ul>
+<li class="fragment">Less dominance of Chomskyan theories of
+linguistics</li>
+<li class="fragment">More computational power</li>
+<li class="fragment">Availability of Annotated Datasets</li>
+<li class="fragment">Give Rise to Statistical NLP
+<ul>
+<li class="fragment">1989: Hidden Markov Models (HMMs) for Speech</li>
+<li class="fragment">1993: Penn Treebank Project</li>
+<li class="fragment">1995: WordNet: A Lexical Database for English</li>
+<li class="fragment">1996: A Maximum Entropy Model for Part-Of-Speech
+Tagging</li>
+<li class="fragment">2001: Conditional Random Field</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="s-to-2010---neural-models-and-word-embeddings"
+class="slide level3">
+<h3>2000’s to 2010 - Neural Models and Word Embeddings</h3>
+<ul>
+<li>Neural net and LSTM revolution</li>
+</ul>
+</section>
+<section id="to-today---transformers" class="slide level3">
+<h3>2010 to Today - Transformers</h3>
+<ul>
+<li>First gen Transformers (BERT, RoBERTa, Electra)</li>
+<li>LLM’s. (GPT-2, GPT-3, Claude, LLaMA) [Stanford 2024 - Transformers
+Slide 9][14]</li>
+</ul>
+</section>
+<section id="papers-using-datasets-1" class="slide level3">
+<h3>Papers Using Datasets <sup>1</sup></h3>
 <div style="height:400px">
 <canvas data-chart="line">
 <!--
@@ -221,70 +279,101 @@ class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href
  "data": {
   "labels": [2020,2021,2022,2023,2024],
   "datasets":[
-   {
-    "data":[70,92,95,107,50],
-    "label":"NER - CoNLL 2003","backgroundColor":"rgba(20,220,220,.8)"
-   },
    {
     "data":[86,88,43,41,18],
-    "label":"POS - Penn Treebank","backgroundColor":"rgba(220,120,120,.8)"
-   }
-  ]
- },
- "options": {
-        "scales": {
-            "y": {
-                "display": true,
-                "title": {
-                    "display": true,
-                    "text": "Published Papers" 
-                }
-            }
-        }
-    }
-}
--->
-</canvas>
-</div>
-</section>
-<section id="papers-using-datasets---abstract-tasks"
-class="slide level3">
-<h3>Papers Using Datasets - Abstract tasks</h3>
-<div style="height:400px">
-<canvas data-chart="line">
-<!--
-{
- "data": {
-  "labels": [2020,2021,2022,2023,2024],
-  "datasets":[
-   {
-    "data":[114,204,216,263, 264],
-    "label":"QA - Natural Questions (google + Wiki)","backgroundColor":"rgba(20,220,220,.8)"
+    "label":"POS - Penn Treebank",
+    "yAxisID": "y",
+    "fill": false
    },
    {
-    "data":[22,83,122,258,243],
-    "label":"Language Modelling - Colossal Clean Crawled Corpus","backgroundColor":"rgba(220,120,120,.8)"
+    "data":[63,112,105,156, 195],
+    "label":"QA - TriviaQA (Wiki + Web)",
+    "yAxisID": "y1"
+   },
+   {
+    "data":[16,30,54,160,327],
+    "label":"NLI - HellaSwag Sentence Completion",
+    "yAxisID": "y1"
    }
   ]
  },
  "options": {
-        "scales": {
-            "y": {
-                "display": true,
-                "title": {
-                    "display": true,
-                    "text": "Published Papers" 
-                }
-            }
-        }
+  "scales": {
+   "y": {
+    "type": "linear",
+    "display": true,
+    "position": "left",
+    "title": {
+     "display": true,
+     "text": "Published Papers"
     }
+   },
+   "y1": {
+    "type": "linear",
+    "display": true,
+    "position": "right",
+    "title": {
+     "display": true,
+     "text": "Published Papers"
+    },
+    "grid": {
+     "drawOnChartArea": false
+    }
+   }
+  }
+ }
 }
 -->
 </canvas>
 </div>
+<p>Abstract tasks have taken over lower level tasks</p>
+<div class="footer">
+<p><sup>1</sup> Source: https://paperswithcode.com/datasets</p>
+</div>
+<aside class="notes">
+<ul>
+<li>Penn Tree Bank
+<ul>
+<li>Penn State Tree Bank</li>
+<li>Initially released in 1992</li>
+<li>First richly annotated text corpus</li>
+<li>1 mio Annotated tokens (2500 stories) from Wall Street Journal
+Article from 1989 Wall Street Journal</li>
+<li>2022: Sequence Aligment Ensemble-BART encoder: 98.15 Accuracy
+<ul>
+<li>Ensemble of BART models</li>
+<li>Weighted voting where weights a proportional to avg. alignment score
+with other predictions in ensemble<br />
+</li>
+</ul></li>
+<li>2018: BI-LSTM: 97.96 Accuracy</li>
+</ul></li>
+<li>TriviaQA: Challenging than QA pairs
+<ul>
+<li>Long context</li>
+<li>Answers not optained by span prediction in question or context</li>
+<li>2017 University of Washington NLP</li>
+<li>Claude 5 shots: 87.5 f1 score</li>
+<li>https://paperswithcode.com/sota/question-answering-on-triviaqa</li>
+</ul></li>
+<li>HellaSwag: Common sense Natural Language Inference
+<ul>
+<li>“A woman sits at a piano,” -&gt; “She sets her fingers on the
+keys.”</li>
+<li>Humans have 95% accuracy</li>
+<li>From Allen Institute for AI a Non-Profit research org.</li>
+<li>GPT4 10 shots: 95.3 Accuracy</li>
+<li>https://paperswithcode.com/sota/sentence-completion-on-hellaswag</li>
+</ul></li>
+</ul>
+</aside>
 </section>
 <section id="theory" class="slide level3">
 <h3>Theory</h3>
+</section>
+<section id="conditional-random-field-model---quick-overview"
+class="slide level3">
+<h3>Conditional Random Field model - Quick overview</h3>
 </section>
 <section id="big-o-reminder" class="slide level3">
 <h3>Big-O reminder</h3>
@@ -297,7 +386,7 @@ class="math inline">\(\\[10pt]\)</span> <span
 class="math inline">\(\text{if} \quad f(n) \leq C\cdot n \qquad
 \text{for all} \quad n&gt;n_0.\)</span></p>
 </div>
-</section>
+</section></section>
 <section id="references"
 class="title-slide slide level2 allowframebreaks">
 <h2 class="allowframebreaks">References</h2>
