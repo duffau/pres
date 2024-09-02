@@ -95,6 +95,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -243,17 +244,49 @@ class="slide level3">
 linguistics</li>
 <li class="fragment">More computational power</li>
 <li class="fragment">Availability of Annotated Datasets</li>
-<li class="fragment">Give Rise to Statistical NLP
-<ul>
-<li class="fragment">1989: Hidden Markov Models (HMMs) for Speech</li>
-<li class="fragment">1993: Penn Treebank Project</li>
-<li class="fragment">1995: WordNet: A Lexical Database for English</li>
-<li class="fragment">1996: A Maximum Entropy Model for Part-Of-Speech
-Tagging</li>
-<li class="fragment">2001: Conditional Random Field</li>
-</ul></li>
+<li class="fragment">Give Rise to Statistical NLP</li>
 </ul>
 </div>
+</section>
+<section id="late-1980s-and-1990s---rise-statistical-models-1"
+class="slide level3">
+<h3>Late 1980’s and 1990’s - Rise Statistical Models</h3>
+<div>
+<ul>
+<li class="fragment">1988: First papers using Markov models for PoS</li>
+<li class="fragment">1989: Hidden Markov Models (HMMs) for Speech</li>
+<li class="fragment">1993: Penn Treebank Project</li>
+<li class="fragment">1995: 6th Message Understanding Conference</li>
+<li class="fragment">1995: WordNet: A Lexical Database for English</li>
+<li class="fragment">2001: Conditional Random Fields</li>
+</ul>
+</div>
+<aside class="notes">
+<ul>
+<li>HMM: The first to encode sequential information for PoS</li>
+<li>Penn Treebank Project: 1 mio annotated tokens from WSJ</li>
+<li>MUC 6: https://aclanthology.org/volumes/M95-1/
+<ul>
+<li>Arranged by Naval Command and DARPA</li>
+<li>A information extraction competition 10-20 participants from
+industry adn universities 6 months work</li>
+<li>Defined evalution methods and metrics like precision, recall and
+f1</li>
+<li>Task:
+<ul>
+<li>MUC-4: “Terrorist activities in Latin America”</li>
+<li>MUC-6: “Negotiation of Labor Disputes”</li>
+</ul></li>
+<li>Coining the “NAmed Entity” at MUC-6</li>
+</ul></li>
+<li>Condtional Random Fields:
+<ul>
+<li>Solves the “label bias” issue of HMM and MEMM</li>
+<li>Are discriminative (like max entropy)</li>
+<li>Are Sequential like HMM and MEMM</li>
+</ul></li>
+</ul>
+</aside>
 </section>
 <section id="s-to-2010---neural-models-and-word-embeddings"
 class="slide level3">
@@ -367,13 +400,85 @@ keys.”</li>
 </ul></li>
 </ul>
 </aside>
-</section>
-<section id="theory" class="slide level3">
-<h3>Theory</h3>
+</section></section>
+<section>
+<section id="crf-theory" class="title-slide slide level2">
+<h2>CRF Theory</h2>
+
 </section>
 <section id="conditional-random-field-model---quick-overview"
 class="slide level3">
 <h3>Conditional Random Field model - Quick overview</h3>
+<pre><code>&lt;HMM figure&gt;
+&lt;CRF figure&gt;</code></pre>
+<ul>
+<li>Discriminiative as opposed to Generative</li>
+<li>Allows bidirectional influence from labels</li>
+</ul>
+</section>
+<section id="crf-training-demo" class="slide level3">
+<h3>CRF Training Demo</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn_crfsuite</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> word2features(tokens, i):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    features <span class="op">=</span> {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;bias&quot;</span>: <span class="fl">1.0</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;word&quot;</span>: tokens[i].lower(),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;prev_word&quot;</span> <span class="op">=</span> tokens[i<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;next_word&quot;</span> <span class="op">=</span> tokens[i<span class="op">+</span><span class="dv">1</span>],</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;shape&quot;</span>: re.sub(word, <span class="st">&quot;\d&quot;</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> features</span></code></pre></div>
+</section>
+<section id="crf-training-demo-1" class="slide level3">
+<h3>CRF Training Demo</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn_crfsuite</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sent2features(tokens):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [word2features(tokens, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tokens))]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [sent2features(tokens) <span class="cf">for</span> tokens <span class="kw">in</span> sentences]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">&lt;</span>labels<span class="op">&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>crf <span class="op">=</span> sklearn_crfsuite.CRF(algorithm<span class="op">=</span><span class="st">&#39;lbfgs&#39;</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>crf.fit(X_train, y_train)</span></code></pre></div>
+</section>
+<section id="discriminative-vs-generative-models" class="slide level3">
+<h3>Discriminative VS Generative Models</h3>
+</section>
+<section id="encoding-condition-dependence-as-graphs"
+class="slide level3">
+<h3>Encoding condition dependence as Graphs</h3>
+<p><span class="math display">\[
+\{X_1, X_2, X_3\}
+\]</span></p>
+</section>
+<section id="fitting-crfs" class="slide level3">
+<h3>Fitting CRF’s</h3>
+<ul>
+<li>How to include “high cardinality” features like current
+<code>word</code></li>
+</ul>
+<p><span class="math display">\[ \ell(\theta) = \sum_{i=1}^{N} \log
+p\left(\mathbf{y}^{(i)} \mid \mathbf{x}^{(i)} ; \theta\right).
++ c_1 \lVert \theta \rVert + c_2 \lVert \theta \rVert_2 \]</span></p>
+<ul>
+<li>Use of Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) <span
+class="citation" data-cites="andrew2007scalable">(Andrew and Gao
+2007)</span></li>
+</ul>
+</section></section>
+<section id="performance-comparison" class="title-slide slide level2">
+<h2>Performance comparison</h2>
+
+</section>
+
+<section>
+<section id="speed-comparison" class="title-slide slide level2">
+<h2>Speed comparison</h2>
+
 </section>
 <section id="big-o-reminder" class="slide level3">
 <h3>Big-O reminder</h3>
@@ -386,12 +491,63 @@ class="math inline">\(\\[10pt]\)</span> <span
 class="math inline">\(\text{if} \quad f(n) \leq C\cdot n \qquad
 \text{for all} \quad n&gt;n_0.\)</span></p>
 </div>
+</section>
+<section id="inference-in-crf" class="slide level3">
+<h3>Inference in CRF</h3>
+<p><img data-src="static/trellis.png" style="width:40.0%" /></p>
+<ul>
+<li>Naive implementation: <span
+class="math inline">\(O(2^n)\)</span></li>
+</ul>
+</section>
+<section id="inference-in-transformers" class="slide level3">
+<h3>Inference in Transformers</h3>
+</section>
+<section id="speed-benchmarks" class="slide level3">
+<h3>Speed benchmarks</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Model</th>
+<th style="text-align: right;">Time per token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">CRF</td>
+<td style="text-align: right;">x</td>
+</tr>
+<tr>
+<td style="text-align: left;">BERT</td>
+<td style="text-align: right;">y</td>
+</tr>
+<tr>
+<td style="text-align: left;">LSTM</td>
+<td style="text-align: right;">z</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="conclusion" class="slide level3">
+<h3>Conclusion</h3>
+<ul>
+<li>CRF’s are great at identifying entities which are identified by
+syntactic and some extent semantic information</li>
+<li>Quadratic transformers are MUCH MUCH slower, Sub-quadratic
+transformers are also MUCH slower. The constant in front of n actually
+matters!</li>
+</ul>
 </section></section>
 <section id="references"
 class="title-slide slide level2 allowframebreaks">
 <h2 class="allowframebreaks">References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent"
+data-entry-spacing="0" role="list">
+<div id="ref-andrew2007scalable" class="csl-entry" role="listitem">
+Andrew, Galen, and Jianfeng Gao. 2007. <span>“Scalable Training of l
+1-Regularized Log-Linear Models.”</span> In <em>Proceedings of the 24th
+International Conference on Machine Learning</em>, 33–40.
+</div>
 </div>
 </section>
     </div>

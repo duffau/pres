@@ -101,11 +101,33 @@ $$\begin{aligned}
 - More computational power
 - Availability of Annotated Datasets
 - Give Rise to Statistical NLP
-  - 1989: Hidden Markov Models (HMMs) for Speech
-  - 1993: Penn Treebank Project
-  - 1995: WordNet: A Lexical Database for English
-  - 1996: A Maximum Entropy Model for Part-Of-Speech Tagging
-  - 2001: Conditional Random Field
+:::
+
+### Late 1980's and 1990's - Rise Statistical Models
+::: incremental
+- 1988: First papers using Markov models for PoS
+- 1989: Hidden Markov Models (HMMs) for Speech
+- 1993: Penn Treebank Project
+- 1995: 6th Message Understanding Conference
+- 1995: WordNet: A Lexical Database for English
+- 2001: Conditional Random Fields
+:::
+
+::: notes
+- HMM: The first to encode sequential information for PoS
+- Penn Treebank Project: 1 mio annotated tokens from WSJ
+- MUC 6: https://aclanthology.org/volumes/M95-1/ 
+  - Arranged by Naval Command and DARPA
+  - A information extraction competition 10-20 participants from industry adn universities 6 months work
+  - Defined evalution methods and metrics like precision, recall and f1
+  - Task: 
+    - MUC-4: "Terrorist activities in Latin America"
+    - MUC-6: "Negotiation of Labor Disputes"
+  - Coining the "NAmed Entity" at MUC-6
+- Condtional Random Fields:
+  - Solves the "label bias" issue of HMM and MEMM
+  - Are discriminative (like max entropy)
+  - Are Sequential like HMM and MEMM
 :::
 
 ### 2000's to 2010 - Neural Models and Word Embeddings
@@ -206,12 +228,68 @@ Abstract tasks have taken over lower level tasks
   - https://paperswithcode.com/sota/sentence-completion-on-hellaswag
 :::
 
-
-
-### Theory
-
+## CRF Theory
 ### Conditional Random Field model - Quick overview
+```
+<HMM figure>
+<CRF figure>
+```
 
+- Discriminiative as opposed to Generative
+- Allows bidirectional influence from labels
+
+### CRF Training Demo
+
+```python
+import sklearn_crfsuite
+
+def word2features(tokens, i):
+    features = {
+      "bias": 1.0,
+      "word": tokens[i].lower(),
+      "prev_word" = tokens[i-1],
+      "next_word" = tokens[i+1],
+      "shape": re.sub(word, "\d")
+    }
+    return features
+```
+
+### CRF Training Demo
+
+```python
+import sklearn_crfsuite
+
+def sent2features(tokens):
+    return [word2features(tokens, i) for i in range(len(tokens))]
+
+X = [sent2features(tokens) for tokens in sentences]
+y = <labels>
+
+crf = sklearn_crfsuite.CRF(algorithm='lbfgs')
+crf.fit(X_train, y_train)
+```
+
+
+### Discriminative VS Generative Models
+
+### Encoding condition dependence as Graphs 
+
+$$
+\{X_1, X_2, X_3\}
+$$
+
+### Fitting CRF's
+
+- How to include "high cardinality" features like current `word`
+
+$$ \ell(\theta) = \sum_{i=1}^{N} \log p\left(\mathbf{y}^{(i)} \mid \mathbf{x}^{(i)} ; \theta\right).
++ c_1 \lVert \theta \rVert + c_2 \lVert \theta \rVert_2 $$
+
+- Use of Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) [@andrew2007scalable]
+
+## Performance comparison
+
+## Speed comparison
 
 ### Big-O reminder
 
@@ -222,6 +300,27 @@ Abstract tasks have taken over lower level tasks
   $\text{if} \quad f(n) \leq C\cdot n \qquad \text{for all} \quad n>n_0.$
 </div>
 
+### Inference in CRF
+
+![](static/trellis.png){width=40%}
+
+- Naive implementation: $O(2^n)$
+
+### Inference in Transformers
+
+### Speed benchmarks 
+
+
+| Model | Time per token |
+|:-------|--------:|  
+| CRF   |              x |        
+| BERT  |              y |
+| LSTM  |              z |
+
+### Conclusion
+
+- CRF's are great at identifying entities which are identified by syntactic and some extent semantic information
+- Quadratic transformers are MUCH MUCH slower, Sub-quadratic transformers are also MUCH slower. The constant in front of n actually matters!
 
 ## References {.allowframebreaks}
 ::: {#refs}

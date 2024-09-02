@@ -25,6 +25,11 @@
 - Survey on recent advances in NER: https://arxiv.org/html/2401.10825v1
 - https://norvig.com/chomsky.html
 
+### CRF used on Financial NER tasks
+
+- Salinas Alvarado et al (2015) - Domain Adaption of Named Entity Recognition to Support Credit Risk Assessment
+
+
 ### Introduction and CRF theory
 
 - Discriminative vs Generative models [Bishop chap. 4.3 + 4.4][1]
@@ -32,6 +37,11 @@
     	- Simple discriminative (logistic regression)
     	- Simple Generative (AR(1) model)
   	- On Discriminative vs. Generative Classifier: A comparison logistisc regression and naive bayes
+- CRF Motivation:
+    - Maximum Entropy Markov Model (MEMM) as a discriminative version of a HMM
+    - MEMM suffers from "label bias" problem
+	- Solution to the label bias problem: 
+      - https://awni.github.io/label-bias/ 
 - CRF theory
 	- p(x1, x2, x3) as a directed graph [Bishop chap. 8.1][2]
 	- Markov Random Fields (MRF) [Bishop chap. 8.3][3]
