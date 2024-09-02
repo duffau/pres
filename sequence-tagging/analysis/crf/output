@@ -1,0 +1,920 @@
+ 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+best params: {'c1': 0.000919025193826233, 'c2': 0.014938142673670333}
+best CV score: 0.14345418756173905
+model size: 0.13M
+                                                precision    recall  f1-score   support
+
+      B-AllocatedShareBasedCompensationExpense      0.000     0.000     0.000         2
+    B-DebtInstrumentBasisSpreadOnVariableRate1      0.857     0.273     0.414        22
+                    B-DebtInstrumentFaceAmount      0.000     0.000     0.000         8
+  B-DebtInstrumentInterestRateStatedPercentage      0.000     0.000     0.000        11
+                                B-Depreciation      0.000     0.000     0.000         1
+                    B-DerivativeNotionalAmount      0.000     0.000     0.000         7
+  B-EffectiveIncomeTaxRateContinuingOperations      1.000     0.250     0.400         4
+B-LineOfCreditFacilityMaximumBorrowingCapacity      0.125     0.143     0.133         7
+               B-OperatingLeasesRentExpenseNet      0.000     0.000     0.000         1
+
+                                     micro avg      0.216     0.127     0.160        63
+                                     macro avg      0.220     0.074     0.105        63
+                                  weighted avg      0.377     0.127     0.185        63
+
+(.venv) ➜  crf git:(master) ✗ python get_data.py
+Size of datasets
+train:  1000
+test:  1000
+validation:  1000
+Saving the dataset (1/1 shards): 100%|███████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 25488.77 examples/s]
+Saving the dataset (1/1 shards): 100%|███████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 34265.79 examples/s]
+Saving the dataset (1/1 shards): 100%|███████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 32259.66 examples/s]
+Sampled dataset saved to ./.data/finer-139
+(.venv) ➜  crf git:(master) ✗ python get_data.py
+Size of datasets
+train:  10000
+test:  10000
+validation:  10000
+Saving the dataset (1/1 shards): 100%|█████████████████████████████████████████████████████████████████████████████████| 10000/10000 [00:00<00:00, 11952.85 examples/s]
+Saving the dataset (1/1 shards): 100%|█████████████████████████████████████████████████████████████████████████████████| 10000/10000 [00:00<00:00, 58390.06 examples/s]
+Saving the dataset (1/1 shards): 100%|█████████████████████████████████████████████████████████████████████████████████| 10000/10000 [00:00<00:00, 63382.67 examples/s]
+Sampled dataset saved to ./.data/finer-139
+(.venv) ➜  crf git:(master) ✗ python desc_stats.py 
+DatasetDict({
+    train: Dataset({
+        features: ['id', 'tokens', 'ner_tags'],
+        num_rows: 10000
+    })
+    validation: Dataset({
+        features: ['id', 'tokens', 'ner_tags'],
+        num_rows: 10000
+    })
+    test: Dataset({
+        features: ['id', 'tokens', 'ner_tags'],
+        num_rows: 10000
+    })
+})
+> /home/duffau/repos/talks/sequence-tagging/analysis/crf/desc_stats.py(15)tag_distribution()
+-> return [tag_names[i] for i in tags], counts
+(Pdb) c
+O 448698
+B-DebtInstrumentInterestRateStatedPercentage 166
+B-LineOfCreditFacilityMaximumBorrowingCapacity 138
+B-DebtInstrumentFaceAmount 120
+B-DebtInstrumentBasisSpreadOnVariableRate1 108
+B-EffectiveIncomeTaxRateContinuingOperations 106
+B-AllocatedShareBasedCompensationExpense 100
+B-AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount 96
+I-DebtInstrumentMaturityDate 81
+B-AmortizationOfIntangibleAssets 69
+B-IncomeTaxExpenseBenefit 59
+B-ConcentrationRiskPercentage1 55
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriod 53
+B-LineOfCredit 46
+B-DerivativeNotionalAmount 46
+B-RevenueFromRelatedParties 43
+B-EquityMethodInvestmentOwnershipPercentage 42
+B-OperatingLeaseRightOfUseAsset 41
+B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized 40
+B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1 40
+B-Depreciation 38
+B-LettersOfCreditOutstandingAmount 38
+B-RestructuringCharges 38
+B-StockRepurchaseProgramAuthorizedAmount1 37
+B-DebtInstrumentCarryingAmount 36
+B-RevenueFromContractWithCustomerExcludingAssessedTax 36
+B-LesseeOperatingLeaseTermOfContract 36
+B-OperatingLeaseLiability 34
+B-PaymentsToAcquireBusinessesGross 33
+B-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife 31
+B-BusinessCombinationConsiderationTransferred1 31
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant 30
+B-EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate 28
+B-LineOfCreditFacilityRemainingBorrowingCapacity 28
+B-FiniteLivedIntangibleAssetUsefulLife 28
+B-LongTermDebt 28
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue 27
+B-DebtInstrumentMaturityDate 27
+B-NumberOfReportableSegments 26
+B-StockIssuedDuringPeriodSharesNewIssues 26
+B-DefinedContributionPlanCostRecognized 25
+B-ContractWithCustomerLiabilityRevenueRecognized 25
+B-DebtInstrumentRedemptionPricePercentage 25
+B-Revenues 24
+B-LongTermDebtFairValue 23
+B-Goodwill 23
+B-BusinessCombinationAcquisitionRelatedCosts 23
+B-MinorityInterestOwnershipPercentageByParent 22
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized 22
+B-BusinessAcquisitionPercentageOfVotingInterestsAcquired 22
+B-EquityMethodInvestments 22
+B-CashAndCashEquivalentsFairValueDisclosure 22
+B-TreasuryStockSharesAcquired 21
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 21
+B-PropertyPlantAndEquipmentUsefulLife 21
+B-DebtInstrumentInterestRateEffectivePercentage 21
+B-RelatedPartyTransactionExpensesFromTransactionsWithRelatedParty 21
+B-LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage 20
+I-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 19
+B-DebtInstrumentUnamortizedDiscount 18
+B-NumberOfOperatingSegments 18
+B-RevenueRemainingPerformanceObligation 18
+B-LineOfCreditFacilityCurrentBorrowingCapacity 18
+B-SharePrice 18
+B-ContractWithCustomerLiability 18
+B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions 18
+B-InterestExpenseDebt 18
+B-ShareBasedCompensation 17
+B-BusinessCombinationContingentConsiderationLiability 17
+B-LeaseAndRentalExpense 17
+B-OperatingLeaseWeightedAverageRemainingLeaseTerm1 17
+B-CommonStockDividendsPerShareDeclared 16
+B-StockRepurchaseProgramRemainingAuthorizedRepurchaseAmount1 16
+B-OperatingLeaseCost 16
+B-RepaymentsOfDebt 16
+B-PaymentsToAcquireBusinessesNetOfCashAcquired 16
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue 16
+B-DeferredFinanceCostsGross 15
+B-CommonStockCapitalSharesReservedForFutureIssuance 15
+B-AccrualForEnvironmentalLossContingencies 15
+B-OperatingLeasesRentExpenseNet 14
+B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill 14
+B-DerivativeFixedInterestRate 14
+B-DefinedBenefitPlanContributionsByEmployer 14
+B-LineOfCreditFacilityInterestRateAtPeriodEnd 14
+B-DisposalGroupIncludingDiscontinuedOperationConsideration 13
+B-LossContingencyPendingClaimsNumber 13
+B-UnrecognizedTaxBenefits 13
+B-DebtInstrumentFairValue 13
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue 13
+B-CommonStockSharesOutstanding 13
+B-LossContingencyDamagesSoughtValue 13
+B-SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage 13
+B-PublicUtilitiesRequestedRateIncreaseDecreaseAmount 12
+B-OperatingLossCarryforwards 12
+B-SaleOfStockNumberOfSharesIssuedInTransaction 12
+B-LossContingencyAccrualAtCarryingValue 12
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber 12
+B-DebtInstrumentTerm 12
+B-CommonStockSharesAuthorized 12
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross 12
+B-ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1 11
+B-AssetImpairmentCharges 11
+B-StockRepurchasedAndRetiredDuringPeriodShares 11
+B-CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption 10
+B-ProceedsFromIssuanceOfCommonStock 10
+B-GuaranteeObligationsMaximumExposure 10
+B-EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense 10
+B-LossContingencyEstimateOfPossibleLoss 10
+B-CommonStockParOrStatedValuePerShare 10
+B-DebtInstrumentConvertibleConversionPrice1 10
+B-PreferredStockSharesAuthorized 10
+B-MinorityInterestOwnershipPercentageByNoncontrollingOwners 10
+I-LesseeOperatingLeaseTermOfContract 10
+B-NumberOfRealEstateProperties 10
+B-AmortizationOfFinancingCosts 9
+B-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod 9
+B-LineOfCreditFacilityCommitmentFeePercentage 9
+B-OperatingLeasePayments 9
+B-BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued 9
+B-StockRepurchasedDuringPeriodShares 9
+B-PreferredStockDividendRatePercentage 8
+B-SaleOfStockPricePerShare 8
+B-RevenueFromContractWithCustomerIncludingAssessedTax 8
+B-TreasuryStockValueAcquiredCostMethod 8
+B-CapitalizedContractCostAmortization 8
+B-OperatingLeaseWeightedAverageDiscountRatePercent 7
+B-LesseeOperatingLeaseRenewalTerm 7
+B-DebtWeightedAverageInterestRate 7
+B-SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense 7
+B-TreasuryStockAcquiredAverageCostPerShare 7
+I-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife 6
+B-OperatingLeaseExpense 5
+B-IncomeLossFromEquityMethodInvestments 5
+B-UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate 5
+B-DeferredFinanceCostsNet 5
+I-OperatingLeaseWeightedAverageRemainingLeaseTerm1 5
+B-GainsLossesOnExtinguishmentOfDebt 5
+I-FiniteLivedIntangibleAssetUsefulLife 5
+I-DebtInstrumentTerm 4
+I-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod 4
+B-RelatedPartyTransactionAmountsOfTransaction 3
+B-AreaOfRealEstateProperty 3
+B-GoodwillImpairmentLoss 3
+B-RestructuringAndRelatedCostExpectedCost1 3
+I-PropertyPlantAndEquipmentUsefulLife 3
+I-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1 3
+I-LesseeOperatingLeaseRenewalTerm 3
+B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles 3
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue 2
+I-CommonStockSharesAuthorized 2
+B-InterestExpense 2
+I-DebtInstrumentFaceAmount 1
+(.venv) ➜  crf git:(master) ✗ python fit.py       
+['B-AllocatedShareBasedCompensationExpense', 'B-DebtInstrumentInterestRateStatedPercentage', 'B-LineOfCreditFacilityMaximumBorrowingCapacity', 'B-DerivativeNotionalAmount', 'B-OperatingLeasesRentExpenseNet', 'B-Depreciation', 'B-EffectiveIncomeTaxRateContinuingOperations', 'B-DebtInstrumentBasisSpreadOnVariableRate1', 'B-DebtInstrumentFaceAmount']
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+                                                precision    recall  f1-score   support
+
+      B-AllocatedShareBasedCompensationExpense      0.000     0.000     0.000        65
+    B-DebtInstrumentBasisSpreadOnVariableRate1      0.667     0.330     0.441        91
+                    B-DebtInstrumentFaceAmount      0.000     0.000     0.000        77
+  B-DebtInstrumentInterestRateStatedPercentage      0.471     0.393     0.429       122
+                                B-Depreciation      0.000     0.000     0.000        12
+                    B-DerivativeNotionalAmount      0.000     0.000     0.000        54
+  B-EffectiveIncomeTaxRateContinuingOperations      0.417     0.098     0.159        51
+B-LineOfCreditFacilityMaximumBorrowingCapacity      0.000     0.000     0.000       121
+               B-OperatingLeasesRentExpenseNet      0.000     0.000     0.000         1
+
+                                     micro avg      0.519     0.140     0.220       594
+                                     macro avg      0.173     0.091     0.114       594
+                                  weighted avg      0.235     0.140     0.169       594
+
+Fitting 3 folds for each of 50 candidates, totalling 150 fits
+best params: {'c1': 0.4487523606548803, 'c2': 0.0023781924878204276}
+best CV score: 0.22781442559191312
+model size: 0.09M
+                                                precision    recall  f1-score   support
+
+      B-AllocatedShareBasedCompensationExpense      0.000     0.000     0.000        65
+    B-DebtInstrumentBasisSpreadOnVariableRate1      0.729     0.385     0.504        91
+                    B-DebtInstrumentFaceAmount      0.222     0.052     0.084        77
+  B-DebtInstrumentInterestRateStatedPercentage      0.500     0.410     0.450       122
+                                B-Depreciation      0.000     0.000     0.000        12
+                    B-DerivativeNotionalAmount      0.000     0.000     0.000        54
+  B-EffectiveIncomeTaxRateContinuingOperations      0.379     0.216     0.275        51
+B-LineOfCreditFacilityMaximumBorrowingCapacity      0.526     0.083     0.143       121
+               B-OperatingLeasesRentExpenseNet      0.000     0.000     0.000         1
+
+                                     micro avg      0.476     0.185     0.267       594
+                                     macro avg      0.262     0.127     0.162       594
+                                  weighted avg      0.383     0.185     0.233       594
+
+(.venv) ➜  crf git:(master) ✗ 
+(.venv) ➜  crf git:(master) ✗ python fit.py
+Traceback (most recent call last):
+  File "/home/duffau/repos/talks/sequence-tagging/analysis/crf/fit.py", line 68, in <module>
+    USE_LABELS = set([LABELS.index(label_name) for label_name in sett.USE_LABELS])
+TypeError: 'NoneType' object is not iterable
+(.venv) ➜  crf git:(master) ✗ python fit.py
+^CTraceback (most recent call last):
+  File "/home/duffau/repos/talks/sequence-tagging/analysis/crf/fit.py", line 91, in <module>
+    
+  File "/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn_crfsuite/estimator.py", line 337, in fit
+    trainer.train(self.modelfile.name, holdout=-1 if X_dev is None else 1)
+  File "pycrfsuite/_pycrfsuite.pyx", line 359, in pycrfsuite._pycrfsuite.BaseTrainer.train
+  File "pycrfsuite/_pycrfsuite.pyx", line 272, in pycrfsuite._pycrfsuite.BaseTrainer._on_message
+  File "pycrfsuite/_pycrfsuite.pyx", line 499, in pycrfsuite._pycrfsuite.Trainer.message
+  File "/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/pycrfsuite/_logparser.py", line 25, in feed
+    def feed(self, line):
+KeyboardInterrupt
+
+(.venv) ➜  crf git:(master) ✗ python fit.py
+loading training data to CRFsuite: 100%|███████████████████████████████████████████████████████████████████████████████████████| 10000/10000 [00:04<00:00, 2401.24it/s]
+
+Feature generation
+type: CRF1d
+feature.minfreq: 0.000000
+feature.possible_states: 0
+feature.possible_transitions: 1
+0....1....2....3....4....5....6....7....8....9....10
+Number of features: 78371
+Seconds required: 0.440
+
+L-BFGS optimization
+c1: 0.448700
+c2: 0.002370
+num_memories: 6
+max_iterations: 100
+epsilon: 0.000010
+stop: 10
+delta: 0.000010
+linesearch: MoreThuente
+linesearch.max_iterations: 20
+
+Iter 1   time=30.31 loss=1632257.91 active=77549 feature_norm=1.00
+Iter 2   time=31.68 loss=1234703.06 active=77459 feature_norm=161.88
+Iter 3   time=15.07 loss=1217504.82 active=33629 feature_norm=159.75
+Iter 4   time=218.51 loss=1178863.91 active=12653 feature_norm=71.47
+Iter 5   time=122.18 loss=559201.61 active=40642 feature_norm=164.14
+Iter 6   time=153.52 loss=352258.29 active=40143 feature_norm=234.26
+Iter 7   time=123.19 loss=284492.87 active=40616 feature_norm=188.46
+Iter 8   time=91.98 loss=250118.26 active=40614 feature_norm=143.56
+Iter 9   time=92.00 loss=177428.96 active=13871 feature_norm=113.95
+Iter 10  time=15.28 loss=148609.75 active=13721 feature_norm=88.45
+Iter 11  time=61.08 loss=98924.62 active=13951 feature_norm=85.43
+Iter 12  time=75.73 loss=62979.82 active=14698 feature_norm=87.68
+Iter 13  time=15.10 loss=55602.23 active=14901 feature_norm=87.11
+Iter 14  time=30.18 loss=50942.35 active=14814 feature_norm=85.86
+Iter 15  time=30.23 loss=47496.53 active=14719 feature_norm=84.76
+Iter 16  time=15.04 loss=45383.66 active=14620 feature_norm=85.37
+Iter 17  time=15.22 loss=41051.20 active=14394 feature_norm=84.58
+Iter 18  time=15.19 loss=37568.26 active=13572 feature_norm=81.93
+Iter 19  time=15.19 loss=31855.09 active=13771 feature_norm=82.31
+Iter 20  time=15.31 loss=31133.41 active=13809 feature_norm=82.23
+Iter 21  time=15.09 loss=30092.87 active=13788 feature_norm=82.16
+Iter 22  time=15.19 loss=28802.54 active=13543 feature_norm=81.78
+Iter 23  time=15.40 loss=28192.56 active=13420 feature_norm=81.51
+Iter 24  time=15.26 loss=27062.75 active=13511 feature_norm=81.37
+Iter 25  time=15.32 loss=26257.51 active=13460 feature_norm=81.25
+Iter 26  time=15.27 loss=26172.23 active=13131 feature_norm=81.27
+Iter 27  time=15.31 loss=24121.57 active=13279 feature_norm=81.04
+Iter 28  time=15.23 loss=23838.83 active=13209 feature_norm=81.12
+Iter 29  time=15.07 loss=23153.46 active=13037 feature_norm=81.69
+Iter 30  time=15.12 loss=22567.01 active=12898 feature_norm=81.98
+Iter 31  time=15.11 loss=22015.51 active=12697 feature_norm=82.77
+Iter 32  time=15.22 loss=21440.09 active=12517 feature_norm=83.52
+Iter 33  time=15.31 loss=20702.38 active=12158 feature_norm=85.58
+Iter 34  time=15.12 loss=19950.96 active=11841 feature_norm=86.94
+Iter 35  time=15.35 loss=19124.72 active=11709 feature_norm=89.99
+Iter 36  time=15.20 loss=18761.40 active=11383 feature_norm=97.06
+Iter 37  time=15.26 loss=18014.60 active=11579 feature_norm=96.02
+Iter 38  time=15.29 loss=17644.05 active=11628 feature_norm=96.35
+Iter 39  time=15.10 loss=17386.69 active=11628 feature_norm=96.96
+Iter 40  time=15.13 loss=17050.02 active=11597 feature_norm=97.89
+Iter 41  time=30.59 loss=16765.14 active=11527 feature_norm=99.57
+Iter 42  time=30.42 loss=16439.28 active=11484 feature_norm=101.86
+Iter 43  time=15.24 loss=16218.37 active=11515 feature_norm=102.76
+Iter 44  time=15.24 loss=16011.66 active=11530 feature_norm=104.19
+Iter 45  time=15.14 loss=15786.69 active=11476 feature_norm=106.66
+Iter 46  time=15.10 loss=15593.83 active=11412 feature_norm=111.18
+Iter 47  time=15.10 loss=15332.84 active=11451 feature_norm=112.47
+Iter 48  time=15.09 loss=15116.78 active=11401 feature_norm=115.40
+Iter 49  time=15.25 loss=14707.27 active=11352 feature_norm=121.32
+Iter 50  time=15.24 loss=14230.74 active=11268 feature_norm=130.47
+Iter 51  time=15.34 loss=13936.05 active=11214 feature_norm=139.50
+Iter 52  time=15.24 loss=13667.46 active=11236 feature_norm=142.10
+Iter 53  time=15.09 loss=13379.75 active=11187 feature_norm=150.63
+Iter 54  time=15.27 loss=13170.89 active=11190 feature_norm=155.97
+Iter 55  time=15.22 loss=12964.91 active=11147 feature_norm=161.43
+Iter 56  time=15.24 loss=12822.19 active=11113 feature_norm=163.90
+Iter 57  time=15.19 loss=12638.20 active=11039 feature_norm=169.04
+Iter 58  time=15.13 loss=12501.98 active=10931 feature_norm=172.73
+Iter 59  time=15.04 loss=12399.68 active=10879 feature_norm=176.85
+Iter 60  time=15.13 loss=12334.27 active=10856 feature_norm=177.88
+Iter 61  time=15.14 loss=12290.69 active=10806 feature_norm=178.70
+Iter 62  time=15.09 loss=12261.47 active=10766 feature_norm=178.17
+Iter 63  time=15.08 loss=12215.93 active=10663 feature_norm=178.50
+Iter 64  time=15.07 loss=12190.71 active=10519 feature_norm=178.82
+Iter 65  time=15.03 loss=12139.20 active=10488 feature_norm=180.23
+Iter 66  time=15.04 loss=12118.17 active=10421 feature_norm=180.37
+Iter 67  time=15.15 loss=12080.15 active=10346 feature_norm=181.52
+Iter 68  time=15.13 loss=12052.39 active=10150 feature_norm=181.95
+Iter 69  time=15.09 loss=12019.88 active=10056 feature_norm=183.78
+Iter 70  time=15.11 loss=11996.30 active=9940  feature_norm=183.76
+Iter 71  time=15.08 loss=11973.19 active=9886  feature_norm=184.55
+Iter 72  time=15.10 loss=11954.63 active=9723  feature_norm=184.58
+Iter 73  time=15.09 loss=11929.54 active=9691  feature_norm=185.62
+Iter 74  time=15.04 loss=11912.44 active=9623  feature_norm=185.43
+Iter 75  time=15.06 loss=11895.82 active=9529  feature_norm=185.87
+Iter 76  time=15.04 loss=11880.16 active=9409  feature_norm=185.64
+Iter 77  time=15.08 loss=11865.42 active=9385  feature_norm=186.32
+Iter 78  time=15.05 loss=11850.64 active=9313  feature_norm=185.99
+Iter 79  time=15.03 loss=11839.42 active=9282  feature_norm=186.34
+Iter 80  time=15.08 loss=11829.31 active=9218  feature_norm=186.14
+Iter 81  time=15.04 loss=11819.30 active=9181  feature_norm=186.54
+Iter 82  time=15.09 loss=11808.38 active=9110  feature_norm=186.20
+Iter 83  time=15.10 loss=11798.74 active=9107  feature_norm=186.53
+Iter 84  time=15.09 loss=11789.50 active=9075  feature_norm=186.23
+Iter 85  time=15.11 loss=11781.43 active=9070  feature_norm=186.46
+Iter 86  time=15.13 loss=11773.42 active=9046  feature_norm=186.19
+Iter 87  time=15.11 loss=11766.26 active=9033  feature_norm=186.46
+Iter 88  time=15.12 loss=11759.15 active=8995  feature_norm=186.17
+Iter 89  time=15.12 loss=11751.75 active=8996  feature_norm=186.45
+Iter 90  time=15.11 loss=11744.58 active=8949  feature_norm=186.17
+Iter 91  time=15.12 loss=11737.08 active=8946  feature_norm=186.39
+Iter 92  time=15.10 loss=11731.41 active=8926  feature_norm=186.16
+Iter 93  time=15.09 loss=11724.17 active=8929  feature_norm=186.35
+Iter 94  time=15.07 loss=11719.47 active=8902  feature_norm=186.16
+Iter 95  time=15.03 loss=11712.32 active=8905  feature_norm=186.33
+Iter 96  time=15.04 loss=11708.34 active=8888  feature_norm=186.15
+Iter 97  time=15.02 loss=11701.31 active=8889  feature_norm=186.35
+Iter 98  time=15.05 loss=11697.92 active=8856  feature_norm=186.20
+Iter 99  time=15.05 loss=11690.98 active=8854  feature_norm=186.37
+Iter 100 time=15.04 loss=11687.67 active=8832  feature_norm=186.25
+L-BFGS terminated with the maximum number of iterations
+Total seconds required for training: 2423.893
+
+Storing the model
+Number of active features: 8832 (78371)
+Number of active attributes: 3263 (46607)
+Number of active labels: 153 (153)
+Writing labels
+Writing attributes
+Writing feature references for transitions
+Writing feature references for attributes
+Seconds required: 0.004
+
+['B-NumberOfReportableSegments', 'B-AllocatedShareBasedCompensationExpense', 'B-LineOfCredit', 'B-DebtInstrumentInterestRateStatedPercentage', 'B-DebtInstrumentUnamortizedDiscount', 'B-LineOfCreditFacilityMaximumBorrowingCapacity', 'B-DisposalGroupIncludingDiscontinuedOperationConsideration', 'B-ShareBasedCompensation', 'B-LossContingencyPendingClaimsNumber', 'B-EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate', 'B-UnrecognizedTaxBenefits', 'B-DerivativeNotionalAmount', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant', 'B-TreasuryStockSharesAcquired', 'B-LineOfCreditFacilityRemainingBorrowingCapacity', 'B-OperatingLeaseExpense', 'B-LongTermDebtFairValue', 'B-DeferredFinanceCostsGross', 'B-IncomeTaxExpenseBenefit', 'B-BusinessCombinationContingentConsiderationLiability', 'B-CommonStockDividendsPerShareDeclared', 'B-IncomeLossFromEquityMethodInvestments', 'B-OperatingLeasesRentExpenseNet', 'B-FiniteLivedIntangibleAssetUsefulLife', 'B-Depreciation', 'B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized', 'B-AmortizationOfIntangibleAssets', 'B-LettersOfCreditOutstandingAmount', 'B-StockRepurchaseProgramRemainingAuthorizedRepurchaseAmount1', 'B-UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1', 'I-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1', 'B-AmortizationOfFinancingCosts', 'B-NumberOfOperatingSegments', 'B-EffectiveIncomeTaxRateContinuingOperations', 'B-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod', 'B-AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount', 'B-MinorityInterestOwnershipPercentageByParent', 'B-CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption', 'B-PublicUtilitiesRequestedRateIncreaseDecreaseAmount', 'B-RelatedPartyTransactionAmountsOfTransaction', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriod', 'B-PaymentsToAcquireBusinessesGross', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized', 'B-LineOfCreditFacilityCommitmentFeePercentage', 'B-OperatingLossCarryforwards', 'B-LongTermDebt', 'B-RevenueRemainingPerformanceObligation', 'B-DebtInstrumentBasisSpreadOnVariableRate1', 'B-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife', 'B-SaleOfStockNumberOfSharesIssuedInTransaction', 'B-DebtInstrumentFairValue', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue', 'B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1', 'B-LineOfCreditFacilityCurrentBorrowingCapacity', 'B-PreferredStockDividendRatePercentage', 'B-LossContingencyAccrualAtCarryingValue', 'B-DebtInstrumentFaceAmount', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue', 'B-DebtInstrumentMaturityDate', 'I-DebtInstrumentMaturityDate', 'B-Goodwill', 'B-CommonStockSharesOutstanding', 'B-LeaseAndRentalExpense', 'B-LossContingencyDamagesSoughtValue', 'B-DefinedContributionPlanCostRecognized', 'B-OperatingLeaseCost', 'B-RestructuringCharges', 'B-OperatingLeasePayments', 'B-OperatingLeaseLiability', 'B-OperatingLeaseRightOfUseAsset', 'B-EquityMethodInvestmentOwnershipPercentage', 'B-ContractWithCustomerLiabilityRevenueRecognized', 'B-DebtInstrumentCarryingAmount', 'B-RepaymentsOfDebt', 'B-ProceedsFromIssuanceOfCommonStock', 'B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill', 'B-SharePrice', 'B-ContractWithCustomerLiability', 'B-DeferredFinanceCostsNet', 'B-StockIssuedDuringPeriodSharesNewIssues', 'B-ConcentrationRiskPercentage1', 'B-GuaranteeObligationsMaximumExposure', 'B-OperatingLeaseWeightedAverageRemainingLeaseTerm1', 'B-SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage', 'I-OperatingLeaseWeightedAverageRemainingLeaseTerm1', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue', 'B-PaymentsToAcquireBusinessesNetOfCashAcquired', 'B-BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued', 'B-BusinessAcquisitionPercentageOfVotingInterestsAcquired', 'B-AreaOfRealEstateProperty', 'B-PropertyPlantAndEquipmentUsefulLife', 'B-ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1', 'B-RevenueFromRelatedParties', 'B-SaleOfStockPricePerShare', 'B-StockRepurchaseProgramAuthorizedAmount1', 'B-CommonStockCapitalSharesReservedForFutureIssuance', 'B-AssetImpairmentCharges', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber', 'B-EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense', 'B-LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage', 'B-BusinessCombinationConsiderationTransferred1', 'B-BusinessCombinationAcquisitionRelatedCosts', 'B-DebtInstrumentInterestRateEffectivePercentage', 'B-DerivativeFixedInterestRate', 'B-StockRepurchasedDuringPeriodShares', 'B-LossContingencyEstimateOfPossibleLoss', 'B-DebtInstrumentTerm', 'B-DefinedBenefitPlanContributionsByEmployer', 'B-EquityMethodInvestments', 'B-StockRepurchasedAndRetiredDuringPeriodShares', 'B-DebtInstrumentRedemptionPricePercentage', 'B-RevenueFromContractWithCustomerExcludingAssessedTax', 'B-OperatingLeaseWeightedAverageDiscountRatePercent', 'B-CommonStockParOrStatedValuePerShare', 'B-DebtInstrumentConvertibleConversionPrice1', 'B-LineOfCreditFacilityInterestRateAtPeriodEnd', 'B-GoodwillImpairmentLoss', 'B-CommonStockSharesAuthorized', 'B-PreferredStockSharesAuthorized', 'B-AccrualForEnvironmentalLossContingencies', 'B-LesseeOperatingLeaseRenewalTerm', 'B-RestructuringAndRelatedCostExpectedCost1', 'B-GainsLossesOnExtinguishmentOfDebt', 'I-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife', 'B-LesseeOperatingLeaseTermOfContract', 'B-MinorityInterestOwnershipPercentageByNoncontrollingOwners', 'B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions', 'I-LesseeOperatingLeaseTermOfContract', 'B-DebtWeightedAverageInterestRate', 'B-RelatedPartyTransactionExpensesFromTransactionsWithRelatedParty', 'B-RevenueFromContractWithCustomerIncludingAssessedTax', 'I-DebtInstrumentTerm', 'B-SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense', 'I-PropertyPlantAndEquipmentUsefulLife', 'B-TreasuryStockValueAcquiredCostMethod', 'B-TreasuryStockAcquiredAverageCostPerShare', 'I-FiniteLivedIntangibleAssetUsefulLife', 'I-CommonStockSharesAuthorized', 'B-Revenues', 'B-CashAndCashEquivalentsFairValueDisclosure', 'B-NumberOfRealEstateProperties', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue', 'B-InterestExpenseDebt', 'I-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod', 'I-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross', 'I-LesseeOperatingLeaseRenewalTerm', 'B-InterestExpense', 'I-DebtInstrumentFaceAmount', 'B-CapitalizedContractCostAmortization', 'B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles']
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+                                                                                                                                             precision    recall  f1-score   support
+
+                                                                                                 B-AccrualForEnvironmentalLossContingencies      0.000     0.000     0.000         7
+                                                                             B-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife      0.167     0.067     0.095        15
+                                                                             I-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife      0.000     0.000     0.000         5
+                                                                                                   B-AllocatedShareBasedCompensationExpense      0.000     0.000     0.000        65
+                                                                                                             B-AmortizationOfFinancingCosts      0.000     0.000     0.000         3
+                                                                                                           B-AmortizationOfIntangibleAssets      0.000     0.000     0.000        49
+                                                                    B-AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount      0.214     0.051     0.082        59
+                                                                                                                 B-AreaOfRealEstateProperty      0.000     0.000     0.000         8
+                                                                                                                   B-AssetImpairmentCharges      0.000     0.000     0.000        20
+                                                                   B-BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued      0.000     0.000     0.000         8
+                                                                                   B-BusinessAcquisitionPercentageOfVotingInterestsAcquired      0.333     0.200     0.250        10
+                                                                                               B-BusinessCombinationAcquisitionRelatedCosts      0.000     0.000     0.000        15
+                                                                                             B-BusinessCombinationConsiderationTransferred1      0.000     0.000     0.000        18
+                                                                                      B-BusinessCombinationContingentConsiderationLiability      0.000     0.000     0.000        12
+                            B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill      0.000     0.000     0.000         5
+                                                  B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles      0.000     0.000     0.000         3
+                                                                                                      B-CapitalizedContractCostAmortization      0.000     0.000     0.000         4
+                                                                                                B-CashAndCashEquivalentsFairValueDisclosure      0.000     0.000     0.000        14
+                                                                                    B-ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1      0.000     0.000     0.000        16
+                                                                                        B-CommonStockCapitalSharesReservedForFutureIssuance      0.333     0.077     0.125        13
+                                                                                                     B-CommonStockDividendsPerShareDeclared      0.100     0.077     0.087        13
+                                                                                                      B-CommonStockParOrStatedValuePerShare      0.000     0.000     0.000        15
+                                                                                                              B-CommonStockSharesAuthorized      0.667     0.250     0.364         8
+                                                                                                              I-CommonStockSharesAuthorized      0.000     0.000     0.000         0
+                                                                                                             B-CommonStockSharesOutstanding      0.000     0.000     0.000        14
+                                                                                                             B-ConcentrationRiskPercentage1      0.200     0.060     0.092        50
+                                                                                                            B-ContractWithCustomerLiability      0.000     0.000     0.000        22
+                                                                                           B-ContractWithCustomerLiabilityRevenueRecognized      0.000     0.000     0.000        24
+                                                                               B-CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption      0.000     0.000     0.000         9
+                                                                                                 B-DebtInstrumentBasisSpreadOnVariableRate1      0.565     0.385     0.458        91
+                                                                                                             B-DebtInstrumentCarryingAmount      0.000     0.000     0.000        33
+                                                                                                B-DebtInstrumentConvertibleConversionPrice1      1.000     0.143     0.250         7
+                                                                                                                 B-DebtInstrumentFaceAmount      0.122     0.065     0.085        77
+                                                                                                                 I-DebtInstrumentFaceAmount      0.000     0.000     0.000         0
+                                                                                                                  B-DebtInstrumentFairValue      0.000     0.000     0.000        12
+                                                                                            B-DebtInstrumentInterestRateEffectivePercentage      0.000     0.000     0.000        15
+                                                                                               B-DebtInstrumentInterestRateStatedPercentage      0.454     0.443     0.448       122
+                                                                                                               B-DebtInstrumentMaturityDate      0.000     0.000     0.000         9
+                                                                                                               I-DebtInstrumentMaturityDate      0.000     0.000     0.000        27
+                                                                                                  B-DebtInstrumentRedemptionPricePercentage      0.273     0.167     0.207        18
+                                                                                                                       B-DebtInstrumentTerm      0.000     0.000     0.000         6
+                                                                                                                       I-DebtInstrumentTerm      0.000     0.000     0.000         4
+                                                                                                        B-DebtInstrumentUnamortizedDiscount      1.000     0.045     0.087        22
+                                                                                                          B-DebtWeightedAverageInterestRate      0.000     0.000     0.000        15
+                                                                                                                B-DeferredFinanceCostsGross      0.000     0.000     0.000        10
+                                                                                                                  B-DeferredFinanceCostsNet      0.000     0.000     0.000        14
+                                                                                                B-DefinedBenefitPlanContributionsByEmployer      0.000     0.000     0.000        13
+                                                                                                    B-DefinedContributionPlanCostRecognized      0.000     0.000     0.000         2
+                                                                                                                             B-Depreciation      0.000     0.000     0.000        12
+                                                                                                              B-DerivativeFixedInterestRate      1.000     0.200     0.333        10
+                                                                                                                 B-DerivativeNotionalAmount      0.000     0.000     0.000        54
+                                                                                 B-DisposalGroupIncludingDiscontinuedOperationConsideration      0.000     0.000     0.000         7
+                                                                                               B-EffectiveIncomeTaxRateContinuingOperations      0.325     0.255     0.286        51
+                                                                      B-EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate      0.571     0.235     0.333        17
+                                                B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized      0.000     0.000     0.000        13
+                           B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1      0.559     0.500     0.528        38
+                           I-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1      0.000     0.000     0.000         1
+                B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions      0.000     0.000     0.000        19
+                                                                   B-EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense      0.000     0.000     0.000        10
+                                                                                                B-EquityMethodInvestmentOwnershipPercentage      0.429     0.300     0.353        40
+                                                                                                                  B-EquityMethodInvestments      0.000     0.000     0.000        11
+                                                                                                     B-FiniteLivedIntangibleAssetUsefulLife      0.091     0.067     0.077        15
+                                                                                                     I-FiniteLivedIntangibleAssetUsefulLife      0.000     0.000     0.000         2
+                                                                                                        B-GainsLossesOnExtinguishmentOfDebt      0.000     0.000     0.000        12
+                                                                                                                                 B-Goodwill      0.000     0.000     0.000        47
+                                                                                                                   B-GoodwillImpairmentLoss      0.000     0.000     0.000        31
+                                                                                                      B-GuaranteeObligationsMaximumExposure      0.000     0.000     0.000        16
+                                                                                                    B-IncomeLossFromEquityMethodInvestments      0.000     0.000     0.000        10
+                                                                                                                  B-IncomeTaxExpenseBenefit      0.000     0.000     0.000        47
+                                                                                                                          B-InterestExpense      0.000     0.000     0.000         6
+                                                                                                                      B-InterestExpenseDebt      0.000     0.000     0.000         8
+                                                                                                                    B-LeaseAndRentalExpense      0.000     0.000     0.000         6
+                                                                                                          B-LesseeOperatingLeaseRenewalTerm      0.000     0.000     0.000        13
+                                                                                                          I-LesseeOperatingLeaseRenewalTerm      0.000     0.000     0.000         4
+                                                                                                       B-LesseeOperatingLeaseTermOfContract      0.000     0.000     0.000        21
+                                                                                                       I-LesseeOperatingLeaseTermOfContract      0.000     0.000     0.000         3
+                                                                                                         B-LettersOfCreditOutstandingAmount      0.000     0.000     0.000        33
+                                                                                                                             B-LineOfCredit      0.231     0.088     0.128        34
+                                                                                              B-LineOfCreditFacilityCommitmentFeePercentage      0.250     0.091     0.133        11
+                                                                                             B-LineOfCreditFacilityCurrentBorrowingCapacity      0.000     0.000     0.000        10
+                                                                                              B-LineOfCreditFacilityInterestRateAtPeriodEnd      0.000     0.000     0.000         9
+                                                                                             B-LineOfCreditFacilityMaximumBorrowingCapacity      0.379     0.091     0.147       121
+                                                                                           B-LineOfCreditFacilityRemainingBorrowingCapacity      0.667     0.065     0.118        31
+                                                                                B-LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage      0.308     0.174     0.222        23
+                                                                                                                             B-LongTermDebt      0.000     0.000     0.000        26
+                                                                                                                    B-LongTermDebtFairValue      0.000     0.000     0.000        15
+                                                                                                    B-LossContingencyAccrualAtCarryingValue      0.000     0.000     0.000         9
+                                                                                                        B-LossContingencyDamagesSoughtValue      0.000     0.000     0.000        11
+                                                                                                    B-LossContingencyEstimateOfPossibleLoss      0.000     0.000     0.000         8
+                                                                                                       B-LossContingencyPendingClaimsNumber      0.000     0.000     0.000         9
+                                                                                B-MinorityInterestOwnershipPercentageByNoncontrollingOwners      0.000     0.000     0.000        15
+                                                                                              B-MinorityInterestOwnershipPercentageByParent      1.000     0.056     0.105        18
+                                                                                                                B-NumberOfOperatingSegments      0.625     0.278     0.385        18
+                                                                                                             B-NumberOfRealEstateProperties      1.000     0.051     0.098        39
+                                                                                                               B-NumberOfReportableSegments      0.438     0.412     0.424        17
+                                                                                                                       B-OperatingLeaseCost      0.000     0.000     0.000         5
+                                                                                                                    B-OperatingLeaseExpense      0.000     0.000     0.000        14
+                                                                                                                  B-OperatingLeaseLiability      0.000     0.000     0.000        17
+                                                                                                                   B-OperatingLeasePayments      0.000     0.000     0.000         7
+                                                                                                            B-OperatingLeaseRightOfUseAsset      0.250     0.059     0.095        17
+                                                                                         B-OperatingLeaseWeightedAverageDiscountRatePercent      0.000     0.000     0.000         9
+                                                                                         B-OperatingLeaseWeightedAverageRemainingLeaseTerm1      0.200     0.091     0.125        11
+                                                                                         I-OperatingLeaseWeightedAverageRemainingLeaseTerm1      0.000     0.000     0.000         0
+                                                                                                            B-OperatingLeasesRentExpenseNet      0.000     0.000     0.000         1
+                                                                                                               B-OperatingLossCarryforwards      0.000     0.000     0.000         8
+                                                                                                         B-PaymentsToAcquireBusinessesGross      0.333     0.118     0.174        17
+                                                                                             B-PaymentsToAcquireBusinessesNetOfCashAcquired      0.000     0.000     0.000         6
+                                                                                                     B-PreferredStockDividendRatePercentage      0.000     0.000     0.000         8
+                                                                                                           B-PreferredStockSharesAuthorized      0.600     0.375     0.462         8
+                                                                                                        B-ProceedsFromIssuanceOfCommonStock      0.000     0.000     0.000        17
+                                                                                                      B-PropertyPlantAndEquipmentUsefulLife      0.667     0.154     0.250        13
+                                                                                                      I-PropertyPlantAndEquipmentUsefulLife      0.000     0.000     0.000         2
+                                                                                       B-PublicUtilitiesRequestedRateIncreaseDecreaseAmount      0.000     0.000     0.000        14
+                                                                                              B-RelatedPartyTransactionAmountsOfTransaction      0.000     0.000     0.000         5
+                                                                          B-RelatedPartyTransactionExpensesFromTransactionsWithRelatedParty      0.000     0.000     0.000        23
+                                                                                                                         B-RepaymentsOfDebt      0.000     0.000     0.000         5
+                                                                                                 B-RestructuringAndRelatedCostExpectedCost1      0.000     0.000     0.000         2
+                                                                                                                     B-RestructuringCharges      0.000     0.000     0.000        34
+                                                                                      B-RevenueFromContractWithCustomerExcludingAssessedTax      0.000     0.000     0.000        23
+                                                                                      B-RevenueFromContractWithCustomerIncludingAssessedTax      0.000     0.000     0.000         8
+                                                                                                                B-RevenueFromRelatedParties      0.000     0.000     0.000        44
+                                                                                                    B-RevenueRemainingPerformanceObligation      0.000     0.000     0.000        23
+                                                                                                                                 B-Revenues      0.000     0.000     0.000         5
+                                                                                             B-SaleOfStockNumberOfSharesIssuedInTransaction      0.000     0.000     0.000        16
+                                                                                                                 B-SaleOfStockPricePerShare      1.000     0.062     0.118        16
+                                                                                                                   B-ShareBasedCompensation      0.000     0.000     0.000        16
+                                                             B-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1      0.700     0.179     0.286        39
+                                                             I-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1      0.700     0.250     0.368        28
+                                 B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriod      0.182     0.054     0.083        37
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue      0.400     0.080     0.133        25
+                                B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber      0.000     0.000     0.000         7
+                   B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue      0.000     0.000     0.000        13
+                                                        B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized      0.500     0.074     0.129        27
+                                                 B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant      0.292     0.269     0.280        26
+                                     B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue      0.000     0.000     0.000        13
+                                                      B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross      0.200     0.059     0.091        17
+                          B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue      0.000     0.000     0.000         9
+                                                                                                                               B-SharePrice      0.400     0.125     0.190        16
+                                                    B-SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage      0.000     0.000     0.000        18
+                                                                B-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod      0.333     0.125     0.182         8
+                                                                I-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod      0.333     0.167     0.222         6
+                                                                                                   B-StockIssuedDuringPeriodSharesNewIssues      0.400     0.105     0.167        38
+                                                                                                  B-StockRepurchaseProgramAuthorizedAmount1      0.000     0.000     0.000        23
+                                                                               B-StockRepurchaseProgramRemainingAuthorizedRepurchaseAmount1      0.000     0.000     0.000        13
+                                                                                             B-StockRepurchasedAndRetiredDuringPeriodShares      1.000     0.154     0.267        13
+                                                                                                       B-StockRepurchasedDuringPeriodShares      0.000     0.000     0.000        12
+                                 B-SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense      0.000     0.000     0.000         0
+                                                                                                 B-TreasuryStockAcquiredAverageCostPerShare      0.333     0.071     0.118        14
+                                                                                                              B-TreasuryStockSharesAcquired      0.083     0.071     0.077        14
+                                                                                                     B-TreasuryStockValueAcquiredCostMethod      0.000     0.000     0.000         6
+                                                                                                                  B-UnrecognizedTaxBenefits      0.000     0.000     0.000        15
+                                                                                   B-UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate      0.000     0.000     0.000         5
+
+                                                                                                                                  micro avg      0.279     0.088     0.134      2818
+                                                                                                                                  macro avg      0.146     0.050     0.067      2818
+                                                                                                                               weighted avg      0.213     0.088     0.111      2818
+
+(.venv) ➜  crf git:(master) ✗ python fit.py
+loading training data to CRFsuite: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10000/10000 [00:03<00:00, 2785.95it/s]
+
+Feature generation
+type: CRF1d
+feature.minfreq: 0.000000
+feature.possible_states: 0
+feature.possible_transitions: 1
+0....1....2....3....4....5....6....7....8....9....10
+Number of features: 92807
+Seconds required: 0.504
+
+L-BFGS optimization
+c1: 0.448700
+c2: 0.002370
+num_memories: 6
+max_iterations: 100
+epsilon: 0.000010
+stop: 10
+delta: 0.000010
+linesearch: MoreThuente
+linesearch.max_iterations: 20
+
+Iter 1   time=30.37 loss=1629999.83 active=91912 feature_norm=1.00
+Iter 2   time=34.05 loss=1215265.86 active=91822 feature_norm=158.10
+Iter 3   time=15.12 loss=1196330.70 active=42348 feature_norm=156.02
+Iter 4   time=232.87 loss=333643.93 active=15969 feature_norm=71.52
+Iter 5   time=261.72 loss=117124.27 active=17066 feature_norm=61.45
+Iter 6   time=174.02 loss=88610.22 active=17043 feature_norm=60.81
+Iter 7   time=152.48 loss=58261.79 active=17905 feature_norm=51.66
+Iter 8   time=167.89 loss=52901.95 active=17881 feature_norm=50.53
+Iter 9   time=174.33 loss=46743.49 active=17498 feature_norm=48.88
+Iter 10  time=182.77 loss=46399.21 active=17570 feature_norm=48.63
+Iter 11  time=60.71 loss=45336.57 active=17630 feature_norm=48.42
+Iter 12  time=30.38 loss=43686.71 active=17478 feature_norm=47.93
+Iter 13  time=15.13 loss=42589.99 active=17432 feature_norm=46.70
+Iter 14  time=15.14 loss=39977.81 active=17305 feature_norm=46.05
+Iter 15  time=15.13 loss=35543.26 active=17288 feature_norm=45.10
+Iter 16  time=15.18 loss=34449.08 active=17204 feature_norm=44.83
+Iter 17  time=15.14 loss=33038.67 active=17189 feature_norm=44.16
+Iter 18  time=15.18 loss=31926.84 active=17034 feature_norm=43.92
+Iter 19  time=15.13 loss=30019.75 active=17068 feature_norm=43.40
+Iter 20  time=15.14 loss=29568.64 active=16884 feature_norm=43.25
+Iter 21  time=15.13 loss=28235.04 active=16936 feature_norm=42.93
+Iter 22  time=15.16 loss=27680.38 active=16789 feature_norm=42.88
+Iter 23  time=15.16 loss=26151.85 active=16751 feature_norm=42.60
+Iter 24  time=15.17 loss=25763.71 active=16590 feature_norm=42.74
+Iter 25  time=15.14 loss=25183.05 active=16762 feature_norm=42.66
+Iter 26  time=15.17 loss=24759.25 active=16622 feature_norm=42.67
+Iter 27  time=15.16 loss=24035.36 active=16472 feature_norm=42.99
+Iter 28  time=15.18 loss=22888.06 active=16099 feature_norm=43.58
+Iter 29  time=30.40 loss=22391.12 active=15333 feature_norm=44.03
+Iter 30  time=30.36 loss=21398.73 active=15117 feature_norm=45.38
+Iter 31  time=15.11 loss=21249.21 active=14745 feature_norm=46.82
+Iter 32  time=15.13 loss=20034.31 active=14641 feature_norm=48.56
+Iter 33  time=15.10 loss=19702.37 active=14737 feature_norm=47.55
+Iter 34  time=15.10 loss=19039.29 active=14600 feature_norm=48.33
+Iter 35  time=30.36 loss=18604.06 active=14353 feature_norm=50.43
+Iter 36  time=15.14 loss=18092.17 active=14397 feature_norm=50.76
+Iter 37  time=15.14 loss=17385.28 active=14147 feature_norm=52.58
+Iter 38  time=15.13 loss=16987.61 active=14017 feature_norm=53.65
+Iter 39  time=15.16 loss=16486.18 active=13061 feature_norm=58.97
+Iter 40  time=15.11 loss=15934.62 active=13224 feature_norm=57.57
+Iter 41  time=15.14 loss=15732.66 active=13181 feature_norm=59.05
+Iter 42  time=15.16 loss=15407.76 active=13059 feature_norm=60.50
+Iter 43  time=15.18 loss=15038.09 active=12859 feature_norm=64.26
+Iter 44  time=15.14 loss=14724.80 active=12737 feature_norm=67.65
+Iter 45  time=15.15 loss=14544.80 active=12715 feature_norm=68.77
+Iter 46  time=15.18 loss=14183.93 active=12488 feature_norm=73.65
+Iter 47  time=15.14 loss=13851.91 active=12384 feature_norm=76.74
+Iter 48  time=15.13 loss=13541.61 active=12286 feature_norm=81.53
+Iter 49  time=15.18 loss=13149.55 active=12190 feature_norm=87.45
+Iter 50  time=15.16 loss=12951.48 active=12092 feature_norm=98.75
+Iter 51  time=15.18 loss=12643.24 active=12158 feature_norm=94.86
+Iter 52  time=15.11 loss=12531.74 active=12130 feature_norm=96.95
+Iter 53  time=30.34 loss=12250.70 active=11955 feature_norm=107.14
+Iter 54  time=15.21 loss=12225.14 active=11933 feature_norm=108.42
+Iter 55  time=15.12 loss=12170.23 active=11958 feature_norm=109.20
+Iter 56  time=15.16 loss=12068.16 active=11913 feature_norm=112.33
+Iter 57  time=15.15 loss=11880.17 active=11833 feature_norm=118.30
+Iter 58  time=15.16 loss=11868.47 active=11568 feature_norm=127.63
+Iter 59  time=15.15 loss=11586.67 active=11628 feature_norm=134.83
+Iter 60  time=15.11 loss=11550.34 active=11637 feature_norm=134.19
+Iter 61  time=15.13 loss=11507.16 active=11622 feature_norm=135.08
+Iter 62  time=15.13 loss=11425.28 active=11512 feature_norm=140.02
+Iter 63  time=15.14 loss=11380.79 active=11395 feature_norm=141.14
+Iter 64  time=15.18 loss=11324.29 active=11390 feature_norm=143.98
+Iter 65  time=15.17 loss=11276.14 active=11337 feature_norm=146.56
+Iter 66  time=15.14 loss=11224.42 active=11254 feature_norm=149.34
+Iter 67  time=15.16 loss=11174.10 active=11033 feature_norm=152.69
+Iter 68  time=15.16 loss=11147.47 active=10894 feature_norm=153.10
+Iter 69  time=15.14 loss=11124.53 active=10804 feature_norm=153.67
+Iter 70  time=15.14 loss=11098.98 active=10696 feature_norm=154.72
+Iter 71  time=15.15 loss=11077.72 active=10573 feature_norm=155.53
+Iter 72  time=15.18 loss=11053.95 active=10356 feature_norm=157.47
+Iter 73  time=15.19 loss=11033.14 active=10154 feature_norm=158.72
+Iter 74  time=15.18 loss=11012.90 active=9919  feature_norm=160.82
+Iter 75  time=15.15 loss=10998.95 active=9792  feature_norm=161.41
+Iter 76  time=15.16 loss=10979.93 active=9620  feature_norm=163.23
+Iter 77  time=15.17 loss=10966.76 active=9478  feature_norm=163.94
+Iter 78  time=15.17 loss=10953.44 active=9376  feature_norm=165.34
+Iter 79  time=15.18 loss=10941.43 active=9283  feature_norm=165.75
+Iter 80  time=15.16 loss=10930.38 active=9230  feature_norm=166.89
+Iter 81  time=15.16 loss=10919.72 active=9165  feature_norm=166.97
+Iter 82  time=15.15 loss=10911.39 active=9130  feature_norm=167.76
+Iter 83  time=15.16 loss=10902.83 active=9069  feature_norm=167.71
+Iter 84  time=15.16 loss=10896.09 active=9051  feature_norm=168.21
+Iter 85  time=15.18 loss=10888.37 active=8996  feature_norm=168.21
+Iter 86  time=15.19 loss=10882.79 active=8986  feature_norm=168.80
+Iter 87  time=15.19 loss=10875.28 active=8954  feature_norm=168.74
+Iter 88  time=15.19 loss=10869.27 active=8942  feature_norm=169.15
+Iter 89  time=15.19 loss=10863.85 active=8873  feature_norm=169.19
+Iter 90  time=15.19 loss=10859.01 active=8858  feature_norm=169.69
+Iter 91  time=15.19 loss=10852.38 active=8826  feature_norm=169.72
+Iter 92  time=15.18 loss=10847.46 active=8832  feature_norm=170.11
+Iter 93  time=15.19 loss=10841.44 active=8790  feature_norm=170.15
+Iter 94  time=15.18 loss=10837.37 active=8801  feature_norm=170.47
+Iter 95  time=15.18 loss=10832.01 active=8747  feature_norm=170.49
+Iter 96  time=15.17 loss=10828.07 active=8737  feature_norm=170.82
+Iter 97  time=15.18 loss=10822.61 active=8703  feature_norm=170.86
+Iter 98  time=15.18 loss=10818.32 active=8707  feature_norm=171.10
+Iter 99  time=15.19 loss=10814.34 active=8678  feature_norm=171.13
+Iter 100 time=15.22 loss=10810.68 active=8665  feature_norm=171.34
+L-BFGS terminated with the maximum number of iterations
+Total seconds required for training: 2911.449
+
+Storing the model
+Number of active features: 8665 (92807)
+Number of active attributes: 2997 (60102)
+Number of active labels: 153 (153)
+Writing labels
+Writing attributes
+Writing feature references for transitions
+Writing feature references for attributes
+Seconds required: 0.003
+
+['B-NumberOfReportableSegments', 'B-AllocatedShareBasedCompensationExpense', 'B-LineOfCredit', 'B-DebtInstrumentInterestRateStatedPercentage', 'B-DebtInstrumentUnamortizedDiscount', 'B-LineOfCreditFacilityMaximumBorrowingCapacity', 'B-DisposalGroupIncludingDiscontinuedOperationConsideration', 'B-ShareBasedCompensation', 'B-LossContingencyPendingClaimsNumber', 'B-EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate', 'B-UnrecognizedTaxBenefits', 'B-DerivativeNotionalAmount', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant', 'B-TreasuryStockSharesAcquired', 'B-LineOfCreditFacilityRemainingBorrowingCapacity', 'B-OperatingLeaseExpense', 'B-LongTermDebtFairValue', 'B-DeferredFinanceCostsGross', 'B-IncomeTaxExpenseBenefit', 'B-BusinessCombinationContingentConsiderationLiability', 'B-CommonStockDividendsPerShareDeclared', 'B-IncomeLossFromEquityMethodInvestments', 'B-OperatingLeasesRentExpenseNet', 'B-FiniteLivedIntangibleAssetUsefulLife', 'B-Depreciation', 'B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized', 'B-AmortizationOfIntangibleAssets', 'B-LettersOfCreditOutstandingAmount', 'B-StockRepurchaseProgramRemainingAuthorizedRepurchaseAmount1', 'B-UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1', 'I-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1', 'B-AmortizationOfFinancingCosts', 'B-NumberOfOperatingSegments', 'B-EffectiveIncomeTaxRateContinuingOperations', 'B-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod', 'B-AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount', 'B-MinorityInterestOwnershipPercentageByParent', 'B-CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption', 'B-PublicUtilitiesRequestedRateIncreaseDecreaseAmount', 'B-RelatedPartyTransactionAmountsOfTransaction', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriod', 'B-PaymentsToAcquireBusinessesGross', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized', 'B-LineOfCreditFacilityCommitmentFeePercentage', 'B-OperatingLossCarryforwards', 'B-LongTermDebt', 'B-RevenueRemainingPerformanceObligation', 'B-DebtInstrumentBasisSpreadOnVariableRate1', 'B-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife', 'B-SaleOfStockNumberOfSharesIssuedInTransaction', 'B-DebtInstrumentFairValue', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue', 'B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1', 'B-LineOfCreditFacilityCurrentBorrowingCapacity', 'B-PreferredStockDividendRatePercentage', 'B-LossContingencyAccrualAtCarryingValue', 'B-DebtInstrumentFaceAmount', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue', 'B-DebtInstrumentMaturityDate', 'I-DebtInstrumentMaturityDate', 'B-Goodwill', 'B-CommonStockSharesOutstanding', 'B-LeaseAndRentalExpense', 'B-LossContingencyDamagesSoughtValue', 'B-DefinedContributionPlanCostRecognized', 'B-OperatingLeaseCost', 'B-RestructuringCharges', 'B-OperatingLeasePayments', 'B-OperatingLeaseLiability', 'B-OperatingLeaseRightOfUseAsset', 'B-EquityMethodInvestmentOwnershipPercentage', 'B-ContractWithCustomerLiabilityRevenueRecognized', 'B-DebtInstrumentCarryingAmount', 'B-RepaymentsOfDebt', 'B-ProceedsFromIssuanceOfCommonStock', 'B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill', 'B-SharePrice', 'B-ContractWithCustomerLiability', 'B-DeferredFinanceCostsNet', 'B-StockIssuedDuringPeriodSharesNewIssues', 'B-ConcentrationRiskPercentage1', 'B-GuaranteeObligationsMaximumExposure', 'B-OperatingLeaseWeightedAverageRemainingLeaseTerm1', 'B-SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage', 'I-OperatingLeaseWeightedAverageRemainingLeaseTerm1', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue', 'B-PaymentsToAcquireBusinessesNetOfCashAcquired', 'B-BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued', 'B-BusinessAcquisitionPercentageOfVotingInterestsAcquired', 'B-AreaOfRealEstateProperty', 'B-PropertyPlantAndEquipmentUsefulLife', 'B-ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1', 'B-RevenueFromRelatedParties', 'B-SaleOfStockPricePerShare', 'B-StockRepurchaseProgramAuthorizedAmount1', 'B-CommonStockCapitalSharesReservedForFutureIssuance', 'B-AssetImpairmentCharges', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber', 'B-EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense', 'B-LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage', 'B-BusinessCombinationConsiderationTransferred1', 'B-BusinessCombinationAcquisitionRelatedCosts', 'B-DebtInstrumentInterestRateEffectivePercentage', 'B-DerivativeFixedInterestRate', 'B-StockRepurchasedDuringPeriodShares', 'B-LossContingencyEstimateOfPossibleLoss', 'B-DebtInstrumentTerm', 'B-DefinedBenefitPlanContributionsByEmployer', 'B-EquityMethodInvestments', 'B-StockRepurchasedAndRetiredDuringPeriodShares', 'B-DebtInstrumentRedemptionPricePercentage', 'B-RevenueFromContractWithCustomerExcludingAssessedTax', 'B-OperatingLeaseWeightedAverageDiscountRatePercent', 'B-CommonStockParOrStatedValuePerShare', 'B-DebtInstrumentConvertibleConversionPrice1', 'B-LineOfCreditFacilityInterestRateAtPeriodEnd', 'B-GoodwillImpairmentLoss', 'B-CommonStockSharesAuthorized', 'B-PreferredStockSharesAuthorized', 'B-AccrualForEnvironmentalLossContingencies', 'B-LesseeOperatingLeaseRenewalTerm', 'B-RestructuringAndRelatedCostExpectedCost1', 'B-GainsLossesOnExtinguishmentOfDebt', 'I-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife', 'B-LesseeOperatingLeaseTermOfContract', 'B-MinorityInterestOwnershipPercentageByNoncontrollingOwners', 'B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions', 'I-LesseeOperatingLeaseTermOfContract', 'B-DebtWeightedAverageInterestRate', 'B-RelatedPartyTransactionExpensesFromTransactionsWithRelatedParty', 'B-RevenueFromContractWithCustomerIncludingAssessedTax', 'I-DebtInstrumentTerm', 'B-SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense', 'I-PropertyPlantAndEquipmentUsefulLife', 'B-TreasuryStockValueAcquiredCostMethod', 'B-TreasuryStockAcquiredAverageCostPerShare', 'I-FiniteLivedIntangibleAssetUsefulLife', 'I-CommonStockSharesAuthorized', 'B-Revenues', 'B-CashAndCashEquivalentsFairValueDisclosure', 'B-NumberOfRealEstateProperties', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue', 'B-InterestExpenseDebt', 'I-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod', 'I-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1', 'B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross', 'I-LesseeOperatingLeaseRenewalTerm', 'B-InterestExpense', 'I-DebtInstrumentFaceAmount', 'B-CapitalizedContractCostAmortization', 'B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles']
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/duffau/repos/talks/sequence-tagging/analysis/.venv/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 in labels with no true nor predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+                                                                                                                                             precision    recall  f1-score   support
+
+                                                                                                 B-AccrualForEnvironmentalLossContingencies      0.000     0.000     0.000         7
+                                                                             B-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife      0.400     0.133     0.200        15
+                                                                             I-AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife      0.000     0.000     0.000         5
+                                                                                                   B-AllocatedShareBasedCompensationExpense      0.000     0.000     0.000        65
+                                                                                                             B-AmortizationOfFinancingCosts      0.000     0.000     0.000         3
+                                                                                                           B-AmortizationOfIntangibleAssets      0.000     0.000     0.000        49
+                                                                    B-AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount      0.452     0.322     0.376        59
+                                                                                                                 B-AreaOfRealEstateProperty      0.000     0.000     0.000         8
+                                                                                                                   B-AssetImpairmentCharges      0.000     0.000     0.000        20
+                                                                   B-BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued      0.000     0.000     0.000         8
+                                                                                   B-BusinessAcquisitionPercentageOfVotingInterestsAcquired      0.273     0.300     0.286        10
+                                                                                               B-BusinessCombinationAcquisitionRelatedCosts      0.000     0.000     0.000        15
+                                                                                             B-BusinessCombinationConsiderationTransferred1      0.000     0.000     0.000        18
+                                                                                      B-BusinessCombinationContingentConsiderationLiability      0.000     0.000     0.000        12
+                            B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill      0.000     0.000     0.000         5
+                                                  B-BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles      0.000     0.000     0.000         3
+                                                                                                      B-CapitalizedContractCostAmortization      0.000     0.000     0.000         4
+                                                                                                B-CashAndCashEquivalentsFairValueDisclosure      0.000     0.000     0.000        14
+                                                                                    B-ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1      0.000     0.000     0.000        16
+                                                                                        B-CommonStockCapitalSharesReservedForFutureIssuance      0.500     0.077     0.133        13
+                                                                                                     B-CommonStockDividendsPerShareDeclared      0.000     0.000     0.000        13
+                                                                                                      B-CommonStockParOrStatedValuePerShare      0.429     0.400     0.414        15
+                                                                                                              B-CommonStockSharesAuthorized      0.429     0.375     0.400         8
+                                                                                                              I-CommonStockSharesAuthorized      0.000     0.000     0.000         0
+                                                                                                             B-CommonStockSharesOutstanding      0.500     0.143     0.222        14
+                                                                                                             B-ConcentrationRiskPercentage1      0.304     0.140     0.192        50
+                                                                                                            B-ContractWithCustomerLiability      0.000     0.000     0.000        22
+                                                                                           B-ContractWithCustomerLiabilityRevenueRecognized      0.000     0.000     0.000        24
+                                                                               B-CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption      0.000     0.000     0.000         9
+                                                                                                 B-DebtInstrumentBasisSpreadOnVariableRate1      0.607     0.407     0.487        91
+                                                                                                             B-DebtInstrumentCarryingAmount      0.000     0.000     0.000        33
+                                                                                                B-DebtInstrumentConvertibleConversionPrice1      1.000     0.143     0.250         7
+                                                                                                                 B-DebtInstrumentFaceAmount      0.133     0.078     0.098        77
+                                                                                                                 I-DebtInstrumentFaceAmount      0.000     0.000     0.000         0
+                                                                                                                  B-DebtInstrumentFairValue      0.000     0.000     0.000        12
+                                                                                            B-DebtInstrumentInterestRateEffectivePercentage      0.200     0.067     0.100        15
+                                                                                               B-DebtInstrumentInterestRateStatedPercentage      0.429     0.516     0.468       122
+                                                                                                               B-DebtInstrumentMaturityDate      0.000     0.000     0.000         9
+                                                                                                               I-DebtInstrumentMaturityDate      0.000     0.000     0.000        27
+                                                                                                  B-DebtInstrumentRedemptionPricePercentage      0.600     0.167     0.261        18
+                                                                                                                       B-DebtInstrumentTerm      0.000     0.000     0.000         6
+                                                                                                                       I-DebtInstrumentTerm      0.000     0.000     0.000         4
+                                                                                                        B-DebtInstrumentUnamortizedDiscount      1.000     0.045     0.087        22
+                                                                                                          B-DebtWeightedAverageInterestRate      0.000     0.000     0.000        15
+                                                                                                                B-DeferredFinanceCostsGross      0.000     0.000     0.000        10
+                                                                                                                  B-DeferredFinanceCostsNet      0.000     0.000     0.000        14
+                                                                                                B-DefinedBenefitPlanContributionsByEmployer      0.000     0.000     0.000        13
+                                                                                                    B-DefinedContributionPlanCostRecognized      0.000     0.000     0.000         2
+                                                                                                                             B-Depreciation      0.000     0.000     0.000        12
+                                                                                                              B-DerivativeFixedInterestRate      0.750     0.300     0.429        10
+                                                                                                                 B-DerivativeNotionalAmount      0.000     0.000     0.000        54
+                                                                                 B-DisposalGroupIncludingDiscontinuedOperationConsideration      0.000     0.000     0.000         7
+                                                                                               B-EffectiveIncomeTaxRateContinuingOperations      0.486     0.353     0.409        51
+                                                                      B-EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate      0.571     0.235     0.333        17
+                                                B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized      0.000     0.000     0.000        13
+                           B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1      0.659     0.763     0.707        38
+                           I-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1      0.000     0.000     0.000         1
+                B-EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions      0.000     0.000     0.000        19
+                                                                   B-EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense      0.000     0.000     0.000        10
+                                                                                                B-EquityMethodInvestmentOwnershipPercentage      0.577     0.375     0.455        40
+                                                                                                                  B-EquityMethodInvestments      0.000     0.000     0.000        11
+                                                                                                     B-FiniteLivedIntangibleAssetUsefulLife      0.111     0.067     0.083        15
+                                                                                                     I-FiniteLivedIntangibleAssetUsefulLife      0.000     0.000     0.000         2
+                                                                                                        B-GainsLossesOnExtinguishmentOfDebt      0.000     0.000     0.000        12
+                                                                                                                                 B-Goodwill      0.000     0.000     0.000        47
+                                                                                                                   B-GoodwillImpairmentLoss      0.000     0.000     0.000        31
+                                                                                                      B-GuaranteeObligationsMaximumExposure      0.000     0.000     0.000        16
+                                                                                                    B-IncomeLossFromEquityMethodInvestments      0.000     0.000     0.000        10
+                                                                                                                  B-IncomeTaxExpenseBenefit      0.000     0.000     0.000        47
+                                                                                                                          B-InterestExpense      0.000     0.000     0.000         6
+                                                                                                                      B-InterestExpenseDebt      0.000     0.000     0.000         8
+                                                                                                                    B-LeaseAndRentalExpense      0.000     0.000     0.000         6
+                                                                                                          B-LesseeOperatingLeaseRenewalTerm      0.000     0.000     0.000        13
+                                                                                                          I-LesseeOperatingLeaseRenewalTerm      0.000     0.000     0.000         4
+                                                                                                       B-LesseeOperatingLeaseTermOfContract      0.286     0.095     0.143        21
+                                                                                                       I-LesseeOperatingLeaseTermOfContract      0.000     0.000     0.000         3
+                                                                                                         B-LettersOfCreditOutstandingAmount      0.000     0.000     0.000        33
+                                                                                                                             B-LineOfCredit      0.300     0.088     0.136        34
+                                                                                              B-LineOfCreditFacilityCommitmentFeePercentage      0.333     0.091     0.143        11
+                                                                                             B-LineOfCreditFacilityCurrentBorrowingCapacity      0.000     0.000     0.000        10
+                                                                                              B-LineOfCreditFacilityInterestRateAtPeriodEnd      0.000     0.000     0.000         9
+                                                                                             B-LineOfCreditFacilityMaximumBorrowingCapacity      0.311     0.116     0.169       121
+                                                                                           B-LineOfCreditFacilityRemainingBorrowingCapacity      0.667     0.065     0.118        31
+                                                                                B-LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage      0.286     0.174     0.216        23
+                                                                                                                             B-LongTermDebt      0.000     0.000     0.000        26
+                                                                                                                    B-LongTermDebtFairValue      0.000     0.000     0.000        15
+                                                                                                    B-LossContingencyAccrualAtCarryingValue      0.000     0.000     0.000         9
+                                                                                                        B-LossContingencyDamagesSoughtValue      0.000     0.000     0.000        11
+                                                                                                    B-LossContingencyEstimateOfPossibleLoss      0.000     0.000     0.000         8
+                                                                                                       B-LossContingencyPendingClaimsNumber      0.000     0.000     0.000         9
+                                                                                B-MinorityInterestOwnershipPercentageByNoncontrollingOwners      0.000     0.000     0.000        15
+                                                                                              B-MinorityInterestOwnershipPercentageByParent      0.400     0.111     0.174        18
+                                                                                                                B-NumberOfOperatingSegments      0.714     0.278     0.400        18
+                                                                                                             B-NumberOfRealEstateProperties      1.000     0.026     0.050        39
+                                                                                                               B-NumberOfReportableSegments      0.364     0.471     0.410        17
+                                                                                                                       B-OperatingLeaseCost      0.000     0.000     0.000         5
+                                                                                                                    B-OperatingLeaseExpense      0.000     0.000     0.000        14
+                                                                                                                  B-OperatingLeaseLiability      0.000     0.000     0.000        17
+                                                                                                                   B-OperatingLeasePayments      0.000     0.000     0.000         7
+                                                                                                            B-OperatingLeaseRightOfUseAsset      0.500     0.059     0.105        17
+                                                                                         B-OperatingLeaseWeightedAverageDiscountRatePercent      0.000     0.000     0.000         9
+                                                                                         B-OperatingLeaseWeightedAverageRemainingLeaseTerm1      0.500     0.364     0.421        11
+                                                                                         I-OperatingLeaseWeightedAverageRemainingLeaseTerm1      0.000     0.000     0.000         0
+                                                                                                            B-OperatingLeasesRentExpenseNet      0.000     0.000     0.000         1
+                                                                                                               B-OperatingLossCarryforwards      0.000     0.000     0.000         8
+                                                                                                         B-PaymentsToAcquireBusinessesGross      0.400     0.118     0.182        17
+                                                                                             B-PaymentsToAcquireBusinessesNetOfCashAcquired      0.000     0.000     0.000         6
+                                                                                                     B-PreferredStockDividendRatePercentage      0.000     0.000     0.000         8
+                                                                                                           B-PreferredStockSharesAuthorized      1.000     0.375     0.545         8
+                                                                                                        B-ProceedsFromIssuanceOfCommonStock      0.000     0.000     0.000        17
+                                                                                                      B-PropertyPlantAndEquipmentUsefulLife      0.400     0.154     0.222        13
+                                                                                                      I-PropertyPlantAndEquipmentUsefulLife      0.000     0.000     0.000         2
+                                                                                       B-PublicUtilitiesRequestedRateIncreaseDecreaseAmount      0.000     0.000     0.000        14
+                                                                                              B-RelatedPartyTransactionAmountsOfTransaction      0.000     0.000     0.000         5
+                                                                          B-RelatedPartyTransactionExpensesFromTransactionsWithRelatedParty      0.000     0.000     0.000        23
+                                                                                                                         B-RepaymentsOfDebt      0.000     0.000     0.000         5
+                                                                                                 B-RestructuringAndRelatedCostExpectedCost1      0.000     0.000     0.000         2
+                                                                                                                     B-RestructuringCharges      0.000     0.000     0.000        34
+                                                                                      B-RevenueFromContractWithCustomerExcludingAssessedTax      0.000     0.000     0.000        23
+                                                                                      B-RevenueFromContractWithCustomerIncludingAssessedTax      0.000     0.000     0.000         8
+                                                                                                                B-RevenueFromRelatedParties      0.000     0.000     0.000        44
+                                                                                                    B-RevenueRemainingPerformanceObligation      0.000     0.000     0.000        23
+                                                                                                                                 B-Revenues      0.000     0.000     0.000         5
+                                                                                             B-SaleOfStockNumberOfSharesIssuedInTransaction      0.000     0.000     0.000        16
+                                                                                                                 B-SaleOfStockPricePerShare      1.000     0.062     0.118        16
+                                                                                                                   B-ShareBasedCompensation      0.000     0.000     0.000        16
+                                                             B-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1      0.800     0.205     0.327        39
+                                                             I-ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1      0.800     0.286     0.421        28
+                                 B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriod      0.294     0.135     0.185        37
+B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue      0.346     0.360     0.353        25
+                                B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber      0.000     0.000     0.000         7
+                   B-ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue      0.000     0.000     0.000        13
+                                                        B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized      0.444     0.148     0.222        27
+                                                 B-ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant      0.478     0.423     0.449        26
+                                     B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue      0.000     0.000     0.000        13
+                                                      B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross      0.200     0.059     0.091        17
+                          B-ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue      0.000     0.000     0.000         9
+                                                                                                                               B-SharePrice      0.400     0.125     0.190        16
+                                                    B-SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage      0.000     0.000     0.000        18
+                                                                B-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod      0.333     0.125     0.182         8
+                                                                I-SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod      0.333     0.167     0.222         6
+                                                                                                   B-StockIssuedDuringPeriodSharesNewIssues      0.429     0.158     0.231        38
+                                                                                                  B-StockRepurchaseProgramAuthorizedAmount1      0.000     0.000     0.000        23
+                                                                               B-StockRepurchaseProgramRemainingAuthorizedRepurchaseAmount1      0.000     0.000     0.000        13
+                                                                                             B-StockRepurchasedAndRetiredDuringPeriodShares      0.667     0.154     0.250        13
+                                                                                                       B-StockRepurchasedDuringPeriodShares      0.000     0.000     0.000        12
+                                 B-SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense      0.000     0.000     0.000         0
+                                                                                                 B-TreasuryStockAcquiredAverageCostPerShare      0.500     0.071     0.125        14
+                                                                                                              B-TreasuryStockSharesAcquired      0.312     0.357     0.333        14
+                                                                                                     B-TreasuryStockValueAcquiredCostMethod      0.000     0.000     0.000         6
+                                                                                                                  B-UnrecognizedTaxBenefits      0.000     0.000     0.000        15
+                                                                                   B-UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate      0.000     0.000     0.000         5
+
+                                                                                                                                  micro avg      0.320     0.122     0.177      2818
+                                                                                                                                  macro avg      0.166     0.071     0.089      2818
+                                                                                                                               weighted avg      0.239     0.122     0.145      2818
+
+(.venv) ➜  crf git:(master) ✗ 
