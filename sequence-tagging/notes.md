@@ -25,6 +25,11 @@
 - Survey on recent advances in NER: https://arxiv.org/html/2401.10825v1
 - https://norvig.com/chomsky.html
 
+### CRF used on Financial NER tasks
+
+- Salinas Alvarado et al (2015) - Domain Adaption of Named Entity Recognition to Support Credit Risk Assessment
+
+
 ### Introduction and CRF theory
 
 - Discriminative vs Generative models [Bishop chap. 4.3 + 4.4][1]
