@@ -92,10 +92,20 @@ $$\begin{aligned}
 - 1958: H. A. Simon and Allen Newell:"within ten years a digital computer will discover and prove an important new mathematical theorem"
 - 1960's: Slow progress in machine translation
 - 1966: ALPAC report ledas to defunding of machine translation in US
-- 1974–1980: Triggers First AI Winter
+- 1974–1980: First AI Winter
 :::
 
-### Late 1980's and 1990's - Rise Statistical Models
+### 1980's - Expert Systems
+::: incremental
+- Expert Systems
+  - Knowledge base - Collected daa
+  - Inference engine - Hand crafted expert rules
+- Examples:
+  - CADUCEUS: Medical expert system "most knowledge-intensive expert system in existence"
+  - Dendral: Decision-making process and problem-solving behavior of organic chemists. 
+:::
+
+### Late 1980's and 1990's - Rise of Statistical Models
 ::: incremental
 - Less dominance of Chomskyan theories of linguistics
 - More computational power
@@ -105,16 +115,18 @@ $$\begin{aligned}
 
 ### Late 1980's and 1990's - Rise Statistical Models
 ::: incremental
-- 1988: First papers using Markov models for PoS
-- 1989: Hidden Markov Models (HMMs) for Speech
+- 1988: First papers using Markov models for PoS [@derose1988grammatical; @church1989stochastic]
+- 1989: Tutorial on Hidden Markov Models (HMM) for Speech [@rabiner1989tutorial]
 - 1993: Penn Treebank Project
-- 1995: 6th Message Understanding Conference
-- 1995: WordNet: A Lexical Database for English
-- 2001: Conditional Random Fields
+- 1995: WordNet: A Lexical Database for English, 6th Message Understanding Conference
+- 1996: Maximum Entropy Markov Model (MEMM) published [@ratnaparkhi1996maximum]
+- 2001: Conditional Random Fields (CRF) [@lafferty2001conditional]
 :::
 
 ::: notes
 - HMM: The first to encode sequential information for PoS
+- Rabiner: HMM applied to speech since th 70's but only widely know in "recent years"
+  - 33,500 citation
 - Penn Treebank Project: 1 mio annotated tokens from WSJ
 - MUC 6: https://aclanthology.org/volumes/M95-1/ 
   - Arranged by Naval Command and DARPA
@@ -124,20 +136,33 @@ $$\begin{aligned}
     - MUC-4: "Terrorist activities in Latin America"
     - MUC-6: "Negotiation of Labor Disputes"
   - Coining the "NAmed Entity" at MUC-6
+- MEMM:
+  - Discriminative markov model - More direct model
+  - Allows influence from features at any point in time 
 - Condtional Random Fields:
-  - Solves the "label bias" issue of HMM and MEMM
-  - Are discriminative (like max entropy)
-  - Are Sequential like HMM and MEMM
+  - Sequential like HMM and MEMM
+  - Are discriminative (like MEMM)
+  - Allows influence from features at any point in time (Like MEMM)
+  - Solves the "label bias" issue of MEMM's
 :::
 
-### 2000's to 2010 - Neural Models and Word Embeddings
+### 2000's to 2010 - Large Corpus from the Web
 
-- Neural net and LSTM revolution
+- Standardization on benchmarks e.g. CoNLL 2003 [@sang2003introduction]
+- Large raw (unannotated) dataset from the Web 
+- Semi-supervised and Unsupervised Learning Approaches
+- 2003: Multilayer perceptron beats Markov model in "next word prediction" [@bengio2000neural]
+- Support Vector Machines for NER tagging
 
-### 2010 to Today - Transformers
+### 2010 to Today - Neural Models and Word Embeddings
 
-- First gen Transformers (BERT, RoBERTa, Electra)
-- LLM's. (GPT-2, GPT-3, Claude, LLaMA) [Stanford 2024 - Transformers Slide 9][14]
+- 2013-14: Word Embeddings (Word2Vec, GloVe) [@mikolov2013efficient, @pennington2014glove]
+- 2015: Neural Net Revolution (BiLSTM-CRF [@huang2015bidirectional])
+- 2017: "Attention is all you need" [@vaswani2017attention]
+- 2019: First gen Transformers (BERT, RoBERTa, Electra)
+- 2020: Large-Scale Pre-trained Language Models (GPT-3) 
+- 2022: GPT 3.5 and ChatGPT 
+- 2023: Large Language Models and Few-Shot Adaptation (GPT-4, Claude, LLaMA) 
 
 
 
@@ -228,15 +253,18 @@ Abstract tasks have taken over lower level tasks
   - https://paperswithcode.com/sota/sentence-completion-on-hellaswag
 :::
 
+### NER Tagging Approaches
+
+
+
 ## CRF Theory
 ### Conditional Random Field model - Quick overview
-```
-<HMM figure>
-<CRF figure>
-```
+
+![](hmm-memm-crf-diagrams.png)
 
 - Discriminiative as opposed to Generative
 - Allows bidirectional influence from labels
+- Allows feature influence from any time step
 
 ### CRF Training Demo
 
@@ -268,7 +296,9 @@ y = <labels>
 crf = sklearn_crfsuite.CRF(algorithm='lbfgs')
 crf.fit(X_train, y_train)
 ```
+### Typical features
 
+- `word` one-hot
 
 ### Discriminative VS Generative Models
 
@@ -278,16 +308,27 @@ $$
 \{X_1, X_2, X_3\}
 $$
 
+### CRF probabilistic model
+
+### CRF log-linear parametrization
+
 ### Fitting CRF's
 
 - How to include "high cardinality" features like current `word`
 
-$$ \ell(\theta) = \sum_{i=1}^{N} \log p\left(\mathbf{y}^{(i)} \mid \mathbf{x}^{(i)} ; \theta\right).
+$$ \ell(\theta) = \sum_{t=1}^{N} \log p\left(\mathbf{y}_t} \mid \mathbf{x}_t} ; \theta\right)
 + c_1 \lVert \theta \rVert + c_2 \lVert \theta \rVert_2 $$
 
+- Convex Optimization Problem -> Unique Solution
 - Use of Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) [@andrew2007scalable]
+ 
 
 ## Performance comparison
+
+### FinNER-139
+
+> The Company ’ s revenue by major product and service line for the three and nine months ended September 30 was as follows : ( a ) Includes $ [4.0]B-Revenues million and $ [3.0]B-Revenues million of VAPS service revenue for the three months ended September 30 , 2019 and 2018 , respectively , and $ [11.9]B-Revenues million and $ [7.9]B-Revenues million of VAPS service revenue for the nine months ended September 30 , 2019 and 2018 , respectively .
+
 
 ## Speed comparison
 
