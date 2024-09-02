@@ -231,13 +231,32 @@ mathematical theorem”</li>
 <li class="fragment">1960’s: Slow progress in machine translation</li>
 <li class="fragment">1966: ALPAC report ledas to defunding of machine
 translation in US</li>
-<li class="fragment">1974–1980: Triggers First AI Winter</li>
+<li class="fragment">1974–1980: First AI Winter</li>
 </ul>
 </div>
 </section>
-<section id="late-1980s-and-1990s---rise-statistical-models"
+<section id="s---expert-systems" class="slide level3">
+<h3>1980’s - Expert Systems</h3>
+<div>
+<ul>
+<li class="fragment">Expert Systems
+<ul>
+<li class="fragment">Knowledge base - Collected daa</li>
+<li class="fragment">Inference engine - Hand crafted expert rules</li>
+</ul></li>
+<li class="fragment">Examples:
+<ul>
+<li class="fragment">CADUCEUS: Medical expert system “most
+knowledge-intensive expert system in existence”</li>
+<li class="fragment">Dendral: Decision-making process and
+problem-solving behavior of organic chemists.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="late-1980s-and-1990s---rise-of-statistical-models"
 class="slide level3">
-<h3>Late 1980’s and 1990’s - Rise Statistical Models</h3>
+<h3>Late 1980’s and 1990’s - Rise of Statistical Models</h3>
 <div>
 <ul>
 <li class="fragment">Less dominance of Chomskyan theories of
@@ -248,22 +267,37 @@ linguistics</li>
 </ul>
 </div>
 </section>
-<section id="late-1980s-and-1990s---rise-statistical-models-1"
+<section id="late-1980s-and-1990s---rise-statistical-models"
 class="slide level3">
 <h3>Late 1980’s and 1990’s - Rise Statistical Models</h3>
 <div>
 <ul>
-<li class="fragment">1988: First papers using Markov models for PoS</li>
-<li class="fragment">1989: Hidden Markov Models (HMMs) for Speech</li>
+<li class="fragment">1988: First papers using Markov models for PoS
+<span class="citation"
+data-cites="derose1988grammatical church1989stochastic">(DeRose 1988;
+Church 1989)</span></li>
+<li class="fragment">1989: Tutorial on Hidden Markov Models (HMM) for
+Speech <span class="citation" data-cites="rabiner1989tutorial">(Rabiner
+1989)</span></li>
 <li class="fragment">1993: Penn Treebank Project</li>
-<li class="fragment">1995: 6th Message Understanding Conference</li>
-<li class="fragment">1995: WordNet: A Lexical Database for English</li>
-<li class="fragment">2001: Conditional Random Fields</li>
+<li class="fragment">1995: WordNet: A Lexical Database for English, 6th
+Message Understanding Conference</li>
+<li class="fragment">1996: Maximum Entropy Markov Model (MEMM) published
+<span class="citation" data-cites="ratnaparkhi1996maximum">(Ratnaparkhi
+1996)</span></li>
+<li class="fragment">2001: Conditional Random Fields (CRF) <span
+class="citation" data-cites="lafferty2001conditional">(Lafferty et al.
+2001)</span></li>
 </ul>
 </div>
 <aside class="notes">
 <ul>
 <li>HMM: The first to encode sequential information for PoS</li>
+<li>Rabiner: HMM applied to speech since th 70’s but only widely know in
+“recent years”
+<ul>
+<li>33,500 citation</li>
+</ul></li>
 <li>Penn Treebank Project: 1 mio annotated tokens from WSJ</li>
 <li>MUC 6: https://aclanthology.org/volumes/M95-1/
 <ul>
@@ -279,28 +313,53 @@ f1</li>
 </ul></li>
 <li>Coining the “NAmed Entity” at MUC-6</li>
 </ul></li>
+<li>MEMM:
+<ul>
+<li>Discriminative markov model - More direct model</li>
+<li>Allows influence from features at any point in time</li>
+</ul></li>
 <li>Condtional Random Fields:
 <ul>
-<li>Solves the “label bias” issue of HMM and MEMM</li>
-<li>Are discriminative (like max entropy)</li>
-<li>Are Sequential like HMM and MEMM</li>
+<li>Sequential like HMM and MEMM</li>
+<li>Are discriminative (like MEMM)</li>
+<li>Allows influence from features at any point in time (Like MEMM)</li>
+<li>Solves the “label bias” issue of MEMM’s</li>
 </ul></li>
 </ul>
 </aside>
 </section>
-<section id="s-to-2010---neural-models-and-word-embeddings"
+<section id="s-to-2010---large-corpus-from-the-web"
 class="slide level3">
-<h3>2000’s to 2010 - Neural Models and Word Embeddings</h3>
+<h3>2000’s to 2010 - Large Corpus from the Web</h3>
 <ul>
-<li>Neural net and LSTM revolution</li>
+<li>Standardization on benchmarks e.g. CoNLL 2003 <span class="citation"
+data-cites="sang2003introduction">(Sang and De Meulder 2003)</span></li>
+<li>Large raw (unannotated) dataset from the Web</li>
+<li>Semi-supervised and Unsupervised Learning Approaches</li>
+<li>2003: Multilayer perceptron beats Markov model in “next word
+prediction” <span class="citation"
+data-cites="bengio2000neural">(Bengio, Ducharme, and Vincent
+2000)</span></li>
+<li>Support Vector Machines for NER tagging</li>
 </ul>
 </section>
-<section id="to-today---transformers" class="slide level3">
-<h3>2010 to Today - Transformers</h3>
+<section id="to-today---neural-models-and-word-embeddings"
+class="slide level3">
+<h3>2010 to Today - Neural Models and Word Embeddings</h3>
 <ul>
-<li>First gen Transformers (BERT, RoBERTa, Electra)</li>
-<li>LLM’s. (GPT-2, GPT-3, Claude, LLaMA) [Stanford 2024 - Transformers
-Slide 9][14]</li>
+<li>2013-14: Word Embeddings (Word2Vec, GloVe) <span class="citation"
+data-cites="mikolov2013efficient">Pennington, Socher, and Manning
+(2014)</span></li>
+<li>2015: Neural Net Revolution (BiLSTM-CRF <span class="citation"
+data-cites="huang2015bidirectional">(Huang, Xu, and Yu
+2015)</span>)</li>
+<li>2017: “Attention is all you need” <span class="citation"
+data-cites="vaswani2017attention">(Vaswani 2017)</span></li>
+<li>2019: First gen Transformers (BERT, RoBERTa, Electra)</li>
+<li>2020: Large-Scale Pre-trained Language Models (GPT-3)</li>
+<li>2022: GPT 3.5 and ChatGPT</li>
+<li>2023: Large Language Models and Few-Shot Adaptation (GPT-4, Claude,
+LLaMA)</li>
 </ul>
 </section>
 <section id="papers-using-datasets-1" class="slide level3">
@@ -400,6 +459,9 @@ keys.”</li>
 </ul></li>
 </ul>
 </aside>
+</section>
+<section id="ner-tagging-approaches" class="slide level3">
+<h3>NER Tagging Approaches</h3>
 </section></section>
 <section>
 <section id="crf-theory" class="title-slide slide level2">
@@ -409,41 +471,47 @@ keys.”</li>
 <section id="conditional-random-field-model---quick-overview"
 class="slide level3">
 <h3>Conditional Random Field model - Quick overview</h3>
-<pre><code>&lt;HMM figure&gt;
-&lt;CRF figure&gt;</code></pre>
+<p><img data-src="hmm-memm-crf-diagrams.png" /></p>
 <ul>
 <li>Discriminiative as opposed to Generative</li>
 <li>Allows bidirectional influence from labels</li>
+<li>Allows feature influence from any time step</li>
 </ul>
 </section>
 <section id="crf-training-demo" class="slide level3">
 <h3>CRF Training Demo</h3>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn_crfsuite</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> word2features(tokens, i):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    features <span class="op">=</span> {</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;bias&quot;</span>: <span class="fl">1.0</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;word&quot;</span>: tokens[i].lower(),</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;prev_word&quot;</span> <span class="op">=</span> tokens[i<span class="op">-</span><span class="dv">1</span>],</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;next_word&quot;</span> <span class="op">=</span> tokens[i<span class="op">+</span><span class="dv">1</span>],</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;shape&quot;</span>: re.sub(word, <span class="st">&quot;\d&quot;</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> features</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn_crfsuite</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> word2features(tokens, i):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    features <span class="op">=</span> {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;bias&quot;</span>: <span class="fl">1.0</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;word&quot;</span>: tokens[i].lower(),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;prev_word&quot;</span> <span class="op">=</span> tokens[i<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;next_word&quot;</span> <span class="op">=</span> tokens[i<span class="op">+</span><span class="dv">1</span>],</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;shape&quot;</span>: re.sub(word, <span class="st">&quot;\d&quot;</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> features</span></code></pre></div>
 </section>
 <section id="crf-training-demo-1" class="slide level3">
 <h3>CRF Training Demo</h3>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn_crfsuite</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sent2features(tokens):</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [word2features(tokens, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tokens))]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [sent2features(tokens) <span class="cf">for</span> tokens <span class="kw">in</span> sentences]</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">&lt;</span>labels<span class="op">&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>crf <span class="op">=</span> sklearn_crfsuite.CRF(algorithm<span class="op">=</span><span class="st">&#39;lbfgs&#39;</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>crf.fit(X_train, y_train)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn_crfsuite</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sent2features(tokens):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [word2features(tokens, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tokens))]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [sent2features(tokens) <span class="cf">for</span> tokens <span class="kw">in</span> sentences]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">&lt;</span>labels<span class="op">&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>crf <span class="op">=</span> sklearn_crfsuite.CRF(algorithm<span class="op">=</span><span class="st">&#39;lbfgs&#39;</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>crf.fit(X_train, y_train)</span></code></pre></div>
+</section>
+<section id="typical-features" class="slide level3">
+<h3>Typical features</h3>
+<ul>
+<li><code>word</code> one-hot</li>
+</ul>
 </section>
 <section id="discriminative-vs-generative-models" class="slide level3">
 <h3>Discriminative VS Generative Models</h3>
@@ -455,26 +523,45 @@ class="slide level3">
 \{X_1, X_2, X_3\}
 \]</span></p>
 </section>
+<section id="crf-probabilistic-model" class="slide level3">
+<h3>CRF probabilistic model</h3>
+</section>
+<section id="crf-log-linear-parametrization" class="slide level3">
+<h3>CRF log-linear parametrization</h3>
+</section>
 <section id="fitting-crfs" class="slide level3">
 <h3>Fitting CRF’s</h3>
 <ul>
 <li>How to include “high cardinality” features like current
 <code>word</code></li>
 </ul>
-<p><span class="math display">\[ \ell(\theta) = \sum_{i=1}^{N} \log
-p\left(\mathbf{y}^{(i)} \mid \mathbf{x}^{(i)} ; \theta\right).
+<p><span class="math display">\[ \ell(\theta) = \sum_{t=1}^{N} \log
+p\left(\mathbf{y}_t} \mid \mathbf{x}_t} ; \theta\right)
 + c_1 \lVert \theta \rVert + c_2 \lVert \theta \rVert_2 \]</span></p>
 <ul>
+<li>Convex Optimization Problem -&gt; Unique Solution</li>
 <li>Use of Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) <span
 class="citation" data-cites="andrew2007scalable">(Andrew and Gao
 2007)</span></li>
 </ul>
 </section></section>
+<section>
 <section id="performance-comparison" class="title-slide slide level2">
 <h2>Performance comparison</h2>
 
 </section>
-
+<section id="finner-139" class="slide level3">
+<h3>FinNER-139</h3>
+<blockquote>
+<p>The Company ’ s revenue by major product and service line for the
+three and nine months ended September 30 was as follows : ( a ) Includes
+$ [4.0]B-Revenues million and $ [3.0]B-Revenues million of VAPS service
+revenue for the three months ended September 30 , 2019 and 2018 ,
+respectively , and $ [11.9]B-Revenues million and $ [7.9]B-Revenues
+million of VAPS service revenue for the nine months ended September 30 ,
+2019 and 2018 , respectively .</p>
+</blockquote>
+</section></section>
 <section>
 <section id="speed-comparison" class="title-slide slide level2">
 <h2>Speed comparison</h2>
@@ -547,6 +634,63 @@ data-entry-spacing="0" role="list">
 Andrew, Galen, and Jianfeng Gao. 2007. <span>“Scalable Training of l
 1-Regularized Log-Linear Models.”</span> In <em>Proceedings of the 24th
 International Conference on Machine Learning</em>, 33–40.
+</div>
+<div id="ref-bengio2000neural" class="csl-entry" role="listitem">
+Bengio, Yoshua, Réjean Ducharme, and Pascal Vincent. 2000. <span>“A
+Neural Probabilistic Language Model.”</span> <em>Advances in Neural
+Information Processing Systems</em> 13.
+</div>
+<div id="ref-church1989stochastic" class="csl-entry" role="listitem">
+Church, Kenneth Ward. 1989. <span>“A Stochastic Parts Program and Noun
+Phrase Parser for Unrestricted Text.”</span> In <em>International
+Conference on Acoustics, Speech, and Signal Processing,</em> 695–98.
+IEEE.
+</div>
+<div id="ref-derose1988grammatical" class="csl-entry" role="listitem">
+DeRose, Steven J. 1988. <span>“Grammatical Category Disambiguation by
+Statistical Optimization.”</span> <em>Computational Linguistics</em> 14
+(1): 31–39.
+</div>
+<div id="ref-huang2015bidirectional" class="csl-entry" role="listitem">
+Huang, Zhiheng, Wei Xu, and Kai Yu. 2015. <span>“Bidirectional LSTM-CRF
+Models for Sequence Tagging.”</span> <em>arXiv Preprint
+arXiv:1508.01991</em>.
+</div>
+<div id="ref-lafferty2001conditional" class="csl-entry" role="listitem">
+Lafferty, John, Andrew McCallum, Fernando Pereira, et al. 2001.
+<span>“Conditional Random Fields: Probabilistic Models for Segmenting
+and Labeling Sequence Data.”</span> In <em>Icml</em>, 1:3. 2.
+Williamstown, MA.
+</div>
+<div id="ref-mikolov2013efficient" class="csl-entry" role="listitem">
+Mikolov, Tomas. 2013. <span>“Efficient Estimation of Word
+Representations in Vector Space.”</span> <em>arXiv Preprint
+arXiv:1301.3781</em>.
+</div>
+<div id="ref-pennington2014glove" class="csl-entry" role="listitem">
+Pennington, Jeffrey, Richard Socher, and Christopher D Manning. 2014.
+<span>“Glove: Global Vectors for Word Representation.”</span> In
+<em>Proceedings of the 2014 Conference on Empirical Methods in Natural
+Language Processing (EMNLP)</em>, 1532–43.
+</div>
+<div id="ref-rabiner1989tutorial" class="csl-entry" role="listitem">
+Rabiner, Lawrence R. 1989. <span>“A Tutorial on Hidden Markov Models and
+Selected Applications in Speech Recognition.”</span> <em>Proceedings of
+the IEEE</em> 77 (2): 257–86.
+</div>
+<div id="ref-ratnaparkhi1996maximum" class="csl-entry" role="listitem">
+Ratnaparkhi, Adwait. 1996. <span>“A Maximum Entropy Model for
+Part-of-Speech Tagging.”</span> In <em>Conference on Empirical Methods
+in Natural Language Processing</em>.
+</div>
+<div id="ref-sang2003introduction" class="csl-entry" role="listitem">
+Sang, Erik F, and Fien De Meulder. 2003. <span>“Introduction to the
+CoNLL-2003 Shared Task: Language-Independent Named Entity
+Recognition.”</span> <em>arXiv Preprint Cs/0306050</em>.
+</div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+Vaswani, A. 2017. <span>“Attention Is All You Need.”</span> <em>Advances
+in Neural Information Processing Systems</em>.
 </div>
 </div>
 </section>

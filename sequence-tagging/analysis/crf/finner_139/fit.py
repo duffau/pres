@@ -18,15 +18,54 @@ from sklearn_crfsuite import metrics
 RE_NUM = re.compile(r"(\d+[\d,.]*)|([,.]\d+)")
 RE_DIGITS = re.compile(r"\d")
 
-SIGNAL_WORDS = set([
+MONTHS = set([
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
+])
+
+
+GAZETTEER_WORDS = set([
     # SharePrice
+    "per",
     "share",
     "stock",
     "price",
     # Revenue
+    "store",
+    "franchise", 
+    "franchisees",
     "sales",
+    "received",
+    "million",
+    "royalties",
+    "fees", 
     # GoodWill
-    "goodwill"
+    "goodwill",
+    # Impairment Loss
+    "impairment", 
+    "losses",
+    "loss",
+    # Loan
+    "outstanding",
+    # DebtInstrumentMaturityDate
+    "senior",
+    "notes",
+    "matures",
+    "maturing",
+    "maturity", 
+    "date",
+    "on",
+    "due",
 ])
 
 def word2features(tokens, i):
@@ -44,12 +83,21 @@ def word2features(tokens, i):
         'word.isdigit()': word.isdigit(),
         "[NUM]": True if RE_NUM.fullmatch(word) else False,
         "[SHAPE]": RE_DIGITS.sub('X', word),
-        'word_left_window': word 
+        "word_is_month": word.lower() in MONTHS,
     }
+    features.update(
+        {f"left_context:{gaz_word}": True for gaz_word in GAZETTEER_WORDS if gaz_word in left_context}
+    )
+    features.update(
+        {f"left_context:{gaz_word[-3:]}": True for gaz_word in GAZETTEER_WORDS if gaz_word in left_context}
+    )
+    features.update(
+        {f"right_context:{gaz_word}": True for gaz_word in GAZETTEER_WORDS if gaz_word in right_context}
+    )
+    features.update(
+        {f"right_context:{gaz_word[-3:]}": True for gaz_word in GAZETTEER_WORDS if gaz_word in right_context}
+    )
 
-    for lword in left_context:
-        if lword in SIGNAL_WORDS:
-            features["left_context"] = lword
     if i > 0:
         word1 = tokens[i-1]
         features.update({
@@ -57,31 +105,12 @@ def word2features(tokens, i):
             '-1:word.istitle()': word1.istitle(),
             '-1:word.isupper()': word1.isupper(),
             '-1:word.is_dollar': word1 == "$",
+            "-1:[NUM]": True if RE_NUM.fullmatch(word1) else False,
+            "-1:[SHAPE]": RE_DIGITS.sub('X', word1),
+            "-1:word_is_month": word1.lower() in MONTHS,
         })
     else:
         features['BOS'] = True
-
-    if i > 1:
-        word_m2 = tokens[i-2].lower()
-        features.update({
-            '-2:share': word_m2 == "share",
-            '-2:stock': word_m2 == "stock",
-            '-2:price': word_m2 == "price",
-            '-2:price': word_m2 == "price",
-            '-2:sales': word_m2 == "sales",
-            '-2:goodwill': word_m2 == "goodwill"
-        })
-
-    # if i > 3:
-    #     word_m3 = tokens[i-3].lower()
-    #     word_m4 = tokens[i-4].lower()
-    #     features.update({
-    #         '-4:share': word_m4 == "share",
-    #         '-4:stock': word_m4 == "stock",
-    #         '-3:price': word_m3 == "price",
-    #         '-4:price': word_m4 == "price",
-    #         '-3:sales': word_m3 == "sales",
-    #     })
 
 
     if i < len(tokens)-1:
@@ -90,26 +119,13 @@ def word2features(tokens, i):
             '+1:word.lower()': word_p1.lower(),
             '+1:word.istitle()': word_p1.istitle(),
             '+1:word.isupper()': word_p1.isupper(),
+            "+1:[NUM]": True if RE_NUM.fullmatch(word_p1) else False,
+            "+1:[SHAPE]": RE_DIGITS.sub('X', word_p1),
+            "+1:word_is_month": word_p1.lower() in MONTHS,
         })
     else:
         features['EOS'] = True
 
-
-
-    # if i < len(tokens)-2:
-    #     word_p2 = tokens[i+2].lower()
-    #     features.update({
-    #         '+2:share': word_p2 == "share",
-    #         '+2:goodwill': word_p2 == "goodwill"
-    #     })
-
-    # if i < len(tokens)-3:
-    #     word_p3 = tokens[i+3].lower()
-    #     features.update({
-    #         '+1:per': word_p3 == "per",
-    #         '+2:share': word_p3 == "share",
-    #         '+2:goodwill': word_p3 == "goodwill"
-    #     })
 
     return features
 

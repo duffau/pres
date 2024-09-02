@@ -14,6 +14,8 @@ USE_LABELS = [
     "B-GoodwillImpairmentLoss",
     "B-LongTermDebt",
     "B-DebtInstrumentFaceAmount",
+    "B-DebtInstrumentMaturityDate",
+    "I-DebtInstrumentMaturityDate",
     "B-LineOfCreditFacilityMaximumBorrowingCapacity",
     "B-LineOfCreditFacilityRemainingBorrowingCapacity"
 ]

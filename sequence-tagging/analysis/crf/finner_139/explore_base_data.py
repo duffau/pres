@@ -11,7 +11,7 @@ for tag, count in tag_counts:
     print(f"{count:10d}", tag)
 
 
-for tag_name in sett.USE_LABELS:
+for tag_name in ["B-DebtInstrumentMaturityDate"]:
     for sentence in format_sentence_examples(dataset=dataset["train"], tag_name=tag_name, seed=42):
         print(sentence)
         print("\n\n")
