@@ -280,10 +280,10 @@ def word2features(tokens, i):
 import datasets
 
 def load_X_y(dataset_id="eriktks/conll2003", split="train"):
-    dataset = datasets.load_dataset(dataset_id)
-    sentences = dataset[split]["tokens"]
-    labels = dataset[split]["ner_tags"]
-    label_names = dataset[split].features["ner_tags"].feature.names
+    data = datasets.load_dataset(dataset_id)
+    sentences = data[split]["tokens"]
+    labels = data[split]["ner_tags"]
+    label_names = data[split].features["ner_tags"].feature.names
 
     X, y = [], []
     for (sentence, label_seq), i in enumerate(sentences, labels):
@@ -313,10 +313,36 @@ print(metrics.flat_classification_report(
 ))
 ```
 
+---
+
+```bash
+              precision    recall  f1-score   support
+
+       B-LOC      0.852     0.837     0.844      1668
+       I-LOC      0.741     0.623     0.677       257
+      B-MISC      0.796     0.758     0.777       702
+      I-MISC      0.647     0.653     0.650       216
+       B-ORG      0.778     0.722     0.749      1661
+       I-ORG      0.666     0.734     0.699       835
+       B-PER      0.839     0.853     0.846      1617
+       I-PER      0.879     0.952     0.914      1156
+
+   micro avg      0.805     0.804     0.805      8112
+   macro avg      0.775     0.766     0.769      8112
+weighted avg      0.805     0.804     0.804      8112
+```
+
 ### Typical features
 
-- `word` one-hot
-
+- `word`: one-hot encoding of current word
+- `+1:word`: one-hot encoding of next word
+- `word length`
+- `word shape`:  `$1,230` -> `$x,xxx`
+- `word.isupper()`
+- POS tag
+- Adjacent bi-grams adn tri-grams
+- Windows of words
+- Gazetteers
 
 ## CRF Theory
 ### Conditional Random Field model - Quick overview

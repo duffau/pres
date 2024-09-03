@@ -425,10 +425,10 @@ def word2features(tokens, i):
 <pre class="python"><code>import datasets
 
 def load_X_y(dataset_id=&quot;eriktks/conll2003&quot;, split=&quot;train&quot;):
-    dataset = datasets.load_dataset(dataset_id)
-    sentences = dataset[split][&quot;tokens&quot;]
-    labels = dataset[split][&quot;ner_tags&quot;]
-    label_names = dataset[split].features[&quot;ner_tags&quot;].feature.names
+    data = datasets.load_dataset(dataset_id)
+    sentences = data[split][&quot;tokens&quot;]
+    labels = data[split][&quot;ner_tags&quot;]
+    label_names = data[split].features[&quot;ner_tags&quot;].feature.names
 
     X, y = [], []
     for (sentence, label_seq), i in enumerate(sentences, labels):
@@ -456,10 +456,36 @@ print(metrics.flat_classification_report(
     y_test, y_pred, labels=sorted_labels, digits=3
 ))</code></pre>
 </section>
+<section class="slide level3">
+
+<pre class="bash"><code>              precision    recall  f1-score   support
+
+       B-LOC      0.852     0.837     0.844      1668
+       I-LOC      0.741     0.623     0.677       257
+      B-MISC      0.796     0.758     0.777       702
+      I-MISC      0.647     0.653     0.650       216
+       B-ORG      0.778     0.722     0.749      1661
+       I-ORG      0.666     0.734     0.699       835
+       B-PER      0.839     0.853     0.846      1617
+       I-PER      0.879     0.952     0.914      1156
+
+   micro avg      0.805     0.804     0.805      8112
+   macro avg      0.775     0.766     0.769      8112
+weighted avg      0.805     0.804     0.804      8112</code></pre>
+</section>
 <section id="typical-features" class="slide level3">
 <h3>Typical features</h3>
 <ul>
-<li><code>word</code> one-hot</li>
+<li><code>word</code>: one-hot encoding of current word</li>
+<li><code>+1:word</code>: one-hot encoding of next word</li>
+<li><code>word length</code></li>
+<li><code>word shape</code>: <code>$1,230</code> -&gt;
+<code>$x,xxx</code></li>
+<li><code>word.isupper()</code></li>
+<li>POS tag</li>
+<li>Adjacent bi-grams adn tri-grams</li>
+<li>Windows of words</li>
+<li>Gazetteers</li>
 </ul>
 </section></section>
 <section>
