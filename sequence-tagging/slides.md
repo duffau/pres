@@ -261,9 +261,7 @@ Abstract tasks have taken over lower level tasks
 
 ###
 ```python
-import sklearn_crfsuite
-
-def word2features(tokens, i):
+def tokens_to_features(tokens, i):
     features = {
       "bias": 1.0,
       "word": tokens[i].lower(),
@@ -287,7 +285,7 @@ def load_X_y(dataset_id="eriktks/conll2003", split="train"):
 
     X, y = [], []
     for (sentence, label_seq), i in enumerate(sentences, labels):
-      X.append(word2features(tokens, i)) 
+      X.append(tokens_to_features(tokens, i)) 
       y.append([label_names[label_id] in label_seq])
     return X, y
 ```
@@ -304,16 +302,37 @@ crf = sklearn_crfsuite.CRF(
   c2=0.01,
 )
 crf.fit(X, y)
-
-X_test, y_test = load_X_y(split="test")
-y_pred = crf.predict(X_test)
-
-print(metrics.flat_classification_report(
-    y_test, y_pred, labels=sorted_labels, digits=3
-))
 ```
 
+```bash
+Iter 1   time=0.33  loss=232365.88 active=86384 feature_norm=1.00
+Iter 2   time=0.17  loss=217017.29 active=84206 feature_norm=3.45
+Iter 3   time=0.17  loss=161378.43 active=83724 feature_norm=2.99
+...
+Iter  99 time=0.17  loss=1255.7  active=38787 feature_norm=252.98
+Iter 100 time=0.16  loss=1255.7  active=38790 feature_norm=252.96
+Total seconds required for training: 23.856
+```
 ---
+
+```
+Number of active features: 38790 (86687)
+Number of active attributes: 24451 (68166)
+Number of active labels: 9 (9)
+```
+
+```python
+# Worst case (all_possible_states=True and all_possible_transitions=True)
+features = (number of attributes * number of labels) 
+          + (number of labels * number of labels)
+```
+---
+
+```
+X_test, y_test = load_X_y(split="test")
+y_pred = crf.predict(X_test)
+print(metrics.flat_classification_report(y_test, y_pred))
+```
 
 ```bash
               precision    recall  f1-score   support
@@ -345,16 +364,19 @@ weighted avg      0.805     0.804     0.804      8112
 - Gazetteers
 
 ## CRF Theory
-### Conditional Random Field model - Quick overview
+### CRF Motivation
 
-![](static/hmm-memm-crf-diagrams.png){width=40%}
+![](static/hmm-memm-crf-diagrams.png){width=65%}
 
 ::: incremental
-- Discriminative as opposed to Generative
-- Bidirectional influence from labels
-- Richer Word Feature transformations
-- Non-independent features
-- Solves the "label bias" issue of MEMM
+- *Discriminative* as opposed to *Generative*
+- *Bidirectional* influence from labels
+- *Richer* and *Non-independent* word features
+- Solves the *"label bias"* issue of MEMM
+:::
+
+::: footer
+Illustration: @murphy2012machine
 :::
 
 ::: notes
@@ -376,6 +398,10 @@ weighted avg      0.805     0.804     0.804      8112
 :::
 
 ### Discriminative VS Generative Models
+
+- Generative: $p(\mathbf{x},\mathbf{y}) = p(x \vert \mathbf{y})p(\mathbf{y})$
+- Discriminative: $p(\mathbf{y} | \mathbf{x})$
+
 
 ### Encoding condition dependence as Graphs 
 
