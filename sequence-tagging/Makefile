@@ -7,7 +7,6 @@ CSS = static/custom.css
 PLUGIN_CONFIG = static/reveal-plugin-config.html
 
 reveal_flags = --mathjax \
-		--highlight-style zenburn \
 		--slide-level 3 \
 		-V revealjs-url=https://unpkg.com/reveal.js@^4/ \
 		-V theme=black \
@@ -16,7 +15,8 @@ reveal_flags = --mathjax \
 		--css static/custom.css \
 		--css static/custom-elements.css \
 		--bibliography ./bibliography.bib \
-		--citeproc
+		--citeproc \
+		--no-highlight
 
 slides.html:
 	pandoc\
