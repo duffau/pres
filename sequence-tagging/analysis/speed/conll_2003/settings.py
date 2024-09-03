@@ -3,4 +3,4 @@ N_SAMPLE = None
 SEED = 42
 
 BASE_DATASET_DIR = f'./.data/base/{DATASET_ID}'
-FIT_DATASET_DIR = f'./.data/fit/{DATASET_ID}'
+FIT_DATASET_DIR = f'./.data/base/{DATASET_ID}'

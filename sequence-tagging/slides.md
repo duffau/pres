@@ -381,6 +381,13 @@ Illustration: @murphy2012machine
 
 ::: notes
 
+- HMM: 
+  - y_t is independent of all previous labels given y_t-1
+  - x_t is independent of all previous labels and obs given y_t
+- MEMM: 
+  - y_t is independent of all previous obs and labels given x_t and y_t-1
+  - x_t is independent of all other x's
+
 - Relaxed sequential Markov assumption
   - Bidirectional influence from labels 
 - Relax the "tag generates word" assumption
@@ -399,15 +406,59 @@ Illustration: @murphy2012machine
 
 ### Discriminative VS Generative Models
 
-- Generative: $p(\mathbf{x},\mathbf{y}) = p(x \vert \mathbf{y})p(\mathbf{y})$
-- Discriminative: $p(\mathbf{y} | \mathbf{x})$
+- Generative: $$p(\mathbf{x},\mathbf{y}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})$$
+- Discriminative: $$p(\mathbf{y} | \mathbf{x})$$
 
+::: notes
+:::
+
+### Generative Models are regularized
+
+- Generative: Maximize joint log-likelihood $$-\log p(\mathbf{x},\mathbf{y}) = -log p(\mathbf{y} \vert \mathbf{x}) - \log p(\mathbf{x})$$
+- Discriminative: Maximize conditional log-likelihood: $$- \log p(\mathbf{y} | \mathbf{x})$$
+
+
+### Discriminative VS Generative Models ... it depends
+
+::: columns
+
+:::: {.column width=50%}
+![Well specified](static/gen-vs-disc-well-specified.png){width=100%}
+::::
+
+
+:::: {.column width=50%}
+![Not well specified](static/gen-vs-disc-not-well-specified.png){width=100%}
+::::
+
+:::
+
+::: footer
+Source: @ng2001discriminative;@larochelleneuralnetworks
+:::
+
+
+### Discriminative 
+
+- Markov Model: $$p(Y_t) = \prod_{t=1}^T p(y_t | y_{t-1})$$ 
+- Logistic regression: $$p(y|x) = \sigma(\theta^T x)$$
 
 ### Encoding condition dependence as Graphs 
 
 $$
-\{X_1, X_2, X_3\}
+p(a,b,c) = p(c | a, b)p(b | a)p(a)
 $$
+
+![Conditional Decomposition](static/directed-graph.png)
+
+---
+
+<div class="callout callout-blue">
+  <h4 >Theorem</h4>
+  - Any decomposition of a joint probability function can be represented as a DAG
+  - Any DAG represents decomposition of a joint probability function
+</div>
+
 
 ### CRF probabilistic model
 
@@ -442,10 +493,6 @@ $$ \ell(\theta) = \sum_{t=1}^{T} \log p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \t
 Source: @keraghel2024survey
 
 :::
-
-### FinNER-139
-
-> The Company ’ s revenue by major product and service line for the three and nine months ended September 30 was as follows : ( a ) Includes $ [4.0]B-Revenues million and $ [3.0]B-Revenues million of VAPS service revenue for the three months ended September 30 , 2019 and 2018 , respectively , and $ [11.9]B-Revenues million and $ [7.9]B-Revenues million of VAPS service revenue for the nine months ended September 30 , 2019 and 2018 , respectively .
 
 
 ## Speed comparison
