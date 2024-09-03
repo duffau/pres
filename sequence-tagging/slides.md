@@ -255,19 +255,11 @@ Abstract tasks have taken over lower level tasks
 
 ### NER Tagging Approaches
 
+![](static/ner-approaches.png)
 
+## CRF Training Demo
 
-## CRF Theory
-### Conditional Random Field model - Quick overview
-
-![](hmm-memm-crf-diagrams.png)
-
-- Discriminiative as opposed to Generative
-- Allows bidirectional influence from labels
-- Allows feature influence from any time step
-
-### CRF Training Demo
-
+###
 ```python
 import sklearn_crfsuite
 
@@ -275,30 +267,87 @@ def word2features(tokens, i):
     features = {
       "bias": 1.0,
       "word": tokens[i].lower(),
-      "prev_word" = tokens[i-1],
-      "next_word" = tokens[i+1],
-      "shape": re.sub(word, "\d")
+      "prev_word": tokens[i-1],
+      "next_word": tokens[i+1],
+      "shape": re.sub("X", "\d", word)
     }
     return features
 ```
 
-### CRF Training Demo
+---
+
+```python
+import datasets
+
+def load_X_y(dataset_id="eriktks/conll2003", split="train"):
+    dataset = datasets.load_dataset(dataset_id)
+    sentences = dataset[split]["tokens"]
+    labels = dataset[split]["ner_tags"]
+    label_names = dataset[split].features["ner_tags"].feature.names
+
+    X, y = [], []
+    for (sentence, label_seq), i in enumerate(sentences, labels):
+      X.append(word2features(tokens, i)) 
+      y.append([label_names[label_id] in label_seq])
+    return X, y
+```
+---
 
 ```python
 import sklearn_crfsuite
+from sklearn_crfsuite import metrics
 
-def sent2features(tokens):
-    return [word2features(tokens, i) for i in range(len(tokens))]
+X, y = load_X_y(split="train")
+crf = sklearn_crfsuite.CRF(
+  algorithm='lbfgs',
+  c1=0.5, 
+  c2=0.01,
+)
+crf.fit(X, y)
 
-X = [sent2features(tokens) for tokens in sentences]
-y = <labels>
+X_test, y_test = load_X_y(split="test")
+y_pred = crf.predict(X_test)
 
-crf = sklearn_crfsuite.CRF(algorithm='lbfgs')
-crf.fit(X_train, y_train)
+print(metrics.flat_classification_report(
+    y_test, y_pred, labels=sorted_labels, digits=3
+))
 ```
+
 ### Typical features
 
 - `word` one-hot
+
+
+## CRF Theory
+### Conditional Random Field model - Quick overview
+
+![](static/hmm-memm-crf-diagrams.png){width=40%}
+
+::: incremental
+- Discriminative as opposed to Generative
+- Bidirectional influence from labels
+- Richer Word Feature transformations
+- Non-independent features
+- Solves the "label bias" issue of MEMM
+:::
+
+::: notes
+
+- Relaxed sequential Markov assumption
+  - Bidirectional influence from labels 
+- Relax the "tag generates word" assumption
+  - Allows rich word transformations
+- Flexible influence from feature on
+- Relaxed Independence Assumptions
+  - Non-independent features of the entire observation sequence
+
+. Label Bias
+  - MEMM are logistic regression for each state transition given it's current state
+  - State transition with high probability concentration
+  - Leads to little influence from x-features
+  - CRF solves by normalizing over transitions over the whole sequence rather than each step
+
+:::
 
 ### Discriminative VS Generative Models
 
@@ -316,14 +365,31 @@ $$
 
 - How to include "high cardinality" features like current `word`
 
-$$ \ell(\theta) = \sum_{t=1}^{N} \log p\left(\mathbf{y}_t} \mid \mathbf{x}_t} ; \theta\right)
-+ c_1 \lVert \theta \rVert + c_2 \lVert \theta \rVert_2 $$
+$$ \ell(\theta) = \sum_{t=1}^{T} \log p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right)
++ c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2 $$
 
-- Convex Optimization Problem -> Unique Solution
 - Use of Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) [@andrew2007scalable]
+- Convex Optimization Problem
  
 
 ## Performance comparison
+
+::: custom-small
+
+| Framework          | Algorithm            | CoNLL-2003 | FIN   | BioNLP2004 | BC5CDR | MultiCoNER |
+|--------------------|----------------------|------------|-------|------------|--------|------------|
+|                    | GliNER               | **92.60**  | -     |            | 88.70  | -          |
+| Apache OpenNLP     | Maximum Entropy      | 80.00      | 63.24 | -          | -      | -          |
+| Stanford CoreNLP   | CRF                  | 85.18      | 55.25 | **73.26**      | 85.22  | 19.39      |
+| Flair              | LSTM-CRF             | 90.35      | **74.23** | 71.64      | **90.27**  | 56.27      |
+| spaCy              | CNN-large            | 85.64      | 54.71 | 66.17      | 79.66  | 35.82      |
+| Hugging Face       | roberta-base         | 89.92      | 63.18 | 66.56      | 87.08  | 55.21      |
+| Hugging Face       | bert-base-cased      | 90.09      | 39.53 | 69.46      | 85.14  | **56.64**      |
+| OpenAI             | GPT-4                | 62.74      | 36.70 | 41.32      | 55.67  | 33.61      |
+
+Source: @keraghel2024survey
+
+:::
 
 ### FinNER-139
 

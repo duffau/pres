@@ -36,3 +36,8 @@
     width: 5vw;
     height: 5vw;
   }
+
+  .custom-small table {
+    font-size: .5em
+  }
+  

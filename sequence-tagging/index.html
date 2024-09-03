@@ -28,69 +28,6 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #cccccc; background-color: #303030; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ffcfaf; } /* Alert */
-    code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
-    code span.at { } /* Attribute */
-    code span.bn { color: #dca3a3; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #f0dfaf; } /* ControlFlow */
-    code span.ch { color: #dca3a3; } /* Char */
-    code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
-    code span.co { color: #7f9f7f; } /* Comment */
-    code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
-    code span.do { color: #7f9f7f; } /* Documentation */
-    code span.dt { color: #dfdfbf; } /* DataType */
-    code span.dv { color: #dcdccc; } /* DecVal */
-    code span.er { color: #c3bf9f; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #c0bed1; } /* Float */
-    code span.fu { color: #efef8f; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
-    code span.kw { color: #f0dfaf; } /* Keyword */
-    code span.op { color: #f0efd0; } /* Operator */
-    code span.ot { color: #efef8f; } /* Other */
-    code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
-    code span.sc { color: #dca3a3; } /* SpecialChar */
-    code span.ss { color: #cc9393; } /* SpecialString */
-    code span.st { color: #cc9393; } /* String */
-    code span.va { } /* Variable */
-    code span.vs { color: #cc9393; } /* VerbatimString */
-    code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -115,6 +52,9 @@
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/black.css" id="theme">
   <link rel="stylesheet" href="static/custom.css"/>
   <link rel="stylesheet" href="static/custom-elements.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
   <meta property="og:url" content="https://duffau.github.io/talks/sequence-tagging/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://duffau.github.io/talks/sequence-tagging/static/crf.svg" />
@@ -176,21 +116,18 @@ href="https://duffau.github.io/talks/sequence-tagging">duffau.github.io/talks/se
 </section>
 <section id="sequence-tagging" class="slide level3">
 <h3>Sequence Tagging</h3>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>The price of the [Pizza Margherita] is [10 dollars]. </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                  FOOD                  AMOUNT</span></code></pre></div>
+<pre class="txt"><code>The price of the [Pizza Margherita] is [10 dollars]. 
+                  FOOD                  AMOUNT</code></pre>
 </section>
 <section id="section" class="slide level3">
 <h3></h3>
 <h4 id="named-entity-recognition-ner">Named Entity Recognition
 (NER)</h4>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Jim   worked at    Acme Corp. near the beautiful London Bridge.</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS</span></code></pre></div>
+<pre class="txt"><code>Jim   worked at    Acme Corp. near the beautiful London Bridge.
+PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS</code></pre>
 <h4 id="part-of-speech-pos">Part-of-Speech (POS)</h4>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Jim   worked at    Acme Corp. near the beautiful London Bridge.</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS</span></code></pre></div>
+<pre class="txt"><code>Jim   worked at    Acme Corp. near the beautiful London Bridge.
+NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS</code></pre>
 <p><span class="math display">\[\begin{aligned}
 \text{Labels}:\quad \mathbf{y} &amp;= \{y_1, y_2, \ldots, y_T\}\\
 \text{Features}:\quad \mathbf{x} &amp;= \{\mathbf{x}_1, \mathbf{x}_2,
@@ -462,6 +399,68 @@ keys.”</li>
 </section>
 <section id="ner-tagging-approaches" class="slide level3">
 <h3>NER Tagging Approaches</h3>
+<p><img data-src="static/ner-approaches.png" /></p>
+</section></section>
+<section>
+<section id="crf-training-demo" class="title-slide slide level2">
+<h2>CRF Training Demo</h2>
+
+</section>
+<section id="section-1" class="slide level3">
+<h3></h3>
+<pre class="python"><code>import sklearn_crfsuite
+
+def word2features(tokens, i):
+    features = {
+      &quot;bias&quot;: 1.0,
+      &quot;word&quot;: tokens[i].lower(),
+      &quot;prev_word&quot;: tokens[i-1],
+      &quot;next_word&quot;: tokens[i+1],
+      &quot;shape&quot;: re.sub(&quot;X&quot;, &quot;\d&quot;, word)
+    }
+    return features</code></pre>
+</section>
+<section class="slide level3">
+
+<pre class="python"><code>import datasets
+
+def load_X_y(dataset_id=&quot;eriktks/conll2003&quot;, split=&quot;train&quot;):
+    dataset = datasets.load_dataset(dataset_id)
+    sentences = dataset[split][&quot;tokens&quot;]
+    labels = dataset[split][&quot;ner_tags&quot;]
+    label_names = dataset[split].features[&quot;ner_tags&quot;].feature.names
+
+    X, y = [], []
+    for (sentence, label_seq), i in enumerate(sentences, labels):
+      X.append(word2features(tokens, i)) 
+      y.append([label_names[label_id] in label_seq])
+    return X, y</code></pre>
+</section>
+<section class="slide level3">
+
+<pre class="python"><code>import sklearn_crfsuite
+from sklearn_crfsuite import metrics
+
+X, y = load_X_y(split=&quot;train&quot;)
+crf = sklearn_crfsuite.CRF(
+  algorithm=&#39;lbfgs&#39;,
+  c1=0.5, 
+  c2=0.01,
+)
+crf.fit(X, y)
+
+X_test, y_test = load_X_y(split=&quot;test&quot;)
+y_pred = crf.predict(X_test)
+
+print(metrics.flat_classification_report(
+    y_test, y_pred, labels=sorted_labels, digits=3
+))</code></pre>
+</section>
+<section id="typical-features" class="slide level3">
+<h3>Typical features</h3>
+<ul>
+<li><code>word</code> one-hot</li>
+</ul>
 </section></section>
 <section>
 <section id="crf-theory" class="title-slide slide level2">
@@ -471,47 +470,39 @@ keys.”</li>
 <section id="conditional-random-field-model---quick-overview"
 class="slide level3">
 <h3>Conditional Random Field model - Quick overview</h3>
-<p><img data-src="hmm-memm-crf-diagrams.png" /></p>
+<p><img data-src="static/hmm-memm-crf-diagrams.png"
+style="width:40.0%" /></p>
+<div>
 <ul>
-<li>Discriminiative as opposed to Generative</li>
-<li>Allows bidirectional influence from labels</li>
-<li>Allows feature influence from any time step</li>
+<li class="fragment">Discriminative as opposed to Generative</li>
+<li class="fragment">Bidirectional influence from labels</li>
+<li class="fragment">Richer Word Feature transformations</li>
+<li class="fragment">Non-independent features</li>
+<li class="fragment">Solves the “label bias” issue of MEMM</li>
 </ul>
-</section>
-<section id="crf-training-demo" class="slide level3">
-<h3>CRF Training Demo</h3>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn_crfsuite</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> word2features(tokens, i):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    features <span class="op">=</span> {</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;bias&quot;</span>: <span class="fl">1.0</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;word&quot;</span>: tokens[i].lower(),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;prev_word&quot;</span> <span class="op">=</span> tokens[i<span class="op">-</span><span class="dv">1</span>],</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;next_word&quot;</span> <span class="op">=</span> tokens[i<span class="op">+</span><span class="dv">1</span>],</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;shape&quot;</span>: re.sub(word, <span class="st">&quot;\d&quot;</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> features</span></code></pre></div>
-</section>
-<section id="crf-training-demo-1" class="slide level3">
-<h3>CRF Training Demo</h3>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn_crfsuite</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sent2features(tokens):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [word2features(tokens, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tokens))]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [sent2features(tokens) <span class="cf">for</span> tokens <span class="kw">in</span> sentences]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="op">&lt;</span>labels<span class="op">&gt;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>crf <span class="op">=</span> sklearn_crfsuite.CRF(algorithm<span class="op">=</span><span class="st">&#39;lbfgs&#39;</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>crf.fit(X_train, y_train)</span></code></pre></div>
-</section>
-<section id="typical-features" class="slide level3">
-<h3>Typical features</h3>
+</div>
+<aside class="notes">
 <ul>
-<li><code>word</code> one-hot</li>
+<li>Relaxed sequential Markov assumption
+<ul>
+<li>Bidirectional influence from labels</li>
+</ul></li>
+<li>Relax the “tag generates word” assumption
+<ul>
+<li>Allows rich word transformations</li>
+</ul></li>
+<li>Flexible influence from feature on</li>
+<li>Relaxed Independence Assumptions
+<ul>
+<li>Non-independent features of the entire observation sequence</li>
+</ul></li>
 </ul>
+<p>. Label Bias - MEMM are logistic regression for each state transition
+given it’s current state - State transition with high probability
+concentration - Leads to little influence from x-features - CRF solves
+by normalizing over transitions over the whole sequence rather than each
+step</p>
+</aside>
 </section>
 <section id="discriminative-vs-generative-models" class="slide level3">
 <h3>Discriminative VS Generative Models</h3>
@@ -535,20 +526,120 @@ class="slide level3">
 <li>How to include “high cardinality” features like current
 <code>word</code></li>
 </ul>
-<p><span class="math display">\[ \ell(\theta) = \sum_{t=1}^{N} \log
-p\left(\mathbf{y}_t} \mid \mathbf{x}_t} ; \theta\right)
-+ c_1 \lVert \theta \rVert + c_2 \lVert \theta \rVert_2 \]</span></p>
+<p><span class="math display">\[ \ell(\theta) = \sum_{t=1}^{T} \log
+p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right)
++ c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2 \]</span></p>
 <ul>
-<li>Convex Optimization Problem -&gt; Unique Solution</li>
 <li>Use of Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) <span
 class="citation" data-cites="andrew2007scalable">(Andrew and Gao
 2007)</span></li>
+<li>Convex Optimization Problem</li>
 </ul>
 </section></section>
 <section>
 <section id="performance-comparison" class="title-slide slide level2">
 <h2>Performance comparison</h2>
-
+<div class="custom-small">
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 23%" />
+<col style="width: 12%" />
+<col style="width: 7%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Algorithm</th>
+<th>CoNLL-2003</th>
+<th>FIN</th>
+<th>BioNLP2004</th>
+<th>BC5CDR</th>
+<th>MultiCoNER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>GliNER</td>
+<td><strong>92.60</strong></td>
+<td>-</td>
+<td></td>
+<td>88.70</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Apache OpenNLP</td>
+<td>Maximum Entropy</td>
+<td>80.00</td>
+<td>63.24</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Stanford CoreNLP</td>
+<td>CRF</td>
+<td>85.18</td>
+<td>55.25</td>
+<td><strong>73.26</strong></td>
+<td>85.22</td>
+<td>19.39</td>
+</tr>
+<tr>
+<td>Flair</td>
+<td>LSTM-CRF</td>
+<td>90.35</td>
+<td><strong>74.23</strong></td>
+<td>71.64</td>
+<td><strong>90.27</strong></td>
+<td>56.27</td>
+</tr>
+<tr>
+<td>spaCy</td>
+<td>CNN-large</td>
+<td>85.64</td>
+<td>54.71</td>
+<td>66.17</td>
+<td>79.66</td>
+<td>35.82</td>
+</tr>
+<tr>
+<td>Hugging Face</td>
+<td>roberta-base</td>
+<td>89.92</td>
+<td>63.18</td>
+<td>66.56</td>
+<td>87.08</td>
+<td>55.21</td>
+</tr>
+<tr>
+<td>Hugging Face</td>
+<td>bert-base-cased</td>
+<td>90.09</td>
+<td>39.53</td>
+<td>69.46</td>
+<td>85.14</td>
+<td><strong>56.64</strong></td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td>GPT-4</td>
+<td>62.74</td>
+<td>36.70</td>
+<td>41.32</td>
+<td>55.67</td>
+<td>33.61</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <span class="citation"
+data-cites="keraghel2024survey">Keraghel, Morbieu, and Nadif
+(2024)</span></p>
+</div>
 </section>
 <section id="finner-139" class="slide level3">
 <h3>FinNER-139</h3>
@@ -655,6 +746,11 @@ Statistical Optimization.”</span> <em>Computational Linguistics</em> 14
 Huang, Zhiheng, Wei Xu, and Kai Yu. 2015. <span>“Bidirectional LSTM-CRF
 Models for Sequence Tagging.”</span> <em>arXiv Preprint
 arXiv:1508.01991</em>.
+</div>
+<div id="ref-keraghel2024survey" class="csl-entry" role="listitem">
+Keraghel, Imed, Stanislas Morbieu, and Mohamed Nadif. 2024. <span>“A
+Survey on Recent Advances in Named Entity Recognition.”</span> <em>arXiv
+Preprint arXiv:2401.10825</em>.
 </div>
 <div id="ref-lafferty2001conditional" class="csl-entry" role="listitem">
 Lafferty, John, Andrew McCallum, Fernando Pereira, et al. 2001.
