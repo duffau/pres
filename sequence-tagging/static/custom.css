@@ -17,3 +17,12 @@
 .reveal .slides .column ul {
     margin: auto;
 }
+
+.reveal pre code {
+    /* Adjust line-height and padding to increase height */
+    line-height: 1.5; /* Increase line spacing */
+    padding: 10px;    /* Add padding around the code */
+    max-height: none; /* Remove max-height restriction */
+    overflow: visible; /* Ensure the code doesn't scroll */
+    font-size: 0.9em;  /* Adjust font size if necessary */
+}
