@@ -408,9 +408,7 @@ keys.”</li>
 </section>
 <section id="section-1" class="slide level3">
 <h3></h3>
-<pre class="python"><code>import sklearn_crfsuite
-
-def word2features(tokens, i):
+<pre class="python"><code>def tokens_to_features(tokens, i):
     features = {
       &quot;bias&quot;: 1.0,
       &quot;word&quot;: tokens[i].lower(),
@@ -432,7 +430,7 @@ def load_X_y(dataset_id=&quot;eriktks/conll2003&quot;, split=&quot;train&quot;):
 
     X, y = [], []
     for (sentence, label_seq), i in enumerate(sentences, labels):
-      X.append(word2features(tokens, i)) 
+      X.append(tokens_to_features(tokens, i)) 
       y.append([label_names[label_id] in label_seq])
     return X, y</code></pre>
 </section>
@@ -447,17 +445,29 @@ crf = sklearn_crfsuite.CRF(
   c1=0.5, 
   c2=0.01,
 )
-crf.fit(X, y)
-
-X_test, y_test = load_X_y(split=&quot;test&quot;)
-y_pred = crf.predict(X_test)
-
-print(metrics.flat_classification_report(
-    y_test, y_pred, labels=sorted_labels, digits=3
-))</code></pre>
+crf.fit(X, y)</code></pre>
+<pre class="bash"><code>Iter 1   time=0.33  loss=232365.88 active=86384 feature_norm=1.00
+Iter 2   time=0.17  loss=217017.29 active=84206 feature_norm=3.45
+Iter 3   time=0.17  loss=161378.43 active=83724 feature_norm=2.99
+...
+Iter  99 time=0.17  loss=1255.7  active=38787 feature_norm=252.98
+Iter 100 time=0.16  loss=1255.7  active=38790 feature_norm=252.96
+Total seconds required for training: 23.856</code></pre>
 </section>
 <section class="slide level3">
 
+<pre><code>Number of active features: 38790 (86687)
+Number of active attributes: 24451 (68166)
+Number of active labels: 9 (9)</code></pre>
+<pre class="python"><code># Worst case (all_possible_states=True and all_possible_transitions=True)
+features = (number of attributes * number of labels) 
+          + (number of labels * number of labels)</code></pre>
+</section>
+<section class="slide level3">
+
+<pre><code>X_test, y_test = load_X_y(split=&quot;test&quot;)
+y_pred = crf.predict(X_test)
+print(metrics.flat_classification_report(y_test, y_pred))</code></pre>
 <pre class="bash"><code>              precision    recall  f1-score   support
 
        B-LOC      0.852     0.837     0.844      1668
@@ -493,19 +503,23 @@ weighted avg      0.805     0.804     0.804      8112</code></pre>
 <h2>CRF Theory</h2>
 
 </section>
-<section id="conditional-random-field-model---quick-overview"
-class="slide level3">
-<h3>Conditional Random Field model - Quick overview</h3>
+<section id="crf-motivation" class="slide level3">
+<h3>CRF Motivation</h3>
 <p><img data-src="static/hmm-memm-crf-diagrams.png"
-style="width:40.0%" /></p>
+style="width:65.0%" /></p>
 <div>
 <ul>
-<li class="fragment">Discriminative as opposed to Generative</li>
-<li class="fragment">Bidirectional influence from labels</li>
-<li class="fragment">Richer Word Feature transformations</li>
-<li class="fragment">Non-independent features</li>
-<li class="fragment">Solves the “label bias” issue of MEMM</li>
+<li class="fragment"><em>Discriminative</em> as opposed to
+<em>Generative</em></li>
+<li class="fragment"><em>Bidirectional</em> influence from labels</li>
+<li class="fragment"><em>Richer</em> and <em>Non-independent</em> word
+features</li>
+<li class="fragment">Solves the <em>“label bias”</em> issue of MEMM</li>
 </ul>
+</div>
+<div class="footer">
+<p>Illustration: <span class="citation"
+data-cites="murphy2012machine">Murphy (2012)</span></p>
 </div>
 <aside class="notes">
 <ul>
@@ -532,6 +546,12 @@ step</p>
 </section>
 <section id="discriminative-vs-generative-models" class="slide level3">
 <h3>Discriminative VS Generative Models</h3>
+<ul>
+<li>Generative: <span class="math inline">\(p(\mathbf{x},\mathbf{y}) =
+p(x \vert \mathbf{y})p(\mathbf{y})\)</span></li>
+<li>Discriminative: <span class="math inline">\(p(\mathbf{y} |
+\mathbf{x})\)</span></li>
+</ul>
 </section>
 <section id="encoding-condition-dependence-as-graphs"
 class="slide level3">
@@ -788,6 +808,10 @@ Williamstown, MA.
 Mikolov, Tomas. 2013. <span>“Efficient Estimation of Word
 Representations in Vector Space.”</span> <em>arXiv Preprint
 arXiv:1301.3781</em>.
+</div>
+<div id="ref-murphy2012machine" class="csl-entry" role="listitem">
+Murphy, Kevin P. 2012. <em>Machine Learning: A Probabilistic
+Perspective</em>. MIT press.
 </div>
 <div id="ref-pennington2014glove" class="csl-entry" role="listitem">
 Pennington, Jeffrey, Richard Socher, and Christopher D Manning. 2014.
