@@ -52,6 +52,10 @@
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/black.css" id="theme">
   <link rel="stylesheet" href="static/custom.css"/>
   <link rel="stylesheet" href="static/custom-elements.css"/>
+<!-- tikzjax -->
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+<!-- highlight.js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
@@ -76,7 +80,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="./static/crf.svg" data-background-opacity="0.2" data-background-size="80%">
+<section id="title-slide" data-background-image="./static/front-cover.svg" data-background-opacity="0.2" data-background-size="80%">
   <h1 class="title">A <em>Blast</em> from the <em>Past</em></h1>
   <p class="subtitle"><em>Fast</em> Text Tagging with Conditional Random
 Fields</p>
@@ -104,6 +108,7 @@ University</li>
 <li class="fragment">Automated Sports Betting</li>
 <li class="fragment">Co-Founded a Machine Learning Consultancy</li>
 <li class="fragment">Co-founded a NLP-powered Legal Tech start-up</li>
+<li class="fragment">Consulting at McKinsey</li>
 </ul></li>
 </ul>
 </div>
@@ -133,99 +138,50 @@ NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS</code></pre>
 \text{Features}:\quad \mathbf{x} &amp;= \{\mathbf{x}_1, \mathbf{x}_2,
 \ldots, \mathbf{x}_T\}
 \end{aligned}\]</span></p>
+<aside class="notes">
+<ul>
+<li>Emphasis on sequential dependencies on labels</li>
+<li>Mention the tag types
+<ul>
+<li>NER: “O”, “PER”, “LOC”, “ORG”</li>
+</ul></li>
+</ul>
+</aside>
 </section>
 <section>
 <section id="evolution-of-nlp-and-sequence-tagging"
 class="title-slide slide level2">
 <h2>Evolution of NLP and Sequence tagging</h2>
+<div class="mermaid">
+<pre>
+%%{init: {'theme': 'forest'}}%%
+timeline
 
-</section>
-<section id="ai-over-optimism-and-ai-winter" class="slide level3">
-<h3>1954-1966 - AI Over-optimism and AI Winter</h3>
-<div>
-<ul>
-<li class="fragment">1954: IBM-Georgetown machine translation: Sixty
-Russian sentences translated into English</li>
-<li class="fragment">1957: Noam Chomsky <em>Syntactic Structures</em>:
-<ul>
-<li class="fragment"><em>Generative Grammar</em>: A system of rules that
-generate exactly those combinations of words that form grammatical
-sentences</li>
-<li class="fragment"><em>Anti-probabilistic</em>: “probabilistic models
-give no particular insight into some of the basic problems of syntactic
-structure.”</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="ai-over-optimism-and-ai-winter-1" class="slide level3">
-<h3>1954-1966 - AI Over-optimism and AI Winter</h3>
-<div>
-<ul>
-<li class="fragment">1958: H. A. Simon and Allen Newell:“within ten
-years a digital computer will discover and prove an important new
-mathematical theorem”</li>
-<li class="fragment">1960’s: Slow progress in machine translation</li>
-<li class="fragment">1966: ALPAC report ledas to defunding of machine
-translation in US</li>
-<li class="fragment">1974–1980: First AI Winter</li>
-</ul>
-</div>
-</section>
-<section id="s---expert-systems" class="slide level3">
-<h3>1980’s - Expert Systems</h3>
-<div>
-<ul>
-<li class="fragment">Expert Systems
-<ul>
-<li class="fragment">Knowledge base - Collected daa</li>
-<li class="fragment">Inference engine - Hand crafted expert rules</li>
-</ul></li>
-<li class="fragment">Examples:
-<ul>
-<li class="fragment">CADUCEUS: Medical expert system “most
-knowledge-intensive expert system in existence”</li>
-<li class="fragment">Dendral: Decision-making process and
-problem-solving behavior of organic chemists.</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="late-1980s-and-1990s---rise-of-statistical-models"
-class="slide level3">
-<h3>Late 1980’s and 1990’s - Rise of Statistical Models</h3>
-<div>
-<ul>
-<li class="fragment">Less dominance of Chomskyan theories of
-linguistics</li>
-<li class="fragment">More computational power</li>
-<li class="fragment">Availability of Annotated Datasets</li>
-<li class="fragment">Give Rise to Statistical NLP</li>
-</ul>
-</div>
-</section>
-<section id="late-1980s-and-1990s---rise-statistical-models"
-class="slide level3">
-<h3>Late 1980’s and 1990’s - Rise Statistical Models</h3>
-<div>
-<ul>
-<li class="fragment">1988: First papers using Markov models for PoS
-<span class="citation"
-data-cites="derose1988grammatical church1989stochastic">(DeRose 1988;
-Church 1989)</span></li>
-<li class="fragment">1989: Tutorial on Hidden Markov Models (HMM) for
-Speech <span class="citation" data-cites="rabiner1989tutorial">(Rabiner
-1989)</span></li>
-<li class="fragment">1993: Penn Treebank Project</li>
-<li class="fragment">1995: WordNet: A Lexical Database for English, 6th
-Message Understanding Conference</li>
-<li class="fragment">1996: Maximum Entropy Markov Model (MEMM) published
-<span class="citation" data-cites="ratnaparkhi1996maximum">(Ratnaparkhi
-1996)</span></li>
-<li class="fragment">2001: Conditional Random Fields (CRF) <span
-class="citation" data-cites="lafferty2001conditional">(Lafferty et al.
-2001)</span></li>
-</ul>
+    section 1950-1990<br>Knowledge-Based Methods
+        1950s : 1954 IBM-Georgetown machine translation - Sixty Russian sentences translated into English
+        1960s : Slow progress in machine translation
+              : 1966 ALPAC report leads to defunding of machine translation in the US
+        1974-1980 : First AI Winter
+
+    section 1990-2000<br>Statistical Feature-Engineered Methods
+        Markov models
+          : 1988 First papers using Markov models for PoS tagging
+          : 1996 Maximum Entropy Markov Model (MEMM) published
+          : 2001 Conditional Random Fields (CRF) introduced
+        Data
+          : 1993 Penn Treebank Project - 1 mio tokens from WSJ
+
+    section "2010-today<br>Deep Learning-Based Methods"
+        Emnbeddings and RNN's
+          : 2013 Word Embeddings (Word2Vec, GloVe)
+          : 2015 Neural Net Revolution (BiLSTM-CRF)
+        Transformers
+           : 2017 "Attention is all you need" <br> Introduction of the Transformer model
+           : 2020 Large-Scale Pre-trained Language Models (GPT-3)
+        LLM
+           : 2022 LLM's GPT 3.5 and ChatGPT
+           : 2023 LLM zoo and Few-Shot Adaptation
+</pre>
 </div>
 <aside class="notes">
 <ul>
@@ -264,40 +220,6 @@ f1</li>
 </ul></li>
 </ul>
 </aside>
-</section>
-<section id="s-to-2010---large-corpus-from-the-web"
-class="slide level3">
-<h3>2000’s to 2010 - Large Corpus from the Web</h3>
-<ul>
-<li>Standardization on benchmarks e.g. CoNLL 2003 <span class="citation"
-data-cites="sang2003introduction">(Sang and De Meulder 2003)</span></li>
-<li>Large raw (unannotated) dataset from the Web</li>
-<li>Semi-supervised and Unsupervised Learning Approaches</li>
-<li>2003: Multilayer perceptron beats Markov model in “next word
-prediction” <span class="citation"
-data-cites="bengio2000neural">(Bengio, Ducharme, and Vincent
-2000)</span></li>
-<li>Support Vector Machines for NER tagging</li>
-</ul>
-</section>
-<section id="to-today---neural-models-and-word-embeddings"
-class="slide level3">
-<h3>2010 to Today - Neural Models and Word Embeddings</h3>
-<ul>
-<li>2013-14: Word Embeddings (Word2Vec, GloVe) <span class="citation"
-data-cites="mikolov2013efficient">Pennington, Socher, and Manning
-(2014)</span></li>
-<li>2015: Neural Net Revolution (BiLSTM-CRF <span class="citation"
-data-cites="huang2015bidirectional">(Huang, Xu, and Yu
-2015)</span>)</li>
-<li>2017: “Attention is all you need” <span class="citation"
-data-cites="vaswani2017attention">(Vaswani 2017)</span></li>
-<li>2019: First gen Transformers (BERT, RoBERTa, Electra)</li>
-<li>2020: Large-Scale Pre-trained Language Models (GPT-3)</li>
-<li>2022: GPT 3.5 and ChatGPT</li>
-<li>2023: Large Language Models and Few-Shot Adaptation (GPT-4, Claude,
-LLaMA)</li>
-</ul>
 </section>
 <section id="papers-using-datasets-1" class="slide level3">
 <h3>Papers Using Datasets <sup>1</sup></h3>
@@ -408,95 +330,112 @@ keys.”</li>
 </section>
 <section id="section-1" class="slide level3">
 <h3></h3>
-<pre class="python"><code>def tokens_to_features(tokens, i):
-    features = {
-      &quot;bias&quot;: 1.0,
-      &quot;word&quot;: tokens[i].lower(),
-      &quot;prev_word&quot;: tokens[i-1],
-      &quot;next_word&quot;: tokens[i+1],
-      &quot;shape&quot;: re.sub(&quot;X&quot;, &quot;\d&quot;, word)
-    }
-    return features</code></pre>
+<pre class="py" data-include="./demo/fit.py" data-startFrom="1"
+data-endAt="4"><code>import re
+import datasets
+import sklearn_crfsuite
+from sklearn_crfsuite import metrics
+</code></pre>
 </section>
 <section class="slide level3">
 
-<pre class="python"><code>import datasets
+<pre class="py" data-include="./demo/fit.py" data-startFrom="7"
+data-endAt="15"><code>def tokens_to_features(tokens, i):
+    features = {
+        &quot;bias&quot;: 1.0,
+        &quot;word&quot;: tokens[i].lower(),
+        &quot;prev_word&quot;: tokens[i - 1] if i&gt;0 else &quot;BOS&quot;,
+        &quot;next_word&quot;: tokens[i + 1] if i&gt;len(tokens) else &quot;EOS&quot;,
+        &quot;shape&quot;: re.sub(r&quot;\d&quot;, &quot;X&quot;, tokens[i]),
+    }
+    return features
+</code></pre>
+<pre class="python"><code># tokens
+[&quot;Anders&quot;, &quot;loves&quot;, &quot;pizza&quot;, &quot;from&quot;, &quot;Rome&quot;]</code></pre>
+<pre class="python"><code># features i=2
+{&quot;bias&quot;:1.0, &quot;word&quot;: &quot;pizza&quot;, &quot;prev_word&quot;: &quot;loves&quot;, &quot;next_word&quot;: &quot;from&quot;, &quot;shape&quot;: &quot;pizza&quot;}</code></pre>
+</section>
+<section class="slide level3">
 
-def load_X_y(dataset_id=&quot;eriktks/conll2003&quot;, split=&quot;train&quot;):
+<pre class="py" data-include="./demo/fit.py" data-startFrom="18"
+data-endAt="28"><code>def load_X_y(dataset_id=&quot;eriktks/conll2003&quot;, split=&quot;train&quot;):
     data = datasets.load_dataset(dataset_id)
     sentences = data[split][&quot;tokens&quot;]
     labels = data[split][&quot;ner_tags&quot;]
     label_names = data[split].features[&quot;ner_tags&quot;].feature.names
-
+    
     X, y = [], []
-    for (sentence, label_seq), i in enumerate(sentences, labels):
-      X.append(tokens_to_features(tokens, i)) 
-      y.append([label_names[label_id] in label_seq])
-    return X, y</code></pre>
+    for sentence, label_seq in zip(sentences, labels):
+        X.append([tokens_to_features(sentence, i) for i in range(len(sentence))])
+        y.append([label_names[label_id] for label_id in label_seq])
+    return X, y
+</code></pre>
 </section>
 <section class="slide level3">
 
-<pre class="python"><code>import sklearn_crfsuite
-from sklearn_crfsuite import metrics
+<pre class="python"><code>X = [
+  [{&quot;bias&quot;: 1.0, &quot;word&quot;: &quot;Anders&quot;, ...},..., {&quot;bias&quot;: 1.0, &quot;word&quot;: &quot;Rome&quot;, ...}],
+  ...
+]
 
-X, y = load_X_y(split=&quot;train&quot;)
+y = [
+  [&quot;PER&quot;, ..., &quot;LOC&quot;],
+  ...
+]
+</code></pre>
+</section>
+<section class="slide level3">
+
+<pre class="py" data-include="./demo/fit.py" data-startFrom="31"
+data-endAt="41"><code>X, y = load_X_y(split=&quot;train&quot;)
 crf = sklearn_crfsuite.CRF(
-  algorithm=&#39;lbfgs&#39;,
-  c1=0.5, 
-  c2=0.01,
+    algorithm=&quot;lbfgs&quot;,
+    c1=0.5,
+    c2=0.01,
+    all_possible_states=True,
+    all_possible_transitions=True,
+    max_iterations=100,
+    verbose=True
 )
-crf.fit(X, y)</code></pre>
-<pre class="bash"><code>Iter 1   time=0.33  loss=232365.88 active=86384 feature_norm=1.00
-Iter 2   time=0.17  loss=217017.29 active=84206 feature_norm=3.45
-Iter 3   time=0.17  loss=161378.43 active=83724 feature_norm=2.99
+crf.fit(X, y)
+</code></pre>
+<pre class="bash"><code>Iter 1   time=0.20 loss=221774.8 active=177764 feature_norm=1.00
+Iter 2   time=0.11 loss=207529.7 active=153314 feature_norm=2.91
+Iter 3   time=0.12 loss=172616.6 active=118451 feature_norm=2.39
 ...
-Iter  99 time=0.17  loss=1255.7  active=38787 feature_norm=252.98
-Iter 100 time=0.16  loss=1255.7  active=38790 feature_norm=252.96
-Total seconds required for training: 23.856</code></pre>
+Iter 100 time=0.12 loss=20369.2 active=24307 feature_norm=224.15
+Total seconds required for training: 12.497</code></pre>
 </section>
 <section class="slide level3">
 
-<pre><code>Number of active features: 38790 (86687)
-Number of active attributes: 24451 (68166)
+<pre class="bash"><code>Number of active features: 24307 (574200)
+Number of active attributes: 17166 (63791)
 Number of active labels: 9 (9)</code></pre>
 <pre class="python"><code># Worst case (all_possible_states=True and all_possible_transitions=True)
 features = (number of attributes * number of labels) 
-          + (number of labels * number of labels)</code></pre>
+           + (number of labels * number of labels)</code></pre>
 </section>
 <section class="slide level3">
 
-<pre><code>X_test, y_test = load_X_y(split=&quot;test&quot;)
+<pre class="py" data-include="./demo/fit.py" data-startFrom="49"
+data-endAt="51"><code>X_test, y_test = load_X_y(split=&quot;test&quot;)
 y_pred = crf.predict(X_test)
-print(metrics.flat_classification_report(y_test, y_pred))</code></pre>
+print(metrics.flat_classification_report(y_test, y_pred, labels=label_names))
+</code></pre>
 <pre class="bash"><code>              precision    recall  f1-score   support
 
-       B-LOC      0.852     0.837     0.844      1668
-       I-LOC      0.741     0.623     0.677       257
-      B-MISC      0.796     0.758     0.777       702
-      I-MISC      0.647     0.653     0.650       216
-       B-ORG      0.778     0.722     0.749      1661
-       I-ORG      0.666     0.734     0.699       835
-       B-PER      0.839     0.853     0.846      1617
-       I-PER      0.879     0.952     0.914      1156
+       B-ORG       0.89      0.57      0.69      1661
+      I-MISC       0.74      0.62      0.67       216
+       B-LOC       0.89      0.80      0.85      1668
+       B-PER       0.90      0.56      0.69      1617
+       I-ORG       0.80      0.65      0.72       835
+       I-LOC       0.79      0.69      0.74       257
+       I-PER       0.89      0.68      0.77      1156
+      B-MISC       0.86      0.68      0.76       702
 
-   micro avg      0.805     0.804     0.805      8112
-   macro avg      0.775     0.766     0.769      8112
-weighted avg      0.805     0.804     0.804      8112</code></pre>
-</section>
-<section id="typical-features" class="slide level3">
-<h3>Typical features</h3>
-<ul>
-<li><code>word</code>: one-hot encoding of current word</li>
-<li><code>+1:word</code>: one-hot encoding of next word</li>
-<li><code>word length</code></li>
-<li><code>word shape</code>: <code>$1,230</code> -&gt;
-<code>$x,xxx</code></li>
-<li><code>word.isupper()</code></li>
-<li>POS tag</li>
-<li>Adjacent bi-grams adn tri-grams</li>
-<li>Windows of words</li>
-<li>Gazetteers</li>
-</ul>
+   micro avg       0.87      0.66      0.75      8112
+   macro avg       0.84      0.66      0.74      8112
+weighted avg       0.87      0.66      0.74      8112</code></pre>
 </section></section>
 <section>
 <section id="crf-theory" class="title-slide slide level2">
@@ -505,21 +444,28 @@ weighted avg      0.805     0.804     0.804      8112</code></pre>
 </section>
 <section id="crf-motivation" class="slide level3">
 <h3>CRF Motivation</h3>
-<p><img data-src="static/hmm-memm-crf-diagrams.png"
-style="width:65.0%" /></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<figure>
+<img data-src="static/hmm.svg" style="width:100.0%" alt="HMM" />
+<figcaption aria-hidden="true">HMM</figcaption>
+</figure>
+</div><div class="column" style="width:50%;">
+<figure>
+<img data-src="static/crf.svg" style="width:100.0%" alt="CRF" />
+<figcaption aria-hidden="true">CRF</figcaption>
+</figure>
+</div>
+</div>
 <div>
 <ul>
 <li class="fragment"><em>Discriminative</em> as opposed to
 <em>Generative</em></li>
-<li class="fragment"><em>Bidirectional</em> influence from labels</li>
 <li class="fragment"><em>Richer</em> and <em>Non-independent</em> word
 features</li>
+<li class="fragment"><em>Bidirectional</em> influence from labels</li>
 <li class="fragment">Solves the <em>“label bias”</em> issue of MEMM</li>
 </ul>
-</div>
-<div class="footer">
-<p>Illustration: <span class="citation"
-data-cites="murphy2012machine">Murphy (2012)</span></p>
 </div>
 <aside class="notes">
 <ul>
@@ -558,83 +504,40 @@ step</p>
 <section id="discriminative-vs-generative-models" class="slide level3">
 <h3>Discriminative VS Generative Models</h3>
 <ul>
-<li>Generative: <span class="math display">\[p(\mathbf{x},\mathbf{y}) =
-p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})\]</span></li>
-<li>Discriminative: <span class="math display">\[p(\mathbf{y} |
-\mathbf{x})\]</span></li>
+<li>Generative: <span class="math display">\[p(y, \mathbf{x}) =
+p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})\]</span>
+<ul>
+<li>Naive Bayes: <span class="math inline">\(p(y, \mathbf{x}) =
+p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)\)</span></li>
+</ul></li>
+<li>Discriminative: <span class="math display">\[p(y |
+\mathbf{x})\]</span>
+<ul>
+<li>Logistic regression: <span class="math inline">\(p(y |
+\mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})\)</span></li>
+</ul></li>
 </ul>
 <aside class="notes">
 
 </aside>
 </section>
-<section id="generative-models-are-regularized" class="slide level3">
-<h3>Generative Models are regularized</h3>
+<section id="discriminative-vs-generative-models-1"
+class="slide level3">
+<h3>Discriminative VS Generative Models</h3>
 <ul>
-<li>Generative: Maximize joint log-likelihood <span
-class="math display">\[-\log p(\mathbf{x},\mathbf{y}) = -log
-p(\mathbf{y} \vert \mathbf{x}) - \log p(\mathbf{x})\]</span></li>
-<li>Discriminative: Maximize conditional log-likelihood: <span
-class="math display">\[- \log p(\mathbf{y} | \mathbf{x})\]</span></li>
+<li>Naive Bayes: <span class="math display">\[p(y, \mathbf{x}) =
+p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)\]</span></li>
+<li>Logistic regression: <span class="math display">\[p(y |
+\mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})\]</span></li>
 </ul>
 </section>
-<section id="discriminative-vs-generative-models-it-depends"
+<section id="encoding-conditional-dependence-as-dags"
 class="slide level3">
-<h3>Discriminative VS Generative Models … it depends</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<figure>
-<img data-src="static/gen-vs-disc-well-specified.png"
-style="width:100.0%" alt="Well specified" />
-<figcaption aria-hidden="true">Well specified</figcaption>
-</figure>
-</div><div class="column" style="width:50%;">
-<figure>
-<img data-src="static/gen-vs-disc-not-well-specified.png"
-style="width:100.0%" alt="Not well specified" />
-<figcaption aria-hidden="true">Not well specified</figcaption>
-</figure>
-</div>
-</div>
-<div class="footer">
-<p>Source: <span class="citation" data-cites="ng2001discriminative">Ng
-and Jordan (2001)</span>;<span class="citation"
-data-cites="larochelleneuralnetworks">Larochelle (2013)</span></p>
-</div>
-</section>
-<section id="discriminative" class="slide level3">
-<h3>Discriminative</h3>
-<ul>
-<li>Markov Model: <span class="math display">\[p(Y_t) = \prod_{t=1}^T
-p(y_t | y_{t-1})\]</span></li>
-<li>Logistic regression: <span class="math display">\[p(y|x) =
-\sigma(\theta^T x)\]</span></li>
-</ul>
-</section>
-<section id="encoding-condition-dependence-as-graphs"
-class="slide level3">
-<h3>Encoding condition dependence as Graphs</h3>
+<h3>Encoding conditional dependence as DAGs</h3>
+<p><img data-src="static/directed-graph.svg" style="width:30.0%" /></p>
 <p><span class="math display">\[
-p(a,b,c) = p(c | a, b)p(b | a)p(a)
+p(x_1,x_2,x_3) = p(x_1) \, p(x_2 | x_1) \, p(x_3 | x_1, x_2)
 \]</span></p>
-<figure>
-<img data-src="static/directed-graph.png"
-alt="Conditional Decomposition" />
-<figcaption aria-hidden="true">Conditional Decomposition</figcaption>
-</figure>
-</section>
-<section class="slide level3">
-
-<div class="callout callout-blue">
-<h4>
-Theorem
-</h4>
-<ul>
-<li>Any decomposition of a joint probability function can be represented
-as a DAG</li>
-<li>Any DAG represents decomposition of a joint probability
-function</li>
-</ul>
-</div>
 </section>
 <section id="crf-probabilistic-model" class="slide level3">
 <h3>CRF probabilistic model</h3>
@@ -836,83 +739,10 @@ Andrew, Galen, and Jianfeng Gao. 2007. <span>“Scalable Training of l
 1-Regularized Log-Linear Models.”</span> In <em>Proceedings of the 24th
 International Conference on Machine Learning</em>, 33–40.
 </div>
-<div id="ref-bengio2000neural" class="csl-entry" role="listitem">
-Bengio, Yoshua, Réjean Ducharme, and Pascal Vincent. 2000. <span>“A
-Neural Probabilistic Language Model.”</span> <em>Advances in Neural
-Information Processing Systems</em> 13.
-</div>
-<div id="ref-church1989stochastic" class="csl-entry" role="listitem">
-Church, Kenneth Ward. 1989. <span>“A Stochastic Parts Program and Noun
-Phrase Parser for Unrestricted Text.”</span> In <em>International
-Conference on Acoustics, Speech, and Signal Processing,</em> 695–98.
-IEEE.
-</div>
-<div id="ref-derose1988grammatical" class="csl-entry" role="listitem">
-DeRose, Steven J. 1988. <span>“Grammatical Category Disambiguation by
-Statistical Optimization.”</span> <em>Computational Linguistics</em> 14
-(1): 31–39.
-</div>
-<div id="ref-huang2015bidirectional" class="csl-entry" role="listitem">
-Huang, Zhiheng, Wei Xu, and Kai Yu. 2015. <span>“Bidirectional LSTM-CRF
-Models for Sequence Tagging.”</span> <em>arXiv Preprint
-arXiv:1508.01991</em>.
-</div>
 <div id="ref-keraghel2024survey" class="csl-entry" role="listitem">
 Keraghel, Imed, Stanislas Morbieu, and Mohamed Nadif. 2024. <span>“A
 Survey on Recent Advances in Named Entity Recognition.”</span> <em>arXiv
 Preprint arXiv:2401.10825</em>.
-</div>
-<div id="ref-lafferty2001conditional" class="csl-entry" role="listitem">
-Lafferty, John, Andrew McCallum, Fernando Pereira, et al. 2001.
-<span>“Conditional Random Fields: Probabilistic Models for Segmenting
-and Labeling Sequence Data.”</span> In <em>Icml</em>, 1:3. 2.
-Williamstown, MA.
-</div>
-<div id="ref-larochelleneuralnetworks" class="csl-entry"
-role="listitem">
-Larochelle, Hugo. 2013. <span>“Neural Networks.”</span> <a
-href="https://larocheh.github.io/neural_networks/content.html"
-class="uri">https://larocheh.github.io/neural_networks/content.html</a>.
-</div>
-<div id="ref-mikolov2013efficient" class="csl-entry" role="listitem">
-Mikolov, Tomas. 2013. <span>“Efficient Estimation of Word
-Representations in Vector Space.”</span> <em>arXiv Preprint
-arXiv:1301.3781</em>.
-</div>
-<div id="ref-murphy2012machine" class="csl-entry" role="listitem">
-Murphy, Kevin P. 2012. <em>Machine Learning: A Probabilistic
-Perspective</em>. MIT press.
-</div>
-<div id="ref-ng2001discriminative" class="csl-entry" role="listitem">
-Ng, Andrew, and Michael Jordan. 2001. <span>“On Discriminative Vs.
-Generative Classifiers: A Comparison of Logistic Regression and Naive
-Bayes.”</span> <em>Advances in Neural Information Processing
-Systems</em> 14.
-</div>
-<div id="ref-pennington2014glove" class="csl-entry" role="listitem">
-Pennington, Jeffrey, Richard Socher, and Christopher D Manning. 2014.
-<span>“Glove: Global Vectors for Word Representation.”</span> In
-<em>Proceedings of the 2014 Conference on Empirical Methods in Natural
-Language Processing (EMNLP)</em>, 1532–43.
-</div>
-<div id="ref-rabiner1989tutorial" class="csl-entry" role="listitem">
-Rabiner, Lawrence R. 1989. <span>“A Tutorial on Hidden Markov Models and
-Selected Applications in Speech Recognition.”</span> <em>Proceedings of
-the IEEE</em> 77 (2): 257–86.
-</div>
-<div id="ref-ratnaparkhi1996maximum" class="csl-entry" role="listitem">
-Ratnaparkhi, Adwait. 1996. <span>“A Maximum Entropy Model for
-Part-of-Speech Tagging.”</span> In <em>Conference on Empirical Methods
-in Natural Language Processing</em>.
-</div>
-<div id="ref-sang2003introduction" class="csl-entry" role="listitem">
-Sang, Erik F, and Fien De Meulder. 2003. <span>“Introduction to the
-CoNLL-2003 Shared Task: Language-Independent Named Entity
-Recognition.”</span> <em>arXiv Preprint Cs/0306050</em>.
-</div>
-<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
-Vaswani, A. 2017. <span>“Attention Is All You Need.”</span> <em>Advances
-in Neural Information Processing Systems</em>.
 </div>
 </div>
 </section>

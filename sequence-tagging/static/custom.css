@@ -9,14 +9,15 @@
 }
 
 .reveal .slides .column {
-    display: flex;
-    align-items: center;
-    height: 100%;
+    display: block; /* Change from flex to block to let content flow naturally */
+    height: auto; /* Allow the column height to be determined by the content */
 }
+
 
 .reveal .slides .column ul {
     margin: auto;
 }
+
 
 .reveal pre code {
     /* Adjust line-height and padding to increase height */
