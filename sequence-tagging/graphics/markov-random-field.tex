@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5, every node/.style={circle, draw=white, text=white, minimum size=0.5cm, thick}]
+    % Nodes
+    \node (a) at (0, 1) {$x_1$};
+    \node (b) at (1, 1) {$x_2$};
+    \node (c) at (0.5, 0) {$x_3$};
+    
+    % Edges
+    \draw[white, thick] (a) -- (b);
+    \draw[white, thick] (a) -- (c);
+    \draw[white, thick] (b) -- (c);
+\end{tikzpicture}
+
+\end{document}

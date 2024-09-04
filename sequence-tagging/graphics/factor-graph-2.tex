@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc} % For coordinate calculation
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5, every node/.style={text=white, minimum size=0.5cm, thick},every path/.style={thick, white}]
+    % Nodes
+    \node[circle, draw=white] (a) at (0,1) {$x_1$};
+    \node[circle, draw=white] (b) at (1,1) {$x_2$};
+    \node[circle, draw=white] (c) at (0.5,0) {$x_3$};
+    \node[rectangle, fill=white, draw=white, minimum size=6pt] (middle) at (0.5,0.75) {}; % Middle node (filled square)
+        
+    % Edges with a central filled square
+    \draw (middle) -- (a);
+    \draw (middle) -- (b);
+    \draw (middle) -- (c);
+    
+    % Psi factor name
+    \node[above] at (middle) {$\psi_1$};
+
+
+\end{tikzpicture}
+
+\end{document}

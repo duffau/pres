@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc} % For coordinate calculation
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5, every node/.style={text=white, minimum size=0.5cm, thick}, thick]
+    % Nodes
+    \node[circle, draw=white, minimum size=1cm] (a) at (0,1) {$x_1$};
+    \node[circle, draw=white, minimum size=1cm] (b) at (1,1) {$x_2$};
+    \node[circle, draw=white, minimum size=1cm] (c) at (0.5,0) {$x_3$};
+    
+    % Edges with filled squares representing factors
+    \draw[white] (a) -- ($(a)!0.5!(b)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (b);
+    \draw[white] (b) -- ($(b)!0.5!(c)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (c);
+    \draw[white] (a) -- ($(a)!0.5!(c)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (c);
+
+    % psi labels next to the squares
+    \node[above] at ($(a)!0.5!(b)$) {$\psi_1$};
+    \node[left] at ($(a)!0.5!(c)$) {$\psi_2$};
+    \node[right] at ($(b)!0.5!(c)$) {$\psi_3$};
+
+\end{tikzpicture}
+
+\end{document}
