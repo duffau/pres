@@ -54,3 +54,26 @@ print("train n sentence:", len(X))
 print("train n tokens:", len([label for label_seq in y for label in label_seq]))
 print("test n sentence:", len(y_test))
 print("test n tokens:", len([label for label_seq in y_test for label in label_seq]))
+
+from collections import Counter
+
+def print_transitions(trans_features):
+    for (label_from, label_to), weight in trans_features:
+        print("%-6s -> %-7s %0.6f" % (label_from, label_to, weight))
+
+def print_state_features(state_features):
+    for (attr, label), weight in state_features:
+        print("%0.6f %-8s %s" % (weight, label, attr))
+
+
+print("\nTop likely transitions:")
+print_transitions(Counter(crf.transition_features_).most_common(5))
+
+print("\nTop unlikely transitions:")
+print_transitions(Counter(crf.transition_features_).most_common()[-5:])
+
+print("\nTop positive state features:")
+print_state_features(Counter(crf.state_features_).most_common(5))
+
+print("\nTop negative state features:")
+print_state_features(Counter(crf.state_features_).most_common()[-5:])
