@@ -230,11 +230,9 @@ Abstract tasks have taken over lower level tasks
   - https://paperswithcode.com/sota/sentence-completion-on-hellaswag
 :::
 
-### NER Tagging Approaches
-
-![](static/ner-approaches.png)
-
 ## CRF Training Demo
+
+[github.com/duffau/talks/tree/master/sequence-tagging/demo](https://github.com/duffau/talks/tree/master/sequence-tagging/demo)
 
 ###
 
@@ -318,7 +316,41 @@ features = (number of attributes * number of labels)
    macro avg       0.84      0.66      0.74      8112
 weighted avg       0.87      0.66      0.74      8112
 ```
+---
 
+```bash
+Top likely transitions:
+B-PER  -> I-PER   6.683884
+B-ORG  -> I-ORG   5.801057
+I-ORG  -> I-ORG   5.443938
+B-MISC -> I-MISC  4.845435
+I-MISC -> I-MISC  4.664166
+
+Top unlikely transitions:
+B-LOC  -> I-MISC  -5.871822
+O      -> I-PER   -5.968892
+O      -> I-LOC   -6.719913
+O      -> I-MISC  -7.026504
+O      -> I-ORG   -7.582135
+```
+
+---
+
+```bash
+Top positive state features:
+9.733456 I-MISC   shape:Index
+8.026899 I-ORG    shape:Newsroom
+7.925168 O        shape:said
+7.584594 B-MISC   word:english
+7.378129 I-MISC   word:classic
+
+Top negative state features:
+-4.852697 B-ORG    word:of
+-5.058472 I-PER    prev_word:BOS
+-5.093323 I-LOC    prev_word:BOS
+-6.203149 I-ORG    prev_word:BOS
+-6.461425 I-MISC   prev_word:BOS
+```
 
 ## CRF Theory
 
@@ -406,9 +438,15 @@ $$
 $$ \ell(\theta) = \sum_{t=1}^{T} \log p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right)
 + c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2 $$
 
-- Use of Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) [@andrew2007scalable]
-- Convex Optimization Problem
- 
+- L2 -> Strictly Convex Optimization Problem (given $c_2$)
+- L1 -> Shrinks the parameter space
+- Efficient use of Quasi-Newton optimization
+- Cross Validated selection of $c_1$ and $c_2$ is important
+
+::: notes
+- With L1 use of Orthant-Wise Limited-memory Quasi-Newton
+:::
+
 
 ## Performance comparison
 

@@ -318,15 +318,12 @@ keys.”</li>
 </ul></li>
 </ul>
 </aside>
-</section>
-<section id="ner-tagging-approaches" class="slide level3">
-<h3>NER Tagging Approaches</h3>
-<p><img data-src="static/ner-approaches.png" /></p>
 </section></section>
 <section>
 <section id="crf-training-demo" class="title-slide slide level2">
 <h2>CRF Training Demo</h2>
-
+<p><a
+href="https://github.com/duffau/talks/tree/master/sequence-tagging/demo">github.com/duffau/talks/tree/master/sequence-tagging/demo</a></p>
 </section>
 <section id="section-1" class="slide level3">
 <h3></h3>
@@ -436,6 +433,38 @@ print(metrics.flat_classification_report(y_test, y_pred, labels=label_names))
    micro avg       0.87      0.66      0.75      8112
    macro avg       0.84      0.66      0.74      8112
 weighted avg       0.87      0.66      0.74      8112</code></pre>
+</section>
+<section class="slide level3">
+
+<pre class="bash"><code>Top likely transitions:
+B-PER  -&gt; I-PER   6.683884
+B-ORG  -&gt; I-ORG   5.801057
+I-ORG  -&gt; I-ORG   5.443938
+B-MISC -&gt; I-MISC  4.845435
+I-MISC -&gt; I-MISC  4.664166
+
+Top unlikely transitions:
+B-LOC  -&gt; I-MISC  -5.871822
+O      -&gt; I-PER   -5.968892
+O      -&gt; I-LOC   -6.719913
+O      -&gt; I-MISC  -7.026504
+O      -&gt; I-ORG   -7.582135</code></pre>
+</section>
+<section class="slide level3">
+
+<pre class="bash"><code>Top positive state features:
+9.733456 I-MISC   shape:Index
+8.026899 I-ORG    shape:Newsroom
+7.925168 O        shape:said
+7.584594 B-MISC   word:english
+7.378129 I-MISC   word:classic
+
+Top negative state features:
+-4.852697 B-ORG    word:of
+-5.058472 I-PER    prev_word:BOS
+-5.093323 I-LOC    prev_word:BOS
+-6.203149 I-ORG    prev_word:BOS
+-6.461425 I-MISC   prev_word:BOS</code></pre>
 </section></section>
 <section>
 <section id="crf-theory" class="title-slide slide level2">
@@ -555,11 +584,19 @@ p(x_1,x_2,x_3) = p(x_1) \, p(x_2 | x_1) \, p(x_3 | x_1, x_2)
 p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right)
 + c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2 \]</span></p>
 <ul>
-<li>Use of Orthant-Wise Limited-memory Quasi-Newton (OWL-QN) <span
-class="citation" data-cites="andrew2007scalable">(Andrew and Gao
-2007)</span></li>
-<li>Convex Optimization Problem</li>
+<li>L2 -&gt; Strictly Convex Optimization Problem (given <span
+class="math inline">\(c_2\)</span>)</li>
+<li>L1 -&gt; Shrinks the parameter space</li>
+<li>Efficient use of Quasi-Newton optimization</li>
+<li>Cross Validated selection of <span
+class="math inline">\(c_1\)</span> and <span
+class="math inline">\(c_2\)</span> is important</li>
 </ul>
+<aside class="notes">
+<ul>
+<li>With L1 use of Orthant-Wise Limited-memory Quasi-Newton</li>
+</ul>
+</aside>
 </section></section>
 <section id="performance-comparison" class="title-slide slide level2">
 <h2>Performance comparison</h2>
@@ -734,11 +771,6 @@ class="title-slide slide level2 allowframebreaks">
 <h2 class="allowframebreaks">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent"
 data-entry-spacing="0" role="list">
-<div id="ref-andrew2007scalable" class="csl-entry" role="listitem">
-Andrew, Galen, and Jianfeng Gao. 2007. <span>“Scalable Training of l
-1-Regularized Log-Linear Models.”</span> In <em>Proceedings of the 24th
-International Conference on Machine Learning</em>, 33–40.
-</div>
 <div id="ref-keraghel2024survey" class="csl-entry" role="listitem">
 Keraghel, Imed, Stanislas Morbieu, and Mohamed Nadif. 2024. <span>“A
 Survey on Recent Advances in Named Entity Recognition.”</span> <em>arXiv
