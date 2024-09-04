@@ -2,7 +2,7 @@
 title: A _Blast_ from the _Past_
 subtitle: _Fast_ Text Tagging with Conditional Random Fields
 title-slide-attributes:
-	data-background-image: ./static/crf.svg
+	data-background-image: ./static/front-cover.svg
 	data-background-size: 80%
 	data-background-opacity: 0.2
 date: 2024-09-05
@@ -42,6 +42,7 @@ include-before: |
   - Automated Sports Betting
   - Co-Founded a Machine Learning Consultancy
   - Co-founded a NLP-powered Legal Tech start-up
+  - Consulting at McKinsey
 :::
 
 ### Slides
@@ -77,51 +78,46 @@ $$\begin{aligned}
 \text{Features}:\quad \mathbf{x} &= \{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_T\}
 \end{aligned}$$
 
+::: notes
+- Emphasis on sequential dependencies on labels
+- Mention the tag types
+  - NER: "O", "PER", "LOC", "ORG"
+:::
+
 ## Evolution of NLP and Sequence tagging 
 
-### 1954-1966 - AI Over-optimism and AI Winter
-::: incremental
-- 1954: IBM-Georgetown machine translation: Sixty Russian sentences translated into English
-- 1957: Noam Chomsky *Syntactic Structures*: 
-  - *Generative Grammar*: A system of rules that generate exactly those combinations of words that form grammatical sentences
-  - *Anti-probabilistic*: "probabilistic models give no particular insight into some of the basic problems of syntactic structure."
-:::
+<div class="mermaid">
+<pre>
+%%{init: {'theme': 'forest'}}%%
+timeline
 
-### 1954-1966 - AI Over-optimism and AI Winter
-::: incremental
-- 1958: H. A. Simon and Allen Newell:"within ten years a digital computer will discover and prove an important new mathematical theorem"
-- 1960's: Slow progress in machine translation
-- 1966: ALPAC report ledas to defunding of machine translation in US
-- 1974–1980: First AI Winter
-:::
+    section 1950-1990<br>Knowledge-Based Methods
+        1950s : 1954 IBM-Georgetown machine translation - Sixty Russian sentences translated into English
+        1960s : Slow progress in machine translation
+              : 1966 ALPAC report leads to defunding of machine translation in the US
+        1974-1980 : First AI Winter
 
-### 1980's - Expert Systems
-::: incremental
-- Expert Systems
-  - Knowledge base - Collected daa
-  - Inference engine - Hand crafted expert rules
-- Examples:
-  - CADUCEUS: Medical expert system "most knowledge-intensive expert system in existence"
-  - Dendral: Decision-making process and problem-solving behavior of organic chemists. 
-:::
+    section 1990-2000<br>Statistical Feature-Engineered Methods
+        Markov models
+          : 1988 First papers using Markov models for PoS tagging
+          : 1996 Maximum Entropy Markov Model (MEMM) published
+          : 2001 Conditional Random Fields (CRF) introduced
+        Data
+          : 1993 Penn Treebank Project - 1 mio tokens from WSJ
 
-### Late 1980's and 1990's - Rise of Statistical Models
-::: incremental
-- Less dominance of Chomskyan theories of linguistics
-- More computational power
-- Availability of Annotated Datasets
-- Give Rise to Statistical NLP
-:::
+    section "2010-today<br>Deep Learning-Based Methods"
+        Emnbeddings and RNN's
+          : 2013 Word Embeddings (Word2Vec, GloVe)
+          : 2015 Neural Net Revolution (BiLSTM-CRF)
+        Transformers
+           : 2017 "Attention is all you need" <br> Introduction of the Transformer model
+           : 2020 Large-Scale Pre-trained Language Models (GPT-3)
+        LLM
+           : 2022 LLM's GPT 3.5 and ChatGPT
+           : 2023 LLM zoo and Few-Shot Adaptation
+</pre>
+</div>
 
-### Late 1980's and 1990's - Rise Statistical Models
-::: incremental
-- 1988: First papers using Markov models for PoS [@derose1988grammatical; @church1989stochastic]
-- 1989: Tutorial on Hidden Markov Models (HMM) for Speech [@rabiner1989tutorial]
-- 1993: Penn Treebank Project
-- 1995: WordNet: A Lexical Database for English, 6th Message Understanding Conference
-- 1996: Maximum Entropy Markov Model (MEMM) published [@ratnaparkhi1996maximum]
-- 2001: Conditional Random Fields (CRF) [@lafferty2001conditional]
-:::
 
 ::: notes
 - HMM: The first to encode sequential information for PoS
@@ -145,25 +141,6 @@ $$\begin{aligned}
   - Allows influence from features at any point in time (Like MEMM)
   - Solves the "label bias" issue of MEMM's
 :::
-
-### 2000's to 2010 - Large Corpus from the Web
-
-- Standardization on benchmarks e.g. CoNLL 2003 [@sang2003introduction]
-- Large raw (unannotated) dataset from the Web 
-- Semi-supervised and Unsupervised Learning Approaches
-- 2003: Multilayer perceptron beats Markov model in "next word prediction" [@bengio2000neural]
-- Support Vector Machines for NER tagging
-
-### 2010 to Today - Neural Models and Word Embeddings
-
-- 2013-14: Word Embeddings (Word2Vec, GloVe) [@mikolov2013efficient, @pennington2014glove]
-- 2015: Neural Net Revolution (BiLSTM-CRF [@huang2015bidirectional])
-- 2017: "Attention is all you need" [@vaswani2017attention]
-- 2019: First gen Transformers (BERT, RoBERTa, Electra)
-- 2020: Large-Scale Pre-trained Language Models (GPT-3) 
-- 2022: GPT 3.5 and ChatGPT 
-- 2023: Large Language Models and Few-Shot Adaptation (GPT-4, Claude, LLaMA) 
-
 
 
 ### Papers Using Datasets ^1^
@@ -260,124 +237,110 @@ Abstract tasks have taken over lower level tasks
 ## CRF Training Demo
 
 ###
-```python
-def tokens_to_features(tokens, i):
-    features = {
-      "bias": 1.0,
-      "word": tokens[i].lower(),
-      "prev_word": tokens[i-1],
-      "next_word": tokens[i+1],
-      "shape": re.sub("X", "\d", word)
-    }
-    return features
+
+```{.py include=./demo/fit.py startFrom=1 endAt=4}
 ```
+---
+
+
+```{.py include=./demo/fit.py startFrom=7 endAt=15}
+```
+```python
+# tokens
+["Anders", "loves", "pizza", "from", "Rome"]
+```
+```python
+# features i=2
+{"bias":1.0, "word": "pizza", "prev_word": "loves", "next_word": "from", "shape": "pizza"}
+```
+
 
 ---
 
-```python
-import datasets
-
-def load_X_y(dataset_id="eriktks/conll2003", split="train"):
-    data = datasets.load_dataset(dataset_id)
-    sentences = data[split]["tokens"]
-    labels = data[split]["ner_tags"]
-    label_names = data[split].features["ner_tags"].feature.names
-
-    X, y = [], []
-    for (sentence, label_seq), i in enumerate(sentences, labels):
-      X.append(tokens_to_features(tokens, i)) 
-      y.append([label_names[label_id] in label_seq])
-    return X, y
+```{.py include=./demo/fit.py startFrom=18 endAt=28}
 ```
 ---
 
 ```python
-import sklearn_crfsuite
-from sklearn_crfsuite import metrics
+X = [
+  [{"bias": 1.0, "word": "Anders", ...},..., {"bias": 1.0, "word": "Rome", ...}],
+  ...
+]
 
-X, y = load_X_y(split="train")
-crf = sklearn_crfsuite.CRF(
-  algorithm='lbfgs',
-  c1=0.5, 
-  c2=0.01,
-)
-crf.fit(X, y)
+y = [
+  ["PER", ..., "LOC"],
+  ...
+]
+
 ```
+---
+
+```{.py include=./demo/fit.py startFrom=31 endAt=41}
+```
+```bash
+Iter 1   time=0.20 loss=221774.8 active=177764 feature_norm=1.00
+Iter 2   time=0.11 loss=207529.7 active=153314 feature_norm=2.91
+Iter 3   time=0.12 loss=172616.6 active=118451 feature_norm=2.39
+...
+Iter 100 time=0.12 loss=20369.2 active=24307 feature_norm=224.15
+Total seconds required for training: 12.497
+```
+---
 
 ```bash
-Iter 1   time=0.33  loss=232365.88 active=86384 feature_norm=1.00
-Iter 2   time=0.17  loss=217017.29 active=84206 feature_norm=3.45
-Iter 3   time=0.17  loss=161378.43 active=83724 feature_norm=2.99
-...
-Iter  99 time=0.17  loss=1255.7  active=38787 feature_norm=252.98
-Iter 100 time=0.16  loss=1255.7  active=38790 feature_norm=252.96
-Total seconds required for training: 23.856
-```
----
-
-```
-Number of active features: 38790 (86687)
-Number of active attributes: 24451 (68166)
+Number of active features: 24307 (574200)
+Number of active attributes: 17166 (63791)
 Number of active labels: 9 (9)
 ```
-
 ```python
 # Worst case (all_possible_states=True and all_possible_transitions=True)
 features = (number of attributes * number of labels) 
-          + (number of labels * number of labels)
+           + (number of labels * number of labels)
 ```
 ---
 
-```
-X_test, y_test = load_X_y(split="test")
-y_pred = crf.predict(X_test)
-print(metrics.flat_classification_report(y_test, y_pred))
+```{.py include=./demo/fit.py startFrom=49 endAt=51}
 ```
 
 ```bash
               precision    recall  f1-score   support
 
-       B-LOC      0.852     0.837     0.844      1668
-       I-LOC      0.741     0.623     0.677       257
-      B-MISC      0.796     0.758     0.777       702
-      I-MISC      0.647     0.653     0.650       216
-       B-ORG      0.778     0.722     0.749      1661
-       I-ORG      0.666     0.734     0.699       835
-       B-PER      0.839     0.853     0.846      1617
-       I-PER      0.879     0.952     0.914      1156
+       B-ORG       0.89      0.57      0.69      1661
+      I-MISC       0.74      0.62      0.67       216
+       B-LOC       0.89      0.80      0.85      1668
+       B-PER       0.90      0.56      0.69      1617
+       I-ORG       0.80      0.65      0.72       835
+       I-LOC       0.79      0.69      0.74       257
+       I-PER       0.89      0.68      0.77      1156
+      B-MISC       0.86      0.68      0.76       702
 
-   micro avg      0.805     0.804     0.805      8112
-   macro avg      0.775     0.766     0.769      8112
-weighted avg      0.805     0.804     0.804      8112
+   micro avg       0.87      0.66      0.75      8112
+   macro avg       0.84      0.66      0.74      8112
+weighted avg       0.87      0.66      0.74      8112
 ```
 
-### Typical features
-
-- `word`: one-hot encoding of current word
-- `+1:word`: one-hot encoding of next word
-- `word length`
-- `word shape`:  `$1,230` -> `$x,xxx`
-- `word.isupper()`
-- POS tag
-- Adjacent bi-grams adn tri-grams
-- Windows of words
-- Gazetteers
 
 ## CRF Theory
+
+
 ### CRF Motivation
 
-![](static/hmm-memm-crf-diagrams.png){width=65%}
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+![HMM](static/hmm.svg){width=100%}
+:::
+::: {.column width="50%"}
+![CRF](static/crf.svg){width=100%}
+:::
+::::::::::::::
 
 ::: incremental
 - *Discriminative* as opposed to *Generative*
-- *Bidirectional* influence from labels
 - *Richer* and *Non-independent* word features
+- *Bidirectional* influence from labels
 - Solves the *"label bias"* issue of MEMM
 :::
 
-::: footer
-Illustration: @murphy2012machine
-:::
 
 ::: notes
 
@@ -406,58 +369,30 @@ Illustration: @murphy2012machine
 
 ### Discriminative VS Generative Models
 
-- Generative: $$p(\mathbf{x},\mathbf{y}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})$$
-- Discriminative: $$p(\mathbf{y} | \mathbf{x})$$
+- Generative: $$p(y, \mathbf{x}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})$$
+  - Naive Bayes: $p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$
+- Discriminative: $$p(y | \mathbf{x})$$
+  - Logistic regression: $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$
+
 
 ::: notes
 :::
 
-### Generative Models are regularized
 
-- Generative: Maximize joint log-likelihood $$-\log p(\mathbf{x},\mathbf{y}) = -log p(\mathbf{y} \vert \mathbf{x}) - \log p(\mathbf{x})$$
-- Discriminative: Maximize conditional log-likelihood: $$- \log p(\mathbf{y} | \mathbf{x})$$
+### Discriminative VS Generative Models
 
-
-### Discriminative VS Generative Models ... it depends
-
-::: columns
-
-:::: {.column width=50%}
-![Well specified](static/gen-vs-disc-well-specified.png){width=100%}
-::::
+- Naive Bayes: $$p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$$
+- Logistic regression: $$p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$$
 
 
-:::: {.column width=50%}
-![Not well specified](static/gen-vs-disc-not-well-specified.png){width=100%}
-::::
+### Encoding conditional dependence as DAGs 
 
-:::
-
-::: footer
-Source: @ng2001discriminative;@larochelleneuralnetworks
-:::
-
-
-### Discriminative 
-
-- Markov Model: $$p(Y_t) = \prod_{t=1}^T p(y_t | y_{t-1})$$ 
-- Logistic regression: $$p(y|x) = \sigma(\theta^T x)$$
-
-### Encoding condition dependence as Graphs 
+![](static/directed-graph.svg){width=30%}
 
 $$
-p(a,b,c) = p(c | a, b)p(b | a)p(a)
+p(x_1,x_2,x_3) = p(x_1) \, p(x_2 | x_1) \, p(x_3 | x_1, x_2)
 $$
 
-![Conditional Decomposition](static/directed-graph.png)
-
----
-
-<div class="callout callout-blue">
-  <h4 >Theorem</h4>
-  - Any decomposition of a joint probability function can be represented as a DAG
-  - Any DAG represents decomposition of a joint probability function
-</div>
 
 
 ### CRF probabilistic model

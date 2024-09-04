@@ -16,7 +16,9 @@ reveal_flags = --mathjax \
 		--css static/custom-elements.css \
 		--bibliography ./bibliography.bib \
 		--citeproc \
-		--no-highlight
+		--no-highlight \
+		--filter pandoc-codeblock-include
+
 
 slides.html:
 	pandoc\
