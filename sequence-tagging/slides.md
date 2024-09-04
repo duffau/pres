@@ -88,29 +88,31 @@ $$\begin{aligned}
 
 <div class="mermaid">
 <pre>
-%%{init: {'theme': 'forest'}}%%
+%%{init: {'theme': 'forest', 'themeVariables': { 'fontSize': '24px', 'fontFamily': 'Source Sans Pro','cScale0': '#33B0F9', 'cScaleLabel0': '#ffffff',
+              'cScale1': '#237cb0','cScaleLabel1': '#ffffff',
+              'cScale2': '#125f8c', 'cScaleLabel2': '#ffffff'}}}%%
 timeline
-
-    section 1950-1990<br>Knowledge-Based Methods
+    section 1950-1990 Knowledge-Based Methods
         1950s : 1954 IBM-Georgetown machine translation - Sixty Russian sentences translated into English
         1960s : Slow progress in machine translation
               : 1966 ALPAC report leads to defunding of machine translation in the US
         1974-1980 : First AI Winter
 
-    section 1990-2000<br>Statistical Feature-Engineered Methods
+    section 1990-2000 Statistical Feature-Engineered Methods
         Markov models
-          : 1988 First papers using Markov models for PoS tagging
+          : 1988 Markov models for PoS tagging
           : 1996 Maximum Entropy Markov Model (MEMM) published
           : 2001 Conditional Random Fields (CRF) introduced
         Data
+          : 1985 WordNet - Princeton
           : 1993 Penn Treebank Project - 1 mio tokens from WSJ
 
-    section "2010-today<br>Deep Learning-Based Methods"
+    section 2010-today Deep Learning-Based Methods
         Emnbeddings and RNN's
           : 2013 Word Embeddings (Word2Vec, GloVe)
           : 2015 Neural Net Revolution (BiLSTM-CRF)
         Transformers
-           : 2017 "Attention is all you need" <br> Introduction of the Transformer model
+           : 2017 "Attention is all you need" Introduction of the Transformer model
            : 2020 Large-Scale Pre-trained Language Models (GPT-3)
         LLM
            : 2022 LLM's GPT 3.5 and ChatGPT
@@ -120,6 +122,7 @@ timeline
 
 
 ::: notes
+- 1954 IBM-Georgtown: "within three or five years, machine translation could well be a solved" problem.
 - HMM: The first to encode sequential information for PoS
 - Rabiner: HMM applied to speech since th 70's but only widely know in "recent years"
   - 33,500 citation
@@ -229,6 +232,85 @@ Abstract tasks have taken over lower level tasks
   - GPT4 10 shots: 95.3 Accuracy
   - https://paperswithcode.com/sota/sentence-completion-on-hellaswag
 :::
+
+## What is a Conditional Random Field?
+
+
+### CRF Motivation
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+![HMM](static/hmm.svg){width=100%}
+:::
+::: {.column width="50%"}
+![CRF](static/crf.svg){width=100%}
+:::
+::::::::::::::
+
+::: incremental
+- *Discriminative* as opposed to *Generative*
+- *Richer* and *Non-independent* word features
+- *Bidirectional* influence from labels
+- Solves the *"label bias"* issue of MEMM
+:::
+
+
+::: notes
+
+- HMM: 
+  - y_t is independent of all previous labels given y_t-1
+  - x_t is independent of all previous labels and obs given y_t
+- MEMM: 
+  - y_t is independent of all previous obs and labels given x_t and y_t-1
+  - x_t is independent of all other x's
+
+- Relaxed sequential Markov assumption
+  - Bidirectional influence from labels 
+- Relax the "tag generates word" assumption
+  - Allows rich word transformations
+- Flexible influence from feature on
+- Relaxed Independence Assumptions
+  - Non-independent features of the entire observation sequence
+
+. Label Bias
+  - MEMM are logistic regression for each state transition given it's current state
+  - State transition with high probability concentration
+  - Leads to little influence from x-features
+  - CRF solves by normalizing over transitions over the whole sequence rather than each step
+
+:::
+
+### Discriminative VS Generative Models
+
+- Generative: $$p(y, \mathbf{x}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})$$
+  - Naive Bayes: $p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$
+- Discriminative: $$p(y | \mathbf{x})$$
+  - Logistic regression: $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$
+
+
+::: notes
+:::
+
+
+### Discriminative VS Generative Models
+
+- Naive Bayes: $$p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$$
+- Logistic regression: $$p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$$
+
+
+### Encoding conditional dependence as DAGs 
+
+![](static/directed-graph.svg){width=30%}
+
+$$
+p(x_1,x_2,x_3) = p(x_1) \, p(x_2 | x_1) \, p(x_3 | x_1, x_2)
+$$
+
+
+
+### CRF probabilistic model
+
+### CRF log-linear parametrization
 
 ## CRF Training Demo
 
@@ -352,84 +434,6 @@ Top negative state features:
 -6.461425 I-MISC   prev_word:BOS
 ```
 
-## CRF Theory
-
-
-### CRF Motivation
-
-:::::::::::::: {.columns}
-::: {.column width="50%"}
-![HMM](static/hmm.svg){width=100%}
-:::
-::: {.column width="50%"}
-![CRF](static/crf.svg){width=100%}
-:::
-::::::::::::::
-
-::: incremental
-- *Discriminative* as opposed to *Generative*
-- *Richer* and *Non-independent* word features
-- *Bidirectional* influence from labels
-- Solves the *"label bias"* issue of MEMM
-:::
-
-
-::: notes
-
-- HMM: 
-  - y_t is independent of all previous labels given y_t-1
-  - x_t is independent of all previous labels and obs given y_t
-- MEMM: 
-  - y_t is independent of all previous obs and labels given x_t and y_t-1
-  - x_t is independent of all other x's
-
-- Relaxed sequential Markov assumption
-  - Bidirectional influence from labels 
-- Relax the "tag generates word" assumption
-  - Allows rich word transformations
-- Flexible influence from feature on
-- Relaxed Independence Assumptions
-  - Non-independent features of the entire observation sequence
-
-. Label Bias
-  - MEMM are logistic regression for each state transition given it's current state
-  - State transition with high probability concentration
-  - Leads to little influence from x-features
-  - CRF solves by normalizing over transitions over the whole sequence rather than each step
-
-:::
-
-### Discriminative VS Generative Models
-
-- Generative: $$p(y, \mathbf{x}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})$$
-  - Naive Bayes: $p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$
-- Discriminative: $$p(y | \mathbf{x})$$
-  - Logistic regression: $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$
-
-
-::: notes
-:::
-
-
-### Discriminative VS Generative Models
-
-- Naive Bayes: $$p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$$
-- Logistic regression: $$p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$$
-
-
-### Encoding conditional dependence as DAGs 
-
-![](static/directed-graph.svg){width=30%}
-
-$$
-p(x_1,x_2,x_3) = p(x_1) \, p(x_2 | x_1) \, p(x_3 | x_1, x_2)
-$$
-
-
-
-### CRF probabilistic model
-
-### CRF log-linear parametrization
 
 ### Fitting CRF's
 
@@ -445,6 +449,7 @@ $$ \ell(\theta) = \sum_{t=1}^{T} \log p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \t
 
 ::: notes
 - With L1 use of Orthant-Wise Limited-memory Quasi-Newton
+- Only the linear chain lead to a strictly convex problem
 :::
 
 
