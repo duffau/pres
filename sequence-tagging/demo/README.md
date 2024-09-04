@@ -14,6 +14,17 @@ $ .venv/bin/pip install -r requirements.txt
 
 Ensure that you have the required Python packages installed, such as `datasets`, `sklearn-crfsuite`, and others listed in the `requirements.txt` file.
 
+## Run CRF Fitting and Validation
+
+To run the CRF model training and validation, execute the following command:
+
+```bash
+$ (.venv) python fit.py
+```
+
+The script loads the CoNLL-2003 dataset, extracts features from the tokens (such as word shape, previous/next words), and trains a CRF model. After training, it evaluates the model on the test set and prints a classification report. 
+
+
 ## Dataset
 
 The model is trained on the [CoNLL-2003](https://huggingface.co/datasets/eriktks/conll2003) dataset, which consists of English text labeled for four types of named entities:
@@ -45,16 +56,6 @@ The dataset uses the **IOB** (Inside-Outside-Beginning) tagging scheme:
 - `B-` denotes the beginning of a named entity.
 - `I-` indicates the continuation of the same named entity.
 - `O` is used for words that do not belong to any named entity.
-
-## Run CRF Fitting and Validation
-
-To run the CRF model training and validation, execute the following command:
-
-```bash
-$ (.venv) python fit.py
-```
-
-The script loads the CoNLL-2003 dataset, extracts features from the tokens (such as word shape, previous/next words), and trains a CRF model. After training, it evaluates the model on the test set and prints a classification report. 
 
 ## CRFsuite Links
 
