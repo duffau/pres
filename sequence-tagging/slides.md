@@ -631,23 +631,33 @@ Source: @keraghel2024survey
 ### Inference in Transformers
 
 
-### Floating point operations
+### Speed benchmarks - NER on CoNLL 2003
 
-| Model | Params | Forward FLOPs | Forward MACs |
- |kamalkraj/bert-base-cased-ner-conll2003 | 108.31 M | 1.01 TFLOPS | 502.84 GMACs | 
+- Computed on CPU
+- Including tokenization and feature generation
+- Using "predict single" approach
 
-### Speed benchmarks 
+### Speed benchmarks - NER on CoNLL 2003
 
-| Model | Time per token |
-|:-------|--------:|  
-| CRF   |              x |        
-| BERT  |              y |
-| LSTM  |              z |
+| Model | Params | Forward TFLOPs | Forward GMACs | Time per Sentence | Time per Token |
+|:------|------:|------:|------:|------:|------:|  
+| BERT^1^ | 108.31 M | 1.01  | 502.84 | 59.31 ms | 4.09 ms |
+| CRF^2^ | 0.038 M | - | - |  0.119 ms | 0.00823 ms |
+
+
+
+::: footer
+^1^: kamalkraj/bert-base-cased-ner-conll2003
+^2^: Fitted CRF
+::::
+
+
 
 ### Conclusion
 
-- CRF's are great at identifying entities which are identified by syntactic and some extent semantic information
-- Quadratic transformers are MUCH MUCH slower, Sub-quadratic transformers are also MUCH slower. The constant in front of n actually matters!
+- CRF's are great at identifying entities which are 
+  - identified by **syntactic** and some extent semantic information
+- Quadratic transformers are MUCH MUCH slower
 
 ### Good Sources
 
