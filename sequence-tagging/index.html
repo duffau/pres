@@ -948,45 +948,69 @@ class="math inline">\(O(2^n)\)</span></li>
 <section id="inference-in-transformers" class="slide level3">
 <h3>Inference in Transformers</h3>
 </section>
-<section id="floating-point-operations" class="slide level3">
-<h3>Floating point operations</h3>
-<div class="line-block">Model | Params | Forward FLOPs | Forward MACs |
-|kamalkraj/bert-base-cased-ner-conll2003 | 108.31 M | 1.01 TFLOPS |
-502.84 GMACs |</div>
+<section id="speed-benchmarks---ner-on-conll-2003" class="slide level3">
+<h3>Speed benchmarks - NER on CoNLL 2003</h3>
+<ul>
+<li>Computed on CPU</li>
+<li>Including tokenization and feature generation</li>
+<li>Using “predict single” approach</li>
+</ul>
 </section>
-<section id="speed-benchmarks" class="slide level3">
-<h3>Speed benchmarks</h3>
-<table>
+<section id="speed-benchmarks---ner-on-conll-2003-1"
+class="slide level3">
+<h3>Speed benchmarks - NER on CoNLL 2003</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
 <thead>
 <tr>
 <th style="text-align: left;">Model</th>
-<th style="text-align: right;">Time per token</th>
+<th style="text-align: right;">Params</th>
+<th style="text-align: right;">Forward TFLOPs</th>
+<th style="text-align: right;">Forward GMACs</th>
+<th style="text-align: right;">Time per Sentence</th>
+<th style="text-align: right;">Time per Token</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">CRF</td>
-<td style="text-align: right;">x</td>
+<td style="text-align: left;">BERT<sup>1</sup></td>
+<td style="text-align: right;">108.31 M</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">502.84</td>
+<td style="text-align: right;">59.31 ms</td>
+<td style="text-align: right;">4.09 ms</td>
 </tr>
 <tr>
-<td style="text-align: left;">BERT</td>
-<td style="text-align: right;">y</td>
-</tr>
-<tr>
-<td style="text-align: left;">LSTM</td>
-<td style="text-align: right;">z</td>
+<td style="text-align: left;">CRF<sup>2</sup></td>
+<td style="text-align: right;">0.038 M</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">-</td>
+<td style="text-align: right;">0.119 ms</td>
+<td style="text-align: right;">0.00823 ms</td>
 </tr>
 </tbody>
 </table>
+<div class="footer">
+<p><sup>1</sup>: kamalkraj/bert-base-cased-ner-conll2003 <sup>2</sup>:
+Fitted CRF</p>
+</div>
 </section>
 <section id="conclusion" class="slide level3">
 <h3>Conclusion</h3>
 <ul>
-<li>CRF’s are great at identifying entities which are identified by
-syntactic and some extent semantic information</li>
-<li>Quadratic transformers are MUCH MUCH slower, Sub-quadratic
-transformers are also MUCH slower. The constant in front of n actually
-matters!</li>
+<li>CRF’s are great at identifying entities which are
+<ul>
+<li>identified by <strong>syntactic</strong> and some extent semantic
+information</li>
+</ul></li>
+<li>Quadratic transformers are MUCH MUCH slower</li>
 </ul>
 </section>
 <section id="good-sources" class="slide level3">
