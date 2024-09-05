@@ -1,8 +1,8 @@
 - Intuitive connection between CRF graph and equation
   - Alternative motivate through softmax regression (Larochelle)
 - Inference in CRF: Explain Viterbi decoding
-- Inference in transformer: Explain self-attention
-- Storyline and examples in accuracy benchmark
+- ~~Inference in transformer: Explain self-attention~~
+- ~~Storyline and examples in accuracy benchmark~~
 - Speed benchmark
 - ~~Add feature importance to Python example~~
 - ~~Add github link to Python demo~~
@@ -11,3 +11,7 @@
   - ~~L2 makes it strictly convex -> hence unique solution (given reg constant)~~
   - ~~L1 shrinks the parameter space~~
   - ~~L-BFGS (Orthant-wise limited-memory quasi-Newton) converges fast~~  
+- Add logistic reg transition
+- Finish HMM as CRF
+- ~~Look over conclusion~~
+- Add big-O-table from “Attention is all you need”
