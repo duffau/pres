@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    % Define the colors for the layers
+    \definecolor{color1}{HTML}{33B0F9} % Top
+    \definecolor{color2}{HTML}{237cb0} % Middle
+    \definecolor{color3}{HTML}{125f8c} % Bottom
+    
+    % First layer (bottom) - Pragmatic
+    \fill[color3] (-4,0) -- (4,0) -- (0,3) -- cycle;
+
+    % Second layer (middle) - Semantic
+    \fill[color2] (-3,0) -- (3,0) -- (0,2.25) -- cycle;
+
+    % Third layer (top) - Syntactic
+    \fill[color1] (-2,0) -- (2,0) -- (0,1.5) -- cycle;
+    \node[white] at (0,3) {\Huge Pragmatic};
+    \node[white] at (0,1.6) {\Huge Syntactic};
+    \node[white] at (0,0.5) {\Huge Semantic};
+
+\end{tikzpicture}
+
+\end{document}
