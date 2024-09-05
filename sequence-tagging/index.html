@@ -815,24 +815,52 @@ class="math inline">\((c_1,c_2)\)</span></li>
 </aside>
 </section>
 </section></section>
+<section>
 <section id="performance-comparison" class="title-slide slide level2">
 <h2>Performance comparison</h2>
+
+</section>
+<section id="overall-performance" class="slide level3">
+<h3>Overall Performance</h3>
+<figure>
+<img data-src="static/cd_diagram_ner_survey.png" style="width:60.0%"
+alt="Mean ranks of each model on 10 datasets" />
+<figcaption aria-hidden="true">Mean ranks of each model on 10
+datasets</figcaption>
+</figure>
+<ul>
+<li>Different domains and difficulties</li>
+<li>CRF is from Stanfords Java NLP library using <a
+href="https://javadoc.io/static/edu.stanford.nlp/stanford-corenlp/1.2.0/edu/stanford/nlp/ie/NERFeatureFactory.html">comprehensive
+list of engineered features</a></li>
+<li>CRF does well. In the middle of the pack on average.</li>
+</ul>
+<div class="footer">
+<p>Source: <span class="citation"
+data-cites="keraghel2024survey">Keraghel, Morbieu, and Nadif
+(2024)</span></p>
+</div>
+</section>
+<section id="dataset-level-performance" class="slide level3">
+<h3>Dataset level performance</h3>
 <div class="custom-small">
 <table>
 <colgroup>
-<col style="width: 21%" />
-<col style="width: 23%" />
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 12%" />
-<col style="width: 8%" />
-<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 19%" />
+<col style="width: 10%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
 </colgroup>
 <thead>
 <tr>
 <th>Framework</th>
 <th>Algorithm</th>
 <th>CoNLL-2003</th>
+<th>WNUT2017</th>
 <th>FIN</th>
 <th>BioNLP2004</th>
 <th>BC5CDR</th>
@@ -845,6 +873,7 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <td>GliNER</td>
 <td><strong>92.60</strong></td>
 <td>-</td>
+<td>-</td>
 <td></td>
 <td>88.70</td>
 <td>-</td>
@@ -853,6 +882,7 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <td>Apache OpenNLP</td>
 <td>Maximum Entropy</td>
 <td>80.00</td>
+<td>-</td>
 <td>63.24</td>
 <td>-</td>
 <td>-</td>
@@ -862,6 +892,7 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <td>Stanford CoreNLP</td>
 <td>CRF</td>
 <td>85.18</td>
+<td>8.34</td>
 <td>55.25</td>
 <td><strong>73.26</strong></td>
 <td>85.22</td>
@@ -871,6 +902,7 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <td>Flair</td>
 <td>LSTM-CRF</td>
 <td>90.35</td>
+<td>38.07</td>
 <td><strong>74.23</strong></td>
 <td>71.64</td>
 <td><strong>90.27</strong></td>
@@ -880,6 +912,7 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <td>spaCy</td>
 <td>CNN-large</td>
 <td>85.64</td>
+<td>9.78</td>
 <td>54.71</td>
 <td>66.17</td>
 <td>79.66</td>
@@ -889,6 +922,7 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <td>Hugging Face</td>
 <td>roberta-base</td>
 <td>89.92</td>
+<td>41.84</td>
 <td>63.18</td>
 <td>66.56</td>
 <td>87.08</td>
@@ -898,6 +932,7 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <td>Hugging Face</td>
 <td>bert-base-cased</td>
 <td>90.09</td>
+<td>33.32</td>
 <td>39.53</td>
 <td>69.46</td>
 <td>85.14</td>
@@ -907,6 +942,7 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <td>OpenAI</td>
 <td>GPT-4</td>
 <td>62.74</td>
+<td>18.82</td>
 <td>36.70</td>
 <td>41.32</td>
 <td>55.67</td>
@@ -914,12 +950,50 @@ class="math inline">\((c_1,c_2)\)</span></li>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="footer">
 <p>Source: <span class="citation"
 data-cites="keraghel2024survey">Keraghel, Morbieu, and Nadif
 (2024)</span></p>
 </div>
 </section>
-
+<section id="performance-analysis" class="slide level3">
+<h3>Performance analysis</h3>
+<ul>
+<li>CRF has best relative performance on <em>BioNLP2004</em>
+<ul>
+<li>Entity Types: DNA, protein, cell_type, cell_line, RNA</li>
+<li><blockquote>
+<p>A low [NM23.H1]DNA gene expression identifying high malignancy in
+human melanomas.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-analysis-1" class="slide level3">
+<h3>Performance analysis</h3>
+<ul>
+<li>CRF has worst relative performance on <em>WNUT 2017</em>
+<ul>
+<li>Entity types: Person, Location, Corporation, Consumer good, Creative
+work, Group</li>
+<li>“ability to detect and classify novel, emerging, singleton named
+entities in noisy text.”</li>
+<li><blockquote>
+<p>Tweet: “so.. kktny[Creative work] in 30 mins?”</p>
+</blockquote></li>
+<li>*Kourtney And Kim Take New York</li>
+</ul></li>
+</ul>
+</section>
+<section id="abstraction-hierarchy" class="slide level3">
+<h3>Abstraction Hierarchy</h3>
+<p><img data-src="static/info_pyramid.svg" /></p>
+<ul>
+<li>CRF does not have semantic information e.g. embeddings</li>
+<li>CRF feature cannot generalize to unseen words or word contexts</li>
+</ul>
+</section></section>
 <section>
 <section id="speed-comparison" class="title-slide slide level2">
 <h2>Speed comparison</h2>
@@ -959,44 +1033,38 @@ class="math inline">\(O(2^n)\)</span></li>
 <section id="speed-benchmarks---ner-on-conll-2003-1"
 class="slide level3">
 <h3>Speed benchmarks - NER on CoNLL 2003</h3>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-</colgroup>
+<div class="custom-small">
+<table>
 <thead>
 <tr>
 <th style="text-align: left;">Model</th>
 <th style="text-align: right;">Params</th>
-<th style="text-align: right;">Forward TFLOPs</th>
-<th style="text-align: right;">Forward GMACs</th>
 <th style="text-align: right;">Time per Sentence</th>
 <th style="text-align: right;">Time per Token</th>
+<th style="text-align: right;"></th>
+<th style="text-align: right;"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">BERT<sup>1</sup></td>
 <td style="text-align: right;">108.31 M</td>
-<td style="text-align: right;">1.01</td>
-<td style="text-align: right;">502.84</td>
 <td style="text-align: right;">59.31 ms</td>
 <td style="text-align: right;">4.09 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: left;">CRF<sup>2</sup></td>
 <td style="text-align: right;">0.038 M</td>
-<td style="text-align: right;">-</td>
-<td style="text-align: right;">-</td>
 <td style="text-align: right;">0.119 ms</td>
 <td style="text-align: right;">0.00823 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="footer">
 <p><sup>1</sup>: kamalkraj/bert-base-cased-ner-conll2003 <sup>2</sup>:
 Fitted CRF</p>

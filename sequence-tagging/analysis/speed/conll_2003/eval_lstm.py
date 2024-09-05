@@ -1,21 +1,23 @@
 from flair.data import Sentence
 from flair.models import SequenceTagger
+from flair.nn import Classifier
+
 from datasets import load_dataset
 
 import time
 
 # load tagger
-tagger = SequenceTagger.load("flair/ner-english-fast")
-tagger = Classifier.load('bioner')
+tagger = Classifier.load('ner-fast')
 
 dataset = load_dataset("eriktks/conll2003", split="train")
-subset = dataset  # Change the range as needed
+subset = dataset.select(range(100))  # Change the range as needed
 
 
 timings = []
 n_tokens = 0
 n_sentences = 0
 for sample in subset:
+    print(n_sentences)
     n_tokens += len(sample['tokens'])
     n_sentences += 1
     text = " ".join(sample['tokens'])  # Join tokens into a full sentence

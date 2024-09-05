@@ -593,22 +593,62 @@ Top negative state features:
 
 ## Performance comparison
 
+### Overall Performance
+
+
+![Mean ranks of each model on 10 datasets](static/cd_diagram_ner_survey.png){width=60%}
+
+- Different domains and difficulties
+- CRF is from Stanfords Java NLP library using [comprehensive list of engineered features](https://javadoc.io/static/edu.stanford.nlp/stanford-corenlp/1.2.0/edu/stanford/nlp/ie/NERFeatureFactory.html) 
+- CRF does well. In the middle of the pack on average.
+
+::: footer
+Source: @keraghel2024survey
+:::
+
+### Dataset level performance
+
 ::: custom-small
 
-| Framework          | Algorithm            | CoNLL-2003 | FIN   | BioNLP2004 | BC5CDR | MultiCoNER |
-|--------------------|----------------------|------------|-------|------------|--------|------------|
-|                    | GliNER               | **92.60**  | -     |            | 88.70  | -          |
-| Apache OpenNLP     | Maximum Entropy      | 80.00      | 63.24 | -          | -      | -          |
-| Stanford CoreNLP   | CRF                  | 85.18      | 55.25 | **73.26**      | 85.22  | 19.39      |
-| Flair              | LSTM-CRF             | 90.35      | **74.23** | 71.64      | **90.27**  | 56.27      |
-| spaCy              | CNN-large            | 85.64      | 54.71 | 66.17      | 79.66  | 35.82      |
-| Hugging Face       | roberta-base         | 89.92      | 63.18 | 66.56      | 87.08  | 55.21      |
-| Hugging Face       | bert-base-cased      | 90.09      | 39.53 | 69.46      | 85.14  | **56.64**      |
-| OpenAI             | GPT-4                | 62.74      | 36.70 | 41.32      | 55.67  | 33.61      |
-
-Source: @keraghel2024survey
+| Framework          | Algorithm            | CoNLL-2003 | WNUT2017 | FIN       | BioNLP2004 | BC5CDR     | MultiCoNER |
+|--------------------|----------------------|------------|----------|-----------|------------|------------|------------|
+|                    | GliNER               | **92.60**  |       -  |   -       |            | 88.70      | -          |
+| Apache OpenNLP     | Maximum Entropy      | 80.00      |       -  |   63.24   | -          | -          | -          |
+| Stanford CoreNLP   | CRF                  | 85.18      |    8.34  |   55.25   | **73.26**  | 85.22      | 19.39      |
+| Flair              | LSTM-CRF             | 90.35      |   38.07  | **74.23** | 71.64      | **90.27**  | 56.27      |
+| spaCy              | CNN-large            | 85.64      |    9.78  |   54.71   | 66.17      | 79.66      | 35.82      |
+| Hugging Face       | roberta-base         | 89.92      |   41.84  |   63.18   | 66.56      | 87.08      | 55.21      |
+| Hugging Face       | bert-base-cased      | 90.09      |   33.32  |   39.53   | 69.46      | 85.14      | **56.64**  |
+| OpenAI             | GPT-4                | 62.74      |   18.82  |   36.70   | 41.32      | 55.67      | 33.61      |
 
 :::
+
+::: footer
+Source: @keraghel2024survey
+:::
+
+
+
+### Performance analysis
+
+- CRF has best relative performance on *BioNLP2004* 
+  - Entity Types: DNA, protein, cell_type, cell_line, RNA
+  - > A low [NM23.H1]DNA gene expression identifying high malignancy in human melanomas.
+
+### Performance analysis
+
+- CRF has worst relative performance on *WNUT 2017*
+  - Entity types: Person, Location, Corporation, Consumer good, Creative work, Group
+  - "ability to detect and classify novel, emerging, singleton named entities in noisy text."
+  - > Tweet: “so.. kktny[Creative work] in 30 mins?”
+  - *Kourtney And Kim Take New York 
+
+### Abstraction Hierarchy 
+
+![](static/info_pyramid.svg)
+
+- CRF does not have semantic information e.g. embeddings
+- CRF feature cannot generalize to unseen words or word contexts
 
 
 ## Speed comparison
@@ -639,12 +679,14 @@ Source: @keraghel2024survey
 
 ### Speed benchmarks - NER on CoNLL 2003
 
-| Model | Params | Forward TFLOPs | Forward GMACs | Time per Sentence | Time per Token |
+::: custom-small
+
+| Model | Params |  Time per Sentence | Time per Token |
 |:------|------:|------:|------:|------:|------:|  
-| BERT^1^ | 108.31 M | 1.01  | 502.84 | 59.31 ms | 4.09 ms |
-| CRF^2^ | 0.038 M | - | - |  0.119 ms | 0.00823 ms |
+| BERT^1^ | 108.31 M  | 59.31 ms | 4.09 ms |
+| CRF^2^ | 0.038 M | 0.119 ms | 0.00823 ms |
 
-
+:::
 
 ::: footer
 ^1^: kamalkraj/bert-base-cased-ner-conll2003
