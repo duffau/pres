@@ -42,7 +42,7 @@ include-before: |
   - Automated Sports Betting
   - Co-Founded a Machine Learning Consultancy
   - Co-founded a NLP-powered Legal Tech start-up
-  - Consulting at McKinsey
+  - McKinsey as Data Scientist/ML Engineer
 :::
 
 ### Slides
