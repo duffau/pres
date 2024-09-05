@@ -106,7 +106,7 @@ University</li>
 <li class="fragment">Before joining Alipes
 <ul>
 <li class="fragment">Automated Sports Betting</li>
-<li class="fragment">Co-Founded a Machine Learning Consultancy</li>
+<li class="fragment">Co-founded a Machine Learning Consultancy</li>
 <li class="fragment">Co-founded a NLP-powered Legal Tech start-up</li>
 <li class="fragment">McKinsey as Data Scientist/ML Engineer</li>
 </ul></li>
@@ -158,8 +158,8 @@ PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS</code></pre>
 <li class="fragment">Learn entity labels based on context and word
 derived features</li>
 </ul></li>
-<li class="fragment"><strong>Challenge 2</strong>: Neighboring
-named-entity <strong>labels are dependent</strong>
+<li class="fragment"><strong>Challenge 2</strong>: Neighboring named
+entity <strong>labels are dependent</strong>
 <ul>
 <li class="fragment">New York -&gt; <code>LOC</code></li>
 <li class="fragment">New York Times -&gt; <code>ORG</code></li>
@@ -167,7 +167,6 @@ named-entity <strong>labels are dependent</strong>
 </ul>
 </div>
 </section>
-<section>
 <section id="evolution-of-nlp-and-sequence-tagging"
 class="title-slide slide level2">
 <h2>Evolution of NLP and Sequence tagging</h2>
@@ -200,7 +199,7 @@ timeline
            : 2017 "Attention is all you need" Introduction of the Transformer model
            : 2020 Large-Scale Pre-trained Language Models (GPT-3)
         LLM
-           : 2022 LLM's GPT 3.5 and ChatGPT
+           : 2022 LLMs GPT 3.5 and ChatGPT
            : 2023 LLM zoo and Few-Shot Adaptation
 </pre>
 </div>
@@ -244,8 +243,9 @@ f1</li>
 </ul>
 </aside>
 </section>
-<section id="current-trend-1" class="slide level3">
-<h3>Current Trend <sup>1</sup></h3>
+
+<section id="current-trend" class="title-slide slide level2">
+<h2>Current Trend</h2>
 <div style="height:400px">
 <canvas data-chart="line">
 <!--
@@ -302,7 +302,7 @@ f1</li>
 </div>
 <p>Abstract tasks have taken over lower level tasks</p>
 <div class="footer">
-<p><sup>1</sup> Source: https://paperswithcode.com/datasets</p>
+<p>Source: https://paperswithcode.com/datasets</p>
 </div>
 <aside class="notes">
 <ul>
@@ -341,14 +341,15 @@ keys.”</li>
 </ul></li>
 </ul>
 </aside>
-</section></section>
+</section>
+
 <section>
 <section id="what-is-a-conditional-random-field"
 class="title-slide slide level2">
 <h2>What is a Conditional Random Field?</h2>
 <div>
 <ul>
-<li class="fragment">Lets have a look at a Hidden Markov Model 😅</li>
+<li class="fragment">Let’s have a look at a Hidden Markov Model 😅</li>
 </ul>
 </div>
 </section>
@@ -463,7 +464,6 @@ alt="Linear Chain CRF" />
 <em>Generative</em></li>
 <li class="fragment"><em>Richer</em> and <em>overlapping</em> word
 features</li>
-<li class="fragment"><em>Bidirectional</em> influence from labels</li>
 </ul>
 </div>
 <aside class="notes">
@@ -552,14 +552,14 @@ true model</li>
 <li>Generative - Naive Bayes:
 <ul>
 <li><span class="math inline">\(p(y, \mathbf{x}) = p(y;\theta)
-\prod_{i=1}^K p(x_i | y;\theta)\)</span></li>
-<li>Assumes <span class="math inline">\(p(x_i| x_{i+1}, \ldots, x_M, y)
-= p(x_i| y)\)</span></li>
+\prod_{k=1}^K p(x_k | y;\theta)\)</span></li>
+<li>Assumes <span class="math inline">\(p(x_k| x_{k+1}, \ldots, x_K, y)
+= p(x_k| y)\)</span></li>
 </ul></li>
 <li>Discriminative - Logistic regression:
 <ul>
 <li><span class="math inline">\(p(y | \mathbf{x};\theta) = 1/(1 +
-e^{\theta^T \mathbf{x}})\)</span></li>
+e^{\theta^\top \mathbf{x}})\)</span></li>
 <li>No assumption on <span
 class="math inline">\(\mathbf{x}\)</span></li>
 </ul></li>
@@ -660,7 +660,7 @@ x_k)} \\
 </section>
 <section id="crf-from-logistic-regression-1" class="slide level3">
 <h3>CRF from logistic regression</h3>
-Adding transitions matrix
+Adding transition matrix
 <span class="math display">\[\begin{aligned}
 p(\mathbf{y} | \mathbf{x})_{CRF} &amp;= \frac{1}{Z(\mathbf{x})}
 \prod_{t=1}^{T} \exp (\sum_{k} \theta_{y,k} f_{k}(x_k, y_t) +
@@ -884,13 +884,13 @@ class="math inline">\((c_1,c_2)\)</span></li>
 <h3>Overall Performance</h3>
 <figure>
 <img data-src="static/cd_diagram_ner_survey.png" style="width:60.0%"
-alt="Mean ranks of each model on 10 datasets" />
-<figcaption aria-hidden="true">Mean ranks of each model on 10
+alt="Mean rank of each model on 10 datasets" />
+<figcaption aria-hidden="true">Mean rank of each model on 10
 datasets</figcaption>
 </figure>
 <ul>
 <li>Different domains and difficulties</li>
-<li>CRF is from Stanfords Java NLP library using <a
+<li>CRF is from Stanford’s Java NLP library using <a
 href="https://javadoc.io/static/edu.stanford.nlp/stanford-corenlp/1.2.0/edu/stanford/nlp/ie/NERFeatureFactory.html">comprehensive
 list of engineered features</a></li>
 <li>CRF does well. In the middle of the pack on average.</li>
@@ -1051,9 +1051,8 @@ entities in noisy text.”</li>
 <p><img data-src="static/info_pyramid.svg" /></p>
 <ul>
 <li>CRF does not have semantic information e.g. embeddings</li>
-<li>CRF features cannot generalize to unseen words or word contexts
-based on local</li>
-<li>CRF are just linear machines, no chance of extrapolating abstract
+<li>CRF features cannot generalize to unseen words or word contexts</li>
+<li>CRFs are just linear machines, no chance of extrapolating abstract
 information</li>
 </ul>
 </section></section>
@@ -1088,15 +1087,34 @@ class="math display">\[ Z(X) = \sum_{y_1}\sum_{y_2}\ldots\sum_{y_T}
 class="math inline">\(O(M^T)\)</span></li>
 </ul>
 </section>
-<section id="computing-the-partition-function" class="slide level3">
-<h3>Computing the partition function</h3>
-<span class="math display">\[\begin{aligned}
-Z(X) = \sum_{\mathbf{y}} \exp \left( \sum_{t=1}^T  \sum_k \theta_k
-f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)
-\end{aligned}\]</span>
-</section>
 <section id="inference-in-transformers" class="slide level3">
 <h3>Inference in Transformers</h3>
+<table>
+<thead>
+<tr>
+<th>Layer Type</th>
+<th>Complexity per Layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Self-attention</td>
+<td>O(T^2*K)</td>
+</tr>
+<tr>
+<td>Recurrent</td>
+<td>O(T*K^2)</td>
+</tr>
+<tr>
+<td>CRF</td>
+<td>O(T*M^2)</td>
+</tr>
+</tbody>
+</table>
+<div class="footer">
+<p>Source: <span class="citation"
+data-cites="vaswani2017attention">Vaswani (2017)</span></p>
+</div>
 </section>
 <section id="speed-benchmarks---ner-on-conll-2003" class="slide level3">
 <h3>Speed benchmarks - NER on CoNLL 2003</h3>
@@ -1150,19 +1168,19 @@ Fitted CRF</p>
 <h3>Conclusion</h3>
 <div>
 <ul>
-<li class="fragment">CRF’s are great at identifying entities which are
+<li class="fragment">CRFs are great at identifying entities which are
 <ul>
 <li class="fragment">identified by <strong>syntactic</strong> and some
 extent semantic information</li>
 </ul></li>
-<li class="fragment">CRF’ are <strong>fast to train</strong>, which
+<li class="fragment">CRFs are <strong>fast to train</strong>, which
 enable a quick tag-train loop
 <ul>
 <li class="fragment">with few features they do well on small
 datasets</li>
 </ul></li>
-<li class="fragment">CRF’s inference is <strong>fast</strong>,
-especially with C++ implementation</li>
+<li class="fragment">CRFs inference is <strong>fast</strong>, especially
+with C++ implementation</li>
 </ul>
 </div>
 </section>
@@ -1203,6 +1221,10 @@ Preprint arXiv:2401.10825</em>.
 Sutton, Charles, Andrew McCallum, et al. 2012. <span>“An Introduction to
 Conditional Random Fields.”</span> <em>Foundations and
 Trends<span></span> in Machine Learning</em> 4 (4): 267–373.
+</div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+Vaswani, A. 2017. <span>“Attention Is All You Need.”</span> <em>Advances
+in Neural Information Processing Systems</em>.
 </div>
 </div>
 </section>

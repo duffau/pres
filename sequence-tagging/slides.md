@@ -40,7 +40,7 @@ include-before: |
   - Fell into the "$Math$ and `Code`" pot at University
 - Before joining Alipes
   - Automated Sports Betting
-  - Co-Founded a Machine Learning Consultancy
+  - Co-founded a Machine Learning Consultancy
   - Co-founded a NLP-powered Legal Tech start-up
   - McKinsey as Data Scientist/ML Engineer
 :::
@@ -89,7 +89,7 @@ $$\begin{aligned}
 :::incremental
 - **Challenge 1**: Named entity **strings are rare**
   - Learn entity labels based on context and word derived features
-- **Challenge 2**: Neighboring named-entity **labels are dependent**
+- **Challenge 2**: Neighboring named entity **labels are dependent**
   - New York -> `LOC` 
   - New York Times -> `ORG`
 :::
@@ -125,7 +125,7 @@ timeline
            : 2017 "Attention is all you need" Introduction of the Transformer model
            : 2020 Large-Scale Pre-trained Language Models (GPT-3)
         LLM
-           : 2022 LLM's GPT 3.5 and ChatGPT
+           : 2022 LLMs GPT 3.5 and ChatGPT
            : 2023 LLM zoo and Few-Shot Adaptation
 </pre>
 </div>
@@ -156,7 +156,7 @@ timeline
 :::
 
 
-### Current Trend ^1^
+## Current Trend
 
 <div style="height:400px">
 <canvas data-chart="line">
@@ -216,7 +216,7 @@ timeline
 Abstract tasks have taken over lower level tasks
 
 ::: footer
-^1^ Source: https://paperswithcode.com/datasets
+Source: https://paperswithcode.com/datasets
 :::
 
 ::: notes
@@ -246,7 +246,7 @@ Abstract tasks have taken over lower level tasks
 ## What is a Conditional Random Field?
 
 :::incremental
-- Lets have a look at a Hidden Markov Model 😅
+- Let's have a look at a Hidden Markov Model 😅
 ::: 
 
 ### Hidden Markov Model
@@ -302,7 +302,6 @@ $$
 ::: incremental
 - *Discriminative* as opposed to *Generative*
 - *Richer* and *overlapping* word features
-- *Bidirectional* influence from labels
 :::
 
 
@@ -362,10 +361,10 @@ where,
 ### Discriminative VS Generative
 
 - Generative - Naive Bayes: 
-  - $p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$
-  - Assumes $p(x_i| x_{i+1}, \ldots, x_M, y) = p(x_i| y)$
+  - $p(y, \mathbf{x}) = p(y;\theta) \prod_{k=1}^K p(x_k | y;\theta)$
+  - Assumes $p(x_k| x_{k+1}, \ldots, x_K, y) = p(x_k| y)$
 - Discriminative - Logistic regression: 
-  - $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$
+  - $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^\top \mathbf{x}})$
   - No assumption on $\mathbf{x}$
 
 
@@ -444,7 +443,7 @@ p(\mathbf{y} | \mathbf{x})_{logistic} &= \prod_{t=1}^{T} p(y_t | \mathbf{x}_t)
 \end{aligned}
 
 ### CRF from logistic regression
-Adding transitions matrix
+Adding transition matrix
 \begin{aligned}
 p(\mathbf{y} | \mathbf{x})_{CRF} &= \frac{1}{Z(\mathbf{x})} \prod_{t=1}^{T} \exp (\sum_{k} \theta_{y,k} f_{k}(x_k, y_t) + V_{y_{t-1},y_{t}})
 \end{aligned}
@@ -640,10 +639,10 @@ Top negative state features:
 ### Overall Performance
 
 
-![Mean ranks of each model on 10 datasets](static/cd_diagram_ner_survey.png){width=60%}
+![Mean rank of each model on 10 datasets](static/cd_diagram_ner_survey.png){width=60%}
 
 - Different domains and difficulties
-- CRF is from Stanfords Java NLP library using [comprehensive list of engineered features](https://javadoc.io/static/edu.stanford.nlp/stanford-corenlp/1.2.0/edu/stanford/nlp/ie/NERFeatureFactory.html) 
+- CRF is from Stanford's Java NLP library using [comprehensive list of engineered features](https://javadoc.io/static/edu.stanford.nlp/stanford-corenlp/1.2.0/edu/stanford/nlp/ie/NERFeatureFactory.html) 
 - CRF does well. In the middle of the pack on average.
 
 ::: footer
@@ -691,8 +690,8 @@ Source: @keraghel2024survey
 ![](static/info_pyramid.svg)
 
 - CRF does not have semantic information e.g. embeddings
-- CRF features cannot generalize to unseen words or word contexts based on local
-- CRF are just linear machines, no chance of extrapolating abstract information
+- CRF features cannot generalize to unseen words or word contexts
+- CRFs are just linear machines, no chance of extrapolating abstract information
 
 
 ## Speed comparison
@@ -714,14 +713,18 @@ Source: @keraghel2024survey
 
 - Naive implementation: $O(M^T)$
 
-### Computing the partition function
-
-\begin{aligned}
-Z(X) = \sum_{\mathbf{y}} \exp \left( \sum_{t=1}^T  \sum_k \theta_k f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)
-\end{aligned}
-
 
 ### Inference in Transformers
+
+| Layer Type | Complexity per Layer |
+|------------|----------------------|
+| Self-attention | O(T^2*K)         |
+| Recurrent  |     O(T*K^2)         |
+| CRF        |    O(T*M^2)          |
+
+::: footer
+Source: @vaswani2017attention
+:::
 
 
 ### Speed benchmarks - NER on CoNLL 2003
@@ -751,11 +754,11 @@ Z(X) = \sum_{\mathbf{y}} \exp \left( \sum_{t=1}^T  \sum_k \theta_k f_k(y_t, y_{t
 ### Conclusion
 
 ::::incremental
-- CRF's are great at identifying entities which are 
+- CRFs are great at identifying entities which are 
   - identified by **syntactic** and some extent semantic information
-- CRF' are **fast to train**, which enable a quick tag-train loop
+- CRFs are **fast to train**, which enable a quick tag-train loop
   - with few features they do well on small datasets
-- CRF's inference is **fast**, especially with C++ implementation
+- CRFs inference is **fast**, especially with C++ implementation
 :::
 
 ### Learn more
