@@ -7,6 +7,7 @@
 - ~~Add feature importance to Python example~~
 - ~~Add github link to Python demo~~
 - ~~Fitting: Why does it work?~~
+- ~~Add reference to CRF Suite~~
   - L2 makes it strictly convex -> hence unique solution (given reg constant)
   - L1 shrinks the parameter space
   - L-BFGS (Orthant-wise limited-memory quasi-Newton) converges fast  

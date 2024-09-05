@@ -1,0 +1,73 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=2cm, every node/.style={minimum size=1cm, thick}, >=Stealth, scale=1, text=white]
+
+    % Set background color
+    \fill[black] (-4,-6) rectangle (8,4);
+
+    % Style for nodes
+    \tikzstyle{factor} = [fill=gray!50, circle, draw=white, minimum size=0.8cm]
+    \tikzstyle{hidden} = [circle, draw=white, minimum size=1cm]
+    \tikzstyle{rect} = [rectangle, draw=none, fill=none]
+    
+    % First row: Naive Bayes and HMMs
+    % Naive Bayes (Left)
+    \node[hidden] (naive_root) at (-3,2) {};
+    \node[factor, below left=1.5cm and 1.5cm of naive_root] (naive_obs1) {};
+    \node[factor, below right=1.5cm and 1.5cm of naive_root] (naive_obs2) {};
+    \draw[white, ->, thick] (naive_root) -- (naive_obs1);
+    \draw[white, ->, thick] (naive_root) -- (naive_obs2);
+    \node[rect, below=0.75cm of naive_obs1] {Naive Bayes};
+
+    % Sequence Arrow (Center)
+    \node[rect, right=2.5cm of naive_root] (arrow1) {\Huge\textbf{SEQUENCE}};
+    \draw[white, thick, ->] (1,1) -- (2,1);
+
+    % HMMs (Right)
+    \node[hidden] (hmm1) at (5,2) {};
+    \node[hidden, right=1.5cm of hmm1] (hmm2) {};
+    \node[hidden, right=1.5cm of hmm2] (hmm3) {};
+    \node[factor, below=1.5cm of hmm1] (hmm_obs1) {};
+    \node[factor, below=1.5cm of hmm2] (hmm_obs2) {};
+    \node[factor, below=1.5cm of hmm3] (hmm_obs3) {};
+    \draw[white, ->, thick] (hmm1) -- (hmm2);
+    \draw[white, ->, thick] (hmm2) -- (hmm3);
+    \draw[white, ->, thick] (hmm1) -- (hmm_obs1);
+    \draw[white, ->, thick] (hmm2) -- (hmm_obs2);
+    \draw[white, ->, thick] (hmm3) -- (hmm_obs3);
+    \node[rect, below=0.75cm of hmm_obs2] {HMMs};
+
+    % Second row: Logistic Regression and Linear-chain CRFs
+    % Logistic Regression (Left)
+    \node[hidden] (logistic_root) at (-3,-2) {};
+    \node[factor, below left=1.5cm and 1.5cm of logistic_root] (logistic_obs1) {};
+    \node[factor, below right=1.5cm and 1.5cm of logistic_root] (logistic_obs2) {};
+    \draw[white, ->, thick] (logistic_root) -- (logistic_obs1);
+    \draw[white, ->, thick] (logistic_root) -- (logistic_obs2);
+    \node[rect, below=0.75cm of logistic_obs1] {Logistic Regression};
+    
+    % Conditional Arrow (Center)
+    \node[rect, right=2.5cm of logistic_root] (arrow2) {\Huge\textbf{CONDITIONAL}};
+    \draw[white, thick, ->] (1,-2) -- (2,-2);
+    
+    % Linear-chain CRFs (Right)
+    \node[hidden] (crf1) at (5,-2) {};
+    \node[hidden, right=1.5cm of crf1] (crf2) {};
+    \node[hidden, right=1.5cm of crf2] (crf3) {};
+    \node[factor, below=1.5cm of crf1] (crf_obs1) {};
+    \node[factor, below=1.5cm of crf2] (crf_obs2) {};
+    \node[factor, below=1.5cm of crf3] (crf_obs3) {};
+    \draw[white, thick] (crf1) -- ($(crf1)!0.5!(crf2)$) node[fill=white, draw=white, rectangle, minimum size=6pt] {} -- (crf2);
+    \draw[white, thick] (crf2) -- ($(crf2)!0.5!(crf3)$) node[fill=white, draw=white, rectangle, minimum size=6pt] {} -- (crf3);
+    \draw[white, ->, thick] (crf1) -- (crf_obs1);
+    \draw[white, ->, thick] (crf2) -- (crf_obs2);
+    \draw[white, ->, thick] (crf3) -- (crf_obs3);
+    \node[rect, below=0.75cm of crf_obs2] {Linear-chain CRFs};
+
+\end{tikzpicture}
+
+\end{document}

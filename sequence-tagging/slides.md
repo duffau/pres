@@ -61,16 +61,16 @@ The price of the [Pizza Margherita] is [10 dollars].
 ```
 
 ###  
-#### Named Entity Recognition (NER) 
-```txt
-Jim   worked at    Acme Corp. near the beautiful London Bridge.
-PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS
-```
-
 #### Part-of-Speech (POS)
 ```txt
 Jim   worked at    Acme Corp. near the beautiful London Bridge.
 NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS
+```
+
+#### Named Entity Recognition (NER) 
+```txt
+Jim   worked at    Acme Corp. near the beautiful London Bridge.
+PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS
 ```
 
 $$\begin{aligned}
@@ -84,33 +84,45 @@ $$\begin{aligned}
   - NER: "O", "PER", "LOC", "ORG"
 :::
 
+### Challenges for NER
+
+:::incremental
+- **Challenge 1**: Named entity **strings are rare**
+  - Learn entity labels based on context and word derived features
+- **Challenge 2**: Neighboring named-entity **labels are dependent**
+  - New York -> `LOC` 
+  - New York Times -> `ORG`
+:::
+
 ## Evolution of NLP and Sequence tagging 
 
 <div class="mermaid">
 <pre>
-%%{init: {'theme': 'forest'}}%%
+%%{init: {'theme': 'forest', 'themeVariables': { 'fontSize': '24px', 'fontFamily': 'Source Sans Pro','cScale0': '#33B0F9', 'cScaleLabel0': '#ffffff',
+              'cScale1': '#237cb0','cScaleLabel1': '#ffffff',
+              'cScale2': '#125f8c', 'cScaleLabel2': '#ffffff'}}}%%
 timeline
-
-    section 1950-1990<br>Knowledge-Based Methods
+    section 1950-1990 Knowledge-Based Methods
         1950s : 1954 IBM-Georgetown machine translation - Sixty Russian sentences translated into English
         1960s : Slow progress in machine translation
               : 1966 ALPAC report leads to defunding of machine translation in the US
         1974-1980 : First AI Winter
 
-    section 1990-2000<br>Statistical Feature-Engineered Methods
+    section 1990-2000 Statistical Feature-Engineered Methods
         Markov models
-          : 1988 First papers using Markov models for PoS tagging
+          : 1988 Markov models for PoS tagging
           : 1996 Maximum Entropy Markov Model (MEMM) published
           : 2001 Conditional Random Fields (CRF) introduced
         Data
+          : 1985 WordNet - Princeton
           : 1993 Penn Treebank Project - 1 mio tokens from WSJ
 
-    section "2010-today<br>Deep Learning-Based Methods"
+    section 2010-today Deep Learning-Based Methods
         Emnbeddings and RNN's
           : 2013 Word Embeddings (Word2Vec, GloVe)
           : 2015 Neural Net Revolution (BiLSTM-CRF)
         Transformers
-           : 2017 "Attention is all you need" <br> Introduction of the Transformer model
+           : 2017 "Attention is all you need" Introduction of the Transformer model
            : 2020 Large-Scale Pre-trained Language Models (GPT-3)
         LLM
            : 2022 LLM's GPT 3.5 and ChatGPT
@@ -120,6 +132,7 @@ timeline
 
 
 ::: notes
+- 1954 IBM-Georgtown: "within three or five years, machine translation could well be a solved" problem.
 - HMM: The first to encode sequential information for PoS
 - Rabiner: HMM applied to speech since th 70's but only widely know in "recent years"
   - 33,500 citation
@@ -143,7 +156,7 @@ timeline
 :::
 
 
-### Papers Using Datasets ^1^
+### Current Trend ^1^
 
 <div style="height:400px">
 <canvas data-chart="line">
@@ -230,9 +243,190 @@ Abstract tasks have taken over lower level tasks
   - https://paperswithcode.com/sota/sentence-completion-on-hellaswag
 :::
 
+## What is a Conditional Random Field?
+
+:::incremental
+- Lets have a look at a Hidden Markov Model 😅
+::: 
+
+### Hidden Markov Model
+
+![](static/hmm-cont.svg){width=60%}
+
+- Sequential Model: 
+  - Observations: $\mathbf{x} = \{x_1, \ldots, x_T\}$
+  - Hidden states: $\mathbf{y} = \{y_1, \ldots, y_T\}$ 
+
+### Hidden Markov Model
+
+![](static/hmm-cont.svg){width=60%}
+
+- $y_t$ are drawn from a set of $M$ labels: 
+  - e.g. `[O, PER, LOC, ORG]` 
+- $x_t$ represents the word identity at step $t$ 
+
+### Hidden Markov Model
+
+![](static/hmm-cont.svg){width=60%}
+
+
+
+- $p(y_t|y_{t-1}, y_{t-2}, \ldots, y_1) = p(y_t|y_{t-1})$
+  - Label depends only on *immediate predecessor* 
+- $x_t$ only depend on $y_t$ $$
+p(\mathbf{y}, \mathbf{x}) = \prod_{t=1}^T p(y_t|y_{t-1})p(x_t|y_t).
+$$
+
+---
+
+- Transition probabilities $p(y_t|y_{t-1})$ are *constant*
+
+|     | PER | LOC | ORG | O |
+|-----|-----|-----|-----|---|
+| PER | 0.8 | 0.01| 0.01| 0.18 |
+| LOC | 0.02| 0.65 | 0.05 | 0.28 |
+| ORG | 0.01 | 0.01 | 0.3 | 0.68 |
+| O   | 0.05 | 0.1 | 0.1 | 0.75 |
+
+### CRF Motivation
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+![HMM](static/hmm.svg){width=100%}
+:::
+::: {.column width="50%"}
+![Linear Chain CRF](static/crf.svg){width=100%}
+:::
+::::::::::::::
+
+::: incremental
+- *Discriminative* as opposed to *Generative*
+- *Richer* and *overlapping* word features
+- *Bidirectional* influence from labels
+:::
+
+
+::: notes
+- Relax the "tag generates word" assumption
+  - Allows rich word transformations
+  - Rare words (e.g. proper names) will not have occurred in the training set
+  - Word identity feature is uninformative
+- Relaxed sequential Markov assumption
+  - Bidirectional influence from labels
+  - Time varying transition probabilities 
+
+- Relaxed Independence Assumptions
+  - Non-independent features of the entire observation sequence
+
+. Label Bias
+  - MEMM are logistic regression for each state transition given it's current state
+  - State transition with high probability concentration
+  - Leads to little influence from x-features
+  - CRF solves by normalizing over transitions over the whole sequence rather than each step
+:::
+
+### Linear Chain CRF definition
+
+$$
+p(\mathbf{y}|\mathbf{x}) = \frac{1}{Z(\mathbf{x})} \prod_{t=1}^T \exp \left( \sum_k \theta_k f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)
+$$
+
+where,
+
+- $\theta_k \in \mathbb{R}$
+- $f_k$ is a real-valued feature function
+- $k$ ranges over transitions $(i,j)$ and state-observation pairs $(i,o)$.
+- $\mathbf{x}_t$ is a feature vector at time $t$
+
+### Discriminative VS Generative
+
+::: incremental
+
+- Generative: $$p(y, \mathbf{x}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})$$
+  - $p(\mathbf{x})$ is often difficult to model -> Simplifying assumptions
+- Discriminative: $$p(y | \mathbf{x})$$
+  - No need to model $p(\mathbf{x})$
+
+:::
+
+::: notes
+- Generative:: Label vector y can probabilistically “generate” a feature vector x
+  - By modelling p(y, x) = p(y) p(x | y)
+  - p(x | y) generates the features given the (hidden) labels
+- Discriminative: How a feature vector x and assign it a label y
+  -  models the "descision rule" directly
+- Generative models "too much" by specifying p(x)
+- Discriminative models perform worse if the generative model is the true model 
+:::
+
+### Discriminative VS Generative
+
+- Generative - Naive Bayes: 
+  - $p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$
+  - Assumes $p(x_i| x_{i+1}, \ldots, x_M, y) = p(x_i| y)$
+- Discriminative - Logistic regression: 
+  - $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$
+  - No assumption on $\mathbf{x}$
+
+
+
+### Paths to Linear Chain CRF
+
+![](static/model-relation.png){width=40%}
+
+::: footer
+Illustration: @sutton2012introduction
+:::
+
+### CRF from HMM's conditional distribution
+
+
+\begin{aligned}
+p(\mathbf{y}, \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp \left(\sum_{i,j \in S} \theta_{ij} \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{y_{t-1} = j\}} \right. \\
+\left. + \sum_{i \in S} \sum_{o \in O} \mu_{oi} \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{x_t = o\}}\right)\\
+\end{aligned}
+
+\begin{aligned}
+\theta_{ij} &= \log p(y^\prime=i|y=j)\quad \text{transition prob.} \\
+\mu_{oi} &= \log p(x=o | y=i)\quad \text{word give label prob.} \\
+Z &= 1
+\end{aligned}
+
+
+### CRF from HMM's conditional distribution
+
+$$
+\begin{aligned}
+p(\mathbf{y} | \mathbf{x}) &= \
+\frac{p(\mathbf{y}, \mathbf{x})}{\sum_{y^\prime} p(\mathbf{y^\prime}, \mathbf{x})}
+$$
+
+### CRF from time dependent logistic regression
+
+$$
+$$
+
 ## CRF Training Demo
 
 [github.com/duffau/talks/tree/master/sequence-tagging/demo](https://github.com/duffau/talks/tree/master/sequence-tagging/demo)
+
+### [CRF Suite](https://www.chokkan.org/software/crfsuite/)
+
+::: columns
+
+::: column
+![](static/Naoaki.png)
+:::
+
+::: column
+![](static/crfsuite.png)
+:::
+
+:::
+
+- Published in 2007
+- C++ implementation of CRF training
+- Stable, robust and fast!
 
 ###
 
@@ -261,8 +455,12 @@ Abstract tasks have taken over lower level tasks
 
 ```python
 X = [
-  [{"bias": 1.0, "word": "Anders", ...},..., {"bias": 1.0, "word": "Rome", ...}],
-  ...
+      [
+        {"bias": 1.0, "word": "Anders", ...},
+        ..., 
+        {"bias": 1.0, "word": "Rome", ...}
+      ],
+      ...
 ]
 
 y = [
@@ -285,10 +483,15 @@ Total seconds required for training: 12.497
 ```
 ---
 
+#### Number of features
+
 ```bash
 Number of active features: 24307 (574200)
 Number of active attributes: 17166 (63791)
 Number of active labels: 9 (9)
+
+train n sentence: 14041
+train n tokens:  203621
 ```
 ```python
 # Worst case (all_possible_states=True and all_possible_transitions=True)
@@ -318,6 +521,8 @@ weighted avg       0.87      0.66      0.74      8112
 ```
 ---
 
+#### Transition weights 
+
 ```bash
 Top likely transitions:
 B-PER  -> I-PER   6.683884
@@ -336,6 +541,8 @@ O      -> I-ORG   -7.582135
 
 ---
 
+#### State feature weights 
+
 ```bash
 Top positive state features:
 9.733456 I-MISC   shape:Index
@@ -351,101 +558,37 @@ Top negative state features:
 -6.203149 I-ORG    prev_word:BOS
 -6.461425 I-MISC   prev_word:BOS
 ```
+---
 
-## CRF Theory
-
-
-### CRF Motivation
-
-:::::::::::::: {.columns}
-::: {.column width="50%"}
-![HMM](static/hmm.svg){width=100%}
-:::
-::: {.column width="50%"}
-![CRF](static/crf.svg){width=100%}
-:::
-::::::::::::::
-
-::: incremental
-- *Discriminative* as opposed to *Generative*
-- *Richer* and *Non-independent* word features
-- *Bidirectional* influence from labels
-- Solves the *"label bias"* issue of MEMM
-:::
-
-
-::: notes
-
-- HMM: 
-  - y_t is independent of all previous labels given y_t-1
-  - x_t is independent of all previous labels and obs given y_t
-- MEMM: 
-  - y_t is independent of all previous obs and labels given x_t and y_t-1
-  - x_t is independent of all other x's
-
-- Relaxed sequential Markov assumption
-  - Bidirectional influence from labels 
-- Relax the "tag generates word" assumption
-  - Allows rich word transformations
-- Flexible influence from feature on
-- Relaxed Independence Assumptions
-  - Non-independent features of the entire observation sequence
-
-. Label Bias
-  - MEMM are logistic regression for each state transition given it's current state
-  - State transition with high probability concentration
-  - Leads to little influence from x-features
-  - CRF solves by normalizing over transitions over the whole sequence rather than each step
-
-:::
-
-### Discriminative VS Generative Models
-
-- Generative: $$p(y, \mathbf{x}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})$$
-  - Naive Bayes: $p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$
-- Discriminative: $$p(y | \mathbf{x})$$
-  - Logistic regression: $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$
-
-
-::: notes
-:::
-
-
-### Discriminative VS Generative Models
-
-- Naive Bayes: $$p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$$
-- Logistic regression: $$p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$$
-
-
-### Encoding conditional dependence as DAGs 
-
-![](static/directed-graph.svg){width=30%}
-
-$$
-p(x_1,x_2,x_3) = p(x_1) \, p(x_2 | x_1) \, p(x_3 | x_1, x_2)
-$$
-
-
-
-### CRF probabilistic model
-
-### CRF log-linear parametrization
-
+<section style="font-size: 10px;">
 ### Fitting CRF's
 
-- How to include "high cardinality" features like current `word`
+- Fit with "high cardinality" features like current `word` $$\ell(\theta) = \sum_{t=1}^{T} \log p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right) + c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2$$
 
-$$ \ell(\theta) = \sum_{t=1}^{T} \log p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right)
-+ c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2 $$
+:::columns
 
-- L2 -> Strictly Convex Optimization Problem (given $c_2$)
-- L1 -> Shrinks the parameter space
-- Efficient use of Quasi-Newton optimization
-- Cross Validated selection of $c_1$ and $c_2$ is important
+::: {.column width=20%}
+![](static/l1_l2_reg.svg){width=100%}
+:::
+
+
+::: {.column width=80%}
+
+:::incremental
+* L2: Strictly Convex Optimization
+* Efficient use of Quasi-Newton Methods
+* L1: Shrinks the parameter space
+* Hyperparameter opt. $(c_1,c_2)$
+:::
+:::
+
+::::
 
 ::: notes
 - With L1 use of Orthant-Wise Limited-memory Quasi-Newton
+- Only the linear chain lead to a strictly convex problem
 :::
+</section>
 
 
 ## Performance comparison
@@ -487,8 +630,13 @@ Source: @keraghel2024survey
 
 ### Inference in Transformers
 
-### Speed benchmarks 
 
+### Floating point operations
+
+| Model | Params | Forward FLOPs | Forward MACs |
+ |kamalkraj/bert-base-cased-ner-conll2003 | 108.31 M | 1.01 TFLOPS | 502.84 GMACs | 
+
+### Speed benchmarks 
 
 | Model | Time per token |
 |:-------|--------:|  
@@ -500,6 +648,10 @@ Source: @keraghel2024survey
 
 - CRF's are great at identifying entities which are identified by syntactic and some extent semantic information
 - Quadratic transformers are MUCH MUCH slower, Sub-quadratic transformers are also MUCH slower. The constant in front of n actually matters!
+
+### Good Sources
+
+https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH
 
 ## References {.allowframebreaks}
 ::: {#refs}

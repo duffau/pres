@@ -126,13 +126,13 @@ href="https://duffau.github.io/talks/sequence-tagging">duffau.github.io/talks/se
 </section>
 <section id="section" class="slide level3">
 <h3></h3>
+<h4 id="part-of-speech-pos">Part-of-Speech (POS)</h4>
+<pre class="txt"><code>Jim   worked at    Acme Corp. near the beautiful London Bridge.
+NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS</code></pre>
 <h4 id="named-entity-recognition-ner">Named Entity Recognition
 (NER)</h4>
 <pre class="txt"><code>Jim   worked at    Acme Corp. near the beautiful London Bridge.
 PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS</code></pre>
-<h4 id="part-of-speech-pos">Part-of-Speech (POS)</h4>
-<pre class="txt"><code>Jim   worked at    Acme Corp. near the beautiful London Bridge.
-NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS</code></pre>
 <p><span class="math display">\[\begin{aligned}
 \text{Labels}:\quad \mathbf{y} &amp;= \{y_1, y_2, \ldots, y_T\}\\
 \text{Features}:\quad \mathbf{x} &amp;= \{\mathbf{x}_1, \mathbf{x}_2,
@@ -148,35 +148,56 @@ NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS</code></pre>
 </ul>
 </aside>
 </section>
+<section id="challenges-for-ner" class="slide level3">
+<h3>Challenges for NER</h3>
+<div>
+<ul>
+<li class="fragment"><strong>Challenge 1</strong>: Named entity
+<strong>strings are rare</strong>
+<ul>
+<li class="fragment">Learn entity labels based on context and word
+derived features</li>
+</ul></li>
+<li class="fragment"><strong>Challenge 2</strong>: Neighboring
+named-entity <strong>labels are dependent</strong>
+<ul>
+<li class="fragment">New York -&gt; <code>LOC</code></li>
+<li class="fragment">New York Times -&gt; <code>ORG</code></li>
+</ul></li>
+</ul>
+</div>
+</section>
 <section>
 <section id="evolution-of-nlp-and-sequence-tagging"
 class="title-slide slide level2">
 <h2>Evolution of NLP and Sequence tagging</h2>
 <div class="mermaid">
 <pre>
-%%{init: {'theme': 'forest'}}%%
+%%{init: {'theme': 'forest', 'themeVariables': { 'fontSize': '24px', 'fontFamily': 'Source Sans Pro','cScale0': '#33B0F9', 'cScaleLabel0': '#ffffff',
+              'cScale1': '#237cb0','cScaleLabel1': '#ffffff',
+              'cScale2': '#125f8c', 'cScaleLabel2': '#ffffff'}}}%%
 timeline
-
-    section 1950-1990<br>Knowledge-Based Methods
+    section 1950-1990 Knowledge-Based Methods
         1950s : 1954 IBM-Georgetown machine translation - Sixty Russian sentences translated into English
         1960s : Slow progress in machine translation
               : 1966 ALPAC report leads to defunding of machine translation in the US
         1974-1980 : First AI Winter
 
-    section 1990-2000<br>Statistical Feature-Engineered Methods
+    section 1990-2000 Statistical Feature-Engineered Methods
         Markov models
-          : 1988 First papers using Markov models for PoS tagging
+          : 1988 Markov models for PoS tagging
           : 1996 Maximum Entropy Markov Model (MEMM) published
           : 2001 Conditional Random Fields (CRF) introduced
         Data
+          : 1985 WordNet - Princeton
           : 1993 Penn Treebank Project - 1 mio tokens from WSJ
 
-    section "2010-today<br>Deep Learning-Based Methods"
+    section 2010-today Deep Learning-Based Methods
         Emnbeddings and RNN's
           : 2013 Word Embeddings (Word2Vec, GloVe)
           : 2015 Neural Net Revolution (BiLSTM-CRF)
         Transformers
-           : 2017 "Attention is all you need" <br> Introduction of the Transformer model
+           : 2017 "Attention is all you need" Introduction of the Transformer model
            : 2020 Large-Scale Pre-trained Language Models (GPT-3)
         LLM
            : 2022 LLM's GPT 3.5 and ChatGPT
@@ -185,6 +206,8 @@ timeline
 </div>
 <aside class="notes">
 <ul>
+<li>1954 IBM-Georgtown: “within three or five years, machine translation
+could well be a solved” problem.</li>
 <li>HMM: The first to encode sequential information for PoS</li>
 <li>Rabiner: HMM applied to speech since th 70’s but only widely know in
 “recent years”
@@ -221,8 +244,8 @@ f1</li>
 </ul>
 </aside>
 </section>
-<section id="papers-using-datasets-1" class="slide level3">
-<h3>Papers Using Datasets <sup>1</sup></h3>
+<section id="current-trend-1" class="slide level3">
+<h3>Current Trend <sup>1</sup></h3>
 <div style="height:400px">
 <canvas data-chart="line">
 <!--
@@ -320,10 +343,291 @@ keys.”</li>
 </aside>
 </section></section>
 <section>
+<section id="what-is-a-conditional-random-field"
+class="title-slide slide level2">
+<h2>What is a Conditional Random Field?</h2>
+<div>
+<ul>
+<li class="fragment">Lets have a look at a Hidden Markov Model 😅</li>
+</ul>
+</div>
+</section>
+<section id="hidden-markov-model" class="slide level3">
+<h3>Hidden Markov Model</h3>
+<p><img data-src="static/hmm-cont.svg" style="width:60.0%" /></p>
+<ul>
+<li>Sequential Model:
+<ul>
+<li>Observations: <span class="math inline">\(\mathbf{x} = \{x_1,
+\ldots, x_T\}\)</span></li>
+<li>Hidden states: <span class="math inline">\(\mathbf{y} = \{y_1,
+\ldots, y_T\}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="hidden-markov-model-1" class="slide level3">
+<h3>Hidden Markov Model</h3>
+<p><img data-src="static/hmm-cont.svg" style="width:60.0%" /></p>
+<ul>
+<li><span class="math inline">\(y_t\)</span> are drawn from a set of
+<span class="math inline">\(M\)</span> labels:
+<ul>
+<li>e.g. <code>[O, PER, LOC, ORG]</code></li>
+</ul></li>
+<li><span class="math inline">\(x_t\)</span> represents the word
+identity at step <span class="math inline">\(t\)</span></li>
+</ul>
+</section>
+<section id="hidden-markov-model-2" class="slide level3">
+<h3>Hidden Markov Model</h3>
+<p><img data-src="static/hmm-cont.svg" style="width:60.0%" /></p>
+<ul>
+<li><span class="math inline">\(p(y_t|y_{t-1}, y_{t-2}, \ldots, y_1) =
+p(y_t|y_{t-1})\)</span>
+<ul>
+<li>Label depends only on <em>immediate predecessor</em></li>
+</ul></li>
+<li><span class="math inline">\(x_t\)</span> only depend on <span
+class="math inline">\(y_t\)</span> <span class="math display">\[
+p(\mathbf{y}, \mathbf{x}) = \prod_{t=1}^T p(y_t|y_{t-1})p(x_t|y_t).
+\]</span></li>
+</ul>
+</section>
+<section class="slide level3">
+
+<ul>
+<li>Transition probabilities <span
+class="math inline">\(p(y_t|y_{t-1})\)</span> are <em>constant</em></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PER</th>
+<th>LOC</th>
+<th>ORG</th>
+<th>O</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PER</td>
+<td>0.8</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.18</td>
+</tr>
+<tr>
+<td>LOC</td>
+<td>0.02</td>
+<td>0.65</td>
+<td>0.05</td>
+<td>0.28</td>
+</tr>
+<tr>
+<td>ORG</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.3</td>
+<td>0.68</td>
+</tr>
+<tr>
+<td>O</td>
+<td>0.05</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0.75</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="crf-motivation" class="slide level3">
+<h3>CRF Motivation</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<figure>
+<img data-src="static/hmm.svg" style="width:100.0%" alt="HMM" />
+<figcaption aria-hidden="true">HMM</figcaption>
+</figure>
+</div><div class="column" style="width:50%;">
+<figure>
+<img data-src="static/crf.svg" style="width:100.0%"
+alt="Linear Chain CRF" />
+<figcaption aria-hidden="true">Linear Chain CRF</figcaption>
+</figure>
+</div>
+</div>
+<div>
+<ul>
+<li class="fragment"><em>Discriminative</em> as opposed to
+<em>Generative</em></li>
+<li class="fragment"><em>Richer</em> and <em>overlapping</em> word
+features</li>
+<li class="fragment"><em>Bidirectional</em> influence from labels</li>
+</ul>
+</div>
+<aside class="notes">
+<ul>
+<li>Relax the “tag generates word” assumption
+<ul>
+<li>Allows rich word transformations</li>
+<li>Rare words (e.g. proper names) will not have occurred in the
+training set</li>
+<li>Word identity feature is uninformative</li>
+</ul></li>
+<li>Relaxed sequential Markov assumption
+<ul>
+<li>Bidirectional influence from labels</li>
+<li>Time varying transition probabilities</li>
+</ul></li>
+<li>Relaxed Independence Assumptions
+<ul>
+<li>Non-independent features of the entire observation sequence</li>
+</ul></li>
+</ul>
+<p>. Label Bias - MEMM are logistic regression for each state transition
+given it’s current state - State transition with high probability
+concentration - Leads to little influence from x-features - CRF solves
+by normalizing over transitions over the whole sequence rather than each
+step</p>
+</aside>
+</section>
+<section id="linear-chain-crf-definition" class="slide level3">
+<h3>Linear Chain CRF definition</h3>
+<p><span class="math display">\[
+p(\mathbf{y}|\mathbf{x}) = \frac{1}{Z(\mathbf{x})} \prod_{t=1}^T \exp
+\left( \sum_k \theta_k f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)
+\]</span></p>
+<p>where,</p>
+<ul>
+<li><span class="math inline">\(\theta_k \in \mathbb{R}\)</span></li>
+<li><span class="math inline">\(f_k\)</span> is a real-valued feature
+function</li>
+<li><span class="math inline">\(k\)</span> ranges over transitions <span
+class="math inline">\((i,j)\)</span> and state-observation pairs <span
+class="math inline">\((i,o)\)</span>.</li>
+<li><span class="math inline">\(\mathbf{x}_t\)</span> is a feature
+vector at time <span class="math inline">\(t\)</span></li>
+</ul>
+</section>
+<section id="discriminative-vs-generative" class="slide level3">
+<h3>Discriminative VS Generative</h3>
+<div>
+<ul>
+<li class="fragment">Generative: <span class="math display">\[p(y,
+\mathbf{x}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})\]</span>
+<ul>
+<li class="fragment"><span class="math inline">\(p(\mathbf{x})\)</span>
+is often difficult to model -&gt; Simplifying assumptions</li>
+</ul></li>
+<li class="fragment">Discriminative: <span class="math display">\[p(y |
+\mathbf{x})\]</span>
+<ul>
+<li class="fragment">No need to model <span
+class="math inline">\(p(\mathbf{x})\)</span></li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<ul>
+<li>Generative:: Label vector y can probabilistically “generate” a
+feature vector x
+<ul>
+<li>By modelling p(y, x) = p(y) p(x | y)</li>
+<li>p(x | y) generates the features given the (hidden) labels</li>
+</ul></li>
+<li>Discriminative: How a feature vector x and assign it a label y
+<ul>
+<li>models the “descision rule” directly</li>
+</ul></li>
+<li>Generative models “too much” by specifying p(x)</li>
+<li>Discriminative models perform worse if the generative model is the
+true model</li>
+</ul>
+</aside>
+</section>
+<section id="discriminative-vs-generative-1" class="slide level3">
+<h3>Discriminative VS Generative</h3>
+<ul>
+<li>Generative - Naive Bayes:
+<ul>
+<li><span class="math inline">\(p(y, \mathbf{x}) = p(y;\theta)
+\prod_{i=1}^K p(x_i | y;\theta)\)</span></li>
+<li>Assumes <span class="math inline">\(p(x_i| x_{i+1}, \ldots, x_M, y)
+= p(x_i| y)\)</span></li>
+</ul></li>
+<li>Discriminative - Logistic regression:
+<ul>
+<li><span class="math inline">\(p(y | \mathbf{x};\theta) = 1/(1 +
+e^{\theta^T \mathbf{x}})\)</span></li>
+<li>No assumption on <span
+class="math inline">\(\mathbf{x}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="paths-to-linear-chain-crf" class="slide level3">
+<h3>Paths to Linear Chain CRF</h3>
+<p><img data-src="static/model-relation.png" style="width:40.0%" /></p>
+<div class="footer">
+<p>Illustration: <span class="citation"
+data-cites="sutton2012introduction">Sutton, McCallum, et al.
+(2012)</span></p>
+</div>
+</section>
+<section id="crf-from-hmms-conditional-distribution"
+class="slide level3">
+<h3>CRF from HMM’s conditional distribution</h3>
+<span class="math display">\[\begin{aligned}
+p(\mathbf{y}, \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp
+\left(\sum_{i,j \in S} \theta_{ij} \mathbf{1}_{\{y_t = i\}}
+\mathbf{1}_{\{y_{t-1} = j\}} \right. \\
+\left. + \sum_{i \in S} \sum_{o \in O} \mu_{oi} \mathbf{1}_{\{y_t = i\}}
+\mathbf{1}_{\{x_t = o\}}\right)\\
+\end{aligned}\]</span>
+<span class="math display">\[\begin{aligned}
+\theta_{ij} &amp;= \log p(y^\prime=i|y=j)\quad \text{transition prob.}
+\\
+\mu_{oi} &amp;= \log p(x=o | y=i)\quad \text{word give label prob.} \\
+Z &amp;= 1
+\end{aligned}\]</span>
+</section>
+<section id="crf-from-hmms-conditional-distribution-1"
+class="slide level3">
+<h3>CRF from HMM’s conditional distribution</h3>
+<p><span class="math display">\[
+\begin{aligned}
+p(\mathbf{y} | \mathbf{x}) &amp;= \
+\frac{p(\mathbf{y}, \mathbf{x})}{\sum_{y^\prime} p(\mathbf{y^\prime},
+\mathbf{x})}
+\]</span></p>
+</section>
+<section id="crf-from-time-dependent-logistic-regression"
+class="slide level3">
+<h3>CRF from time dependent logistic regression</h3>
+<p><span class="math display">\[
+\]</span></p>
+</section></section>
+<section>
 <section id="crf-training-demo" class="title-slide slide level2">
 <h2>CRF Training Demo</h2>
 <p><a
 href="https://github.com/duffau/talks/tree/master/sequence-tagging/demo">github.com/duffau/talks/tree/master/sequence-tagging/demo</a></p>
+</section>
+<section id="crf-suite" class="slide level3">
+<h3><a href="https://www.chokkan.org/software/crfsuite/">CRF
+Suite</a></h3>
+<div class="columns">
+<div class="column">
+<p><img data-src="static/Naoaki.png" /></p>
+</div><div class="column">
+<p><img data-src="static/crfsuite.png" /></p>
+</div>
+</div>
+<ul>
+<li>Published in 2007</li>
+<li>C++ implementation of CRF training</li>
+<li>Stable, robust and fast!</li>
+</ul>
 </section>
 <section id="section-1" class="slide level3">
 <h3></h3>
@@ -371,8 +675,12 @@ data-endAt="28"><code>def load_X_y(dataset_id=&quot;eriktks/conll2003&quot;, spl
 <section class="slide level3">
 
 <pre class="python"><code>X = [
-  [{&quot;bias&quot;: 1.0, &quot;word&quot;: &quot;Anders&quot;, ...},..., {&quot;bias&quot;: 1.0, &quot;word&quot;: &quot;Rome&quot;, ...}],
-  ...
+      [
+        {&quot;bias&quot;: 1.0, &quot;word&quot;: &quot;Anders&quot;, ...},
+        ..., 
+        {&quot;bias&quot;: 1.0, &quot;word&quot;: &quot;Rome&quot;, ...}
+      ],
+      ...
 ]
 
 y = [
@@ -405,9 +713,13 @@ Total seconds required for training: 12.497</code></pre>
 </section>
 <section class="slide level3">
 
+<h4 id="number-of-features">Number of features</h4>
 <pre class="bash"><code>Number of active features: 24307 (574200)
 Number of active attributes: 17166 (63791)
-Number of active labels: 9 (9)</code></pre>
+Number of active labels: 9 (9)
+
+train n sentence: 14041
+train n tokens:  203621</code></pre>
 <pre class="python"><code># Worst case (all_possible_states=True and all_possible_transitions=True)
 features = (number of attributes * number of labels) 
            + (number of labels * number of labels)</code></pre>
@@ -436,6 +748,7 @@ weighted avg       0.87      0.66      0.74      8112</code></pre>
 </section>
 <section class="slide level3">
 
+<h4 id="transition-weights">Transition weights</h4>
 <pre class="bash"><code>Top likely transitions:
 B-PER  -&gt; I-PER   6.683884
 B-ORG  -&gt; I-ORG   5.801057
@@ -452,6 +765,7 @@ O      -&gt; I-ORG   -7.582135</code></pre>
 </section>
 <section class="slide level3">
 
+<h4 id="state-feature-weights">State feature weights</h4>
 <pre class="bash"><code>Top positive state features:
 9.733456 I-MISC   shape:Index
 8.026899 I-ORG    shape:Newsroom
@@ -465,138 +779,41 @@ Top negative state features:
 -5.093323 I-LOC    prev_word:BOS
 -6.203149 I-ORG    prev_word:BOS
 -6.461425 I-MISC   prev_word:BOS</code></pre>
-</section></section>
-<section>
-<section id="crf-theory" class="title-slide slide level2">
-<h2>CRF Theory</h2>
+</section>
+<section class="slide level3">
 
-</section>
-<section id="crf-motivation" class="slide level3">
-<h3>CRF Motivation</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<figure>
-<img data-src="static/hmm.svg" style="width:100.0%" alt="HMM" />
-<figcaption aria-hidden="true">HMM</figcaption>
-</figure>
-</div><div class="column" style="width:50%;">
-<figure>
-<img data-src="static/crf.svg" style="width:100.0%" alt="CRF" />
-<figcaption aria-hidden="true">CRF</figcaption>
-</figure>
-</div>
-</div>
-<div>
-<ul>
-<li class="fragment"><em>Discriminative</em> as opposed to
-<em>Generative</em></li>
-<li class="fragment"><em>Richer</em> and <em>Non-independent</em> word
-features</li>
-<li class="fragment"><em>Bidirectional</em> influence from labels</li>
-<li class="fragment">Solves the <em>“label bias”</em> issue of MEMM</li>
-</ul>
-</div>
-<aside class="notes">
-<ul>
-<li>HMM:
-<ul>
-<li>y_t is independent of all previous labels given y_t-1</li>
-<li>x_t is independent of all previous labels and obs given y_t</li>
-</ul></li>
-<li>MEMM:
-<ul>
-<li>y_t is independent of all previous obs and labels given x_t and
-y_t-1</li>
-<li>x_t is independent of all other x’s</li>
-</ul></li>
-<li>Relaxed sequential Markov assumption
-<ul>
-<li>Bidirectional influence from labels</li>
-</ul></li>
-<li>Relax the “tag generates word” assumption
-<ul>
-<li>Allows rich word transformations</li>
-</ul></li>
-<li>Flexible influence from feature on</li>
-<li>Relaxed Independence Assumptions
-<ul>
-<li>Non-independent features of the entire observation sequence</li>
-</ul></li>
-</ul>
-<p>. Label Bias - MEMM are logistic regression for each state transition
-given it’s current state - State transition with high probability
-concentration - Leads to little influence from x-features - CRF solves
-by normalizing over transitions over the whole sequence rather than each
-step</p>
-</aside>
-</section>
-<section id="discriminative-vs-generative-models" class="slide level3">
-<h3>Discriminative VS Generative Models</h3>
-<ul>
-<li>Generative: <span class="math display">\[p(y, \mathbf{x}) =
-p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})\]</span>
-<ul>
-<li>Naive Bayes: <span class="math inline">\(p(y, \mathbf{x}) =
-p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)\)</span></li>
-</ul></li>
-<li>Discriminative: <span class="math display">\[p(y |
-\mathbf{x})\]</span>
-<ul>
-<li>Logistic regression: <span class="math inline">\(p(y |
-\mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})\)</span></li>
-</ul></li>
-</ul>
-<aside class="notes">
-
-</aside>
-</section>
-<section id="discriminative-vs-generative-models-1"
-class="slide level3">
-<h3>Discriminative VS Generative Models</h3>
-<ul>
-<li>Naive Bayes: <span class="math display">\[p(y, \mathbf{x}) =
-p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)\]</span></li>
-<li>Logistic regression: <span class="math display">\[p(y |
-\mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})\]</span></li>
-</ul>
-</section>
-<section id="encoding-conditional-dependence-as-dags"
-class="slide level3">
-<h3>Encoding conditional dependence as DAGs</h3>
-<p><img data-src="static/directed-graph.svg" style="width:30.0%" /></p>
-<p><span class="math display">\[
-p(x_1,x_2,x_3) = p(x_1) \, p(x_2 | x_1) \, p(x_3 | x_1, x_2)
-\]</span></p>
-</section>
-<section id="crf-probabilistic-model" class="slide level3">
-<h3>CRF probabilistic model</h3>
-</section>
-<section id="crf-log-linear-parametrization" class="slide level3">
-<h3>CRF log-linear parametrization</h3>
+<section style="font-size: 10px;">
 </section>
 <section id="fitting-crfs" class="slide level3">
 <h3>Fitting CRF’s</h3>
 <ul>
-<li>How to include “high cardinality” features like current
-<code>word</code></li>
+<li>Fit with “high cardinality” features like current <code>word</code>
+<span class="math display">\[\ell(\theta) = \sum_{t=1}^{T} \log
+p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right) + c_1 \lVert
+\theta \rVert_1 + c_2 \lVert \theta \rVert_2\]</span></li>
 </ul>
-<p><span class="math display">\[ \ell(\theta) = \sum_{t=1}^{T} \log
-p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right)
-+ c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2 \]</span></p>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><img data-src="static/l1_l2_reg.svg" style="width:100.0%" /></p>
+</div><div class="column" style="width:80%;">
+<div>
 <ul>
-<li>L2 -&gt; Strictly Convex Optimization Problem (given <span
-class="math inline">\(c_2\)</span>)</li>
-<li>L1 -&gt; Shrinks the parameter space</li>
-<li>Efficient use of Quasi-Newton optimization</li>
-<li>Cross Validated selection of <span
-class="math inline">\(c_1\)</span> and <span
-class="math inline">\(c_2\)</span> is important</li>
+<li class="fragment">L2: Strictly Convex Optimization</li>
+<li class="fragment">Efficient use of Quasi-Newton Methods</li>
+<li class="fragment">L1: Shrinks the parameter space</li>
+<li class="fragment">Hyperparameter opt. <span
+class="math inline">\((c_1,c_2)\)</span></li>
 </ul>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>With L1 use of Orthant-Wise Limited-memory Quasi-Newton</li>
+<li>Only the linear chain lead to a strictly convex problem</li>
 </ul>
 </aside>
+</section>
 </section></section>
 <section id="performance-comparison" class="title-slide slide level2">
 <h2>Performance comparison</h2>
@@ -731,6 +948,12 @@ class="math inline">\(O(2^n)\)</span></li>
 <section id="inference-in-transformers" class="slide level3">
 <h3>Inference in Transformers</h3>
 </section>
+<section id="floating-point-operations" class="slide level3">
+<h3>Floating point operations</h3>
+<div class="line-block">Model | Params | Forward FLOPs | Forward MACs |
+|kamalkraj/bert-base-cased-ner-conll2003 | 108.31 M | 1.01 TFLOPS |
+502.84 GMACs |</div>
+</section>
 <section id="speed-benchmarks" class="slide level3">
 <h3>Speed benchmarks</h3>
 <table>
@@ -765,6 +988,10 @@ syntactic and some extent semantic information</li>
 transformers are also MUCH slower. The constant in front of n actually
 matters!</li>
 </ul>
+</section>
+<section id="good-sources" class="slide level3">
+<h3>Good Sources</h3>
+<p>https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH</p>
 </section></section>
 <section id="references"
 class="title-slide slide level2 allowframebreaks">
@@ -775,6 +1002,11 @@ data-entry-spacing="0" role="list">
 Keraghel, Imed, Stanislas Morbieu, and Mohamed Nadif. 2024. <span>“A
 Survey on Recent Advances in Named Entity Recognition.”</span> <em>arXiv
 Preprint arXiv:2401.10825</em>.
+</div>
+<div id="ref-sutton2012introduction" class="csl-entry" role="listitem">
+Sutton, Charles, Andrew McCallum, et al. 2012. <span>“An Introduction to
+Conditional Random Fields.”</span> <em>Foundations and
+Trends<span></span> in Machine Learning</em> 4 (4): 267–373.
 </div>
 </div>
 </section>
