@@ -713,12 +713,6 @@ Source: @keraghel2024survey
 
 - Naive implementation: $O(M^T)$
 
-### Computing the partition function
-
-\begin{aligned}
-Z(X) = \sum_{\mathbf{y}} \exp \left( \sum_{t=1}^T  \sum_k \theta_k f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)
-\end{aligned}
-
 
 ### Inference in Transformers
 
