@@ -62,10 +62,10 @@
 <path style="fill:none;stroke-width:0.79701;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:10;" d="M 24.980313 33.753531 L 32.827969 37.679312 " transform="matrix(1,0,0,-1,10.84,53.359)"/>
 <path style="fill:none;stroke-width:0.79701;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:10;" d="M 21.261563 28.175406 L 21.261563 10.839469 " transform="matrix(1,0,0,-1,10.84,53.359)"/>
 <g style="fill:rgb(100%,100%,100%);fill-opacity:1;">
-  <use xlink:href="#glyph0-2" x="26.623" y="15.809"/>
+  <use xlink:href="#glyph0-2" x="26.623" y="11.824"/>
 </g>
 <g style="fill:rgb(100%,100%,100%);fill-opacity:1;">
-  <use xlink:href="#glyph1-1" x="33.112" y="17.304"/>
+  <use xlink:href="#glyph1-1" x="33.112" y="13.319"/>
 </g>
 </g>
 </svg>

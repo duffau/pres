@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.5, node distance=2cm, every node/.style={circle, draw=white, text=white, minimum size=1cm, thick}, every path/.style={thick, white}]
+
+    % Nodes
+    \node[circle, draw=white] (yt1) {$y_1$};
+    \node[circle, draw=white, right of=yt1] (yt) {$y_2$};  % Add spacing here with xshift
+    \node[circle, draw=white, right of=yt, xshift=1cm] (yT1) {$y_{T-1}$};  % Add more spacing
+    \node[circle, draw=white, right of=yT1] (yT) {$y_{T}$};  % Add more spacing
+    
+    \node[circle, draw=white, fill=gray!50, below of=yt1] (xt1) {$x_1$};
+    \node[circle, draw=white, fill=gray!50, below of=yt] (xt) {$x_2$};
+    \node[circle, draw=white, fill=gray!50, below of=yT1] (xT1) {$x_{T-1}$};
+    \node[circle, draw=white, fill=gray!50, below of=yT] (xT) {$x_{T}$};
+    
+    % Edges with filled squares
+    \draw (yt1) -- ($(yt1)!0.5!(yt)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (yt);
+    \draw (yt1) -- ($(yt1)!0.5!(xt1)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (xt1);
+    \draw (yt) -- ($(yt)!0.5!(xt)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (xt);
+    \draw (yT1) -- ($(yT1)!0.5!(xT1)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (xT1);
+    \draw (yT1) -- ($(yT1)!0.5!(yT)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (yT);
+    \draw (yT) -- ($(yT)!0.5!(xT)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (xT);
+
+
+    % Ellipsis for continuation
+    \node[draw=none, fill=none] at ($(yt)!0.5!(yT1)$) {$\dots$};  % Three dots between yt and ytp1
+    \node[draw=none, fill=none] at ($(xt)!0.5!(xT1)$) {$\dots$};  % Three dots between xt and xtp1
+
+\end{tikzpicture}
+
+\end{document}

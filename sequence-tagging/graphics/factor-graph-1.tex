@@ -16,9 +16,9 @@
     \draw[white] (a) -- ($(a)!0.5!(c)$) node[rectangle,fill=white,draw=white,minimum size=6pt] {} -- (c);
 
     % psi labels next to the squares
-    \node[above] at ($(a)!0.5!(b)$) {$\psi_1$};
-    \node[left] at ($(a)!0.5!(c)$) {$\psi_2$};
-    \node[right] at ($(b)!0.5!(c)$) {$\psi_3$};
+    \node[above,yshift=4pt] at ($(a)!0.5!(b)$) {$\psi_1$};
+    \node[left, xshift=-4pt] at ($(a)!0.5!(c)$) {$\psi_2$};
+    \node[right, xshift=4pt] at ($(b)!0.5!(c)$) {$\psi_3$};
 
 \end{tikzpicture}
 

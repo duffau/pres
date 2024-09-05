@@ -61,16 +61,16 @@ The price of the [Pizza Margherita] is [10 dollars].
 ```
 
 ###  
-#### Named Entity Recognition (NER) 
-```txt
-Jim   worked at    Acme Corp. near the beautiful London Bridge.
-PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS
-```
-
 #### Part-of-Speech (POS)
 ```txt
 Jim   worked at    Acme Corp. near the beautiful London Bridge.
 NOUN  VERB   PREP  NOUN NOUN  PREP DET ADJ       NOUN   NOUN  EOS
+```
+
+#### Named Entity Recognition (NER) 
+```txt
+Jim   worked at    Acme Corp. near the beautiful London Bridge.
+PER   O      O     ORG  ORG   O    O   O         LOC    LOC   EOS
 ```
 
 $$\begin{aligned}
@@ -82,6 +82,16 @@ $$\begin{aligned}
 - Emphasis on sequential dependencies on labels
 - Mention the tag types
   - NER: "O", "PER", "LOC", "ORG"
+:::
+
+### Challenges for NER
+
+:::incremental
+- **Challenge 1**: Named entity **strings are rare**
+  - Learn entity labels based on context and word derived features
+- **Challenge 2**: Neighboring named-entity **labels are dependent**
+  - New York -> `LOC` 
+  - New York Times -> `ORG`
 :::
 
 ## Evolution of NLP and Sequence tagging 
@@ -146,7 +156,7 @@ timeline
 :::
 
 
-### Papers Using Datasets ^1^
+### Current Trend ^1^
 
 <div style="height:400px">
 <canvas data-chart="line">
@@ -235,6 +245,48 @@ Abstract tasks have taken over lower level tasks
 
 ## What is a Conditional Random Field?
 
+:::incremental
+- Lets have a look at a Hidden Markov Model 😅
+::: 
+
+### Hidden Markov Model
+
+![](static/hmm-cont.svg){width=60%}
+
+- Sequential Model: 
+  - Observations: $\mathbf{x} = \{x_1, \ldots, x_T\}$
+  - Hidden states: $\mathbf{y} = \{y_1, \ldots, y_T\}$ 
+
+### Hidden Markov Model
+
+![](static/hmm-cont.svg){width=60%}
+
+- $y_t$ are drawn from a set of $M$ labels: 
+  - e.g. `[O, PER, LOC, ORG]` 
+- $x_t$ represents the word identity at step $t$ 
+
+### Hidden Markov Model
+
+![](static/hmm-cont.svg){width=60%}
+
+
+
+- $p(y_t|y_{t-1}, y_{t-2}, \ldots, y_1) = p(y_t|y_{t-1})$
+  - Label depends only on *immediate predecessor* 
+- $x_t$ only depend on $y_t$ $$
+p(\mathbf{y}, \mathbf{x}) = \prod_{t=1}^T p(y_t|y_{t-1})p(x_t|y_t).
+$$
+
+---
+
+- Transition probabilities $p(y_t|y_{t-1})$ are *constant*
+
+|     | PER | LOC | ORG | O |
+|-----|-----|-----|-----|---|
+| PER | 0.8 | 0.01| 0.01| 0.18 |
+| LOC | 0.02| 0.65 | 0.05 | 0.28 |
+| ORG | 0.01 | 0.01 | 0.3 | 0.68 |
+| O   | 0.05 | 0.1 | 0.1 | 0.75 |
 
 ### CRF Motivation
 
@@ -243,32 +295,26 @@ Abstract tasks have taken over lower level tasks
 ![HMM](static/hmm.svg){width=100%}
 :::
 ::: {.column width="50%"}
-![CRF](static/crf.svg){width=100%}
+![Linear Chain CRF](static/crf.svg){width=100%}
 :::
 ::::::::::::::
 
 ::: incremental
 - *Discriminative* as opposed to *Generative*
-- *Richer* and *Non-independent* word features
+- *Richer* and *overlapping* word features
 - *Bidirectional* influence from labels
-- Solves the *"label bias"* issue of MEMM
 :::
 
 
 ::: notes
-
-- HMM: 
-  - y_t is independent of all previous labels given y_t-1
-  - x_t is independent of all previous labels and obs given y_t
-- MEMM: 
-  - y_t is independent of all previous obs and labels given x_t and y_t-1
-  - x_t is independent of all other x's
-
-- Relaxed sequential Markov assumption
-  - Bidirectional influence from labels 
 - Relax the "tag generates word" assumption
   - Allows rich word transformations
-- Flexible influence from feature on
+  - Rare words (e.g. proper names) will not have occurred in the training set
+  - Word identity feature is uninformative
+- Relaxed sequential Markov assumption
+  - Bidirectional influence from labels
+  - Time varying transition probabilities 
+
 - Relaxed Independence Assumptions
   - Non-independent features of the entire observation sequence
 
@@ -277,44 +323,110 @@ Abstract tasks have taken over lower level tasks
   - State transition with high probability concentration
   - Leads to little influence from x-features
   - CRF solves by normalizing over transitions over the whole sequence rather than each step
-
 :::
 
-### Discriminative VS Generative Models
+### Linear Chain CRF definition
+
+$$
+p(\mathbf{y}|\mathbf{x}) = \frac{1}{Z(\mathbf{x})} \prod_{t=1}^T \exp \left( \sum_k \theta_k f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)
+$$
+
+where,
+
+- $\theta_k \in \mathbb{R}$
+- $f_k$ is a real-valued feature function
+- $k$ ranges over transitions $(i,j)$ and state-observation pairs $(i,o)$.
+- $\mathbf{x}_t$ is a feature vector at time $t$
+
+### Discriminative VS Generative
+
+::: incremental
 
 - Generative: $$p(y, \mathbf{x}) = p(\mathbf{y} \vert \mathbf{x})p(\mathbf{x})$$
-  - Naive Bayes: $p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$
+  - $p(\mathbf{x})$ is often difficult to model -> Simplifying assumptions
 - Discriminative: $$p(y | \mathbf{x})$$
-  - Logistic regression: $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$
+  - No need to model $p(\mathbf{x})$
 
-
-::: notes
 :::
 
+::: notes
+- Generative:: Label vector y can probabilistically “generate” a feature vector x
+  - By modelling p(y, x) = p(y) p(x | y)
+  - p(x | y) generates the features given the (hidden) labels
+- Discriminative: How a feature vector x and assign it a label y
+  -  models the "descision rule" directly
+- Generative models "too much" by specifying p(x)
+- Discriminative models perform worse if the generative model is the true model 
+:::
 
-### Discriminative VS Generative Models
+### Discriminative VS Generative
 
-- Naive Bayes: $$p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$$
-- Logistic regression: $$p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$$
+- Generative - Naive Bayes: 
+  - $p(y, \mathbf{x}) = p(y;\theta) \prod_{i=1}^K p(x_i | y;\theta)$
+  - Assumes $p(x_i| x_{i+1}, \ldots, x_M, y) = p(x_i| y)$
+- Discriminative - Logistic regression: 
+  - $p(y | \mathbf{x};\theta) = 1/(1 + e^{\theta^T \mathbf{x}})$
+  - No assumption on $\mathbf{x}$
 
 
-### Encoding conditional dependence as DAGs 
 
-![](static/directed-graph.svg){width=30%}
+### Paths to Linear Chain CRF
+
+![](static/model-relation.png){width=40%}
+
+::: footer
+Illustration: @sutton2012introduction
+:::
+
+### CRF from HMM's conditional distribution
+
+
+\begin{aligned}
+p(\mathbf{y}, \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp \left(\sum_{i,j \in S} \theta_{ij} \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{y_{t-1} = j\}} \right. \\
+\left. + \sum_{i \in S} \sum_{o \in O} \mu_{oi} \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{x_t = o\}}\right)\\
+\end{aligned}
+
+\begin{aligned}
+\theta_{ij} &= \log p(y^\prime=i|y=j)\quad \text{transition prob.} \\
+\mu_{oi} &= \log p(x=o | y=i)\quad \text{word give label prob.} \\
+Z &= 1
+\end{aligned}
+
+
+### CRF from HMM's conditional distribution
 
 $$
-p(x_1,x_2,x_3) = p(x_1) \, p(x_2 | x_1) \, p(x_3 | x_1, x_2)
+\begin{aligned}
+p(\mathbf{y} | \mathbf{x}) &= \
+\frac{p(\mathbf{y}, \mathbf{x})}{\sum_{y^\prime} p(\mathbf{y^\prime}, \mathbf{x})}
 $$
 
+### CRF from time dependent logistic regression
 
-
-### CRF probabilistic model
-
-### CRF log-linear parametrization
+$$
+$$
 
 ## CRF Training Demo
 
 [github.com/duffau/talks/tree/master/sequence-tagging/demo](https://github.com/duffau/talks/tree/master/sequence-tagging/demo)
+
+### [CRF Suite](https://www.chokkan.org/software/crfsuite/)
+
+::: columns
+
+::: column
+![](static/Naoaki.png)
+:::
+
+::: column
+![](static/crfsuite.png)
+:::
+
+:::
+
+- Published in 2007
+- C++ implementation of CRF training
+- Stable, robust and fast!
 
 ###
 
@@ -343,8 +455,12 @@ $$
 
 ```python
 X = [
-  [{"bias": 1.0, "word": "Anders", ...},..., {"bias": 1.0, "word": "Rome", ...}],
-  ...
+      [
+        {"bias": 1.0, "word": "Anders", ...},
+        ..., 
+        {"bias": 1.0, "word": "Rome", ...}
+      ],
+      ...
 ]
 
 y = [
@@ -367,10 +483,15 @@ Total seconds required for training: 12.497
 ```
 ---
 
+#### Number of features
+
 ```bash
 Number of active features: 24307 (574200)
 Number of active attributes: 17166 (63791)
 Number of active labels: 9 (9)
+
+train n sentence: 14041
+train n tokens:  203621
 ```
 ```python
 # Worst case (all_possible_states=True and all_possible_transitions=True)
@@ -400,6 +521,8 @@ weighted avg       0.87      0.66      0.74      8112
 ```
 ---
 
+#### Transition weights 
+
 ```bash
 Top likely transitions:
 B-PER  -> I-PER   6.683884
@@ -418,6 +541,8 @@ O      -> I-ORG   -7.582135
 
 ---
 
+#### State feature weights 
+
 ```bash
 Top positive state features:
 9.733456 I-MISC   shape:Index
@@ -433,24 +558,37 @@ Top negative state features:
 -6.203149 I-ORG    prev_word:BOS
 -6.461425 I-MISC   prev_word:BOS
 ```
+---
 
-
+<section style="font-size: 10px;">
 ### Fitting CRF's
 
-- How to include "high cardinality" features like current `word`
+- Fit with "high cardinality" features like current `word` $$\ell(\theta) = \sum_{t=1}^{T} \log p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right) + c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2$$
 
-$$ \ell(\theta) = \sum_{t=1}^{T} \log p\left(\mathbf{y}_t \mid \mathbf{x}_t ; \theta\right)
-+ c_1 \lVert \theta \rVert_1 + c_2 \lVert \theta \rVert_2 $$
+:::columns
 
-- L2 -> Strictly Convex Optimization Problem (given $c_2$)
-- L1 -> Shrinks the parameter space
-- Efficient use of Quasi-Newton optimization
-- Cross Validated selection of $c_1$ and $c_2$ is important
+::: {.column width=20%}
+![](static/l1_l2_reg.svg){width=100%}
+:::
+
+
+::: {.column width=80%}
+
+:::incremental
+* L2: Strictly Convex Optimization
+* Efficient use of Quasi-Newton Methods
+* L1: Shrinks the parameter space
+* Hyperparameter opt. $(c_1,c_2)$
+:::
+:::
+
+::::
 
 ::: notes
 - With L1 use of Orthant-Wise Limited-memory Quasi-Newton
 - Only the linear chain lead to a strictly convex problem
 :::
+</section>
 
 
 ## Performance comparison
@@ -492,8 +630,13 @@ Source: @keraghel2024survey
 
 ### Inference in Transformers
 
-### Speed benchmarks 
 
+### Floating point operations
+
+| Model | Params | Forward FLOPs | Forward MACs |
+ |kamalkraj/bert-base-cased-ner-conll2003 | 108.31 M | 1.01 TFLOPS | 502.84 GMACs | 
+
+### Speed benchmarks 
 
 | Model | Time per token |
 |:-------|--------:|  
@@ -505,6 +648,10 @@ Source: @keraghel2024survey
 
 - CRF's are great at identifying entities which are identified by syntactic and some extent semantic information
 - Quadratic transformers are MUCH MUCH slower, Sub-quadratic transformers are also MUCH slower. The constant in front of n actually matters!
+
+### Good Sources
+
+https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH
 
 ## References {.allowframebreaks}
 ::: {#refs}
