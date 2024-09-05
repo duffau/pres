@@ -574,15 +574,16 @@ data-cites="sutton2012introduction">Sutton, McCallum, et al.
 (2012)</span></p>
 </div>
 </section>
-<section id="crf-from-hmms-conditional-distribution"
-class="slide level3">
-<h3>CRF from HMM’s conditional distribution</h3>
+<section id="crf-from-hmms-cond.-distribution" class="slide level3">
+<h3>CRF from HMM’s cond. distribution</h3>
+<div class="custom-medium">
 <span class="math display">\[\begin{aligned}
-p(\mathbf{y}, \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp
-\left(\sum_{i,j \in S} \theta_{ij} \mathbf{1}_{\{y_t = i\}}
-\mathbf{1}_{\{y_{t-1} = j\}} \right. \\
-\left. + \sum_{i \in S} \sum_{o \in O} \mu_{oi} \mathbf{1}_{\{y_t = i\}}
-\mathbf{1}_{\{x_t = o\}}\right)\\
+p(\mathbf{y}, \mathbf{x}) &amp;= \prod_{t=1}^T p(y_t|y_{t-1})p(x_t|y_t)
+\\
+&amp;= \frac{1}{Z} \prod_{t=1}^{T} \exp (\sum_{i,j \in S} \theta_{ij}
+\mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{y_{t-1} = j\}} \\
+&amp;+ \sum_{i \in S} \sum_{o \in O} \mu_{oi} \mathbf{1}_{\{y_t = i\}}
+\mathbf{1}_{\{x_t = o\}})\\
 \end{aligned}\]</span>
 <span class="math display">\[\begin{aligned}
 \theta_{ij} &amp;= \log p(y^\prime=i|y=j)\quad \text{transition prob.}
@@ -590,22 +591,81 @@ p(\mathbf{y}, \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp
 \mu_{oi} &amp;= \log p(x=o | y=i)\quad \text{word give label prob.} \\
 Z &amp;= 1
 \end{aligned}\]</span>
+</div>
+<aside class="notes">
+<ul>
+<li>Every homogeneous HMM can be written on this form</li>
+<li>Every distribution which factorizes as above is a HMM</li>
+</ul>
+</aside>
 </section>
-<section id="crf-from-hmms-conditional-distribution-1"
-class="slide level3">
-<h3>CRF from HMM’s conditional distribution</h3>
-<p><span class="math display">\[
-\begin{aligned}
-p(\mathbf{y} | \mathbf{x}) &amp;= \
-\frac{p(\mathbf{y}, \mathbf{x})}{\sum_{y^\prime} p(\mathbf{y^\prime},
-\mathbf{x})}
-\]</span></p>
+<section id="crf-from-hmms-cond.-distribution-1" class="slide level3">
+<h3>CRF from HMM’s cond. distribution</h3>
+<div class="custom-medium">
+We introduce feature functions:
+<span class="math display">\[\begin{aligned}
+f_{ij}(y, y^\prime, x) &amp;= f_{ij}(y, y^\prime) = \mathbf{1}_{\{y_t =
+i\}} \mathbf{1}_{\{y_{t-1} = j\}} \\
+f_{io}(y, y^\prime, x) &amp;= f_{io}(y, x) = \mathbf{1}_{\{y_t = i\}}
+\mathbf{1}_{\{x_t = o\}}
+\end{aligned}\]</span>
+<p><span class="math inline">\(f_k\)</span> indexes over all <span
+class="math inline">\(f_{io}\)</span> and <span
+class="math inline">\(f_{ij}\)</span></p>
+<span class="math display">\[\begin{aligned}
+p(\mathbf{y} , \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp \left(
+\sum_{k=1}^K \theta_k f_k(y_t, y_{t-1}, x_t) \right)
+\end{aligned}\]</span>
+</div>
 </section>
-<section id="crf-from-time-dependent-logistic-regression"
-class="slide level3">
-<h3>CRF from time dependent logistic regression</h3>
-<p><span class="math display">\[
-\]</span></p>
+<section id="crf-from-hmms-cond.-distribution-2" class="slide level3">
+<h3>CRF from HMM’s cond. distribution</h3>
+<div class="custom-medium">
+<span class="math display">\[\begin{aligned}
+p(\mathbf{y} | \mathbf{x}) = \frac{\prod_{t=1}^{T} \exp \left(
+\sum_{k=1}^K \theta_k f_k(y_t, y_{t-1}, x_t)
+\right)}{\sum_{\mathbf{y}^\prime} \prod_{t=1}^{T} \exp \left(
+\sum_{k=1}^K \theta_k f_k(y_t, y_{t-1}, x_t) \right)}
+\end{aligned}\]</span>
+<div>
+<ul>
+<li class="fragment">The above is a CRF factorization 🎉</li>
+<li class="fragment">But is restricted in two major ways:
+<ul>
+<li class="fragment">Indicator only feature functions</li>
+<li class="fragment">Only the current word identity <span
+class="math inline">\(x_t\)</span> enters the model</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Take away</strong>: HMM’s are CRF’s but with (much) more
+restricted feature functions</p>
+</div>
+</section>
+<section id="crf-from-logistic-regression" class="slide level3">
+<h3>CRF from logistic regression</h3>
+<span class="math display">\[\begin{aligned}
+p(\mathbf{y} | \mathbf{x})_{logistic} &amp;= \prod_{t=1}^{T} p(y_t |
+\mathbf{x}_t)
+= \prod_{t=1}^{T} \frac{\exp (\theta_y + \sum_k \theta_{y,k} x_k) }{
+\sum_{y^\prime} \exp (\theta_{y^\prime} + \sum_k \theta_{y^\prime,k}
+x_k)} \\
+&amp;= \frac{1}{Z(\mathbf{x})} \prod_{t=1}^{T} \exp (\theta_y + \sum_k
+\theta_{y,k} x_k) \\
+&amp;= \frac{1}{Z(\mathbf{x})} \prod_{t=1}^{T} \exp (\sum_{k}
+\theta_{y,k} f_{k}(x_k, y_t))
+\end{aligned}\]</span>
+</section>
+<section id="crf-from-logistic-regression-1" class="slide level3">
+<h3>CRF from logistic regression</h3>
+Adding transitions matrix
+<span class="math display">\[\begin{aligned}
+p(\mathbf{y} | \mathbf{x})_{CRF} &amp;= \frac{1}{Z(\mathbf{x})}
+\prod_{t=1}^{T} \exp (\sum_{k} \theta_{y,k} f_{k}(x_k, y_t) +
+V_{y_{t-1},y_{t}})
+\end{aligned}\]</span>
 </section></section>
 <section>
 <section id="crf-training-demo" class="title-slide slide level2">
@@ -991,7 +1051,10 @@ entities in noisy text.”</li>
 <p><img data-src="static/info_pyramid.svg" /></p>
 <ul>
 <li>CRF does not have semantic information e.g. embeddings</li>
-<li>CRF feature cannot generalize to unseen words or word contexts</li>
+<li>CRF features cannot generalize to unseen words or word contexts
+based on local</li>
+<li>CRF are just linear machines, no chance of extrapolating abstract
+information</li>
 </ul>
 </section></section>
 <section>
@@ -1013,11 +1076,24 @@ class="math inline">\(\text{if} \quad f(n) \leq C\cdot n \qquad
 </section>
 <section id="inference-in-crf" class="slide level3">
 <h3>Inference in CRF</h3>
-<p><img data-src="static/trellis.png" style="width:40.0%" /></p>
+<ul>
+<li>Partition function is a sum over all possible labeling <span
+class="math display">\[ Z(X) = \sum_{y_1}\sum_{y_2}\ldots\sum_{y_T}
+\prod_{t=1}^T \exp \left( \sum_k \theta_k f_k(y_t, y_{t-1},
+\mathbf{x}_t) \right)\]</span></li>
+</ul>
+<p><img data-src="static/trellis.svg" style="width:50.0%" /></p>
 <ul>
 <li>Naive implementation: <span
-class="math inline">\(O(2^n)\)</span></li>
+class="math inline">\(O(M^T)\)</span></li>
 </ul>
+</section>
+<section id="computing-the-partition-function" class="slide level3">
+<h3>Computing the partition function</h3>
+<span class="math display">\[\begin{aligned}
+Z(X) = \sum_{\mathbf{y}} \exp \left( \sum_{t=1}^T  \sum_k \theta_k
+f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)
+\end{aligned}\]</span>
 </section>
 <section id="inference-in-transformers" class="slide level3">
 <h3>Inference in Transformers</h3>
@@ -1033,7 +1109,7 @@ class="math inline">\(O(2^n)\)</span></li>
 <section id="speed-benchmarks---ner-on-conll-2003-1"
 class="slide level3">
 <h3>Speed benchmarks - NER on CoNLL 2003</h3>
-<div class="custom-small">
+<div class="custom-medium">
 <table>
 <thead>
 <tr>
@@ -1072,18 +1148,46 @@ Fitted CRF</p>
 </section>
 <section id="conclusion" class="slide level3">
 <h3>Conclusion</h3>
+<div>
 <ul>
-<li>CRF’s are great at identifying entities which are
+<li class="fragment">CRF’s are great at identifying entities which are
 <ul>
-<li>identified by <strong>syntactic</strong> and some extent semantic
-information</li>
+<li class="fragment">identified by <strong>syntactic</strong> and some
+extent semantic information</li>
 </ul></li>
-<li>Quadratic transformers are MUCH MUCH slower</li>
+<li class="fragment">CRF’ are <strong>fast to train</strong>, which
+enable a quick tag-train loop
+<ul>
+<li class="fragment">with few features they do well on small
+datasets</li>
+</ul></li>
+<li class="fragment">CRF’s inference is <strong>fast</strong>,
+especially with C++ implementation</li>
 </ul>
+</div>
 </section>
-<section id="good-sources" class="slide level3">
-<h3>Good Sources</h3>
-<p>https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH</p>
+<section id="learn-more" class="slide level3">
+<h3>Learn more</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><a
+href="https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH">Sutton
+&amp; McCallum - Intro to CRF</a></p>
+<p><img
+data-src="static/front-page-sutton-mccallum-intro-crf.png" /></p>
+</div><div class="column" style="width:30%;">
+<p><a
+href="https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH">Hugo
+Larochelle - Neural Network Course</a></p>
+<p><img data-src="static/front-page-hugo-nn-course.png" /></p>
+</div><div class="column" style="width:30%;">
+<p><a
+href="https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf">Chap.8
+Graphical Models</a></p>
+<p><img data-src="static/front-page-bishop.jpg" /></p>
+</div>
+</div>
+<section style="text-align: left;">
 </section></section>
 <section id="references"
 class="title-slide slide level2 allowframebreaks">
@@ -1101,6 +1205,7 @@ Conditional Random Fields.”</span> <em>Foundations and
 Trends<span></span> in Machine Learning</em> 4 (4): 267–373.
 </div>
 </div>
+</section>
 </section>
     </div>
   </div>

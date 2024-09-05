@@ -378,12 +378,13 @@ where,
 Illustration: @sutton2012introduction
 :::
 
-### CRF from HMM's conditional distribution
+### CRF from HMM's cond. distribution
 
-
+::: custom-medium
 \begin{aligned}
-p(\mathbf{y}, \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp \left(\sum_{i,j \in S} \theta_{ij} \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{y_{t-1} = j\}} \right. \\
-\left. + \sum_{i \in S} \sum_{o \in O} \mu_{oi} \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{x_t = o\}}\right)\\
+p(\mathbf{y}, \mathbf{x}) &= \prod_{t=1}^T p(y_t|y_{t-1})p(x_t|y_t) \\
+&= \frac{1}{Z} \prod_{t=1}^{T} \exp (\sum_{i,j \in S} \theta_{ij} \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{y_{t-1} = j\}} \\
+&+ \sum_{i \in S} \sum_{o \in O} \mu_{oi} \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{x_t = o\}})\\
 \end{aligned}
 
 \begin{aligned}
@@ -391,20 +392,63 @@ p(\mathbf{y}, \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp \left(\sum_{i,j \in
 \mu_{oi} &= \log p(x=o | y=i)\quad \text{word give label prob.} \\
 Z &= 1
 \end{aligned}
+:::
 
+::: notes
+- Every homogeneous HMM can be written on this form
+- Every distribution which factorizes as above is a HMM
+:::
 
-### CRF from HMM's conditional distribution
+### CRF from HMM's cond. distribution
 
-$$
+::: custom-medium
+We introduce feature functions:
 \begin{aligned}
-p(\mathbf{y} | \mathbf{x}) &= \
-\frac{p(\mathbf{y}, \mathbf{x})}{\sum_{y^\prime} p(\mathbf{y^\prime}, \mathbf{x})}
-$$
+f_{ij}(y, y^\prime, x) &= f_{ij}(y, y^\prime) = \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{y_{t-1} = j\}} \\
+f_{io}(y, y^\prime, x) &= f_{io}(y, x) = \mathbf{1}_{\{y_t = i\}} \mathbf{1}_{\{x_t = o\}}
+\end{aligned}
 
-### CRF from time dependent logistic regression
+$f_k$ indexes over all $f_{io}$ and $f_{ij}$
 
-$$
-$$
+\begin{aligned}
+p(\mathbf{y} , \mathbf{x}) = \frac{1}{Z} \prod_{t=1}^{T} \exp \left( \sum_{k=1}^K \theta_k f_k(y_t, y_{t-1}, x_t) \right)
+\end{aligned}
+:::
+
+### CRF from HMM's cond. distribution
+
+::: custom-medium
+\begin{aligned}
+p(\mathbf{y} | \mathbf{x}) = \frac{\prod_{t=1}^{T} \exp \left( \sum_{k=1}^K \theta_k f_k(y_t, y_{t-1}, x_t) \right)}{\sum_{\mathbf{y}^\prime} \prod_{t=1}^{T} \exp \left( \sum_{k=1}^K \theta_k f_k(y_t, y_{t-1}, x_t) \right)}
+\end{aligned}
+
+::: incremental
+- The above is a CRF factorization 🎉
+- But is restricted in two major ways:
+  - Indicator only feature functions
+  - Only the current word identity $x_t$ enters the model
+:::
+:::
+
+::: fragment
+**Take away**: HMM's are CRF's but with (much) more restricted feature functions  
+:::
+
+### CRF from logistic regression
+
+\begin{aligned}
+p(\mathbf{y} | \mathbf{x})_{logistic} &= \prod_{t=1}^{T} p(y_t | \mathbf{x}_t)
+= \prod_{t=1}^{T} \frac{\exp (\theta_y + \sum_k \theta_{y,k} x_k) }{ \sum_{y^\prime} \exp (\theta_{y^\prime} + \sum_k \theta_{y^\prime,k} x_k)} \\
+&= \frac{1}{Z(\mathbf{x})} \prod_{t=1}^{T} \exp (\theta_y + \sum_k \theta_{y,k} x_k) \\
+&= \frac{1}{Z(\mathbf{x})} \prod_{t=1}^{T} \exp (\sum_{k} \theta_{y,k} f_{k}(x_k, y_t))
+\end{aligned}
+
+### CRF from logistic regression
+Adding transitions matrix
+\begin{aligned}
+p(\mathbf{y} | \mathbf{x})_{CRF} &= \frac{1}{Z(\mathbf{x})} \prod_{t=1}^{T} \exp (\sum_{k} \theta_{y,k} f_{k}(x_k, y_t) + V_{y_{t-1},y_{t}})
+\end{aligned}
+
 
 ## CRF Training Demo
 
@@ -628,7 +672,6 @@ Source: @keraghel2024survey
 :::
 
 
-
 ### Performance analysis
 
 - CRF has best relative performance on *BioNLP2004* 
@@ -648,7 +691,8 @@ Source: @keraghel2024survey
 ![](static/info_pyramid.svg)
 
 - CRF does not have semantic information e.g. embeddings
-- CRF feature cannot generalize to unseen words or word contexts
+- CRF features cannot generalize to unseen words or word contexts based on local
+- CRF are just linear machines, no chance of extrapolating abstract information
 
 
 ## Speed comparison
@@ -664,9 +708,18 @@ Source: @keraghel2024survey
 
 ### Inference in CRF
 
-![](static/trellis.png){width=40%}
+- Partition function is a sum over all possible labeling $$ Z(X) = \sum_{y_1}\sum_{y_2}\ldots\sum_{y_T} \prod_{t=1}^T \exp \left( \sum_k \theta_k f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)$$
 
-- Naive implementation: $O(2^n)$
+![](static/trellis.svg){width=50%}
+
+- Naive implementation: $O(M^T)$
+
+### Computing the partition function
+
+\begin{aligned}
+Z(X) = \sum_{\mathbf{y}} \exp \left( \sum_{t=1}^T  \sum_k \theta_k f_k(y_t, y_{t-1}, \mathbf{x}_t) \right)
+\end{aligned}
+
 
 ### Inference in Transformers
 
@@ -679,7 +732,7 @@ Source: @keraghel2024survey
 
 ### Speed benchmarks - NER on CoNLL 2003
 
-::: custom-small
+::: custom-medium
 
 | Model | Params |  Time per Sentence | Time per Token |
 |:------|------:|------:|------:|------:|------:|  
@@ -697,17 +750,45 @@ Source: @keraghel2024survey
 
 ### Conclusion
 
+::::incremental
 - CRF's are great at identifying entities which are 
   - identified by **syntactic** and some extent semantic information
-- Quadratic transformers are MUCH MUCH slower
+- CRF' are **fast to train**, which enable a quick tag-train loop
+  - with few features they do well on small datasets
+- CRF's inference is **fast**, especially with C++ implementation
+:::
 
-### Good Sources
+### Learn more
 
-https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH
+:::::::::::::: {.columns}
+::: {.column width="30%"}
 
+[Sutton & McCallum - Intro to CRF](https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH)
+
+![](static/front-page-sutton-mccallum-intro-crf.png)
+:::
+::: {.column width="30%"}
+
+[Hugo Larochelle - Neural Network Course](https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH)
+
+![](static/front-page-hugo-nn-course.png)
+
+:::
+::: {.column width="30%"}
+
+[Chap.8 Graphical Models](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf) 
+
+![](static/front-page-bishop.jpg)
+:::
+
+::::::::::::::
+
+
+<section style="text-align: left;">
 ## References {.allowframebreaks}
 ::: {#refs}
 :::
+</section>
 
 [1]:	https://www.alipes.dk
 [2]:	https://careers.alipes.dk/
