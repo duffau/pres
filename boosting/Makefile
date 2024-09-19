@@ -7,8 +7,8 @@ reveal_flags = --mathjax \
 		-V theme=black \
 		-V transition="linear" \
 		-V slideNumber="'c/t'" \
-		--css ../black-root.css \
-		--bibliography ../bibliography.bib \
+		--css ./black-root.css \
+		--bibliography ./bibliography.bib \
 		--citeproc
 
 sim:
