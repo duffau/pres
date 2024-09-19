@@ -23,7 +23,7 @@ header-includes: |
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
 
-[![](../static/ante_logo_neg.svg){height=20%}](https://ante.dk)
+[![](./static/ante_logo_neg.svg){height=20%}](https://ante.dk)
 
 :::
 ::: {.column width="50%"}
@@ -59,11 +59,11 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../timeline/boosting_timeline.svg){width=1200px}
+![](./timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](../static/leslie-valiant.jpg){height=130px}
+![](./static/leslie-valiant.jpg){height=130px}
 
 [@valiant1984theory]
 
@@ -107,12 +107,12 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../timeline/boosting_timeline.svg){width=1200px}
+![](./timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![Leslie Valiant](../static/leslie-valiant.jpg){height=130px}
-![Michael Kearns](../static/michael-kearns.jpg){height=130px}
+![Leslie Valiant](./static/leslie-valiant.jpg){height=130px}
+![Michael Kearns](./static/michael-kearns.jpg){height=130px}
 
 [@kearns1989crytographic]
 
@@ -153,11 +153,11 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../timeline/boosting_timeline.svg){width=1200px}
+![](./timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](../static/robert-schapire.jpg){height=130px}
+![](./static/robert-schapire.jpg){height=130px}
 
 [@schapire1990strength]
 
@@ -177,11 +177,11 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../timeline/boosting_timeline.svg){width=1200px}
+![](./timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](../static/yoav-freund.png){height=130px}
+![](./static/yoav-freund.png){height=130px}
 
 [@freund1990majority]
 
@@ -201,12 +201,12 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../timeline/boosting_timeline.svg){width=1200px}
+![](./timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](../static/yoav-freund.png){height=130px}
-![](../static/robert-schapire.jpg){height=130px}
+![](./static/yoav-freund.png){height=130px}
+![](./static/robert-schapire.jpg){height=130px}
 
 [@schapire1995decision]
 
@@ -231,12 +231,12 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../timeline/boosting_timeline.svg){width=1200px}
+![](./timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](../static/jerome-h-friedman.jpeg){height=130px}
-![](../static/robert-tibshirani-trevor-hastie.jpg){height=130px}
+![](./static/jerome-h-friedman.jpeg){height=130px}
+![](./static/robert-tibshirani-trevor-hastie.jpg){height=130px}
 
 [@friedman2000special]
 
@@ -256,11 +256,11 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../timeline/boosting_timeline.svg){width=1200px}
+![](./timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](../static/jerome-h-friedman.jpeg){height=130px}
+![](./static/jerome-h-friedman.jpeg){height=130px}
 
 [@friedman2001greedy]
 [@mason1999boosting]
@@ -275,11 +275,11 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../timeline/boosting_timeline.svg){width=1200px}
+![](./timeline/boosting_timeline.svg){width=1200px}
 :::
 
 ::: {.column width="33%"}
-![](../static/tianqi-chen.jpg){height=130px}
+![](./static/tianqi-chen.jpg){height=130px}
 
 [@chen2015higgs]
 
@@ -298,7 +298,7 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![Top left: General partition, Top right: recursive binary splits](../static/partitions-and-trees.png){width=80%}
+![Top left: General partition, Top right: recursive binary splits](./static/partitions-and-trees.png){width=80%}
 :::
 
 ::: {.column width="33%"}
@@ -320,7 +320,7 @@ header-includes: |
 
 :::::::::::::: {.columns}
 ::: {.column width="66%"}
-![](../plots/tree-depth.svg){width=90%}
+![](./plots/tree-depth.svg){width=90%}
 :::
 
 ::: {.column width="33%"}
@@ -366,11 +366,11 @@ $$Y = \begin{cases}
 -1 & \text{else}
 \end{cases}\quad X_i\sim N(0,1)$$
 
-![Simulated 10-D nested spheres](simulation/plots/gen_data.png){height=400px}
+![Simulated 10-D nested spheres](./simulation/plots/gen_data.png){height=400px}
 
 ## Simulation example
 
-![](simulation/plots/ensemble_test_errors.svg)
+![](./simulation/plots/ensemble_test_errors.svg)
 
 
 ::: notes
@@ -378,7 +378,7 @@ $$Y = \begin{cases}
 :::
 ## Simulation example
 
-![](simulation/plots/adaboost_errors.svg)
+![](./simulation/plots/adaboost_errors.svg)
 
 ::: notes
 - Adaboost test error decreases after training error has hit _zero_
@@ -399,7 +399,7 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 ## Variance and bias reduction
 
-![Classifying 10-D nested spheres](simulation/plots/consecutive_predictions_corr.svg)
+![Classifying 10-D nested spheres](./simulation/plots/consecutive_predictions_corr.svg)
 
 ::: notes
 - Bagging: Training data subsets correlates. Mellow positive correlation between all models.
@@ -411,7 +411,7 @@ $$\text{Variance of ensemble} = \frac{\text{Var(Trees)}}{n} + \frac{\text{Cov( T
 
 ## Boosting
 
-![](../static/Ensemble_Boosting.svg)
+![](./static/Ensemble_Boosting.svg)
 
 ::: notes
 
@@ -472,7 +472,7 @@ L(y, f(x)) &= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 
 . . .
 
-![Exponential loss and cross-entropy](../plots/loss_functions.svg){width=50%}
+![Exponential loss and cross-entropy](./plots/loss_functions.svg){width=50%}
 
 ## Adaboost
 
@@ -482,10 +482,10 @@ L(y, f(x)) &= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-![Clean data](simulation/plots/gen_data.png)
+![Clean data](./simulation/plots/gen_data.png)
 :::
 ::: {.column width="50%"}
-![Noisy data](simulation/plots/gen_noisy_data.png)
+![Noisy data](./simulation/plots/gen_noisy_data.png)
 :::
 ::::::::::::::
 
@@ -498,10 +498,10 @@ L(y, f(x)) &= \log \frac{1}{1+e^{-2yf(x)}}  \Leftrightarrow \\
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-![Test error clean data](simulation/plots/ensemble_test_errors.svg)
+![Test error clean data](./simulation/plots/ensemble_test_errors.svg)
 :::
 ::: {.column width="50%"}
-![Test error noisy data](simulation/plots/ensemble_test_errors_noisy.svg)
+![Test error noisy data](./simulation/plots/ensemble_test_errors_noisy.svg)
 :::
 ::::::::::::::
 
@@ -587,7 +587,7 @@ $$L(y, f_{m-1}(x) + \beta b(x;\gamma))$$
 
 ### Forward Stagewise Additive Modelling
 
-![Fitting a tree conditioned on another](../static/superimposed-trees.svg){width=60%}
+![Fitting a tree conditioned on another](./static/superimposed-trees.svg){width=60%}
 
 🤯
 
@@ -664,12 +664,12 @@ $$
 ::: {.column width="50%"}
 [Elements of Statistical Learning](https://web.stanford.edu/~hastie/ElemStatLearn/) 
 
-![](./../static/esl-cover.jpg){height=400px}
+![](././static/esl-cover.jpg){height=400px}
 :::
 ::: {.column width="50%"}
 [Trevor Hastie - Gradient Boosting Talk (2014)](https://youtu.be/wPqtzj5VZus)
 
-![](./../static/trevor-hastie-gradient-boosting-thumbnail.jpg)
+![](././static/trevor-hastie-gradient-boosting-thumbnail.jpg)
 :::
 ::::::::::::::
 
