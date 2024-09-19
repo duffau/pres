@@ -718,9 +718,9 @@ Source: @keraghel2024survey
 
 | Layer Type | Complexity per Layer |
 |------------|----------------------|
-| Self-attention | O(T^2*K)         |
-| Recurrent  |     O(T*K^2)         |
-| CRF        |    O(T*M^2)          |
+| Self-attention | $O(T^2*K)$         |
+| Recurrent  |     $O(T*K^2)$         |
+| CRF        |    $O(T*M^2)$          |
 
 ::: footer
 Source: @vaswani2017attention
